@@ -22,7 +22,8 @@ public class Dash : MonoBehaviour
     void Update()
     {
         //Si Dash && canDash
-        //StartCoroutine("IntervalleDash");
+        
+        //Dash et StartCoroutine("IntervalleDash");
     }
 
     IEnumerator IntervalleDash(){
