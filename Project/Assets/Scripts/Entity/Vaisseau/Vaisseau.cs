@@ -9,7 +9,8 @@ public class Vaisseau : MonoBehaviour
     //armes.size <= nbrMaxArmes
     public int nbrMaxArmes;
     public double vie;
-    private List<Arme> armes;
+    public float speed;
+    public List<Arme> armes;
     void Start()
     {
         

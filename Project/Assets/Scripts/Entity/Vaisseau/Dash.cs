@@ -6,8 +6,8 @@ public class Dash : MonoBehaviour
 {
     // Start is called before the first frame update
     public float attenteDash;
-    public double distance;
-    public double vitesse;
+    public float distance;
+    public float vitesse;
 
     public List<UpgradeDash> upgradeDashes;
     public int nbrUpgradeMax;
@@ -21,14 +21,21 @@ public class Dash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Si Dash && canDash
-        
-        //Dash et StartCoroutine("IntervalleDash");
+
+    }
+
+    public float runDash(float axisX){
+        StartCoroutine("IntervalleDash");
+        return axisX * distance;
     }
 
     IEnumerator IntervalleDash(){
         canDash = false;
         yield return new WaitForSeconds(attenteDash);
         canDash = true;
+    }
+
+    public bool getCanDash(){
+        return canDash;
     }
 }
