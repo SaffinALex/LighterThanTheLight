@@ -12,11 +12,12 @@ public class VaisseauJoueur : Vaisseau
     //IsInvincible = Recovery Time pour éviter de se faire enchainer trop violemment.
     private bool isInvincible;
     private Animator animator;
+    private float posx;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-
+        posx = 0;
         isInvincible = false;
     }
 
@@ -29,22 +30,30 @@ public class VaisseauJoueur : Vaisseau
         //Le Dash se fait seulement sur X.
         if(dash.getCanDash() && Input.GetKeyDown("space") && change.x != 0){
             Debug.Log("Dash");
-            float posx = dash.runDash(change.x);
+            posx = dash.runDash(change.x);
             if(change.x < 0)
                 StartCoroutine("FlippingLeft");
             if(change.x > 0 )
              StartCoroutine("FlippingRight");
-           // GetComponent<Rigidbody>().MovePosition(transform.position + p);
-            transform.position = new Vector3(transform.position.x + posx, transform.position.y, transform.position.z);
+           // transform.position = new Vector3(transform.position.x + posx, transform.position.y, transform.position.z);
         }
         else{
-            transform.position = new Vector3(transform.position.x + change.x*speed, transform.position.y + change.y*speed, transform.position.z);
-            //GetComponent<Rigidbody>().MovePosition(transform.position + change * speed * Time.deltaTime);
+            //Si il Dash il ne peut pas bouger et (attaquer?)
+            if(animator.GetBool("isFlipLeft") || animator.GetBool("isFlipRight")){
+                GetComponent<Rigidbody>().MovePosition(transform.position + new Vector3(posx,0f,0f)*speed * Time.deltaTime);
+            }
+
+            //Si il ne Dash pas il peut bouger
+            else{
+                transform.position = new Vector3(transform.position.x + change.x*speed, transform.position.y + change.y*speed, transform.position.z);
+                //GetComponent<Rigidbody>().MovePosition(transform.position + change * speed * Time.deltaTime);
+            }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D col){
     	if(col.gameObject.CompareTag("Bullet") && !isInvincible){
+            
             //life - col.gemeObject.getDmg();
             StartCoroutine("InvincibiltyCount");
     	}

@@ -26,7 +26,10 @@ public class Dash : MonoBehaviour
 
     public float runDash(float axisX){
         StartCoroutine("IntervalleDash");
-        return axisX * distance;
+        if(axisX < 0)
+            return -vitesse * distance;
+        else
+            return vitesse * distance;
     }
 
     IEnumerator IntervalleDash(){
