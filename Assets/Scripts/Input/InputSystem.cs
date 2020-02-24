@@ -13,4 +13,9 @@ public class InputSystem : MonoBehaviour {
     if(!InputExist(inputName)) return 0;
     return inputValues[inputName];
   }
+
+  protected void SetInputValue(string inputName, float value){
+    if(!InputExist(inputName)) inputValues.Add(inputName, value);
+    else inputValues[inputName] = value;
+  }
 }
