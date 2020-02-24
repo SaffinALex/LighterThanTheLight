@@ -11,14 +11,17 @@ public class VaisseauJoueur : Vaisseau
 
     //IsInvincible = Recovery Time pour éviter de se faire enchainer trop violemment.
     private bool isInvincible;
-    private Animator animator;
+    private bool canShoot;
+    public Animator animator;
+    public GameObject bullet;
     private float posx;
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         posx = 0;
         isInvincible = false;
+        canShoot = true;
     }
 
     // Update is called once per frame
@@ -27,6 +30,10 @@ public class VaisseauJoueur : Vaisseau
         Vector3 change = Vector3.zero;
         change.x = Input.GetAxis("Horizontal");
         change.y = Input.GetAxis("Vertical");
+        if(canShoot && Input.GetKey("v")){
+            StartCoroutine("Shoot");
+            Instantiate(bullet, transform.position, Quaternion.identity);
+        }
         //Le Dash se fait seulement sur X.
         if(dash.getCanDash() && Input.GetKeyDown("space") && change.x != 0){
             Debug.Log("Dash");
@@ -52,9 +59,12 @@ public class VaisseauJoueur : Vaisseau
     }
 
     private void OnCollisionEnter2D(Collision2D col){
-    	if(col.gameObject.CompareTag("Bullet") && !isInvincible){
-            
-            //life - col.gemeObject.getDmg();
+    	if(col.gameObject.CompareTag("Bullet") && !isInvincible){ 
+            //life -= col.gameObject.getDmg();
+            StartCoroutine("InvincibiltyCount");
+    	}
+        else if(col.gameObject.CompareTag("Obstacle") && !isInvincible){ 
+            //life -= col.gameObject.getDmg();
             StartCoroutine("InvincibiltyCount");
     	}
     }
@@ -75,5 +85,11 @@ public class VaisseauJoueur : Vaisseau
         animator.SetBool("isFlipLeft", true);
         yield return new WaitForSeconds(1f);
         animator.SetBool("isFlipLeft", false);
+    }
+
+    private IEnumerator Shoot(){
+        canShoot = false;
+        yield return new WaitForSeconds(0.25f);
+        canShoot = true;
     }
 }
