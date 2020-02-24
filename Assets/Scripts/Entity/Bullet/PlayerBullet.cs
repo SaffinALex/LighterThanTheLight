@@ -24,4 +24,8 @@ public class PlayerBullet : MonoBehaviour
     void OnBecameInvisible() {
         Destroy(this.gameObject);
     }
+
+    int getDamage(){
+        return damage;
+    }
 }
