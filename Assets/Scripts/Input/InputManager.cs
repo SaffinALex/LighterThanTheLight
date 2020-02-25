@@ -18,6 +18,9 @@ public class InputManager {
     Return an input by the name and the player value
   */
   public static float GetInput(string inputName, int player = 0){
+    if(!PlayerExist(0)){
+      InputManager.Subscribe((Resources.Load("Prefabs/InputDefault/InputKeyboard") as GameObject).GetComponent<KeyboardInputSystem>());
+    }
     if(!PlayerExist(player)) return 0;
     float value = 0;
     //Get the max value distance from 0
