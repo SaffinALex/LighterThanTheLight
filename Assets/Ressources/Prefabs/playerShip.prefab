@@ -122,7 +122,7 @@ MonoBehaviour:
   vieShield: 0
   recoveryTime: 0
   animator: {fileID: 4609433686791282158}
-  bullet: {fileID: 4416812285562530050, guid: aef5e3be800182e4d9ad0c293563a290, type: 3}
+  bullet: {fileID: 4416812285562530050, guid: 24da03922ed47d246a081cdd171e1995, type: 3}
   myRigidBody: {fileID: 2364199843355145164}
 --- !u!50 &2364199843355145164
 Rigidbody2D:
