@@ -46,7 +46,7 @@ public class EntitySpaceShipBehavior : MonoBehaviour
         else
         {
             r2d.velocity = new Vector2(0, 0);
-        } 
+        }
     }
 
     public void shoot()
@@ -62,11 +62,11 @@ public class EntitySpaceShipBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
+            life -= collision.gameObject.GetComponent<PlayerBullet>().getDamage();
             if (life <= 100)
             {
                 animator.SetBool("isDead", true);
             }
-            life -= collision.gameObject.GetComponent<PlayerBullet>().getDamage();
             Destroy(collision.gameObject);
         }
     }
@@ -74,7 +74,8 @@ public class EntitySpaceShipBehavior : MonoBehaviour
     private IEnumerator Shoot()
     {
         canShoot = false;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.3f);
         canShoot = true;
     }
+
 }

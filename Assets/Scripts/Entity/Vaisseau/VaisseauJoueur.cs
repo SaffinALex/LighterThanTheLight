@@ -14,6 +14,7 @@ public class VaisseauJoueur : Vaisseau
     private bool canShoot;
     public Animator animator;
     public GameObject bullet;
+    public Rigidbody2D myRigidBody;
     private float posx;
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,7 @@ public class VaisseauJoueur : Vaisseau
             Instantiate(bullet, transform.position, Quaternion.identity);
         }
         //Le Dash se fait seulement sur X.
-        if(dash.getCanDash() && Input.GetKeyDown("space") && change.x != 0){
+        if(dash.getCanDash() && Input.GetKeyDown("k") && change.x != 0){
             Debug.Log("Dash");
             posx = dash.runDash(change.x);
             if(change.x < 0)
@@ -47,7 +48,7 @@ public class VaisseauJoueur : Vaisseau
         else{
             //Si il Dash il ne peut pas bouger et (attaquer?)
             if(animator.GetBool("isFlipLeft") || animator.GetBool("isFlipRight")){
-                GetComponent<Rigidbody>().MovePosition(transform.position + new Vector3(posx,0f,0f)*speed * Time.deltaTime);
+                myRigidBody.MovePosition(transform.position + new Vector3(posx,0f,0f)*speed * Time.deltaTime);
             }
 
             //Si il ne Dash pas il peut bouger
@@ -59,14 +60,15 @@ public class VaisseauJoueur : Vaisseau
     }
 
     private void OnCollisionEnter2D(Collision2D col){
-    	if(col.gameObject.CompareTag("PlayerBullet") && !isInvincible){ 
+    	if(col.gameObject.CompareTag("BotBullet") && !isInvincible){ 
+            life -= col.gameObject.GetComponent<BotBullet>().getDamage();
             Destroy(col.gameObject);
             StartCoroutine("InvincibiltyCount");
     	}
-        else if(col.gameObject.CompareTag("Obstacle") && !isInvincible){ 
+        /*else if(col.gameObject.CompareTag("Obstacle") && !isInvincible){ 
             //life -= col.gameObject.getDmg();
             StartCoroutine("InvincibiltyCount");
-    	}
+    	}*/
     }
 
     private IEnumerator InvincibiltyCount(){
@@ -77,13 +79,17 @@ public class VaisseauJoueur : Vaisseau
 
     private IEnumerator FlippingRight(){
         animator.SetBool("isFlipRight", true);
+        isInvincible = true;
         yield return new WaitForSeconds(1f);
+        isInvincible = false;
         animator.SetBool("isFlipRight", false);
     }
 
     private IEnumerator FlippingLeft(){
         animator.SetBool("isFlipLeft", true);
+        isInvincible = true;
         yield return new WaitForSeconds(1f);
+        isInvincible = false;
         animator.SetBool("isFlipLeft", false);
     }
 
