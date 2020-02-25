@@ -5,8 +5,12 @@ using UnityEngine;
 public class EntitySpaceShipBehavior : MonoBehaviour
 {
     private Rigidbody2D r2d;
+    public GameObject bullet;
     public float life;
     public float speed;
+    public Animator animator;
+    public bool isDead = false;
+    public bool canShoot = true;
     //weapon associé à un type de bullet
 
     // Start is called before the first frame update
@@ -20,12 +24,13 @@ public class EntitySpaceShipBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (life <= 100)
+        if (isDead)
         {
-            Destroy(r2d);
+            Destroy(this.gameObject);
         }
 
         move();
+        shoot();
     }
 
     public void move()
@@ -44,11 +49,32 @@ public class EntitySpaceShipBehavior : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public void shoot()
     {
-        if (collision.gameObject.CompareTag("playerBullet"))
+        if (canShoot && Input.GetKey("r"))
         {
-            life -= 100;
+            StartCoroutine("Shoot");
+            Instantiate(bullet, transform.position, Quaternion.identity);
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerBullet"))
+        {
+            if (life <= 100)
+            {
+                animator.SetBool("isDead", true);
+            }
+            life -= 100;
+            Destroy(collision.gameObject);
+        }
+    }
+
+    private IEnumerator Shoot()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(0.25f);
+        canShoot = true;
     }
 }
