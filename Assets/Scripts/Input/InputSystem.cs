@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InputSystem : MonoBehaviour {
-  protected int player = 0;
+
+  [Header("Player")]
+  public int player = 0;
   protected Dictionary<string, float> inputValues = new Dictionary<string, float>();
 
   protected void Start(){
