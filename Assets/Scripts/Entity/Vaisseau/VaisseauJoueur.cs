@@ -59,8 +59,8 @@ public class VaisseauJoueur : Vaisseau
     }
 
     private void OnCollisionEnter2D(Collision2D col){
-    	if(col.gameObject.CompareTag("Bullet") && !isInvincible){ 
-            //life -= col.gameObject.getDmg();
+    	if(col.gameObject.CompareTag("PlayerBullet") && !isInvincible){ 
+            Destroy(col.gameObject);
             StartCoroutine("InvincibiltyCount");
     	}
         else if(col.gameObject.CompareTag("Obstacle") && !isInvincible){ 

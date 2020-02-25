@@ -18,14 +18,16 @@ public class PlayerBullet : MonoBehaviour
     {
         float posx = transform.position.x;
         float posy = transform.position.y;
+
         GetComponent<Rigidbody2D>().MovePosition(transform.position + new Vector3(0f, 1f, 0f)*speed * Time.deltaTime);
+
     }
 
     void OnBecameInvisible() {
         Destroy(this.gameObject);
     }
 
-    int getDamage(){
+    public int getDamage(){
         return damage;
     }
 }

@@ -46,7 +46,7 @@ public class EntitySpaceShipBehavior : MonoBehaviour
         else
         {
             r2d.velocity = new Vector2(0, 0);
-        }
+        } 
     }
 
     public void shoot()
@@ -66,7 +66,7 @@ public class EntitySpaceShipBehavior : MonoBehaviour
             {
                 animator.SetBool("isDead", true);
             }
-            life -= 100;
+            life -= collision.gameObject.GetComponent<PlayerBullet>().getDamage();
             Destroy(collision.gameObject);
         }
     }
