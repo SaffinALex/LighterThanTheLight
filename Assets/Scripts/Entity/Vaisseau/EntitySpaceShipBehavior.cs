@@ -58,12 +58,12 @@ public class EntitySpaceShipBehavior : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
             life -= collision.gameObject.GetComponent<PlayerBullet>().getDamage();
-            if (life <= 100)
+            if (life <= 1)
             {
                 animator.SetBool("isDead", true);
             }
