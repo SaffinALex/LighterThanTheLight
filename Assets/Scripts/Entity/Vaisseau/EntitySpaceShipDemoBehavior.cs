@@ -8,6 +8,7 @@ public class EntitySpaceShipDemoBehavior : MonoBehaviour
     private int direction = 1;
     public GameObject bullet;
     public float life;
+    public float ShootTime;
     public float speed;
     public Animator animator;
     public bool isDead = false;
@@ -43,6 +44,7 @@ public class EntitySpaceShipDemoBehavior : MonoBehaviour
             else direction = 1;
         }
         if (direction == 0)
+
         {
             r2d.velocity = new Vector2(speed, 0);
         }
@@ -77,7 +79,7 @@ public class EntitySpaceShipDemoBehavior : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
@@ -93,7 +95,7 @@ public class EntitySpaceShipDemoBehavior : MonoBehaviour
     private IEnumerator Shoot()
     {
         canShoot = false;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(ShootTime);
         canShoot = true;
     }
 

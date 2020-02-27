@@ -17,10 +17,10 @@ TagManager:
   - 
   - 
   - Post Process
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - PlayerBullet
+  - BotBullet
   - 
   - 
   - 

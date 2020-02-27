@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1741663641790697571}
   - component: {fileID: 1741663641790697570}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BotSystem
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 4625316914052721861}
   - component: {fileID: 1741663642805905622}
   - component: {fileID: 1741663642805905621}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,6 +231,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ship_player
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e1390322a04b9e74581c55a46dd9f55f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1390322a04b9e74581c55a46dd9f55f, type: 3}

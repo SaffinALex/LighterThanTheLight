@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4609433687771768757}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Physics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,8 +43,8 @@ GameObject:
   - component: {fileID: 4609433687815977602}
   - component: {fileID: 4609433687815977604}
   - component: {fileID: 2364199843355145164}
-  - component: {fileID: 4368877158818009304}
-  m_Layer: 0
+  - component: {fileID: 4760341062600439618}
+  m_Layer: 9
   m_Name: playerShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,13 +114,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nbrMaxArmes: 0
-  life: 0
+  life: 500
   speed: 0.05
   armes: []
   onde: {fileID: 4609433687815977603}
   dash: {fileID: 4609433687815977602}
   vieShield: 0
-  recoveryTime: 0
+  recoveryTime: 1
   animator: {fileID: 4609433686791282158}
   bullet: {fileID: 4416812285562530050, guid: 24da03922ed47d246a081cdd171e1995, type: 3}
   myRigidBody: {fileID: 2364199843355145164}
@@ -136,16 +136,16 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000000
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &4368877158818009304
+--- !u!61 &4760341062600439618
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,7 +158,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0039767027, y: -0.22634959}
+  m_Offset: {x: -0.0006733835, y: -0.21763265}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -169,7 +169,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.27624607, y: 0.16608}
+  m_Size: {x: 0.25556272, y: 0.2093494}
   m_EdgeRadius: 0
 --- !u!1 &5536633211323048374
 GameObject:
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 564724521128667539}
   - component: {fileID: 6118919230665020778}
   - component: {fileID: 4609433686791282158}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ship_player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,10 +341,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 8015285870583739871, guid: 5958f3ad97e58b345ad84bfd8e4bb8c1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8575084608973684995, guid: 5958f3ad97e58b345ad84bfd8e4bb8c1,
         type: 3}
       propertyPath: m_Name
       value: ship_player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575084608973684995, guid: 5958f3ad97e58b345ad84bfd8e4bb8c1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5958f3ad97e58b345ad84bfd8e4bb8c1, type: 3}
