@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1417475278702503181}
   - component: {fileID: 1417475278702503180}
   - component: {fileID: 1417475278702503171}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 42786175474113178, guid: ecc3fa2f120cfd7418380885a79bde35, type: 3}
   life: 10
-  speed: 1
+  ShootTime: 2
+  speed: 0.5
   animator: {fileID: 1417475279748708566}
   isDead: 0
   isMoving: 0
@@ -110,7 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1417475279748708567}
   - component: {fileID: 1417475279748708566}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BotDemo
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -162,7 +163,7 @@ GameObject:
   - component: {fileID: 1417475280359658537}
   - component: {fileID: 1417475280359658539}
   - component: {fileID: 1417475280359658538}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ship_player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

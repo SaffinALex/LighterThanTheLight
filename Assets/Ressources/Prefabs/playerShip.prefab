@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attenteDash: 2
-  distance: 2
+  distance: 5
   vitesse: 3
   upgradeDashes: []
   nbrUpgradeMax: 0
