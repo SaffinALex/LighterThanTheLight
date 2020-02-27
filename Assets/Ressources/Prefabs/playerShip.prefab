@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4609433687771768757}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Physics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4609433687815977604}
   - component: {fileID: 2364199843355145164}
   - component: {fileID: 4368877158818009304}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: playerShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 564724521128667539}
   - component: {fileID: 6118919230665020778}
   - component: {fileID: 4609433686791282158}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ship_player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,6 +345,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ship_player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575084608973684995, guid: 5958f3ad97e58b345ad84bfd8e4bb8c1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5958f3ad97e58b345ad84bfd8e4bb8c1, type: 3}
