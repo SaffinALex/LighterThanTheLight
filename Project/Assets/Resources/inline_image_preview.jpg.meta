@@ -6,8 +6,13 @@ TextureImporter:
   serializedVersion: 10
   mipmaps:
     mipMapMode: 0
+<<<<<<< Updated upstream
     enableMipMap: 1
     sRGBTexture: 0
+=======
+    enableMipMap: 0
+    sRGBTexture: 1
+>>>>>>> Stashed changes
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -49,9 +54,15 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
+<<<<<<< Updated upstream
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 1
+=======
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+>>>>>>> Stashed changes
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
