@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+<<<<<<< Updated upstream:Assets/Scripts/Entity/Vaisseau/Bot/EntitySpaceShipBehavior.cs
 public class EntitySpaceShipBehavior : MonoBehaviour
+=======
+public class BotBehavior : MonoBehaviour
+>>>>>>> Stashed changes:Assets/Scripts/Entity/Vaisseau/Bot/BotBehavior.cs
 {
     //private Rigidbody2D r2d;
 
@@ -18,4 +22,12 @@ public class EntitySpaceShipBehavior : MonoBehaviour
 
     }
 
+<<<<<<< Updated upstream:Assets/Scripts/Entity/Vaisseau/Bot/EntitySpaceShipBehavior.cs
+=======
+    public void initialize(){
+
+    }
+
+
+>>>>>>> Stashed changes:Assets/Scripts/Entity/Vaisseau/Bot/BotBehavior.cs
 }
