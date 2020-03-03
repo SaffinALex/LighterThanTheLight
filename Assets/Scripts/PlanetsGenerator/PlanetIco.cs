@@ -48,6 +48,7 @@ public class PlanetIco : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GeneratePlanet();
     }
 
     void Initialize(){
@@ -143,7 +144,7 @@ public class PlanetIco : MonoBehaviour
 
     public void Create()
     {
-        Mesh mesh = meshFilter.mesh;
+        Mesh mesh = meshFilter.sharedMesh;
         mesh.Clear();
  
         vertList = new List<Vector3>();

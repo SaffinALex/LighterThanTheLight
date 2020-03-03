@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlanetMaterial
+  m_Name: MoonMaterial
   m_Shader: {fileID: -6465566751694194690, guid: ff4101c76bc9a0b428cfe1d1fa0f7ef8,
     type: 3}
   m_ShaderKeywords: 
@@ -76,11 +76,11 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _Color: {r: 0.77417356, g: 1, b: 0.61960787, a: 0}
+    - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _elevationMinMax: {r: 2.9101076, g: 3.087422, b: 0, a: 0}
---- !u!114 &403658439341487947
+    - _elevationMinMax: {r: 1.2, g: 1.3401723, b: 0, a: 0}
+--- !u!114 &8726316863350727107
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
