@@ -14,31 +14,43 @@ public class EntitySpaceShipDemoBehavior : MonoBehaviour
     public bool isDead = false;
     public bool isMoving = false;
     public bool canShoot = true;
+    public float lifeBase;
     //weapon associé à un type de bullet
 
     // Start is called before the first frame update
     void Start()
     {
         r2d = GetComponent<Rigidbody2D>();
+        lifeBase = life;
+        isMoving = false;
+        canShoot = true;
 
         //r2d.velocity = transform.forward * speed;
     }
 
+    void FixedUpdate(){
+        if (isDead)
+        {
+           // Destroy(this.gameObject);
+           isDead = false;
+           isMoving = false;
+           
+           this.gameObject.transform.parent.gameObject.SetActive(false);
+           //...//
+           life = lifeBase;
+
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        if (isDead)
-        {
-            Destroy(this.gameObject);
-        }
-
         move();
         shoot();
     }
 
     public void move()
     {
-        if(!isMoving){
+        if(!isMoving ){
             StartCoroutine("TimeMove");
             if(direction == 1) direction = 0;
             else direction = 1;
@@ -46,11 +58,11 @@ public class EntitySpaceShipDemoBehavior : MonoBehaviour
         if (direction == 0)
 
         {
-            r2d.velocity = new Vector2(speed, 0);
+            r2d.velocity = new Vector2(speed, -0.5f);
         }
         else if (direction == 1)
         {
-            r2d.velocity = new Vector2(-speed, 0);
+            r2d.velocity = new Vector2(-speed, -0.5f);
         }
         else
         {
@@ -84,14 +96,22 @@ public class EntitySpaceShipDemoBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
             life -= collision.gameObject.GetComponent<PlayerBullet>().getDamage();
-            if (life <= 100)
+            if(life <=  0)
+                isDead = true;
+          /*  if (life <= 100)
             {
                 animator.SetBool("isDead", true);
-            }
+            } */
             Destroy(collision.gameObject);
         }
     }
+    public void initialize(){
+        canShoot = true;
+        isMoving = false;
+        life = 10;
+    }
 
+    
     private IEnumerator Shoot()
     {
         canShoot = false;
