@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1741663641790697571}
   - component: {fileID: 1741663641790697570}
   m_Layer: 10
-  m_Name: BotSystem
+  m_Name: BotSystemBasic
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1741663642805905620}
-  - component: {fileID: 4625316914052721861}
+  - component: {fileID: 4981978394960796227}
   - component: {fileID: 1741663642805905622}
   - component: {fileID: 1741663642805905621}
   m_Layer: 10
@@ -85,7 +85,7 @@ Transform:
   m_Father: {fileID: 1741663641790697571}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4625316914052721861
+--- !u!114 &4981978394960796227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,15 +94,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1741663642805905619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b68c02d8db5f8a448213a431b126f6f, type: 3}
+  m_Script: {fileID: 11500000, guid: b3e8642bfe066c94ab6b54425121ba98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 42786175474113178, guid: ecc3fa2f120cfd7418380885a79bde35, type: 3}
-  life: 10
-  speed: 1
+  life: 6
+  speedMove: 0.5
+  scrolling: 0.1
+  speedShoot: 0.7
   animator: {fileID: 1741663641790697570}
   isDead: 0
-  canShoot: 1
+  isShooting: 1
+  isMoving: 0
 --- !u!50 &1741663642805905622
 Rigidbody2D:
   serializedVersion: 4

@@ -2,21 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntitySpaceShipBehavior : MonoBehaviour
+public class BotBehaviorRandom : EntitySpaceShipBehavior
 {
     private Rigidbody2D r2d;
+    private int direction;
+    private float timeMove;
+
     public GameObject bullet;
     public float life;
-    public float speed;
+    public float speedMove;
+    public float scrolling;
+    public float speedShoot;
     public Animator animator;
     public bool isDead = false;
-    public bool canShoot = true;
+    public bool isShooting;
+    public bool isMoving;
     //weapon associé à un type de bullet
 
     // Start is called before the first frame update
     void Start()
     {
         r2d = GetComponent<Rigidbody2D>();
+        direction = Random.Range(0, 10);
+        timeMove = Random.Range(1.5f, 4.0f);
 
         //r2d.velocity = transform.forward * speed;
     }
@@ -35,6 +43,7 @@ public class EntitySpaceShipBehavior : MonoBehaviour
 
     public void move()
     {
+        /*
         if (Input.GetKey("d"))
         {
             r2d.velocity = new Vector2(speed, 0);
@@ -47,18 +56,45 @@ public class EntitySpaceShipBehavior : MonoBehaviour
         {
             r2d.velocity = new Vector2(0, 0);
         }
+        */
+        if (!isMoving)
+        {
+            StartCoroutine("Move");
+            direction = Random.Range(0, 10);
+            timeMove = Random.Range(0.5f, 2.0f);
+        }
+        if (direction == 0)
+        {
+            r2d.velocity = new Vector2(speedMove, -scrolling);
+        }
+        else if (direction == 1)
+        {
+            r2d.velocity = new Vector2(0, speedMove - scrolling);
+        }
+        else if (direction == 2)
+        {
+            r2d.velocity = new Vector2(-speedMove, -scrolling);
+        }
+        else if (direction == 3)
+        {
+            r2d.velocity = new Vector2(0, -speedMove - scrolling);
+        }
+        else
+        {
+            r2d.velocity = new Vector2(0, -scrolling);
+        }
     }
 
     public void shoot()
     {
-        if (canShoot && Input.GetKey("r"))
+        if (isShooting)
         {
             StartCoroutine("Shoot");
             Instantiate(bullet, transform.position, Quaternion.identity);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
@@ -73,9 +109,18 @@ public class EntitySpaceShipBehavior : MonoBehaviour
 
     private IEnumerator Shoot()
     {
-        canShoot = false;
-        yield return new WaitForSeconds(0.3f);
-        canShoot = true;
+        isShooting = false;
+        yield return new WaitForSeconds(speedShoot);
+        isShooting = true;
     }
+
+    private IEnumerator Move()
+    {
+        isMoving = true;
+        yield return new WaitForSeconds(timeMove);
+        isMoving = false;
+
+    }
+
 
 }
