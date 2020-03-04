@@ -52,7 +52,7 @@ public class HealthBarControl : MonoBehaviour
         this.healthPercent = healthPercent;
         gameObject.transform.Find("Main Slider").GetComponent<Slider>().value = this.healthPercent;
 
-        gameObject.transform.Find("TextCmpt").GetComponent<TextMeshProUGUI>().text = (this.healthPercent*100).ToString("0") + "\n%";
+        gameObject.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = (this.healthPercent*100).ToString("0");
         currentGhostDelay = ghostDelay;
     }
 }
