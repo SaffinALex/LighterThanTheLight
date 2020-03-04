@@ -26,6 +26,12 @@ public class VaisseauJoueur : Vaisseau
     }
 
     // Update is called once per frame
+    void FixedUpdate(){
+        if (life <= 0){
+            Destroy(this.gameObject);
+        }
+        
+    }
     void Update()
     {
         Vector3 change = Vector3.zero;
@@ -36,7 +42,7 @@ public class VaisseauJoueur : Vaisseau
             Instantiate(bullet, transform.position, Quaternion.identity);
         }
         //Le Dash se fait seulement sur X.
-        if(dash.getCanDash() && Input.GetKeyDown("k") && change.x != 0){
+        if(dash.getCanDash() && Input.GetKeyDown("k") && !isInvincible && change.x != 0){
             Debug.Log("Dash");
             posx = dash.runDash(change.x);
             if(change.x < 0)
@@ -60,10 +66,13 @@ public class VaisseauJoueur : Vaisseau
     }
 
     private void OnCollisionEnter2D(Collision2D col){
-    	if(col.gameObject.CompareTag("BotBullet") && !isInvincible){ 
-            life -= col.gameObject.GetComponent<BotBullet>().getDamage();
+    	if(col.gameObject.CompareTag("BotBullet") ){ 
+            if(!isInvincible){
+                life -= col.gameObject.GetComponent<BotBullet>().getDamage();
+                StartCoroutine("InvincibiltyCount");
+            }
             Destroy(col.gameObject);
-            StartCoroutine("InvincibiltyCount");
+
     	}
         /*else if(col.gameObject.CompareTag("Obstacle") && !isInvincible){ 
             //life -= col.gameObject.getDmg();
@@ -73,7 +82,9 @@ public class VaisseauJoueur : Vaisseau
 
     private IEnumerator InvincibiltyCount(){
         isInvincible = true;
+        animator.SetBool("isTouch", true);
         yield return new WaitForSeconds(recoveryTime);
+        animator.SetBool("isTouch", false);
         isInvincible = false;
     }
 
