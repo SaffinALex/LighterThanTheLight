@@ -69,6 +69,7 @@ public class VaisseauJoueur : Vaisseau
     	if(col.gameObject.CompareTag("BotBullet") ){ 
             if(!isInvincible){
                 life -= col.gameObject.GetComponent<BotBullet>().getDamage();
+                UnityEngine.EventSystems.EventSystem.current.GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,500);
                 StartCoroutine("InvincibiltyCount");
             }
             Destroy(col.gameObject);

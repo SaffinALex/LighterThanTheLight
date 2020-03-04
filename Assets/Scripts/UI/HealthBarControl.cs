@@ -23,15 +23,6 @@ public class HealthBarControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("up"))
-        {
-            setHealthPercent(1f);
-        }
-        if (Input.GetKey("down"))
-        {
-            setHealthPercent(this.healthPercent - Random.Range(0.01f,0.03f));
-        }
-
         if(currentGhostDelay <= 0 && healthPercent < currentGhostPercent){
             currentGhostPercent -= ghostFillSpeed;
             gameObject.transform.Find("Ghost Slider").GetComponent<Slider>().value = currentGhostPercent;
@@ -39,7 +30,9 @@ public class HealthBarControl : MonoBehaviour
             currentGhostDelay -= Time.deltaTime;
     }
 
-    public void setHealthPercent(float healthPercent){
+    public void setHealthPercent(int health, int maxHealth){
+        float healthPercent = (float) (((float) health)/((float) maxHealth));
+
         if(healthPercent < 0)
             healthPercent = 0;
         if(healthPercent > 1)
@@ -54,5 +47,10 @@ public class HealthBarControl : MonoBehaviour
 
         gameObject.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = (this.healthPercent*100).ToString("0");
         currentGhostDelay = ghostDelay;
+    }
+
+ public void setHealth(int health){
+
+        gameObject.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = (this.healthPercent*100).ToString("0");
     }
 }
