@@ -1185,6 +1185,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1175291638563659386, guid: 808a1501ccef1414b8cb7bc25214aa1b,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175291638563659386, guid: 808a1501ccef1414b8cb7bc25214aa1b,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175291638563659386, guid: 808a1501ccef1414b8cb7bc25214aa1b,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175291638563659386, guid: 808a1501ccef1414b8cb7bc25214aa1b,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.0627451
+      objectReference: {fileID: 0}
     - target: {fileID: 1702976014365027932, guid: 808a1501ccef1414b8cb7bc25214aa1b,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1208,6 +1228,16 @@ PrefabInstance:
     - target: {fileID: 3304649084178698214, guid: 808a1501ccef1414b8cb7bc25214aa1b,
         type: 3}
       propertyPath: CustomDataModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745449892986934432, guid: 808a1501ccef1414b8cb7bc25214aa1b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745449892986934432, guid: 808a1501ccef1414b8cb7bc25214aa1b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7390964266469240362, guid: 808a1501ccef1414b8cb7bc25214aa1b,

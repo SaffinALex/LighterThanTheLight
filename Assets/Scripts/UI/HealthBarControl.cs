@@ -18,6 +18,7 @@ public class HealthBarControl : MonoBehaviour
     {
         gameObject.transform.Find("Main Slider").GetComponent<Slider>().value = healthPercent;
         gameObject.transform.Find("Ghost Slider").GetComponent<Slider>().value = currentGhostPercent;
+        gameObject.transform.Find("ParticlesSlider").GetComponent<Slider>().value = currentGhostPercent;
     }
 
     // Update is called once per frame
@@ -26,7 +27,9 @@ public class HealthBarControl : MonoBehaviour
         if(currentGhostDelay <= 0 && healthPercent < currentGhostPercent){
             currentGhostPercent -= ghostFillSpeed;
             gameObject.transform.Find("Ghost Slider").GetComponent<Slider>().value = currentGhostPercent;
-        }else if (currentGhostDelay > 0)
+            gameObject.transform.Find("ParticlesSlider").GetComponent<Slider>().value = currentGhostPercent;
+        }
+        else if (currentGhostDelay > 0)
             currentGhostDelay -= Time.deltaTime;
     }
 
@@ -39,18 +42,19 @@ public class HealthBarControl : MonoBehaviour
             healthPercent = 1;
         if(this.healthPercent < healthPercent){
             gameObject.transform.Find("Ghost Slider").GetComponent<Slider>().value = healthPercent;
+            gameObject.transform.Find("ParticlesSlider").GetComponent<Slider>().value = healthPercent;
             currentGhostPercent = healthPercent;
         }
             
         this.healthPercent = healthPercent;
         gameObject.transform.Find("Main Slider").GetComponent<Slider>().value = this.healthPercent;
 
-        gameObject.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = (this.healthPercent*100).ToString("0");
+        gameObject.transform.Find("HealthText").GetComponent<TextMeshProUGUI>().text = (this.healthPercent*100).ToString("0");
         currentGhostDelay = ghostDelay;
     }
 
  public void setHealth(int health){
 
-        gameObject.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = (this.healthPercent*100).ToString("0");
+        gameObject.transform.Find("HealthText").GetComponent<TextMeshProUGUI>().text = (this.healthPercent*100).ToString("0");
     }
 }
