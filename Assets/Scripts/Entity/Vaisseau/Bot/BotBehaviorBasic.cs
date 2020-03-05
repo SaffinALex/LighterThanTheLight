@@ -4,41 +4,31 @@ using UnityEngine;
 
 public class BotBehaviorBasic : EntitySpaceShipBehavior
 {
-    private Rigidbody2D r2d;
-    private int direction;
-
-    public GameObject bullet;
-    public float life;
-    public float speedMove;
-    public float scrolling;
-    public float speedShoot;
-    public Animator animator;
-    public bool isDead = false;
-    public bool isShooting;
-    public bool isMoving;
     //weapon associé à un type de bullet
 
     // Start is called before the first frame update
     void Start()
     {
-        r2d = GetComponent<Rigidbody2D>();
-        direction = Random.Range(0, 2);
-
+        base.Start();
+        Direction = Random.Range(0, 2);
+        TimeMove = 3.0f;
         //r2d.velocity = transform.forward * speed;
+    }
+
+    void FixedUpdate()
+    {
+        base.FixedUpdate();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isDead)
-        {
-            Destroy(this.gameObject);
-        }
-
+        base.Update();
         move();
         shoot();
     }
 
+    override
     public void move()
     {
         /*
@@ -58,23 +48,24 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
         if (!isMoving)
         {
             StartCoroutine("Move");
-            if (direction == 1) direction = 0;
-            else direction = 1;
+            if (Direction == 1) Direction = 0;
+            else Direction = 1;
         }
-        if (direction == 0)
+        if (Direction == 0)
         {
-            r2d.velocity = new Vector2(speedMove, -scrolling);
+            R2d.velocity = new Vector2(speedMove, -scrolling);
         }
-        else if (direction == 1)
+        else if (Direction == 1)
         {
-            r2d.velocity = new Vector2(-speedMove, -scrolling);
+            R2d.velocity = new Vector2(-speedMove, -scrolling);
         }
         else
         {
-            r2d.velocity = new Vector2(0, -scrolling);
+            R2d.velocity = new Vector2(0, -scrolling);
         }
     }
 
+    override
     public void shoot()
     {
         if (isShooting)
@@ -84,32 +75,12 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    override
+    public void initialize()
     {
-        if (collision.gameObject.CompareTag("PlayerBullet"))
-        {
-            life -= collision.gameObject.GetComponent<PlayerBullet>().getDamage();
-            if (life <= 1)
-            {
-                animator.SetBool("isDead", true);
-            }
-            Destroy(collision.gameObject);
-        }
-    }
-
-    private IEnumerator Shoot()
-    {
-        isShooting = false;
-        yield return new WaitForSeconds(speedShoot);
         isShooting = true;
-    }
-
-    private IEnumerator Move()
-    {
-        isMoving = true;
-        yield return new WaitForSeconds(3.0f);
         isMoving = false;
-
+        life = 6;
     }
 
 
