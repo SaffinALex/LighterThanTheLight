@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
-public class IcoSphere : MonoBehaviour
+public class PlanetIco : MonoBehaviour
 {
-    public bool needUpdate = true;
-    public bool stayUpdate = false;
+    public bool autoUpdate = true;
     
     [Range(0,5)]
-    public int recursionLevel = 1;
+    public int resolution = 1;
     public float radius = 1f;
     [Range(0, 100)]
     public int powerSeed = 0;
@@ -18,8 +17,19 @@ public class IcoSphere : MonoBehaviour
     [Range(-200f, 200f)]
     public float speedRotation = 5f;
 
+    public ShapeSettings shapeSettings;
+    public ColourSettings colourSettings;
+
+    [HideInInspector]
+    public bool shapeSettingsFoldout;
+    [HideInInspector]
+    public bool colourSettingsFoldout;
+
+    ShapeGenerator shapeGenerator = new ShapeGenerator();
+    ColourGenerator colourGenerator = new ColourGenerator();
+
     protected List<Vector3> vertList;
-    protected MeshFilter filter;
+    protected MeshFilter meshFilter;
 
     private struct TriangleIndices
     {
@@ -38,19 +48,54 @@ public class IcoSphere : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        needUpdate = true;
-        filter = gameObject.AddComponent< MeshFilter >();
+        GeneratePlanet();
+    }
+
+    void Initialize(){
+        shapeGenerator.UpdateSettings(shapeSettings);
+        colourGenerator.UpdateSettings(colourSettings);
+        meshFilter = gameObject.GetComponent< MeshFilter >();
+        if(meshFilter == null){
+            gameObject.GetComponent<MeshRenderer>();
+            meshFilter = gameObject.AddComponent< MeshFilter >();
+            meshFilter.sharedMesh = new Mesh();
+        }
+        meshFilter.GetComponent<MeshRenderer>().sharedMaterial = colourSettings.planetMaterial;
+    }
+
+    public void GeneratePlanet(){
+        Initialize();
+        GenerateMesh();
+        GenerateColours();
+    }
+
+    public void OnShapeSettingsUpdated(){
+        if(autoUpdate){
+            Initialize();
+            GenerateMesh();
+        }
+    }
+
+    public void OnColourSettingsUpdated(){
+        if(autoUpdate){
+            Initialize();
+            GenerateColours();
+        }
+    }
+
+    void GenerateMesh(){
+        Create();
+        colourGenerator.UpdateElevation(shapeGenerator.elevationMinMax);
+    }
+
+    void GenerateColours(){
+        colourGenerator.UpdateColours();
     }
 
     // Update is called once per frame
     void Update()
     {
         gameObject.transform.Rotate(0,Time.deltaTime * speedRotation, 0);
-        if(needUpdate || stayUpdate){
-            Random.InitState(powerSeed);
-            Create();
-            needUpdate = false;
-        }
     }
 
     // return index of point in the middle of p1 and p2
@@ -80,7 +125,7 @@ public class IcoSphere : MonoBehaviour
  
         // add vertex makes sure point is on unit sphere
 		int i = vertices.Count;
-        vertices.Add( middle.normalized * getRadius() ); 
+        vertices.Add( calculateNewPosition( middle.normalized ) ); 
  
         // store it, return index
         cache.Add(key, i);
@@ -89,12 +134,17 @@ public class IcoSphere : MonoBehaviour
     }
 
     float getRadius(){
-        return (radius * (1 + Random.value * powerRandom));
+        return radius;
+       // return (radius * (1 + Random.value * powerRandom));
+    }
+
+    Vector3 calculateNewPosition(Vector3 point){
+        return shapeGenerator.CalculatePointOnPlanet(point);
     }
 
     public void Create()
     {
-        Mesh mesh = filter.mesh;
+        Mesh mesh = meshFilter.sharedMesh;
         mesh.Clear();
  
         vertList = new List<Vector3>();
@@ -104,20 +154,20 @@ public class IcoSphere : MonoBehaviour
         // create 12 vertices of a icosahedron
         float t = (1f + Mathf.Sqrt(5f)) / 2f;
  
-        vertList.Add(new Vector3(-1f,  t,  0f).normalized * getRadius());
-        vertList.Add(new Vector3( 1f,  t,  0f).normalized * getRadius());
-        vertList.Add(new Vector3(-1f, -t,  0f).normalized * getRadius());
-        vertList.Add(new Vector3( 1f, -t,  0f).normalized * getRadius());
+        vertList.Add(calculateNewPosition(new Vector3(-1f,  t,  0f).normalized));
+        vertList.Add(calculateNewPosition(new Vector3( 1f,  t,  0f).normalized));
+        vertList.Add(calculateNewPosition(new Vector3(-1f, -t,  0f).normalized));
+        vertList.Add(calculateNewPosition(new Vector3( 1f, -t,  0f).normalized));
  
-        vertList.Add(new Vector3( 0f, -1f,  t).normalized * getRadius());
-        vertList.Add(new Vector3( 0f,  1f,  t).normalized * getRadius());
-        vertList.Add(new Vector3( 0f, -1f, -t).normalized * getRadius());
-        vertList.Add(new Vector3( 0f,  1f, -t).normalized * getRadius());
+        vertList.Add(calculateNewPosition(new Vector3( 0f, -1f,  t).normalized));
+        vertList.Add(calculateNewPosition(new Vector3( 0f,  1f,  t).normalized));
+        vertList.Add(calculateNewPosition(new Vector3( 0f, -1f, -t).normalized));
+        vertList.Add(calculateNewPosition(new Vector3( 0f,  1f, -t).normalized));
  
-        vertList.Add(new Vector3( t,  0f, -1f).normalized * getRadius());
-        vertList.Add(new Vector3( t,  0f,  1f).normalized * getRadius());
-        vertList.Add(new Vector3(-t,  0f, -1f).normalized * getRadius());
-        vertList.Add(new Vector3(-t,  0f,  1f).normalized * getRadius());
+        vertList.Add(calculateNewPosition(new Vector3( t,  0f, -1f).normalized));
+        vertList.Add(calculateNewPosition(new Vector3( t,  0f,  1f).normalized));
+        vertList.Add(calculateNewPosition(new Vector3(-t,  0f, -1f).normalized));
+        vertList.Add(calculateNewPosition(new Vector3(-t,  0f,  1f).normalized));
  
  
         // create 20 triangles of the icosahedron
@@ -153,7 +203,7 @@ public class IcoSphere : MonoBehaviour
  
  
         // refine triangles
-        for (int i = 0; i < recursionLevel; i++)
+        for (int i = 0; i < resolution; i++)
         {
             List<TriangleIndices> faces2 = new List<TriangleIndices>();
             foreach (var tri in faces)
@@ -193,7 +243,7 @@ public class IcoSphere : MonoBehaviour
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
         mesh.Optimize();
-        mesh = filter.sharedMesh;
+        mesh = meshFilter.sharedMesh;
 
         //Low poly
         Vector3[] oldVerts = mesh.vertices;
