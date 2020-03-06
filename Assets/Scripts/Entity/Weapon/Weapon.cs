@@ -12,12 +12,17 @@ public class Weapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(bullet, transform.position, Quaternion.identity);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void shoot(Transform t)
+    {
+        Instantiate(bullet, t.position, Quaternion.identity);
     }
 }

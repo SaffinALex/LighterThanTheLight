@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EntitySpaceShipBehavior : MonoBehaviour
+public class EntityBossSpaceShipBehavior : MonoBehaviour
 {
     private Rigidbody2D r2d;
     private int direction;
     private float timeMove;
 
     public GameObject weapon;
-    public float life;
+    public float cockpitLife;
+    public float rightSideLife;
+    public float leftSideLife;
     public float speedMove;
-    public float scrolling;
     public float speedShoot;
     public Animator animator;
-    private bool isDead = false;
+    private bool cockpitIsDead = false;
+    private bool rightSideIsDead = false;
+    private bool leftSideIsDead = false;
     public bool isShooting;
     public bool isMoving;
 
@@ -22,50 +25,52 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     public int Direction { get => direction; set => direction = value; }
     public float TimeMove { get => timeMove; set => timeMove = value; }
 
-
     // Start is called before the first frame update
-    protected void Start()
+    void Start()
     {
         R2d = GetComponent<Rigidbody2D>();
     }
 
-    protected void FixedUpdate()
+    void FixedUpdate()
     {
-        if (isDead)
+        if (rightSideIsDead)
         {
             // Destroy(this.gameObject);
-            isDead = false;
+            rightSideIsDead = false;
             isMoving = false;
 
-            gameObject.transform.parent.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 
     // Update is called once per frame
-    protected void Update()
+    void Update()
     {
+        shoot();
+    }
 
+    public void shoot()
+    {
+        if (isShooting)
+        {
+            StartCoroutine("Shoot");
+            weapon.GetComponent<Weapon>().shoot(transform);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
-            life -= collision.gameObject.GetComponent<PlayerBullet>().getDamage();
-            if (life <= 1)
+            rightSideLife -= collision.gameObject.GetComponent<PlayerBullet>().getDamage();
+            if (rightSideLife <= 1)
             {
-                isDead = true;
-                animator.SetBool("isDead", true);
+                rightSideIsDead = true;
+                animator.SetBool("rightSideIsDead", true);
             }
             Destroy(collision.gameObject);
         }
     }
-
-    public abstract void move();
-
-    public abstract void shoot();
-
-    public abstract void initialize();
 
     private IEnumerator Shoot()
     {
@@ -81,6 +86,4 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
         isMoving = false;
 
     }
-
-
 }

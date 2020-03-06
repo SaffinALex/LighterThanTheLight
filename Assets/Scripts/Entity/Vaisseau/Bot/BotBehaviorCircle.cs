@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotBehaviorCircle : EntitySpaceShipBehavior
+public class BotBehaviorCircle : EntityBotSpaceShipBehavior
 {
     //weapon associé à un type de bullet
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         base.Start();
         Direction = 0;
@@ -16,13 +16,13 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         //r2d.velocity = transform.forward * speed;
     }
 
-    void FixedUpdate()
+    new void FixedUpdate()
     {
         base.FixedUpdate();
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
         base.Update();
         move();
@@ -78,7 +78,7 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         if (isShooting)
         {
             StartCoroutine("Shoot");
-            Instantiate(weapon, transform.position, Quaternion.identity);
+            weapon.gameObject.GetComponent<Weapon>().shoot(transform);
         }
     }
 
