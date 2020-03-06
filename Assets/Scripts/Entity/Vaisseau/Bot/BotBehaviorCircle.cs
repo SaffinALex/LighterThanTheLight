@@ -78,7 +78,7 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         if (isShooting)
         {
             StartCoroutine("Shoot");
-            Instantiate(bullet, transform.position, Quaternion.identity);
+            Instantiate(weapon, transform.position, Quaternion.identity);
         }
     }
 

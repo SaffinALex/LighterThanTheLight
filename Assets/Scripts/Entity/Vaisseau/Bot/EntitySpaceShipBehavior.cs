@@ -8,7 +8,7 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     private int direction;
     private float timeMove;
 
-    public GameObject bullet;
+    public GameObject weapon;
     public float life;
     public float speedMove;
     public float scrolling;

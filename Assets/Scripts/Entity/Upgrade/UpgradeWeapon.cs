@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpgradeArme : Upgrade
+public class UpgradeWeapon : Upgrade
 {
     // Start is called before the first frame update
     void Start()
@@ -16,16 +16,17 @@ public class UpgradeArme : Upgrade
         
     }
 //A l'obtention de l'Upgrade
-    void StartUpgrade(Arme arme){
+    void StartUpgrade(Weapon weapon){
 
     }
 //A chaque update mettre à jour les caractéristiques.
-    void UpdateUpgrade(Arme arme){
+    void UpdateUpgrade(Weapon weapon)
+    {
         
     }
 //Avant la suppression de l'Upgrade.
-    void EndUpgrade(Arme arme){
-        
+    void EndUpgrade(Weapon weapon)
+    {
         Destroy(this);
     }
 }
