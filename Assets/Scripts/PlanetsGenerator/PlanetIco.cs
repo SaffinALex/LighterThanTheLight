@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(MeshRenderer)), RequireComponent(typeof(MeshFilter))]
 public class PlanetIco : MonoBehaviour
 {
     public bool autoUpdate = true;
     
     [Range(0,5)]
     public int resolution = 1;
-    public float radius = 1f;
-    [Range(0, 100)]
-    public int powerSeed = 0;
-    [Range(0f,1.5f)]
-    public float powerRandom = 0f;
     [Range(-200f, 200f)]
     public float speedRotation = 5f;
+
+    public bool LOD = true;
+    public int[] resolutionsLOD = { 150, 500, 1200, 2200, 3500 };
 
     public ShapeSettings shapeSettings;
     public ColourSettings colourSettings;
@@ -49,6 +47,24 @@ public class PlanetIco : MonoBehaviour
     void Start()
     {
         GeneratePlanet();
+    }
+
+    void Update()
+    {
+        if (LOD)
+        {
+            int posZ = (int)transform.localPosition.z;
+            int newResolution = 5;
+            for(int i = 0; i < resolutionsLOD.Length; i++)
+            {
+                if (posZ - (int)(shapeSettings.planetRadius * 2) >= resolutionsLOD[i]) newResolution = 4 - i;
+            }
+            if (newResolution != resolution)
+            {
+                resolution = newResolution;
+                GenerateMesh();
+            }
+        }
     }
 
     void Initialize(){
@@ -93,13 +109,12 @@ public class PlanetIco : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void FixedUpdate() {
         gameObject.transform.Rotate(0,Time.deltaTime * speedRotation, 0);
     }
 
     // return index of point in the middle of p1 and p2
-    private int getMiddlePoint(int p1, int p2, ref List<Vector3> vertices, ref Dictionary<long, int> cache, float radius)
+    private int getMiddlePoint(int p1, int p2, ref List<Vector3> vertices, ref Dictionary<long, int> cache)
     {
         // first check if we have it already
         bool firstIsSmaller = p1 < p2;
@@ -131,11 +146,6 @@ public class PlanetIco : MonoBehaviour
         cache.Add(key, i);
  
         return i;
-    }
-
-    float getRadius(){
-        return radius;
-       // return (radius * (1 + Random.value * powerRandom));
     }
 
     Vector3 calculateNewPosition(Vector3 point){
@@ -209,9 +219,9 @@ public class PlanetIco : MonoBehaviour
             foreach (var tri in faces)
             {
                 // replace triangle by 4 triangles
-                int a = getMiddlePoint(tri.v1, tri.v2, ref vertList, ref middlePointIndexCache, getRadius());
-                int b = getMiddlePoint(tri.v2, tri.v3, ref vertList, ref middlePointIndexCache, getRadius());
-                int c = getMiddlePoint(tri.v3, tri.v1, ref vertList, ref middlePointIndexCache, getRadius());
+                int a = getMiddlePoint(tri.v1, tri.v2, ref vertList, ref middlePointIndexCache);
+                int b = getMiddlePoint(tri.v2, tri.v3, ref vertList, ref middlePointIndexCache);
+                int c = getMiddlePoint(tri.v3, tri.v1, ref vertList, ref middlePointIndexCache);
  
                 faces2.Add(new TriangleIndices(tri.v1, a, c));
                 faces2.Add(new TriangleIndices(tri.v2, b, a));
