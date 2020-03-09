@@ -21,4 +21,14 @@ public class Meteor : MonoBehaviour
         transform.localPosition = new Vector3(x, y, 0);
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
+
+    public void GiveDamage(int damage)
+    {
+        if (life <= 0) return;
+        life -= damage;
+        if(life <= 0)
+        {
+            GetComponent<MeshDestroy>().DestroyMesh();
+        }
+    }
 }

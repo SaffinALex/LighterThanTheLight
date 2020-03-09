@@ -10,8 +10,11 @@ public class MeshDestroy : MonoBehaviour
     private Vector2 edgeUV = Vector2.zero;
     private Plane edgePlane = new Plane();
 
+    [Range(0,6)]
     public int CutCascades = 1;
     public float ExplodeForce = 0;
+
+    bool startDestroy = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +25,18 @@ public class MeshDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+    }
+
+    public void DestroyMesh()
+    {
+        if (!startDestroy)
         {
-            DestroyMesh();
+            startDestroy = true;
+            StartCoroutine(CoroutineDestroyMesh());
         }
     }
 
-    private void DestroyMesh()
+    private IEnumerator CoroutineDestroyMesh()
     {
         var originalMesh = GetComponent<MeshFilter>().mesh;
         originalMesh.RecalculateBounds();
@@ -62,9 +70,11 @@ public class MeshDestroy : MonoBehaviour
 
                 subParts.Add(GenerateMesh(parts[i], plane, true));
                 subParts.Add(GenerateMesh(parts[i], plane, false));
+                yield return null;
             }
             parts = new List<PartMesh>(subParts);
             subParts.Clear();
+            yield return null;
         }
 
         for (var i = 0; i < parts.Count; i++)
@@ -305,6 +315,9 @@ public class MeshDestroy : MonoBehaviour
             var rigidbody = newObject.AddComponent<Rigidbody2D>();
             rigidbody.gravityScale = 0;
 
+            var disapear = newObject.AddComponent<Disapear>();
+            disapear.timeWait = 2f;
+            disapear.timeDisapear = 2f;
         }
 
     }
