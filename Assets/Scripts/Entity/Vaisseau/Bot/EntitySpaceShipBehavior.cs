@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EntityBotSpaceShipBehavior : MonoBehaviour
+public abstract class EntitySpaceShipBehavior : MonoBehaviour
 {
     private Rigidbody2D r2d;
     private int direction;
@@ -17,6 +17,8 @@ public abstract class EntityBotSpaceShipBehavior : MonoBehaviour
     private bool isDead = false;
     public bool isShooting;
     public bool isMoving;
+    public bool isAtRight;
+    public bool isAtLeft;
 
     public Rigidbody2D R2d { get => r2d; set => r2d = value; }
     public int Direction { get => direction; set => direction = value; }
