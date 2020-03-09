@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotBehaviorCircle : EntityBotSpaceShipBehavior
+public class BotBehaviorCircle : EntitySpaceShipBehavior
 {
     //weapon associé à un type de bullet
 
@@ -32,20 +32,6 @@ public class BotBehaviorCircle : EntityBotSpaceShipBehavior
     override
     public void move()
     {
-        /*
-        if (Input.GetKey("d"))
-        {
-            r2d.velocity = new Vector2(speed, 0);
-        }
-        else if (Input.GetKey("q"))
-        {
-            r2d.velocity = new Vector2(-speed, 0);
-        }
-        else
-        {
-            r2d.velocity = new Vector2(0, 0);
-        }
-        */
         if (!isMoving)
         {
             StartCoroutine("Move");

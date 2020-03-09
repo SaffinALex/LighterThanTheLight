@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntitySpaceShipDemoBehavior : BotBehavior
+public class EntitySpaceShipDemoBehavior : MonoBehaviour
 {
     private Rigidbody2D r2d;
     private int direction = 1;

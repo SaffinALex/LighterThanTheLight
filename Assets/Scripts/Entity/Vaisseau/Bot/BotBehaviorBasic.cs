@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotBehaviorBasic : EntityBotSpaceShipBehavior
+public class BotBehaviorBasic : EntitySpaceShipBehavior
 {
     //weapon associé à un type de bullet
 
@@ -32,19 +32,6 @@ public class BotBehaviorBasic : EntityBotSpaceShipBehavior
     public void move()
     {
         /*
-        if (Input.GetKey("d"))
-        {
-            r2d.velocity = new Vector2(speed, 0);
-        }
-        else if (Input.GetKey("q"))
-        {
-            r2d.velocity = new Vector2(-speed, 0);
-        }
-        else
-        {
-            r2d.velocity = new Vector2(0, 0);
-        }
-        */
         if (!isMoving)
         {
             StartCoroutine("Move");
@@ -62,7 +49,7 @@ public class BotBehaviorBasic : EntityBotSpaceShipBehavior
         else
         {
             R2d.velocity = new Vector2(0, -scrolling);
-        }
+        }*/
     }
 
     override
