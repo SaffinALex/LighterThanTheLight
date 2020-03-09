@@ -18,14 +18,14 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
     new void FixedUpdate()
     {
         base.FixedUpdate();
+        move();
+        shoot();
     }
 
     // Update is called once per frame
     new void Update()
     {
         base.Update();
-        move();
-        shoot();
     }
 
     override
@@ -49,6 +49,28 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
         else
         {
             R2d.velocity = new Vector2(0, -scrolling);
+        }*/
+
+        if(isAtRight)
+        {
+            animator.SetBool("isAtRight", false);
+        }
+        if(!isAtRight)
+        {
+            animator.SetBool("isAtRight", true);
+        }
+        force.y -= scrolling;
+        R2d.velocity = force;
+
+        /*
+        if (animator.GetBool("isAtRight"))
+        {
+            animator.SetBool("isAtRight", false);
+
+        }
+        else
+        {
+            animator.SetBool("isAtRight", true);
         }*/
     }
 

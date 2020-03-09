@@ -18,7 +18,7 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     public bool isShooting;
     public bool isMoving;
     public bool isAtRight;
-    public bool isAtLeft;
+    public Vector2 force;
 
     public Rigidbody2D R2d { get => r2d; set => r2d = value; }
     public int Direction { get => direction; set => direction = value; }
@@ -29,6 +29,8 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     protected void Start()
     {
         R2d = GetComponent<Rigidbody2D>();
+        animator.SetBool("isAtRight", true);
+        gameObject.transform.parent.gameObject.SetActive(true);
     }
 
     protected void FixedUpdate()
