@@ -5,8 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 public class IcoSphere : MonoBehaviour
 {
+    public bool needUpdate = true;
+    public bool stayUpdate = false;
     
-    [Range(0,4)]
+    [Range(0,5)]
     public int recursionLevel = 1;
     public float radius = 1f;
     [Range(0, 100)]
@@ -36,6 +38,7 @@ public class IcoSphere : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        needUpdate = true;
         filter = gameObject.AddComponent< MeshFilter >();
     }
 
@@ -43,8 +46,11 @@ public class IcoSphere : MonoBehaviour
     void Update()
     {
         gameObject.transform.Rotate(0,Time.deltaTime * speedRotation, 0);
-        Random.InitState(powerSeed);
-        Create();
+        if(needUpdate || stayUpdate){
+            Random.InitState(powerSeed);
+            Create();
+            needUpdate = false;
+        }
     }
 
     // return index of point in the middle of p1 and p2
@@ -74,12 +80,16 @@ public class IcoSphere : MonoBehaviour
  
         // add vertex makes sure point is on unit sphere
 		int i = vertices.Count;
-        vertices.Add( middle.normalized * (radius * (1 + Random.value * powerRandom)) ); 
+        vertices.Add( middle.normalized * getRadius() ); 
  
         // store it, return index
         cache.Add(key, i);
  
         return i;
+    }
+
+    float getRadius(){
+        return (radius * (1 + Random.value * powerRandom));
     }
 
     public void Create()
@@ -94,20 +104,20 @@ public class IcoSphere : MonoBehaviour
         // create 12 vertices of a icosahedron
         float t = (1f + Mathf.Sqrt(5f)) / 2f;
  
-        vertList.Add(new Vector3(-1f,  t,  0f).normalized * radius);
-        vertList.Add(new Vector3( 1f,  t,  0f).normalized * radius);
-        vertList.Add(new Vector3(-1f, -t,  0f).normalized * radius);
-        vertList.Add(new Vector3( 1f, -t,  0f).normalized * radius);
+        vertList.Add(new Vector3(-1f,  t,  0f).normalized * getRadius());
+        vertList.Add(new Vector3( 1f,  t,  0f).normalized * getRadius());
+        vertList.Add(new Vector3(-1f, -t,  0f).normalized * getRadius());
+        vertList.Add(new Vector3( 1f, -t,  0f).normalized * getRadius());
  
-        vertList.Add(new Vector3( 0f, -1f,  t).normalized * radius);
-        vertList.Add(new Vector3( 0f,  1f,  t).normalized * radius);
-        vertList.Add(new Vector3( 0f, -1f, -t).normalized * radius);
-        vertList.Add(new Vector3( 0f,  1f, -t).normalized * radius);
+        vertList.Add(new Vector3( 0f, -1f,  t).normalized * getRadius());
+        vertList.Add(new Vector3( 0f,  1f,  t).normalized * getRadius());
+        vertList.Add(new Vector3( 0f, -1f, -t).normalized * getRadius());
+        vertList.Add(new Vector3( 0f,  1f, -t).normalized * getRadius());
  
-        vertList.Add(new Vector3( t,  0f, -1f).normalized * radius);
-        vertList.Add(new Vector3( t,  0f,  1f).normalized * radius);
-        vertList.Add(new Vector3(-t,  0f, -1f).normalized * radius);
-        vertList.Add(new Vector3(-t,  0f,  1f).normalized * radius);
+        vertList.Add(new Vector3( t,  0f, -1f).normalized * getRadius());
+        vertList.Add(new Vector3( t,  0f,  1f).normalized * getRadius());
+        vertList.Add(new Vector3(-t,  0f, -1f).normalized * getRadius());
+        vertList.Add(new Vector3(-t,  0f,  1f).normalized * getRadius());
  
  
         // create 20 triangles of the icosahedron
@@ -149,9 +159,9 @@ public class IcoSphere : MonoBehaviour
             foreach (var tri in faces)
             {
                 // replace triangle by 4 triangles
-                int a = getMiddlePoint(tri.v1, tri.v2, ref vertList, ref middlePointIndexCache, radius);
-                int b = getMiddlePoint(tri.v2, tri.v3, ref vertList, ref middlePointIndexCache, radius);
-                int c = getMiddlePoint(tri.v3, tri.v1, ref vertList, ref middlePointIndexCache, radius);
+                int a = getMiddlePoint(tri.v1, tri.v2, ref vertList, ref middlePointIndexCache, getRadius());
+                int b = getMiddlePoint(tri.v2, tri.v3, ref vertList, ref middlePointIndexCache, getRadius());
+                int c = getMiddlePoint(tri.v3, tri.v1, ref vertList, ref middlePointIndexCache, getRadius());
  
                 faces2.Add(new TriangleIndices(tri.v1, a, c));
                 faces2.Add(new TriangleIndices(tri.v2, b, a));
