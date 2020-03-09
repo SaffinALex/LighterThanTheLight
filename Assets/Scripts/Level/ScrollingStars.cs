@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class ScrollingStars : MonoBehaviour
 {
+    public GameObject quad;
+    private Transform transformScrool;
     // Start is called before the first frame update
     void Start()
     {
-        
+        transformScrool = quad.transform;
     }
 
     // Update is called once per frame
@@ -18,7 +20,6 @@ public class ScrollingStars : MonoBehaviour
 
     void OnBecameInvisible(){
 
-            this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x , this.gameObject.transform.position.y+27, this.gameObject.transform.position.z);   
-
+            this.gameObject.transform.position = transformScrool.position;
     }
 }

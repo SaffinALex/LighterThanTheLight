@@ -116,11 +116,13 @@ MonoBehaviour:
   nbrMaxArmes: 0
   life: 500
   speed: 0.05
-  armes: []
+  weapons:
+  - {fileID: 4762668976900839520, guid: 5b55086237e3bc941ac7f878d5eb5ed1, type: 3}
   onde: {fileID: 4609433687815977603}
   dash: {fileID: 4609433687815977602}
   vieShield: 0
   recoveryTime: 1
+  camera: {fileID: 0}
   animator: {fileID: 4609433686791282158}
   bullet: {fileID: 4416812285562530050, guid: 24da03922ed47d246a081cdd171e1995, type: 3}
   myRigidBody: {fileID: 2364199843355145164}

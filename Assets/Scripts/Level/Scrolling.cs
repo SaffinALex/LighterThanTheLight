@@ -6,14 +6,19 @@ public class Scrolling : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed;
+    public int time;
+    private float timer;
     void Start()
     {
-        
+        timer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-    transform.position = new Vector3(transform.position.x, transform.position.y-speed, transform.position.z);
+        if(timer < time){
+            transform.position = new Vector3(transform.position.x, transform.position.y-speed*Time.deltaTime, transform.position.z);
+            timer += Time.deltaTime;
+        }
     }
 }
