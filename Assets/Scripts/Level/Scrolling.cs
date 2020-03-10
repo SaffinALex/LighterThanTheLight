@@ -7,6 +7,7 @@ public class Scrolling : MonoBehaviour
     // Start is called before the first frame update
     public float speed;
     public int time;
+    public GameObject level;
     private float timer;
     void Start()
     {
@@ -19,6 +20,10 @@ public class Scrolling : MonoBehaviour
         if(timer < time){
             transform.position = new Vector3(transform.position.x, transform.position.y-speed*Time.deltaTime, transform.position.z);
             timer += Time.deltaTime;
+        }
+        if(timer > time - 5 && level.GetComponent<EnemyManager>().enabled){
+            //Lancer l'alerte Boss
+            level.GetComponent<EnemyManager>().enabled = false;
         }
     }
 }

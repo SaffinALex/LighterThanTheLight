@@ -8,7 +8,6 @@ public class VaisseauJoueur : Vaisseau
     public Dash dash;
     public int vieShield;
     public int recoveryTime;
-    public Camera camera;
 
     //IsInvincible = Recovery Time pour éviter de se faire enchainer trop violemment.
     private bool isInvincible;
@@ -27,7 +26,7 @@ public class VaisseauJoueur : Vaisseau
         isInvincible = false;
         canShoot = true;
 //        width = camera.orthographicSize;
-        oldPosition.position = transform.position;
+       // oldPosition.position = transform.position;
 
     }
 
@@ -40,12 +39,7 @@ public class VaisseauJoueur : Vaisseau
        /* if(!(transform.position.x > -width && transform.position.x < width && transform.position.y < width && transform.position.y > -width)){
             transform.position = oldPosition.position;
         }*/
-
-        
-    }
-    void Update()
-    {
-        Vector3 change = Vector3.zero;
+Vector3 change = Vector3.zero;
         change.x = Input.GetAxis("Horizontal");
         change.y = Input.GetAxis("Vertical");
         if(canShoot && Input.GetKey("v")){
@@ -78,8 +72,29 @@ public class VaisseauJoueur : Vaisseau
                 myRigidBody.MovePosition(transform.position + change * speed * Time.deltaTime);
             }
         }
+        
     }
-
+    void Update()
+    {
+        
+    }
+    private void OnTriggerEnter2D(Collider2D col){
+            if(col.CompareTag("Enemy") ){ 
+                if(!isInvincible){
+                    life -= 5;
+                    UnityEngine.EventSystems.EventSystem.current.GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,500);
+                    StartCoroutine("InvincibiltyCount");
+                }
+            }
+            if(col.CompareTag("BotBullet") ){ 
+                if(!isInvincible){
+                    life -= col.gameObject.GetComponent<BotBullet>().getDamage();
+                    UnityEngine.EventSystems.EventSystem.current.GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,500);
+                    StartCoroutine("InvincibiltyCount");
+                    Destroy(col.gameObject);
+                }
+            }
+    }
     private void OnCollisionEnter2D(Collision2D col){
     	if(col.gameObject.CompareTag("BotBullet") ){ 
             if(!isInvincible){

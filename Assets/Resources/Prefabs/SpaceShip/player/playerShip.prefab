@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4609433687815977602}
   - component: {fileID: 4609433687815977604}
   - component: {fileID: 2364199843355145164}
-  - component: {fileID: 4760341062600439618}
+  - component: {fileID: 1182141933974658207}
   m_Layer: 9
   m_Name: playerShip
   m_TagString: Untagged
@@ -59,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4609433687815977607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.467, y: -0.067, z: -7.4921875}
+  m_LocalPosition: {x: -0.467, y: -0.067, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8830797228413850533}
@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attenteDash: 2
-  distance: 5
-  vitesse: 3
+  distance: 1
+  vitesse: 1
   upgradeDashes: []
   nbrUpgradeMax: 0
 --- !u!114 &4609433687815977604
@@ -115,14 +115,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nbrMaxArmes: 0
   life: 500
-  speed: 0.05
+  speed: 1
   weapons:
   - {fileID: 4762668976900839520, guid: 5b55086237e3bc941ac7f878d5eb5ed1, type: 3}
   onde: {fileID: 4609433687815977603}
   dash: {fileID: 4609433687815977602}
   vieShield: 0
   recoveryTime: 1
-  camera: {fileID: 0}
   animator: {fileID: 4609433686791282158}
   bullet: {fileID: 4416812285562530050, guid: 24da03922ed47d246a081cdd171e1995, type: 3}
   myRigidBody: {fileID: 2364199843355145164}
@@ -144,11 +143,11 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &4760341062600439618
-BoxCollider2D:
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!68 &1182141933974658207
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -160,19 +159,20 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0006733835, y: -0.21763265}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.25556272, y: 0.2093494}
+  m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.13253224, y: -0.23881531}
+  - {x: -0.09778124, y: -0.17130515}
+  - {x: -0.14130181, y: -0.24461004}
+  - {x: -0.02849269, y: -0.24855751}
+  - {x: 0.006679058, y: -0.3189819}
+  - {x: 0.035591334, y: -0.2523091}
+  - {x: 0.1370357, y: -0.24610525}
+  - {x: 0.11090872, y: -0.1826601}
+  - {x: 0.056980312, y: -0.13179152}
+  - {x: -0.058965802, y: -0.12995562}
+  - {x: -0.11515814, y: -0.19197983}
 --- !u!1 &5536633211323048374
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +186,8 @@ GameObject:
   - component: {fileID: 564724521128667539}
   - component: {fileID: 6118919230665020778}
   - component: {fileID: 4609433686791282158}
-  m_Layer: 9
+  - component: {fileID: 7343192604468803078}
+  m_Layer: 0
   m_Name: ship_player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,6 +277,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!68 &7343192604468803078
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5536633211323048374}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.0027643302, y: 0.0004211932}
+  - {x: -0.0028044211, y: 0.00086891116}
+  - {x: -0.0005503082, y: 0.0008382404}
+  - {x: 0.0000744307, y: 0.002193315}
+  - {x: 0.0006922859, y: 0.000839135}
+  - {x: 0.002774536, y: 0.00085000513}
+  - {x: 0.002368292, y: -0.00057066977}
+  - {x: 0.0010785013, y: -0.001574932}
+  - {x: -0.0011085165, y: -0.0015239775}
+  - {x: -0.0022042524, y: -0.0005830103}
+  - {x: -0.0026183021, y: 0.0005393338}
+  - {x: -0.0020268047, y: -0.0005239382}
 --- !u!1001 &4311845446420111541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -356,7 +385,7 @@ PrefabInstance:
     - target: {fileID: 8575084608973684995, guid: 5958f3ad97e58b345ad84bfd8e4bb8c1,
         type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5958f3ad97e58b345ad84bfd8e4bb8c1, type: 3}
