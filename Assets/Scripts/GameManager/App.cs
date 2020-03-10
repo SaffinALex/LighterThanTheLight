@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(KeyboardInputSystem))]
 public class App : MonoBehaviour
 {
+    public static App app;
     public MusicManager sfxObject;
     public static MusicManager sfx;
 
     public void Awake(){
         DontDestroyOnLoad(gameObject);
+        app = this;
     }
 
     void Start(){
@@ -22,5 +24,9 @@ public class App : MonoBehaviour
         sfx.PlaySound("TestSound", 3);
 
         SceneManager.LoadScene(1);
+    }
+
+    static bool IsInit(){
+        return app != null;
     }
 }
