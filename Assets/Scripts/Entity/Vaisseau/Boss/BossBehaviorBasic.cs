@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossBehaviorBasic : EntitySpaceShipBehavior
 {
+    private Rigidbody2D r2dR;
+    private Rigidbody2D r2dL;
 
     // Start is called before the first frame update
     new void Start()
@@ -29,24 +31,15 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     override
     public void move()
     {
-        if (!isMoving)
+        if (isAtRight)
         {
-            StartCoroutine("Move");
-            if (Direction == 1) Direction = 0;
-            else Direction = 1;
+            animator.SetBool("isAtRight", false);
         }
-        if (Direction == 0)
+        if (!isAtRight)
         {
-            R2d.velocity = new Vector2(speedMove, 0);
+            animator.SetBool("isAtRight", true);
         }
-        else if (Direction == 1)
-        {
-            R2d.velocity = new Vector2(-speedMove, 0);
-        }
-        else
-        {
-            R2d.velocity = new Vector2(0, 0);
-        }
+        R2d.velocity = force;
     }
 
     override
