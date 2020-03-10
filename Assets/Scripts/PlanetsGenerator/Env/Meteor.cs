@@ -31,4 +31,9 @@ public class Meteor : MonoBehaviour
             GetComponent<MeshDestroy>().DestroyMesh();
         }
     }
+
+    public bool isDead()
+    {
+        return life <= 0;
+    }
 }

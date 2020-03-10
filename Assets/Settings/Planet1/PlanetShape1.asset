@@ -77,3 +77,4 @@ MonoBehaviour:
         centre: {x: 0, y: 0, z: 0}
         minValue: 0.82
         weightMutliplier: 0.33
+  randomGeneration: 0

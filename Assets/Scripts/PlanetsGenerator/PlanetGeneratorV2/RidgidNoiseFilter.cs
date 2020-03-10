@@ -10,14 +10,14 @@ public class RidgidNoiseFilter : INoiseFilter {
         this.settings = settings;
     }
 
-    public float Evaluate(Vector3 point){
+    public float Evaluate(Vector3 point, Vector3 rand3 = new Vector3()){
         float noiseValue = 0;
         float frequency = settings.baseRoughness;
         float amplitude = 1;
         float weight = 1;
 
-        for(int i = 0; i < settings.numLayers; i++){
-            float v = 1 - Mathf.Abs(noise.Evaluate(point * frequency + settings.centre));
+        for (int i = 0; i < settings.numLayers; i++){
+            float v = 1 - Mathf.Abs(noise.Evaluate(point * frequency + ( settings.centre + rand3) ));
             v *= v;
             v *= weight;
             weight = v * settings.weightMutliplier;

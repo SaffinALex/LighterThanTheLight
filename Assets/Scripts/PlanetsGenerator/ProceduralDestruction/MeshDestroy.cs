@@ -16,17 +16,6 @@ public class MeshDestroy : MonoBehaviour
 
     bool startDestroy = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void DestroyMesh()
     {
         if (!startDestroy)
@@ -38,35 +27,34 @@ public class MeshDestroy : MonoBehaviour
 
     private IEnumerator CoroutineDestroyMesh()
     {
-        var originalMesh = GetComponent<MeshFilter>().mesh;
+        Mesh originalMesh = GetComponent<MeshFilter>().mesh;
         originalMesh.RecalculateBounds();
-        var parts = new List<PartMesh>();
-        var subParts = new List<PartMesh>();
+        List<PartMesh> parts = new List<PartMesh>();
+        List<PartMesh> subParts = new List<PartMesh>();
 
-        var mainPart = new PartMesh()
-        {
+        PartMesh mainPart = new PartMesh() {
             UV = originalMesh.uv,
             Vertices = originalMesh.vertices,
             Normals = originalMesh.normals,
             Triangles = new int[originalMesh.subMeshCount][],
             Bounds = originalMesh.bounds
         };
+
         for (int i = 0; i < originalMesh.subMeshCount; i++)
             mainPart.Triangles[i] = originalMesh.GetTriangles(i);
 
+        //Init with main part (himself)
         parts.Add(mainPart);
 
-        for (var c = 0; c < CutCascades; c++)
-        {
-            for (var i = 0; i < parts.Count; i++)
-            {
-                var bounds = parts[i].Bounds;
+        for (int c = 0; c < CutCascades; c++) {
+            for (int i = 0; i < parts.Count; i++) {
+                Bounds bounds = parts[i].Bounds;
                 bounds.Expand(0.5f);
 
-                var plane = new Plane(UnityEngine.Random.onUnitSphere, new Vector3((bounds.max.x - bounds.min.x) / 2,
+                //Create a plane with random normal
+                Plane plane = new Plane(UnityEngine.Random.onUnitSphere, new Vector3((bounds.max.x - bounds.min.x) / 2,
                                                                                    (bounds.max.y - bounds.min.y) / 2,
                                                                                    (bounds.max.z - bounds.min.z) / 2));
-
 
                 subParts.Add(GenerateMesh(parts[i], plane, true));
                 subParts.Add(GenerateMesh(parts[i], plane, false));
@@ -77,8 +65,7 @@ public class MeshDestroy : MonoBehaviour
             yield return null;
         }
 
-        for (var i = 0; i < parts.Count; i++)
-        {
+        for (int i = 0; i < parts.Count; i++) {
             parts[i].MakeGameobject(this);
             parts[i].newObject.GetComponent<Rigidbody2D>().AddForceAtPosition(parts[i].Bounds.center * (ExplodeForce), transform.position);
         }
@@ -86,33 +73,26 @@ public class MeshDestroy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private PartMesh GenerateMesh(PartMesh original, Plane plane, bool left)
-    {
-        var partMesh = new PartMesh() { };
-        var ray1 = new Ray();
-        var ray2 = new Ray();
+    private PartMesh GenerateMesh(PartMesh original, Plane plane, bool left) {
+        PartMesh partMesh = new PartMesh() { };
+        Ray ray1 = new Ray();
+        Ray ray2 = new Ray();
 
 
-        for (var i = 0; i < original.Triangles.Length; i++)
+        for (int i = 0; i < original.Triangles.Length; i++)
         {
-            var triangles = original.Triangles[i];
-            edgeSet = false;
+            int[] triangles = original.Triangles[i];
+            edgeSet = false; //Init edget set
 
-            for (var j = 0; j < triangles.Length; j = j + 3)
+            for (int j = 0; j < triangles.Length; j += 3)
             {
-                var sideA = plane.GetSide(original.Vertices[triangles[j]]) == left;
-                var sideB = plane.GetSide(original.Vertices[triangles[j + 1]]) == left;
-                var sideC = plane.GetSide(original.Vertices[triangles[j + 2]]) == left;
+                bool sideA = plane.GetSide(original.Vertices[triangles[j]]) == left;
+                bool sideB = plane.GetSide(original.Vertices[triangles[j + 1]]) == left;
+                bool sideC = plane.GetSide(original.Vertices[triangles[j + 2]]) == left;
 
-                var sideCount = (sideA ? 1 : 0) +
-                                (sideB ? 1 : 0) +
-                                (sideC ? 1 : 0);
-                if (sideCount == 0)
-                {
-                    continue;
-                }
-                if (sideCount == 3)
-                {
+                int sideCount = (sideA ? 1 : 0) + (sideB ? 1 : 0) + (sideC ? 1 : 0);
+                if (sideCount == 0) continue;
+                if (sideCount == 3) {
                     partMesh.AddTriangle(i,
                                          original.Vertices[triangles[j]], original.Vertices[triangles[j + 1]], original.Vertices[triangles[j + 2]],
                                          original.Normals[triangles[j]], original.Normals[triangles[j + 1]], original.Normals[triangles[j + 2]],
@@ -221,8 +201,7 @@ public class MeshDestroy : MonoBehaviour
         }
     }
 
-    public class PartMesh
-    {
+    public class PartMesh {
         private List<Vector3> _Verticies = new List<Vector3>();
         private List<Vector3> _Normals = new List<Vector3>();
         private List<List<int>> _Triangles = new List<List<int>>();
@@ -234,15 +213,10 @@ public class MeshDestroy : MonoBehaviour
         public GameObject newObject;
         public Bounds Bounds = new Bounds();
 
-        public PartMesh()
-        {
+        public PartMesh() {}
 
-        }
-
-        public void AddTriangle(int submesh, Vector3 vert1, Vector3 vert2, Vector3 vert3, Vector3 normal1, Vector3 normal2, Vector3 normal3, Vector2 uv1, Vector2 uv2, Vector2 uv3)
-        {
-            if (_Triangles.Count - 1 < submesh)
-                _Triangles.Add(new List<int>());
+        public void AddTriangle(int submesh, Vector3 vert1, Vector3 vert2, Vector3 vert3, Vector3 normal1, Vector3 normal2, Vector3 normal3, Vector2 uv1, Vector2 uv2, Vector2 uv3) {
+            if (_Triangles.Count - 1 < submesh) _Triangles.Add(new List<int>());
 
             _Triangles[submesh].Add(_Verticies.Count);
             _Verticies.Add(vert1);
@@ -271,7 +245,7 @@ public class MeshDestroy : MonoBehaviour
             Normals = _Normals.ToArray();
             UV = _UVs.ToArray();
             Triangles = new int[_Triangles.Count][];
-            for (var i = 0; i < _Triangles.Count; i++)
+            for (int i = 0; i < _Triangles.Count; i++)
                 Triangles[i] = _Triangles[i].ToArray();
         }
 
@@ -284,38 +258,30 @@ public class MeshDestroy : MonoBehaviour
 
             newObject.transform.parent = original.transform.parent;
 
-            var mesh = new Mesh();
+            Mesh mesh = new Mesh();
             mesh.name = original.GetComponent<MeshFilter>().mesh.name;
 
             mesh.vertices = Vertices;
             mesh.normals = Normals;
             mesh.uv = UV;
-            for (var i = 0; i < Triangles.Length; i++)
-                mesh.SetTriangles(Triangles[i], i, true);
+            for (int i = 0; i < Triangles.Length; i++) mesh.SetTriangles(Triangles[i], i, true);
             Bounds = mesh.bounds;
 
-            var renderer = newObject.AddComponent<MeshRenderer>();
+            MeshRenderer renderer = newObject.AddComponent<MeshRenderer>();
             renderer.materials = original.GetComponent<MeshRenderer>().materials;
 
-            var filter = newObject.AddComponent<MeshFilter>();
+            MeshFilter filter = newObject.AddComponent<MeshFilter>();
             filter.mesh = mesh;
 
-            //var collider = newObject.AddComponent<CircleCollider2D>();
-
-            //var meshDestroy = newObject.AddComponent<MeshDestroy>();
-            //meshDestroy.CutCascades = original.CutCascades;
-            //meshDestroy.ExplodeForce = original.ExplodeForce;
-
-            if (original.GetComponent<Meteor>())
-            {
-                var meteor = newObject.AddComponent<Meteor>();
+            if (original.GetComponent<Meteor>()) {
+                Meteor meteor = newObject.AddComponent<Meteor>();
                 meteor.speed = original.GetComponent<Meteor>().speed;
             }
 
-            var rigidbody = newObject.AddComponent<Rigidbody2D>();
+            Rigidbody2D rigidbody = newObject.AddComponent<Rigidbody2D>();
             rigidbody.gravityScale = 0;
 
-            var disapear = newObject.AddComponent<Disapear>();
+            Disapear disapear = newObject.AddComponent<Disapear>();
             disapear.timeWait = 2f;
             disapear.timeDisapear = 2f;
         }

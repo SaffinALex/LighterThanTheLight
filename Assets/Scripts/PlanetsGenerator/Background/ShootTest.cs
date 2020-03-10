@@ -21,19 +21,20 @@ public class ShootTest : MonoBehaviour
     {
         transform.position += new Vector3(direction.x * speed * Time.deltaTime, direction.y * speed * Time.deltaTime);
         alive += Time.deltaTime;
-        if(alive >= 5)
+        if(alive >= 2)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
-        if(col.gameObject.GetComponent<Meteor>() != null)
+        Meteor meteor = col.gameObject.GetComponent<Meteor>();
+        //Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
+        if (meteor != null && !meteor.isDead())
         {
             col.GetComponent<Meteor>().GiveDamage(damage);
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 }
