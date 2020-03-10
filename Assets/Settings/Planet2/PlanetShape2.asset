@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlanetShape2
   m_EditorClassIdentifier: 
   planetRadius: 86.62
+  randomGeneration: 1.89
   noiseLayers:
   - enabled: 1
     useFirstLayerAsMask: 0

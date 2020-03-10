@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlanetShape1
   m_EditorClassIdentifier: 
   planetRadius: 100
+  randomGeneration: 1
   noiseLayers:
   - enabled: 1
     useFirstLayerAsMask: 0
@@ -77,4 +78,3 @@ MonoBehaviour:
         centre: {x: 0, y: 0, z: 0}
         minValue: 0.82
         weightMutliplier: 0.33
-  randomGeneration: 0

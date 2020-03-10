@@ -35,6 +35,7 @@ public class ShipShoot : MonoBehaviour
         {
             shootTimer -= speedShoot;
             Instantiate(shoot, shootPosition.position, new Quaternion());
+            App.sfx.PlayEffect("LaserShot");
         }
     }
 }

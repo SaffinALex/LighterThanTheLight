@@ -6,10 +6,13 @@ public class ShapeGenerator {
     ShapeSettings settings;
     INoiseFilter[] noiseFilters;
     public MinMax elevationMinMax;
+    Vector3 rand3;
 
     public void UpdateSettings(ShapeSettings settings){
         this.settings = settings;
         noiseFilters = new INoiseFilter[settings.noiseLayers.Length];
+
+        rand3 = new Vector3(Random.Range(0.0f, settings.randomGeneration), Random.Range(0.0f, settings.randomGeneration), Random.Range(0.0f, settings.randomGeneration));
 
         for (int i = 0; i < noiseFilters.Length; i++){
             noiseFilters[i] = NoiseFilterFactory.CreateNoiseFilter(settings.noiseLayers[i].noiseSettings);
@@ -20,7 +23,6 @@ public class ShapeGenerator {
     public Vector3 CalculatePointOnPlanet(Vector3 pointOnUnitSphere){
         float firstLayerValue = 0;
         float elevation = 0;
-        Vector3 rand3 = new Vector3(Random.Range(0.0f, settings.randomGeneration), Random.Range(0.0f, settings.randomGeneration), Random.Range(0.0f, settings.randomGeneration));
 
         if (noiseFilters.Length > 0){
             firstLayerValue = noiseFilters[0].Evaluate(pointOnUnitSphere, rand3);

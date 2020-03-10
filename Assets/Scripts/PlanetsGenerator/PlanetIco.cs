@@ -100,7 +100,7 @@ public class PlanetIco : MonoBehaviour
     }
 
     void GenerateMesh(){
-        Create();
+        StartCoroutine(Create());
         colourGenerator.UpdateElevation(shapeGenerator.elevationMinMax);
     }
 
@@ -152,7 +152,7 @@ public class PlanetIco : MonoBehaviour
         return shapeGenerator.CalculatePointOnPlanet(point);
     }
 
-    public void Create()
+    private IEnumerator Create()
     {
         Mesh mesh = meshFilter.sharedMesh;
         mesh.Clear();
@@ -211,7 +211,6 @@ public class PlanetIco : MonoBehaviour
         faces.Add(new TriangleIndices(8, 6, 7));
         faces.Add(new TriangleIndices(9, 8, 1));
  
- 
         // refine triangles
         for (int i = 0; i < resolution; i++)
         {
@@ -229,8 +228,9 @@ public class PlanetIco : MonoBehaviour
                 faces2.Add(new TriangleIndices(a, b, c));
             }
             faces = faces2;
+            Debug.Log((i + 1) + "/" + resolution);
         }
- 
+        
         mesh.vertices = vertList.ToArray();
  
         List< int > triList = new List<int>();
@@ -267,5 +267,6 @@ public class PlanetIco : MonoBehaviour
         mesh.triangles = triangles;
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
+        yield return null;
     }
 }
