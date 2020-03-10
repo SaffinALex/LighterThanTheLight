@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 1609478}
   m_Layer: 10
   m_Name: LeftSide
-  m_TagString: Untagged
+  m_TagString: LeftSide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,13 +213,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689c349941eeb9649b902c05135279ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  life: 0
-  speedMove: 0
-  scrolling: 0
-  speedShoot: 0
-  animator: {fileID: 0}
-  isShooting: 0
+  weapon: {fileID: 5359264151696501870, guid: ef2544720feb09248ae5a728fe49704f, type: 3}
+  life: 10
+  speedMove: 0.5
+  scrolling: 0.1
+  speedShoot: 1
+  animator: {fileID: 2143546951}
+  isShooting: 1
   isMoving: 0
   isAtRight: 0
   force: {x: 0, y: 0}
@@ -582,6 +582,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5359264151696501870, guid: ef2544720feb09248ae5a728fe49704f,
         type: 3}
+    - target: {fileID: 7791252473151934903, guid: 90a5ba9990d775f478faf11c830a5a87,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7791252474284189957, guid: 90a5ba9990d775f478faf11c830a5a87,
         type: 3}
       propertyPath: m_Name
@@ -590,7 +595,7 @@ PrefabInstance:
     - target: {fileID: 7791252474284189957, guid: 90a5ba9990d775f478faf11c830a5a87,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7791252474284189959, guid: 90a5ba9990d775f478faf11c830a5a87,
         type: 3}
@@ -882,7 +887,7 @@ PrefabInstance:
     - target: {fileID: 1741663641790697569, guid: 8cc6e09bd73f4764cafe2d5edd2e3ba5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1741663641790697571, guid: 8cc6e09bd73f4764cafe2d5edd2e3ba5,
         type: 3}
@@ -1616,7 +1621,7 @@ GameObject:
   - component: {fileID: 1605436313}
   m_Layer: 10
   m_Name: Cockpit
-  m_TagString: Untagged
+  m_TagString: Cockpit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1703,7 +1708,7 @@ MonoBehaviour:
   animator: {fileID: 2143546951}
   isShooting: 1
   isMoving: 0
-  isAtRight: 0
+  isAtRight: 1
   force: {x: 0, y: 0}
 --- !u!4 &1648406802
 Transform:
@@ -2178,7 +2183,7 @@ GameObject:
   - component: {fileID: 2140883370}
   m_Layer: 10
   m_Name: RightSide
-  m_TagString: Untagged
+  m_TagString: RightSide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2257,13 +2262,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689c349941eeb9649b902c05135279ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  life: 0
-  speedMove: 0
-  scrolling: 0
-  speedShoot: 0
-  animator: {fileID: 0}
-  isShooting: 0
+  weapon: {fileID: 5359264151696501870, guid: ef2544720feb09248ae5a728fe49704f, type: 3}
+  life: 10
+  speedMove: 0.5
+  scrolling: 0.1
+  speedShoot: 1
+  animator: {fileID: 2143546951}
+  isShooting: 1
   isMoving: 0
   isAtRight: 0
   force: {x: 0, y: 0}

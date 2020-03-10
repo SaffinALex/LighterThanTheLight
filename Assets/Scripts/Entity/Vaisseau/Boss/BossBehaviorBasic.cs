@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BossBehaviorBasic : EntitySpaceShipBehavior
 {
-    private Rigidbody2D r2dR;
-    private Rigidbody2D r2dL;
-
     // Start is called before the first frame update
     new void Start()
     {
@@ -34,10 +31,12 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         if (isAtRight)
         {
             animator.SetBool("isAtRight", false);
+            //isAtRight = false;
         }
-        if (!isAtRight)
+        else
         {
             animator.SetBool("isAtRight", true);
+            //isAtRight = true;
         }
         R2d.velocity = force;
     }
@@ -49,6 +48,30 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         {
             StartCoroutine("Shoot");
             weapon.GetComponent<Weapon>().shoot(transform);
+        }
+    }
+
+    new public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerBullet"))
+        {
+            life -= collision.gameObject.GetComponent<PlayerBullet>().getDamage();
+            if (life < 1){
+                if (gameObject.CompareTag("Cockpit"))
+                {
+                    IsDead = true;
+                    animator.SetBool("cockpitIsDead", true);
+                }
+                else if (gameObject.CompareTag("RightSide"))
+                {
+                    animator.SetBool("rightSideIsDead", true);
+                }
+                else if (gameObject.CompareTag("LeftSide"))
+                {
+                    animator.SetBool("leftSideIsDead", true);
+                }
+            }
+            Destroy(collision.gameObject);
         }
     }
 
