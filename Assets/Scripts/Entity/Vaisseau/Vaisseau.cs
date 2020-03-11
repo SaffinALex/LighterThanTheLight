@@ -10,7 +10,7 @@ public class Vaisseau : MonoBehaviour
     public int nbrMaxArmes;
     public double life;
     public float speed;
-    public List<Arme> armes;
+    public List<Weapon> weapons;
     void Start()
     {
         

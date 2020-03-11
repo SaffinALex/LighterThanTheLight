@@ -16,6 +16,8 @@ public class VaisseauJoueur : Vaisseau
     public GameObject bullet;
     public Rigidbody2D myRigidBody;
     private float posx;
+    private float width;
+    private Transform oldPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,9 @@ public class VaisseauJoueur : Vaisseau
         posx = 0;
         isInvincible = false;
         canShoot = true;
+//        width = camera.orthographicSize;
+       // oldPosition.position = transform.position;
+
     }
 
     // Update is called once per frame
@@ -30,16 +35,18 @@ public class VaisseauJoueur : Vaisseau
         if (life <= 0){
             Destroy(this.gameObject);
         }
-        
-    }
-    void Update()
-    {
-        Vector3 change = Vector3.zero;
+        //Ne pas sortir de l'écran
+       /* if(!(transform.position.x > -width && transform.position.x < width && transform.position.y < width && transform.position.y > -width)){
+            transform.position = oldPosition.position;
+        }*/
+Vector3 change = Vector3.zero;
         change.x = Input.GetAxis("Horizontal");
         change.y = Input.GetAxis("Vertical");
         if(canShoot && Input.GetKey("v")){
             StartCoroutine("Shoot");
-            Instantiate(bullet, transform.position, Quaternion.identity);
+            for(int i=0; i<weapons.Count; i++){
+                weapons[i].gameObject.GetComponent<Weapon>().shoot(transform);
+            }
         }
         //Le Dash se fait seulement sur X.
         if(dash.getCanDash() && Input.GetKeyDown("k") && !isInvincible && change.x != 0){
@@ -54,17 +61,40 @@ public class VaisseauJoueur : Vaisseau
         else{
             //Si il Dash il ne peut pas bouger et (attaquer?)
             if(animator.GetBool("isFlipLeft") || animator.GetBool("isFlipRight")){
+              //  oldPosition.position = transform.position;
                 myRigidBody.MovePosition(transform.position + new Vector3(posx,0f,0f)*speed * Time.deltaTime);
             }
 
             //Si il ne Dash pas il peut bouger
             else{
-                transform.position = new Vector3(transform.position.x + change.x*speed, transform.position.y + change.y*speed, transform.position.z);
-                //GetComponent<Rigidbody>().MovePosition(transform.position + change * speed * Time.deltaTime);
+                //transform.position = new Vector3(transform.position.x + change.x*speed* Time.deltaTime, transform.position.y + change.y*speed* Time.deltaTime, transform.position.z);
+                //oldPosition.position = transform.position;
+                myRigidBody.MovePosition(transform.position + change * speed * Time.deltaTime);
             }
         }
+        
     }
-
+    void Update()
+    {
+        
+    }
+    private void OnTriggerEnter2D(Collider2D col){
+            if(col.CompareTag("Enemy") ){ 
+                if(!isInvincible){
+                    life -= 5;
+                    UnityEngine.EventSystems.EventSystem.current.GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,500);
+                    StartCoroutine("InvincibiltyCount");
+                }
+            }
+            if(col.CompareTag("BotBullet") ){ 
+                if(!isInvincible){
+                    life -= col.gameObject.GetComponent<BotBullet>().getDamage();
+                    UnityEngine.EventSystems.EventSystem.current.GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,500);
+                    StartCoroutine("InvincibiltyCount");
+                    Destroy(col.gameObject);
+                }
+            }
+    }
     private void OnCollisionEnter2D(Collision2D col){
     	if(col.gameObject.CompareTag("BotBullet") ){ 
             if(!isInvincible){

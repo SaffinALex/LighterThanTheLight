@@ -1,115 +1,95 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BotBehaviorBasic : EntitySpaceShipBehavior
 {
-    private Rigidbody2D r2d;
-    private int direction;
-
-    public GameObject bullet;
-    public float life;
-    public float speedMove;
-    public float scrolling;
-    public float speedShoot;
-    public Animator animator;
-    public bool isDead = false;
-    public bool isShooting;
-    public bool isMoving;
     //weapon associé à un type de bullet
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
-        r2d = GetComponent<Rigidbody2D>();
-        direction = Random.Range(0, 2);
-
+        base.Start();
+        Direction = Random.Range(0, 2);
+        TimeMove = 3.0f;
         //r2d.velocity = transform.forward * speed;
     }
 
-    // Update is called once per frame
-    void Update()
+    new void FixedUpdate()
     {
-        if (isDead)
-        {
-            Destroy(this.gameObject);
-        }
-
+        base.FixedUpdate();
         move();
         shoot();
     }
 
+    // Update is called once per frame
+    new void Update()
+    {
+        base.Update();
+    }
+
+    override
     public void move()
     {
         /*
-        if (Input.GetKey("d"))
-        {
-            r2d.velocity = new Vector2(speed, 0);
-        }
-        else if (Input.GetKey("q"))
-        {
-            r2d.velocity = new Vector2(-speed, 0);
-        }
-        else
-        {
-            r2d.velocity = new Vector2(0, 0);
-        }
-        */
         if (!isMoving)
         {
             StartCoroutine("Move");
-            if (direction == 1) direction = 0;
-            else direction = 1;
+            if (Direction == 1) Direction = 0;
+            else Direction = 1;
         }
-        if (direction == 0)
+        if (Direction == 0)
         {
-            r2d.velocity = new Vector2(speedMove, -scrolling);
+            R2d.velocity = new Vector2(speedMove, -scrolling);
         }
-        else if (direction == 1)
+        else if (Direction == 1)
         {
-            r2d.velocity = new Vector2(-speedMove, -scrolling);
+            R2d.velocity = new Vector2(-speedMove, -scrolling);
         }
         else
         {
-            r2d.velocity = new Vector2(0, -scrolling);
+            R2d.velocity = new Vector2(0, -scrolling);
+        }*/
+
+        if(isAtRight)
+        {
+            animator.SetBool("isAtRight", false);
         }
+        if(!isAtRight)
+        {
+            animator.SetBool("isAtRight", true);
+        }
+        force.y -= scrolling;
+        R2d.velocity = force;
+
+        /*
+        if (animator.GetBool("isAtRight"))
+        {
+            animator.SetBool("isAtRight", false);
+
+        }
+        else
+        {
+            animator.SetBool("isAtRight", true);
+        }*/
     }
 
+    override
     public void shoot()
     {
         if (isShooting)
         {
             StartCoroutine("Shoot");
-            Instantiate(bullet, transform.position, Quaternion.identity);
+            weapon.gameObject.GetComponent<Weapon>().shoot(transform);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    override
+    public void initialize()
     {
-        if (collision.gameObject.CompareTag("PlayerBullet"))
-        {
-            life -= collision.gameObject.GetComponent<PlayerBullet>().getDamage();
-            if (life <= 1)
-            {
-                animator.SetBool("isDead", true);
-            }
-            Destroy(collision.gameObject);
-        }
-    }
-
-    private IEnumerator Shoot()
-    {
-        isShooting = false;
-        yield return new WaitForSeconds(speedShoot);
         isShooting = true;
-    }
-
-    private IEnumerator Move()
-    {
-        isMoving = true;
-        yield return new WaitForSeconds(3.0f);
         isMoving = false;
-
+        life = 6;
     }
 
 

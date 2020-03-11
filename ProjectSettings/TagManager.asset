@@ -8,6 +8,9 @@ TagManager:
   - PlayerBullet
   - BotBullet
   - TriggerDepop
+  - Cockpit
+  - RightSide
+  - LeftSide
   layers:
   - Default
   - TransparentFX

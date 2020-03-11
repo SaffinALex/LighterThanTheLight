@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Scripts/Entity/Vaisseau/Bot/EntitySpaceShipBehavior.cs.meta
+guid: 0f36aa91aade8ef4d8308e52953ae63e
+=======
+guid: 1368822bfadb2b240a025d3b5ab8d8cc
+>>>>>>> Stashed changes:Assets/Scripts/Entity/Vaisseau/Bot/EntityBotSpaceShipBehavior.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

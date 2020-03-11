@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbd250d132a59645ad40a95e34e1258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxObject: {fileID: 1198778463}
 --- !u!114 &211221981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,3 +185,58 @@ MonoBehaviour:
   button1: 0
   button2: 0
   menu: 0
+--- !u!1 &1198778462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198778464}
+  - component: {fileID: 1198778463}
+  m_Layer: 0
+  m_Name: __sfxManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1198778463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198778462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df0130a6720d4748b843dd722391e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startOnPlay: 1
+  maxDistance: 50
+  minDistance: 20
+  volume: 1
+  allMusics:
+  - name: TestSound
+    clip: {fileID: 8300000, guid: 8b197e4a057502c4c9b08d2a60b93c3c, type: 3}
+    loop: 1
+  allSoundsEffects:
+  - name: LaserShot
+    variants:
+    - {fileID: 8300000, guid: 4dc65c95850fb2f4eb9443a1d69b2f9a, type: 3}
+--- !u!4 &1198778464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198778462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

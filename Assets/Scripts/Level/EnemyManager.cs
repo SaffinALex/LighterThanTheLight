@@ -24,7 +24,7 @@ public class EnemyManager : MonoBehaviour
                 s.transform.GetChild(0).gameObject.transform.position = new Vector3(spawnners[0].position.x, spawnners[0].position.y, spawnners[0].position.z);
                 s.transform.GetChild(0).GetComponent<Rigidbody2D>().velocity  = new Vector2(0,0);
                 s.SetActive(true);
-                s.transform.GetChild(0).GetComponent<EntitySpaceShipDemoBehavior>().initialize();
+                s.transform.GetChild(0).GetComponent<EntitySpaceShipBehavior>().initialize();
                 StartCoroutine("TimerEnemy");
             }
         }

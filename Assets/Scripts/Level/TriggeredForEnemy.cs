@@ -17,7 +17,8 @@ public class TriggeredForEnemy : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.CompareTag("Enemy")){
-            col.gameObject.GetComponent<EntitySpaceShipDemoBehavior>().initialize();
+            
+            col.gameObject.GetComponent<EntitySpaceShipBehavior>().initialize();
             col.gameObject.transform.parent.gameObject.SetActive(false);
         }
     }
