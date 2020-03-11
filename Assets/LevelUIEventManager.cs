@@ -4,10 +4,24 @@ using UnityEngine;
 
 public class LevelUIEventManager : MonoBehaviour
 {
+    private HealthBarControl healthBar;
+    private CooldownBarControl dashCdBar;
+
+    void Start() {
+        healthBar = transform.Find("HealthBar").GetComponent<HealthBarControl>();
+        dashCdBar = transform.Find("DashCooldownBar").GetComponent<CooldownBarControl>();
+
+        dashCdBar.setMaxCd(GameObject.Find("playerShip").GetComponent<Dash>().attenteDash);
+        dashCdBar.setMaxNbCharges(1);
+        dashCdBar.FillCharges();
+    }
+
     public void TriggerPlayerHealthChange(int health, int maxHealth){
-        GameObject healthGO = GameObject.Find("HealthBar");
-        HealthBarControl healthBar = healthGO.GetComponent<HealthBarControl>();
         healthBar.setHealth(health);
         healthBar.setHealthPercent(health,maxHealth);
+    }
+
+    public void TriggerPlayerDash(){
+        dashCdBar.consumeCharge();
     }
 }

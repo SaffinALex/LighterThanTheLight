@@ -52,6 +52,8 @@ Vector3 change = Vector3.zero;
         if(dash.getCanDash() && Input.GetKeyDown("k") && !isInvincible && change.x != 0){
             Debug.Log("Dash");
             posx = dash.runDash(change.x);
+            GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerDash();
+
             if(change.x < 0)
                 StartCoroutine("FlippingLeft");
             if(change.x > 0 )
@@ -89,7 +91,7 @@ Vector3 change = Vector3.zero;
             if(col.CompareTag("BotBullet") ){ 
                 if(!isInvincible){
                     life -= col.gameObject.GetComponent<BotBullet>().getDamage();
-                    UnityEngine.EventSystems.EventSystem.current.GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,500);
+                    GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,500);
                     StartCoroutine("InvincibiltyCount");
                     Destroy(col.gameObject);
                 }
@@ -99,7 +101,7 @@ Vector3 change = Vector3.zero;
     	if(col.gameObject.CompareTag("BotBullet") ){ 
             if(!isInvincible){
                 life -= col.gameObject.GetComponent<BotBullet>().getDamage();
-                UnityEngine.EventSystems.EventSystem.current.GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,500);
+                GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,500);
                 StartCoroutine("InvincibiltyCount");
             }
             Destroy(col.gameObject);
