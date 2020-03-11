@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
+#if UNITY_EDITOR
 public class NoSharedVertices : EditorWindow {
     
     private string error = "";
     
-    [MenuItem("Window/No Shared Vertices")]
+    //[MenuItem("Window/No Shared Vertices")]
     public static void ShowWindow() {
         EditorWindow.GetWindow(typeof(NoSharedVertices));
     }
@@ -68,3 +69,4 @@ public class NoSharedVertices : EditorWindow {
         AssetDatabase.SaveAssets();
     }
 }
+#endif
