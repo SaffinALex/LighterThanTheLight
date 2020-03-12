@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlanetShape1
   m_EditorClassIdentifier: 
   planetRadius: 100
-  randomGeneration: 1
+  randomGeneration: 10
   noiseLayers:
   - enabled: 1
     useFirstLayerAsMask: 0

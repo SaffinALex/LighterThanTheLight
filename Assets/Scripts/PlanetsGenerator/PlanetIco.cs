@@ -29,6 +29,11 @@ public class PlanetIco : MonoBehaviour
     protected List<Vector3> vertList;
     protected MeshFilter meshFilter;
 
+    bool finishGenerate = true;
+    bool alreadyPivot = false;
+
+    public bool activeRotation = false;
+
     private struct TriangleIndices
     {
         public int v1;
@@ -51,18 +56,27 @@ public class PlanetIco : MonoBehaviour
 
     void Update()
     {
+        float distance = Vector3.Distance(transform.position, BackgroundGenerator.player.transform.position);
         if (LOD)
         {
             int posZ = (int)transform.localPosition.z;
             int newResolution = 5;
             for(int i = 0; i < resolutionsLOD.Length; i++)
             {
-                if (posZ - (int)(shapeSettings.planetRadius * 2) >= resolutionsLOD[i]) newResolution = 4 - i;
+                if (distance / 5 + (int)(shapeSettings.planetRadius) >= resolutionsLOD[i]) newResolution = 4 - i;
             }
             if (newResolution != resolution)
             {
                 resolution = newResolution;
                 GenerateMesh();
+            }
+        }
+        
+        if(activeRotation){
+            Debug.Log(distance);
+            if(distance < 200 && !alreadyPivot){
+                alreadyPivot = true;
+                BackgroundGenerator.setNewPivot(transform);
             }
         }
     }
@@ -100,7 +114,10 @@ public class PlanetIco : MonoBehaviour
     }
 
     void GenerateMesh(){
-        StartCoroutine(Create());
+        if(finishGenerate){
+            finishGenerate = false;
+            StartCoroutine(Create());
+        }
         colourGenerator.UpdateElevation(shapeGenerator.elevationMinMax);
     }
 
@@ -154,7 +171,7 @@ public class PlanetIco : MonoBehaviour
 
     private IEnumerator Create()
     {
-        Mesh mesh = meshFilter.sharedMesh;
+        Mesh mesh = new Mesh();
         mesh.Clear();
  
         vertList = new List<Vector3>();
@@ -214,6 +231,7 @@ public class PlanetIco : MonoBehaviour
         // refine triangles
         for (int i = 0; i < resolution; i++)
         {
+            yield return null;
             List<TriangleIndices> faces2 = new List<TriangleIndices>();
             foreach (var tri in faces)
             {
@@ -249,11 +267,11 @@ public class PlanetIco : MonoBehaviour
             normales[i] = vertList[i].normalized;
  
  
-        mesh.normals = normales;
-        mesh.RecalculateBounds();
-        mesh.RecalculateNormals();
-        mesh.Optimize();
-        mesh = meshFilter.sharedMesh;
+        meshFilter.sharedMesh = mesh;
+        meshFilter.sharedMesh.normals = normales;
+        meshFilter.sharedMesh.RecalculateBounds();
+        meshFilter.sharedMesh.RecalculateNormals();
+        meshFilter.sharedMesh.Optimize();
 
         //Low poly
         Vector3[] oldVerts = mesh.vertices;
@@ -263,10 +281,11 @@ public class PlanetIco : MonoBehaviour
             vertices[i] = oldVerts[triangles[i]];
             triangles[i] = i;
         }
-        mesh.vertices = vertices;
-        mesh.triangles = triangles;
-        mesh.RecalculateBounds();
-        mesh.RecalculateNormals();
+        meshFilter.sharedMesh.vertices = vertices;
+        meshFilter.sharedMesh.triangles = triangles;
+        meshFilter.sharedMesh.RecalculateBounds();
+        meshFilter.sharedMesh.RecalculateNormals();
         yield return null;
+        finishGenerate = true;
     }
 }

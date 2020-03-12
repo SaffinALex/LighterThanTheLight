@@ -26,7 +26,7 @@ public class App : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    static bool IsInit(){
+    public static bool IsInit(){
         return app != null;
     }
 }
