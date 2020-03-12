@@ -50,18 +50,18 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
         {
             R2d.velocity = new Vector2(0, -scrolling);
         }*/
-
-        if(isAtRight)
+        /*
+        if(IsAtRight)
         {
             animator.SetBool("isAtRight", false);
         }
-        if(!isAtRight)
+        if(!IsAtRight)
         {
             animator.SetBool("isAtRight", true);
         }
         force.y -= scrolling;
         R2d.velocity = force;
-
+        */
         /*
         if (animator.GetBool("isAtRight"))
         {

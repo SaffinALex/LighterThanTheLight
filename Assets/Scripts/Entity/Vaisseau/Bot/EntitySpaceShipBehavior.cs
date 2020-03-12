@@ -17,20 +17,20 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     public Animator animator;
     public bool isShooting;
     public bool isMoving;
-    public bool isAtRight;
+    //public bool isAtRight;
     public Vector2 force;
 
     public Rigidbody2D R2d { get => r2d; set => r2d = value; }
     public int Direction { get => direction; set => direction = value; }
     public float TimeMove { get => timeMove; set => timeMove = value; }
     public bool IsDead { get => isDead; set => isDead = value; }
+    //public bool IsAtRight { get => isAtRight; set => isAtRight = value; }
 
 
     // Start is called before the first frame update
     protected void Start()
     {
         R2d = GetComponent<Rigidbody2D>();
-        animator.SetBool("isAtRight", true);
         gameObject.transform.parent.gameObject.SetActive(true);
         IsDead = false;
     }
@@ -58,7 +58,7 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
             life -= collision.gameObject.GetComponent<PlayerBullet>().getDamage();
-            if (life <= 1)
+            if (life <= 0 && !IsDead)
             {
                 IsDead = true;
                 animator.SetBool("isDead", true);

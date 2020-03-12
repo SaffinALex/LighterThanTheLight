@@ -221,8 +221,12 @@ MonoBehaviour:
   animator: {fileID: 2143546951}
   isShooting: 1
   isMoving: 0
-  isAtRight: 0
   force: {x: 0, y: 0}
+  positionX: 2
+  positionX2: -2
+  isAtRight: 0
+  t: {fileID: 1869301752}
+  timeWait: 2
 --- !u!1 &46226030
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +390,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7e19f04b599c0b24b96c29df36a39109, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1015,6 +1019,7 @@ Transform:
   - {fileID: 1111323156}
   - {fileID: 1038025237}
   - {fileID: 2007418732}
+  - {fileID: 2143546950}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1099,7 +1104,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7e19f04b599c0b24b96c29df36a39109, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1708,8 +1713,12 @@ MonoBehaviour:
   animator: {fileID: 2143546951}
   isShooting: 1
   isMoving: 0
-  isAtRight: 1
   force: {x: 0, y: 0}
+  positionX: 2
+  positionX2: -2
+  isAtRight: 0
+  t: {fileID: 1869301752}
+  timeWait: 2
 --- !u!4 &1648406802
 Transform:
   m_ObjectHideFlags: 0
@@ -1789,7 +1798,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7e19f04b599c0b24b96c29df36a39109, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1978,6 +1987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.05
   time: 0
+  level: {fileID: 1283780477}
 --- !u!1 &2000344384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,8 +2280,12 @@ MonoBehaviour:
   animator: {fileID: 2143546951}
   isShooting: 1
   isMoving: 0
-  isAtRight: 0
   force: {x: 0, y: 0}
+  positionX: 2
+  positionX2: -2
+  isAtRight: 0
+  t: {fileID: 1869301752}
+  timeWait: 2
 --- !u!1 &2143546949
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,15 +2310,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143546949}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 39.35, z: -7}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.18, y: -0.77, z: 4}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1605436312}
   - {fileID: 2140883369}
   - {fileID: 1609477}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1283780478}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2143546951
 Animator:

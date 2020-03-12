@@ -4,6 +4,26 @@ using UnityEngine;
 
 public class BossBehaviorBasic : EntitySpaceShipBehavior
 {
+    /*  
+      
+     Vector2 position1
+     Vector2 position2
+     //Bezier Espace
+     Vector2 controlPoint1
+     Vector2 controlPoint2
+
+    
+
+     */
+    public float positionX;
+    public float positionX2;
+    public bool isAtRight;
+    public Transform t;
+
+    public float timeWait = 2f;
+    float timerWait = 0.0f;
+
+
     // Start is called before the first frame update
     new void Start()
     {
@@ -23,21 +43,42 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         base.Update();
         move();
         shoot();
+
+        if(timerWait < timeWait)
+        {
+            timerWait += Time.deltaTime;
+            if(timerWait >= timeWait)
+            {
+                Debug.Log("Time wait fini !");
+            }
+        }
     }
 
     override
     public void move()
     {
+        /*
+        Debug.Log(isAtRight);
         if (isAtRight)
         {
-            animator.SetBool("isAtRight", false);
-            //isAtRight = false;
+            //animator.SetBool("isAtRight", true);
+            if (transform.position.x < positionX)
+            {
+
+            }
         }
         else
         {
-            animator.SetBool("isAtRight", true);
-            //isAtRight = true;
+            //animator.SetBool("isAtRight", false);
+            if (transform.position.x > positionX2)
+            {
+
+            }
+            
         }
+        R2d.velocity = force;*/
+        Vector3 direction = (t.position - transform.position).normalized;
+        force = new Vector2(direction.x, direction.y) * speedMove;
         R2d.velocity = force;
     }
 
