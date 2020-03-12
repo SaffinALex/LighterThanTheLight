@@ -9,6 +9,7 @@ public class CooldownChargeLoader : MonoBehaviour
     public GameObject sourceImage;
     public int numberOfCharges = 3;
     public float borderBarOffset = 10;
+    public bool isInverted = false;
  
     //ScriptVariables
     public int currentNumberOfCharges;
@@ -24,7 +25,8 @@ public class CooldownChargeLoader : MonoBehaviour
 
     //ScriptMethods
     private void loadCharges(int numberOfCharges){
-        float width = chargesContainer.GetComponent<RectTransform>().sizeDelta.x + ((borderBarOffset/2)*(currentNumberOfCharges+1)); //Recup largeur
+        float width = chargesContainer.GetComponent<RectTransform>().sizeDelta.x; //Recup largeur
+        width += ((borderBarOffset / 2) * (numberOfCharges + 1));
         float height = chargesContainer.GetComponent<RectTransform>().sizeDelta.y; //Recup hauteur
         foreach (Transform child in chargesContainer.transform) { //Nettoie anciennes images de charge
             GameObject.Destroy(child.gameObject);
