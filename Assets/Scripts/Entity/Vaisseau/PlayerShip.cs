@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerShip : Vaisseau
 {
-    public Onde onde;
+    public GameObject wave;
     public Dash dash;
     public int vieShield;
     public int recoveryTime;
+    public int waveDamage;
+    public int waveNumber;
+    public float waveRadius;
 
     //IsInvincible = Recovery Time pour éviter de se faire enchainer trop violemment.
     private bool isInvincible;
@@ -16,6 +19,7 @@ public class PlayerShip : Vaisseau
     public GameObject bullet;
     public Rigidbody2D myRigidBody;
     private float posx;
+    private bool canShootWave;
     private float width;
     private Transform oldPosition;
     
@@ -25,6 +29,7 @@ public class PlayerShip : Vaisseau
         //animator = GetComponent<Animator>();
         posx = 0;
         isInvincible = false;
+        canShootWave = true;
         canShoot = true;
 //        width = camera.orthographicSize;
        // oldPosition.position = transform.position;
@@ -46,6 +51,14 @@ public class PlayerShip : Vaisseau
             for(int i=0; i<weapons.Count; i++){
                 weapons[i].gameObject.GetComponent<Weapon>().shoot(transform);
             }
+        }
+        //Onde tire
+        if(canShootWave && Input.GetKey("o") && waveNumber > 0){
+            StartCoroutine("ShootWave");
+            waveNumber --;
+            GameObject waveBullet = Instantiate(wave, transform.position, Quaternion.identity);
+            waveBullet.GetComponent<CircleCollider2D>().radius = waveRadius; 
+            
         }
         //Le Dash se fait seulement sur X.
         if(dash.getCanDash() && Input.GetKeyDown("k") && !isInvincible && change.x != 0){
@@ -128,5 +141,10 @@ public class PlayerShip : Vaisseau
         canShoot = false;
         yield return new WaitForSeconds(0.25f);
         canShoot = true;
+    }
+    private IEnumerator ShootWave(){
+        canShootWave = false;
+        yield return new WaitForSeconds(5f);
+        canShootWave = true;
     }
 }

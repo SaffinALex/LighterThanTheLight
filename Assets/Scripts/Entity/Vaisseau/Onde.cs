@@ -5,19 +5,46 @@ using UnityEngine;
 public class Onde : MonoBehaviour
 {
     // Start is called before the first frame update
-    public double rayon;
-    public double degat;
-    public int quantite;
+    public float radius;
+    public int damage;
     public List<UpgradeOnde> upgradeOndes;
     public int nbrUpgradeMax;
+    private float timer;
+    public float timeBeforeExplosion;
+    private Animator animator;
     void Start()
     {
-        
+        timer = 0;
+        animator = GetComponent<Animator>();
+        GetComponent<CircleCollider2D>().enabled = false;
     }
-
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        if(timer < timeBeforeExplosion){
+            transform.position = new Vector3(transform.position.x, transform.position.y+1f*Time.deltaTime, transform.position.z);
+        }
+        else{
+            if(timer < timeBeforeExplosion + 2){
+                animator.SetBool("isExploded", true);
+                GetComponent<CircleCollider2D>().enabled = true;
+            }
+            else{
+                Destroy(this.gameObject);
+            }
+        }
     }
+    void OnTriggerEnter2D(Collider2D col){
+        if(col.CompareTag("Enemy") && animator.GetBool("isExploded")){
+            col.GetComponent<EntitySpaceShipBehavior>().life-= damage;
+        }
+    }
+    void OnTriggerStay2D(Collider2D col){
+        if(col.CompareTag("Enemy") && animator.GetBool("isExploded")){
+            col.GetComponent<EntitySpaceShipBehavior>().life-= damage;
+        }
+    }
+
+
 }

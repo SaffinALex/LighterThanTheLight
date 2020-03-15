@@ -25,7 +25,7 @@ public class EnemyManager : MonoBehaviour
                 s.transform.GetChild(0).GetComponent<Rigidbody2D>().velocity  = new Vector2(0,0);
                 s.SetActive(true);
                 s.transform.GetChild(0).tag="Enemy"; 
-                s.transform.GetChild(0).GetComponent<EntitySpaceShipBehavior>().initialize();
+                s.transform.GetChild(0).GetComponent<EntitySpaceShipBehavior>().initialize(/*new Weapon(),etc... */);
                 StartCoroutine("TimerEnemy");
             }
         }

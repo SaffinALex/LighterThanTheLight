@@ -580,6 +580,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 3883999475232861697, guid: f33915225be88ef4c8d2a041e965f635,
+        type: 3}
+      propertyPath: nbCharges
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6891329130158126037, guid: f33915225be88ef4c8d2a041e965f635,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1136,6 +1141,27 @@ PrefabInstance:
       propertyPath: life
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: waveDamage
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: waveNumber
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: waveRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: wave
+      value: 
+      objectReference: {fileID: 7237810773343739811, guid: 1f35fce770403cd489dbd332e41f783d,
+        type: 3}
     - target: {fileID: 4609433687815977607, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}
       propertyPath: m_Name
@@ -1146,7 +1172,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4609433687815977603, guid: 20cdf949a649da44ca265d37803d97bc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 20cdf949a649da44ca265d37803d97bc, type: 3}
 --- !u!1 &1283780477
 GameObject:
