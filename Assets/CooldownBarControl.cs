@@ -23,7 +23,7 @@ public class CooldownBarControl : MonoBehaviour
     void Update()
     {
         
-        print(currentNbCharges + "/" + nbCharges);
+//        print(currentNbCharges + "/" + nbCharges);
         if(currentNbCharges < nbCharges){
             currentCooldownDuration += Time.deltaTime;
             if(currentCooldownDuration >= cooldownDuration){
