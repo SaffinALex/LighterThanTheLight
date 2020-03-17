@@ -31,6 +31,9 @@ public class PlayerShip : Vaisseau
         isInvincible = false;
         canShootWave = true;
         canShoot = true;
+        for(int i=0; i<weapons.Count; i++){
+            weapons[i].gameObject.GetComponent<WeaponPlayer>().Initialize();
+        }
 //        width = camera.orthographicSize;
        // oldPosition.position = transform.position;
 
@@ -49,7 +52,7 @@ public class PlayerShip : Vaisseau
         if(canShoot && Input.GetKey("v")){
             StartCoroutine("Shoot");
             for(int i=0; i<weapons.Count; i++){
-                weapons[i].gameObject.GetComponent<Weapon>().shoot(transform);
+                weapons[i].gameObject.GetComponent<WeaponPlayer>().shoot(transform);
             }
         }
         //Onde tire

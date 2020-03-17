@@ -26,12 +26,9 @@ public class Onde : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y+1f*Time.deltaTime, transform.position.z);
         }
         else{
-            if(timer < timeBeforeExplosion + 2){
-                animator.SetBool("isExploded", true);
+            if(timer >= timeBeforeExplosion + 2){
+                StartCoroutine("WaveExploded");
                 GetComponent<CircleCollider2D>().enabled = true;
-            }
-            else{
-                Destroy(this.gameObject);
             }
         }
     }
@@ -44,6 +41,12 @@ public class Onde : MonoBehaviour
         if(col.CompareTag("Enemy") && animator.GetBool("isExploded")){
             col.GetComponent<EntitySpaceShipBehavior>().life-= damage;
         }
+    }
+
+    IEnumerator WaveExploded(){
+        animator.SetBool("isExploded", true);
+        yield return new WaitForSeconds(5f);
+        Destroy(this.gameObject);
     }
 
 
