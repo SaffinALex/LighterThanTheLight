@@ -47,7 +47,7 @@ MonoBehaviour:
   nom: BoosterSpeed
   description: +1.5 speed
   icone: {fileID: 0}
-  multiplicator: 0.4
+  multiplicator: 1.5
 --- !u!114 &2083393953272898251
 MonoBehaviour:
   m_ObjectHideFlags: 0
