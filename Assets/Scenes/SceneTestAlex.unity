@@ -1173,10 +1173,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2083393953272898251, guid: e5735a699bc087a4fafbd8c2b2395644,
         type: 3}
+    - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: -1994659459883942212, guid: 5b55086237e3bc941ac7f878d5eb5ed1,
+        type: 3}
     - target: {fileID: 4609433687815977607, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}
       propertyPath: m_Name
       value: playerShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609433687815977607, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8830797228413850533, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}

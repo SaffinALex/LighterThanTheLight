@@ -79,11 +79,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb0611ac2a83a04eaa1fde8a17f880f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayon: 0
-  degat: 0
-  quantite: 0
+  radius: 0
+  damage: 0
   upgradeOndes: []
   nbrUpgradeMax: 0
+  timeBeforeExplosion: 0
 --- !u!114 &4609433687815977602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,11 +117,14 @@ MonoBehaviour:
   life: 500
   speed: 1
   weapons:
-  - {fileID: 4762668976900839520, guid: 5b55086237e3bc941ac7f878d5eb5ed1, type: 3}
-  onde: {fileID: 4609433687815977603}
+  - {fileID: 2083393953272898251, guid: e5735a699bc087a4fafbd8c2b2395644, type: 3}
+  wave: {fileID: 7237810773343739811, guid: 1f35fce770403cd489dbd332e41f783d, type: 3}
   dash: {fileID: 4609433687815977602}
   vieShield: 0
   recoveryTime: 1
+  waveDamage: 100
+  waveNumber: 3
+  waveRadius: 10
   animator: {fileID: 4609433686791282158}
   bullet: {fileID: 4416812285562530050, guid: 24da03922ed47d246a081cdd171e1995, type: 3}
   myRigidBody: {fileID: 2364199843355145164}
