@@ -47,7 +47,7 @@ MonoBehaviour:
   nom: BoosterSpeed
   description: +1.5 speed
   icone: {fileID: 0}
-  multiplicator: 1.5
+  multiplicator: 0.4
 --- !u!114 &2083393953272898251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,4 +64,4 @@ MonoBehaviour:
   - {fileID: -3718409642394101890}
   nbrMaxUpgrade: 0
   bullet: {fileID: 4416812285562530050, guid: 24da03922ed47d246a081cdd171e1995, type: 3}
-  bulletSpeed: 2
+  bulletSpeed: 1
