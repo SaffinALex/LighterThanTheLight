@@ -97,16 +97,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e8642bfe066c94ab6b54425121ba98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
+  weapon: {fileID: 5359264151696501870, guid: ef2544720feb09248ae5a728fe49704f, type: 3}
   life: 6
-  speedMove: 0.5
+  speedMove: 1
   scrolling: 0.1
   speedShoot: 0.7
   animator: {fileID: 1741663641790697570}
   isShooting: 1
   isMoving: 0
-  isAtRight: 0
   force: {x: 0, y: 0}
+  isAtRight: 0
 --- !u!50 &1741663642805905622
 Rigidbody2D:
   serializedVersion: 4

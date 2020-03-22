@@ -79,7 +79,9 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         R2d.velocity = force;*/
         Vector3 direction = (t.position - transform.position).normalized;
         force = new Vector2(direction.x, direction.y) * speedMove;
-        R2d.velocity = force;
+        Debug.Log(transform.parent.gameObject);
+        //R2d.velocity = force;
+        transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity = force;
     }
 
     override
