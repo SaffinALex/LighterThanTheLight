@@ -12,6 +12,8 @@ public class PlanetIco : MonoBehaviour
     [Range(-200f, 200f)]
     public float speedRotation = 5f;
 
+    public bool devMod = false;
+
     public bool LOD = true;
     public int[] resolutionsLOD = { 150, 500, 1200, 2200, 3500 };
 
@@ -73,7 +75,7 @@ public class PlanetIco : MonoBehaviour
         }
         
         if(activeRotation){
-            Debug.Log(distance);
+            //Debug.Log(distance);
             if(distance < 200 && !alreadyPivot){
                 alreadyPivot = true;
                 BackgroundGenerator.setNewPivot(transform);
@@ -118,7 +120,6 @@ public class PlanetIco : MonoBehaviour
             finishGenerate = false;
             StartCoroutine(Create());
         }
-        colourGenerator.UpdateElevation(shapeGenerator.elevationMinMax);
     }
 
     void GenerateColours(){
@@ -231,7 +232,7 @@ public class PlanetIco : MonoBehaviour
         // refine triangles
         for (int i = 0; i < resolution; i++)
         {
-            yield return null;
+            if(!devMod) yield return null;
             List<TriangleIndices> faces2 = new List<TriangleIndices>();
             foreach (var tri in faces)
             {
@@ -246,7 +247,7 @@ public class PlanetIco : MonoBehaviour
                 faces2.Add(new TriangleIndices(a, b, c));
             }
             faces = faces2;
-            Debug.Log((i + 1) + "/" + resolution);
+            //Debug.Log((i + 1) + "/" + resolution);
         }
         
         mesh.vertices = vertList.ToArray();
@@ -287,5 +288,6 @@ public class PlanetIco : MonoBehaviour
         meshFilter.sharedMesh.RecalculateNormals();
         yield return null;
         finishGenerate = true;
+        colourGenerator.UpdateElevation(shapeGenerator.elevationMinMax);
     }
 }

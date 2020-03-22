@@ -19,7 +19,7 @@ public class Meteor : MonoBehaviour
         float x = transform.localPosition.x + (speed.x * Time.deltaTime);
         float y = transform.localPosition.y + ((- speed.y + BackgroundGenerator.speed) * Time.deltaTime);
         transform.localPosition = new Vector3(x, y, 0);
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     public void GiveDamage(int damage)

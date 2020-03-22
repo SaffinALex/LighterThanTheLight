@@ -17,6 +17,8 @@ public class ShipMovement : MonoBehaviour
     Vector2 lastVelocity;
     Vector2 lastWantedVelocity;
 
+    public GameObject shape;
+
     protected Rigidbody2D rgb2D;
     
     void Start()
@@ -26,6 +28,7 @@ public class ShipMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        shape.transform.Rotate(0,Time.deltaTime * 500,0);
         timerChangeVelocity += Time.deltaTime;
         float movementX = Input.GetAxisRaw("Horizontal");
         float movementY = Input.GetAxisRaw("Vertical");

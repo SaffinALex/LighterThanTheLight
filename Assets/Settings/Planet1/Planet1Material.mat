@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlanetMaterial1
+  m_Name: Planet1Material
   m_Shader: {fileID: -6465566751694194690, guid: ff4101c76bc9a0b428cfe1d1fa0f7ef8,
     type: 3}
   m_ShaderKeywords: 
@@ -80,12 +80,8 @@ Material:
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-<<<<<<< Updated upstream
-    - _elevationMinMax: {r: 97.63894, g: 107.701836, b: 0, a: 0}
-=======
-    - _elevationMinMax: {r: 96.5231, g: 107.608955, b: 0, a: 0}
->>>>>>> Stashed changes
---- !u!114 &3449720154047212444
+    - _elevationMinMax: {r: 96.541824, g: 107.00625, b: 0, a: 0}
+--- !u!114 &855215427264085124
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
