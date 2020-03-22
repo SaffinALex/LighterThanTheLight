@@ -119,6 +119,12 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     }
 
     override
+    public void getDamage(int damage)
+    {
+
+    }
+
+    override
     public void initialize()
     {
         isShooting = true;

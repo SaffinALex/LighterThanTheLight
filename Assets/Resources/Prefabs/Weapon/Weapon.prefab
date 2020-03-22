@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e7ef042cce59141ad6eab1771f819d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  degat: 0
   upgradeWeapons: []
   nbrMaxUpgrade: 0
-  bullet: {fileID: 42786175474113178, guid: ecc3fa2f120cfd7418380885a79bde35, type: 3}
+  bullet: {fileID: 42786175474113178, guid: 9729ecae9c618444995d1229ca8b0ae2, type: 3}

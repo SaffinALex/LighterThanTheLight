@@ -67,6 +67,8 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
         }
     }
 
+    public abstract void getDamage(int damage);
+
     public abstract void move();
 
     public abstract void shoot();
