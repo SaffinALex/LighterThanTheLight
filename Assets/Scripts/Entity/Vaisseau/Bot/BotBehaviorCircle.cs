@@ -96,7 +96,7 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
             /*Vector3 direction = (new Vector3(shipPosition.x, shipPosition.y, transform.position.z) - transform.position).normalized;
             force = new Vector2(direction.x, direction.y) * speedMove;
             R2d.velocity = force;*/
-            transform.position = new Vector3(shipPosition.x, shipPosition.y, -7);
+            transform.position = new Vector3(shipPosition.x, shipPosition.y, 0);
             yield return new WaitForEndOfFrame();
         }
 
