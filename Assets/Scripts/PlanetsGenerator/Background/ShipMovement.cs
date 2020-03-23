@@ -28,7 +28,7 @@ public class ShipMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        shape.transform.Rotate(0,Time.deltaTime * 500,0);
+        //shape.transform.Rotate(0,Time.deltaTime * 500,0);
         timerChangeVelocity += Time.deltaTime;
         float movementX = Input.GetAxisRaw("Horizontal");
         float movementY = Input.GetAxisRaw("Vertical");
