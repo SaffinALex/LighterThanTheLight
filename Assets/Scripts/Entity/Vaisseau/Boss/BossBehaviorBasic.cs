@@ -110,11 +110,11 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         }
     }
     
-    new public void OnCollisionEnter2D(Collision2D collision)
-    {
+    public void OnCollisionEnter2D(Collision2D collision)
+    {/*
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
-            life -= collision.gameObject.GetComponent<PlayerBullet>().getDamage();
+            life -= collision.gameObject.GetComponent<PlayerBullet>().getDamage();*/
             if (life <= 0){
                 if (gameObject.CompareTag("Cockpit"))
                 {
@@ -131,8 +131,8 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
                     animator.SetBool("isNormal", true);
                 }
             }
-            Destroy(collision.gameObject);
-        }
+            /*Dstroy(collision.gameObject);
+        }*/
     }
 
     override

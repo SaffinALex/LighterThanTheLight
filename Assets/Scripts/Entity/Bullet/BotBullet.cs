@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotBullet : MonoBehaviour
+public class BotBullet : Bullet
 {
     public int damage;
     public float speed;

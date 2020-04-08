@@ -21,15 +21,10 @@ public class Bullet : MonoBehaviour
         GetComponent<Rigidbody2D>().MovePosition(transform.position + new Vector3(0f, -1f, 0f) * speed * Time.deltaTime);
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        collision.gameObject.GetComponent<EntitySpaceShipBehavior>().getDamage(damage);
-        Destroy(this.gameObject);
-    }
-
     public void OnTriggerEnter2D(Collider2D collision)
     {
         collision.gameObject.GetComponent<EntitySpaceShipBehavior>().getDamage(damage);
+        Destroy(this.gameObject);
     }
 
     void OnBecameInvisible()
