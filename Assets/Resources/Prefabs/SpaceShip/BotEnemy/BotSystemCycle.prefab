@@ -256,7 +256,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Route
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8314311497250542774, guid: cc6fbbc6bfee8394788ce2decfdfe566,
+        type: 3}
+      propertyPath: speedScrolling
+      value: 0.002
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 941056773481064090, guid: cc6fbbc6bfee8394788ce2decfdfe566, type: 3}
+    - {fileID: 3986085980841626980, guid: cc6fbbc6bfee8394788ce2decfdfe566, type: 3}
+    - {fileID: 1493797003410282003, guid: cc6fbbc6bfee8394788ce2decfdfe566, type: 3}
+    - {fileID: 2613839682761241293, guid: cc6fbbc6bfee8394788ce2decfdfe566, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc6fbbc6bfee8394788ce2decfdfe566, type: 3}
 --- !u!4 &2023729234999630054 stripped
 Transform:
@@ -381,7 +390,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ControlPoint6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8314311497250542774, guid: cc6fbbc6bfee8394788ce2decfdfe566,
+        type: 3}
+      propertyPath: speedScrolling
+      value: 0.002
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 941056773481064090, guid: cc6fbbc6bfee8394788ce2decfdfe566, type: 3}
+    - {fileID: 3986085980841626980, guid: cc6fbbc6bfee8394788ce2decfdfe566, type: 3}
+    - {fileID: 1493797003410282003, guid: cc6fbbc6bfee8394788ce2decfdfe566, type: 3}
+    - {fileID: 2613839682761241293, guid: cc6fbbc6bfee8394788ce2decfdfe566, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc6fbbc6bfee8394788ce2decfdfe566, type: 3}
 --- !u!4 &6653763833583786061 stripped
 Transform:
