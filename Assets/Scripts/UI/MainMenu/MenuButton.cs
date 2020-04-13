@@ -8,11 +8,22 @@ using UnityEngine.UI;
 [RequireComponent (typeof(TextMeshProUGUI))]
 public class MenuButton : MonoBehaviour
 {
+    public FontStyles baseFontStyle;
+
+    private void Start() {
+        baseFontStyle = GetComponentInChildren<TextMeshProUGUI>().fontStyle;
+    }
+
     public void mouseEnter(){
         GetComponentInChildren<TextMeshProUGUI>().fontStyle ^= FontStyles.Underline;;
     }
 
     public void mouseExit(){
-        GetComponentInChildren<TextMeshProUGUI>().fontStyle ^= FontStyles.Underline;
+        GetComponentInChildren<TextMeshProUGUI>().fontStyle = baseFontStyle;
+    }
+
+    void OnDisable()
+    {
+        GetComponentInChildren<TextMeshProUGUI>().fontStyle = baseFontStyle;
     }
 }

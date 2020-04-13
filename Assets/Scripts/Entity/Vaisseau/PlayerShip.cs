@@ -47,6 +47,7 @@ public class PlayerShip : Vaisseau
         change.x = Input.GetAxis("Horizontal");
         change.y = Input.GetAxis("Vertical");
         if(canShoot && Input.GetKey("v")){
+            GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerBossWarning();
             StartCoroutine("Shoot");
             for(int i=0; i<weapons.Count; i++){
                 weapons[i].gameObject.GetComponent<Weapon>().shoot(transform);
