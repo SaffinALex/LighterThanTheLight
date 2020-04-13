@@ -18,7 +18,16 @@ public class BotBullet : Bullet
     {
         float posx = transform.position.x;
         float posy = transform.position.y;
-        GetComponent<Rigidbody2D>().MovePosition(transform.position + new Vector3(0f, -1f, 0f) * speed * Time.deltaTime);
+        transform.position = transform.position + new Vector3(0f, -1f, 0f) * speed * Time.deltaTime;
+    }
+
+    new private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<EntitySpaceShipBehavior>().getDamage(damage);
+            Destroy(this.gameObject);
+        }
     }
 
     void OnBecameInvisible()

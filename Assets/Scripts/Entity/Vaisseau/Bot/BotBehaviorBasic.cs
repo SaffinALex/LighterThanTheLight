@@ -14,8 +14,6 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
     new void Start()
     {
         base.Start();
-        Direction = Random.Range(0, 2);
-        TimeMove = 3.0f;
         p1 = transform.position.x + 3;
         p2 = transform.position.x;
         positionX = transform.position.x + 3;
@@ -76,5 +74,9 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
         isShooting = true;
         isMoving = false;
         life = 6;
+        p1 = transform.position.x + 3;
+        p2 = transform.position.x;
+        positionX = transform.position.x + 3;
+        positionY = transform.position.y;
     }
 }

@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     {
         float posx = transform.position.x;
         float posy = transform.position.y;
-        GetComponent<Rigidbody2D>().MovePosition(transform.position + new Vector3(0f, -1f, 0f) * speed * Time.deltaTime);
+        transform.position =  transform.position + new Vector3(0f, -1f, 0f) * speed * Time.deltaTime;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

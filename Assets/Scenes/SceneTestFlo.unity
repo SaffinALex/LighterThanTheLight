@@ -197,6 +197,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: playerShip
       objectReference: {fileID: 0}
+    - target: {fileID: 4609433687815977607, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20cdf949a649da44ca265d37803d97bc, type: 3}
 --- !u!1 &22983134 stripped
@@ -483,6 +488,80 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &357876532
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1283780478}
+    m_Modifications:
+    - target: {fileID: 1171952212641748329, guid: d12123acb6e14304190a9869fc702317,
+        type: 3}
+      propertyPath: m_Name
+      value: BotSystemRandom
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171952212641748329, guid: d12123acb6e14304190a9869fc702317,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171952212641748331, guid: d12123acb6e14304190a9869fc702317,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171952212641748331, guid: d12123acb6e14304190a9869fc702317,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171952212641748331, guid: d12123acb6e14304190a9869fc702317,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171952212641748331, guid: d12123acb6e14304190a9869fc702317,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171952212641748331, guid: d12123acb6e14304190a9869fc702317,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171952212641748331, guid: d12123acb6e14304190a9869fc702317,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171952212641748331, guid: d12123acb6e14304190a9869fc702317,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171952212641748331, guid: d12123acb6e14304190a9869fc702317,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171952212641748331, guid: d12123acb6e14304190a9869fc702317,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171952212641748331, guid: d12123acb6e14304190a9869fc702317,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171952212641748331, guid: d12123acb6e14304190a9869fc702317,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d12123acb6e14304190a9869fc702317, type: 3}
 --- !u!1 &422741172
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,6 +806,18 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &897538327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1171952212641748329, guid: d12123acb6e14304190a9869fc702317,
+    type: 3}
+  m_PrefabInstance: {fileID: 357876532}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &897538328 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1171952212641748331, guid: d12123acb6e14304190a9869fc702317,
+    type: 3}
+  m_PrefabInstance: {fileID: 357876532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1085187769
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,6 +885,7 @@ Transform:
   - {fileID: 311829089}
   - {fileID: 22983136}
   - {fileID: 225538035}
+  - {fileID: 897538328}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -812,6 +904,7 @@ MonoBehaviour:
   bots:
   - {fileID: 22983134}
   - {fileID: 225538033}
+  - {fileID: 897538327}
   spawnners:
   - {fileID: 46226031}
   timeAppear: 5

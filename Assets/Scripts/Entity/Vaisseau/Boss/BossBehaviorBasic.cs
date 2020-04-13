@@ -5,25 +5,19 @@ using UnityEngine;
 public class BossBehaviorBasic : EntitySpaceShipBehavior
 {
     /*  
-      
-     Vector2 position1
-     Vector2 position2
-     //Bezier Espace
-     Vector2 controlPoint1
-     Vector2 controlPoint2
+    Vector2 position1
+    Vector2 position2
+    //Bezier Espace
+    Vector2 controlPoint1
+    Vector2 controlPoint2
+    */
 
-    
-
-     */
     public float positionX;
     public float positionY;
     public Transform t;
 
     private float p1;
     private float p2;
-
-    public float timeWait = 1f;
-    float timerWait = 0.0f;
 
     public bool sideIsDead;
 
@@ -33,7 +27,6 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     {
         base.Start();
         Direction = Random.Range(0, 2);
-        TimeMove = 3.0f;
 
         p1 = transform.position.x + 3;
         p2 = transform.position.x;
@@ -62,16 +55,6 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         {
             positionX = transform.position.x + 3;
         }
-
-        /*
-        if (timerWait < timeWait)
-        {
-            timerWait += Time.deltaTime;
-            if(timerWait >= timeWait)
-            {
-                Debug.Log("Time wait fini !");
-            }
-        }*/
 
         if (sideIsDead)
         {

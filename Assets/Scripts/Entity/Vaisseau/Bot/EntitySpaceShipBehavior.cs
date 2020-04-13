@@ -6,7 +6,6 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
 {
     private Rigidbody2D r2d;
     private int direction;
-    private float timeMove;
     private bool isDead;
 
     public GameObject weapon;
@@ -22,7 +21,6 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
 
     public Rigidbody2D R2d { get => r2d; set => r2d = value; }
     public int Direction { get => direction; set => direction = value; }
-    public float TimeMove { get => timeMove; set => timeMove = value; }
     public bool IsDead { get => isDead; set => isDead = value; }
     //public bool IsAtRight { get => isAtRight; set => isAtRight = value; }
 
@@ -81,14 +79,4 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
         yield return new WaitForSeconds(speedShoot);
         isShooting = true;
     }
-
-    private IEnumerator Move()
-    {
-        isMoving = true;
-        yield return new WaitForSeconds(TimeMove);
-        isMoving = false;
-
-    }
-
-
 }

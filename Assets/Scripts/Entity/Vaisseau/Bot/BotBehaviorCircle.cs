@@ -15,9 +15,6 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
     new void Start()
     {
         base.Start();
-        Direction = 0;
-        TimeMove = 2.0f;
-
         routeToGo = 0;
         tParam = 0f;
         coroutine = true;
@@ -73,6 +70,9 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         isShooting = true;
         isMoving = false;
         life = 6;
+        routeToGo = 0;
+        tParam = 0f;
+        coroutine = true;
     }
 
     private IEnumerator GoByRoute()
