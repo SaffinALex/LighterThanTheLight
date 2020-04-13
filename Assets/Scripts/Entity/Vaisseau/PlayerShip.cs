@@ -10,6 +10,7 @@ public class PlayerShip : Vaisseau
     public int recoveryTime;
     public int waveDamage;
     public int waveNumber;
+    public float shootRecovery;
     public float waveRadius;
 
     //IsInvincible = Recovery Time pour éviter de se faire enchainer trop violemment.
@@ -103,10 +104,7 @@ public class PlayerShip : Vaisseau
     }
     private void OnCollisionEnter2D(Collision2D col){
         //A supprimer quand bullet sera changé, appeler getDamage() dans BotBullet
-        if(col.gameObject.CompareTag("BotBullet")){
-            getDamage(10);
-            Destroy(col.gameObject);
-        }
+
     }
 
     public void getDamage(int damage){
@@ -142,7 +140,7 @@ public class PlayerShip : Vaisseau
 
     private IEnumerator Shoot(){
         canShoot = false;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(shootRecovery);
         canShoot = true;
     }
     private IEnumerator ShootWave(){

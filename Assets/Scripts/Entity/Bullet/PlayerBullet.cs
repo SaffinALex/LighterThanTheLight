@@ -39,4 +39,12 @@ public class PlayerBullet : MonoBehaviour
     public float getSpeed(){
         return speed;
     }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Cockpit")
+        || collision.gameObject.CompareTag("RightSide") || collision.gameObject.CompareTag("LeftSide")){
+            collision.gameObject.GetComponent<EntitySpaceShipBehavior>().getDamage(damage);
+            Destroy(this.gameObject);
+        }
+    }
 }

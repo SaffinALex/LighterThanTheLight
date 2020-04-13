@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Scrolling : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class Scrolling : MonoBehaviour
     public int time;
     public GameObject level;
     private float timer;
+    private bool bossIsActive;
+    public GameObject boss;
+    private GameObject bossActive;
+    public Transform spawner;
     void Start()
     {
         timer = 0;
@@ -21,9 +26,30 @@ public class Scrolling : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y-speed*Time.deltaTime, transform.position.z);
             timer += Time.deltaTime;
         }
-        if(timer > time - 5 && level.GetComponent<EnemyManager>().enabled){
+        if(timer > time - 10 && timer < time - 1){
             //Lancer l'alerte Boss
+            Debug.Log("Alerte Boss");
             level.GetComponent<EnemyManager>().enabled = false;
         }
+        else if(timer > time - 2 && !bossIsActive){
+            if(boss != null){ 
+                //Le boss apparait
+                bossActive = Instantiate(boss, new Vector3(0,0,0), Quaternion.identity);
+                bossActive.transform.position = spawner.position;
+                bossIsActive = true;
+            }
+        }
+        if(timer >= time){
+            Debug.Log(bossActive);
+            if(bossActive == null){
+                Debug.Log("Terminer le level");
+                StartCoroutine("FinishLevel");
+            }
+        }
+    }
+
+    IEnumerator FinishLevel(){
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("TestMainMenu", LoadSceneMode.Single);
     }
 }

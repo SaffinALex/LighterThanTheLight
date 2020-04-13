@@ -12,7 +12,7 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         canAppear = true;
-        //Charger Bots from level manager
+        GetComponent<LevelControler>().LoadBot();
     }
 
     // Update is called once per frame
@@ -21,10 +21,9 @@ public class EnemyManager : MonoBehaviour
         if(canAppear){
             GameObject s = bots[Random.Range(0,bots.Count)];
             if(!s.activeSelf){
+                s.transform.gameObject.transform.position = new Vector3(0,0,0);
                 s.transform.GetChild(0).gameObject.transform.position = new Vector3(spawnners[0].position.x, spawnners[0].position.y, spawnners[0].position.z);
-                s.transform.GetChild(0).GetComponent<Rigidbody2D>().velocity  = new Vector2(0,0);
                 s.SetActive(true);
-                s.transform.GetChild(0).tag="Enemy"; 
                 s.transform.GetChild(0).GetComponent<EntitySpaceShipBehavior>().initialize(/*new Weapon(),etc... */);
                 StartCoroutine("TimerEnemy");
             }
@@ -35,5 +34,10 @@ public class EnemyManager : MonoBehaviour
         canAppear = false;
         yield return new WaitForSeconds(timeAppear);
         canAppear = true;
+    }
+
+
+    public void addBot(GameObject o){
+        bots.Add(o);
     }
 }

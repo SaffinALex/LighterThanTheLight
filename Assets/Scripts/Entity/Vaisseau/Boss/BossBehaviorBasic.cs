@@ -102,6 +102,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
                 if (gameObject.CompareTag("Cockpit"))
                 {
                     animator.SetBool("cockpitIsDead", true);
+                    Destroy(this.transform.parent.gameObject);
                 }
                 else if (gameObject.CompareTag("RightSide"))
                 {
@@ -121,7 +122,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     override
     public void getDamage(int damage)
     {
-        
+        life -= damage;
     }
 
     override
