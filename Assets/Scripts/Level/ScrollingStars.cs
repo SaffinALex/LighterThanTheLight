@@ -20,6 +20,6 @@ public class ScrollingStars : MonoBehaviour
 
     void OnBecameInvisible(){
 
-            this.gameObject.transform.position = transformScrool.position;
+            this.gameObject.transform.position = new Vector3(transformScrool.position.x, transformScrool.position.y, this.gameObject.transform.position.z) ;
     }
 }
