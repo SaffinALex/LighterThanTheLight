@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpgradeWeapon : Upgrade
+public abstract class UpgradeWeapon : Upgrade
 {
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = icone;
     }
 
     // Update is called once per frame
@@ -16,17 +15,10 @@ public class UpgradeWeapon : Upgrade
         
     }
 //A l'obtention de l'Upgrade
-    void StartUpgrade(Weapon weapon){
 
-    }
-//A chaque update mettre à jour les caractéristiques.
-    void UpdateUpgrade(Weapon weapon)
-    {
-        
-    }
+    public abstract void StartUpgrade(WeaponPlayer weapon);
 //Avant la suppression de l'Upgrade.
-    void EndUpgrade(Weapon weapon)
-    {
-        Destroy(this);
-    }
+
+    public abstract void EndUpgrade(WeaponPlayer weapon);
+
 }

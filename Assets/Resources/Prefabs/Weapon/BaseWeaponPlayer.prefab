@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7232059111152988876}
-  - component: {fileID: 4762668976900839520}
+  - component: {fileID: -1994659459883942212}
   m_Layer: 0
   m_Name: BaseWeaponPlayer
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4762668976900839520
+--- !u!114 &-1994659459883942212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,9 +40,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8912196057217071144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e7ef042cce59141ad6eab1771f819d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4571899a94d62014a9690d1b8f4b605c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeWeapons: []
   nbrMaxUpgrade: 0
   bullet: {fileID: 4416812285562530050, guid: 24da03922ed47d246a081cdd171e1995, type: 3}
+  bulletSpeed: 2

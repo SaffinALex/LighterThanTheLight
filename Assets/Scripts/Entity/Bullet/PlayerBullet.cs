@@ -30,4 +30,13 @@ public class PlayerBullet : MonoBehaviour
     public int getDamage(){
         return damage;
     }
+    public void setDamage(int d){
+        damage = d;
+    }
+    public void setSpeed(float s){
+        speed = s;
+    }
+    public float getSpeed(){
+        return speed;
+    }
 }

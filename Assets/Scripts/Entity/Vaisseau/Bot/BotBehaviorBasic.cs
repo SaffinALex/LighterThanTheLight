@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class BotBehaviorBasic : EntitySpaceShipBehavior
 {
-    //weapon associé à un type de bullet
+    public bool isAtRight;
+    private float positionX;
+    private float positionY;
+    private float p1;
+    private float p2;
 
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
-        Direction = Random.Range(0, 2);
-        TimeMove = 3.0f;
+        p1 = transform.position.x + 3;
+        p2 = transform.position.x;
+        positionX = transform.position.x + 3;
+        positionY = transform.position.y;
+
         //r2d.velocity = transform.forward * speed;
     }
 
@@ -26,52 +33,23 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
     new void Update()
     {
         base.Update();
+        if (transform.position.x >= p1 - 0.01){
+            positionX = transform.position.x - 3;
+        }
+        else if(transform.position.x <= p2 + 0.01)
+        {
+            positionX = transform.position.x + 3;
+        }
+        
+        positionY = transform.position.y - 0.05f;
     }
 
     override
     public void move()
     {
-        /*
-        if (!isMoving)
-        {
-            StartCoroutine("Move");
-            if (Direction == 1) Direction = 0;
-            else Direction = 1;
-        }
-        if (Direction == 0)
-        {
-            R2d.velocity = new Vector2(speedMove, -scrolling);
-        }
-        else if (Direction == 1)
-        {
-            R2d.velocity = new Vector2(-speedMove, -scrolling);
-        }
-        else
-        {
-            R2d.velocity = new Vector2(0, -scrolling);
-        }*/
-        /*
-        if(IsAtRight)
-        {
-            animator.SetBool("isAtRight", false);
-        }
-        if(!IsAtRight)
-        {
-            animator.SetBool("isAtRight", true);
-        }
-        force.y -= scrolling;
+        Vector3 direction = (new Vector3(positionX, positionY, transform.position.z) - transform.position).normalized;
+        force = new Vector2(direction.x, direction.y) * speedMove;
         R2d.velocity = force;
-        */
-        /*
-        if (animator.GetBool("isAtRight"))
-        {
-            animator.SetBool("isAtRight", false);
-
-        }
-        else
-        {
-            animator.SetBool("isAtRight", true);
-        }*/
     }
 
     override
@@ -85,12 +63,20 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
     }
 
     override
+    public void getDamage(int damage)
+    {
+        life -= damage;
+    }
+
+    override
     public void initialize()
     {
         isShooting = true;
         isMoving = false;
         life = 6;
+        p1 = transform.position.x + 3;
+        p2 = transform.position.x;
+        positionX = transform.position.x + 3;
+        positionY = transform.position.y;
     }
-
-
 }

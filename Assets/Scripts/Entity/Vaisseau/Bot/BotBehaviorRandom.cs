@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BotBehaviorRandom : EntitySpaceShipBehavior
 {
-    //weapon associé à un type de bullet
+    private float timerWait = 0.0f;
+    private float timeWait = 2.0f;
 
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
-        Direction = Random.Range(0, 10);
-        TimeMove = Random.Range(1.5f, 4.0f);
+        Direction = Random.Range(0, 8);
 
         //r2d.velocity = transform.forward * speed;
     }
@@ -27,17 +27,23 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
         base.Update();
         move();
         shoot();
+
+        if (timerWait < timeWait)
+        {
+            timerWait += Time.deltaTime;
+        }
     }
 
     override
     public void move()
     {
-        if (!isMoving)
+        if (timerWait >= timeWait)
         {
-            StartCoroutine("Move");
-            Direction = Random.Range(0, 10);
-            TimeMove = Random.Range(0.5f, 2.0f);
+            //Debug.Log("Time wait fini !");
+            timerWait = 0.0f;
+            Direction = Random.Range(0, 8);
         }
+
         if (Direction == 0)
         {
             R2d.velocity = new Vector2(speedMove, -scrolling);
@@ -71,11 +77,18 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
     }
 
     override
+    public void getDamage(int damage)
+    {
+        life -= damage;
+    }
+
+    override
     public void initialize()
     {
         isShooting = true;
         isMoving = false;
         life = 6;
+        Direction = Random.Range(0, 8);
     }
 
 

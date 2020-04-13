@@ -8,11 +8,11 @@ public class BackgroundGenerator : MonoBehaviour
     public float backgroundDepth = 50f;
 
     public float timeRotate = 2f;
-    float timerRotate = 0f; 
+    public float timerRotate = 0f; 
     public float timeTransitionLeave = 2f;
-    float timerTranstionLeave;
+    public float timerTranstionLeave;
     public float timeTransitionEnter = 2f;
-    float timerTranstionEnter;
+    public float timerTranstionEnter;
 
     public GameObject playerPosition;
     public static GameObject player;
@@ -23,7 +23,7 @@ public class BackgroundGenerator : MonoBehaviour
 
     public static float speed;
 
-    static BackgroundGenerator mainBackground;
+    public static BackgroundGenerator mainBackground;
 
     void Start()
     {
@@ -58,7 +58,7 @@ public class BackgroundGenerator : MonoBehaviour
         }
 
         transform.RotateAround(pivotPoint.position, new Vector3(-1f, 0f, 0f), backgroundSpeed * Time.deltaTime * (1 - transition));
-        transform.position = new Vector3(0f, transform.position.y - (backgroundSpeed * Time.deltaTime) * transition, transform.position.z);
+        transform.position -= (transition * backgroundSpeed * Time.deltaTime * new Vector3(0,1,0));
     }
 
     public static void setNewPivot(Transform pivot){
