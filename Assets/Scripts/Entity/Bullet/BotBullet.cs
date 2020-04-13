@@ -25,7 +25,7 @@ public class BotBullet : Bullet
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<EntitySpaceShipBehavior>().getDamage(damage);
+            collision.gameObject.GetComponent<PlayerShip>().getDamage(damage);
             Destroy(this.gameObject);
         }
     }
