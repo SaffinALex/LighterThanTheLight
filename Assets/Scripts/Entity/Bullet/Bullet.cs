@@ -23,10 +23,8 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player")){
-            collision.gameObject.GetComponent<PlayerShip>().getDamage(damage);
-            Destroy(this.gameObject);
-        }
+        collision.gameObject.GetComponent<PlayerShip>().getDamage(damage);
+        Destroy(this.gameObject);
     }
 
     void OnBecameInvisible()
