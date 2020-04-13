@@ -73,6 +73,10 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         routeToGo = 0;
         tParam = 0f;
         coroutine = true;
+        transform.position = new Vector3(0, 0, 0);
+        routes[0].transform.position = new Vector3(0, 0, 0);
+        routes[1].transform.position = new Vector3(0, 0, 0);
+
     }
 
     private IEnumerator GoByRoute()
