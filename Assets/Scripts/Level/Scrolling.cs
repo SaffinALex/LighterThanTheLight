@@ -14,9 +14,11 @@ public class Scrolling : MonoBehaviour
     public GameObject boss;
     private GameObject bossActive;
     public Transform spawner;
+    private bool alertLaunched;
     void Start()
     {
         timer = 0;
+        alertLaunched = false;
     }
 
     // Update is called once per frame
@@ -26,8 +28,9 @@ public class Scrolling : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y-speed*Time.deltaTime, transform.position.z);
             timer += Time.deltaTime;
         }
-        if(timer > time - 10 && timer < time - 1){
+        if(timer > time - 10 && timer < time - 1 && !alertLaunched){
             //Lancer l'alerte Boss
+            alertLaunched = true;
             Debug.Log("Alerte Boss");
             GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerBossWarning();
             level.GetComponent<EnemyManager>().enabled = false;
@@ -43,6 +46,7 @@ public class Scrolling : MonoBehaviour
         if(timer >= time){
             Debug.Log(bossActive);
             if(bossActive == null){
+                alertLaunched = false;
                 Debug.Log("Terminer le level");
                 StartCoroutine("FinishLevel");
             }
