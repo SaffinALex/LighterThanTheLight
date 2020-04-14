@@ -14,6 +14,7 @@ public class Scrolling : MonoBehaviour
     public GameObject boss;
     private GameObject bossActive;
     public Transform spawner;
+    public Transform  spawnerBoss;
     private bool alertLaunched;
     void Start()
     {
@@ -39,18 +40,18 @@ public class Scrolling : MonoBehaviour
             if(boss != null){ 
                 //Le boss apparait
                 bossActive = Instantiate(boss, new Vector3(0,0,0), Quaternion.identity);
-                bossActive.transform.position = spawner.position;
+                bossActive.transform.position = spawnerBoss.position;
                 bossIsActive = true;
             }
         }
         if(timer >= time){
-            Debug.Log(bossActive);
             if(bossActive == null){
                 alertLaunched = false;
                 Debug.Log("Terminer le level");
                 StartCoroutine("FinishLevel");
             }
         }
+ 
     }
 
     IEnumerator FinishLevel(){
