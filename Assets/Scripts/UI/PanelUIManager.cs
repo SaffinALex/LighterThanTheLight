@@ -83,6 +83,8 @@ public class PanelUIManager : MonoBehaviour
         else
             if (!GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(startSceneName))
                 Debug.Log("PanelUIManager : Scene name give doesn't match to any In-Build Scenes");
+            else
+                Time.timeScale = 1;
     }
 
     public void GoToEndLevelMenu(){
@@ -91,6 +93,8 @@ public class PanelUIManager : MonoBehaviour
         else
             if (!GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(endLevelSceneName))
                 Debug.Log("PanelUIManager : Scene name give doesn't match to any In-Build Scenes");
+            else
+                Time.timeScale = 1;
     }
 
     public void GoToEndGameMenu(){
@@ -99,5 +103,7 @@ public class PanelUIManager : MonoBehaviour
         else
             if (!GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(endGameSceneName))
                 Debug.Log("PanelUIManager : Scene name give doesn't match to any In-Build Scenes");
+            else
+                Time.timeScale = 1;
     }
 }
