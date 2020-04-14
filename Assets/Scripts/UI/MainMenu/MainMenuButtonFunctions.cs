@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuButtonFunctions : MonoBehaviour
 {
     public void PlayGame(){
-        SceneManager.LoadScene("TestInLevelUI", LoadSceneMode.Single);
+        SceneManager.LoadScene("SceneTestAlex", LoadSceneMode.Single);
     }
 
     public void ShowScores(){

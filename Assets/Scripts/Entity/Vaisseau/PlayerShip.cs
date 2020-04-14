@@ -44,14 +44,13 @@ public class PlayerShip : Vaisseau
     void FixedUpdate(){
         if (life <= 0){
             Destroy(this.gameObject);
-            SceneManager.LoadScene("TestMainMenu", LoadSceneMode.Single);
+            GameObject.Find("PanelUI").GetComponent<PanelUIManager>().OpenEndGamePanel();
         }
         //Ne pas sortir de l'écran
         Vector3 change = Vector3.zero;
         change.x = Input.GetAxis("Horizontal");
         change.y = Input.GetAxis("Vertical");
         if(canShoot && Input.GetKey("v")){
-            GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerBossWarning();
             StartCoroutine("Shoot");
             for(int i=0; i<weapons.Count; i++){
                 weapons[i].gameObject.GetComponent<WeaponPlayer>().shoot(transform);
@@ -111,7 +110,7 @@ public class PlayerShip : Vaisseau
     public void getDamage(int damage){
         if(!isInvincible){
             life -= damage;
-//            UnityEngine.EventSystems.EventSystem.current.GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,500);
+            GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,1000);
             StartCoroutine("InvincibiltyCount");
         }
     }

@@ -29,6 +29,7 @@ public class Scrolling : MonoBehaviour
         if(timer > time - 10 && timer < time - 1){
             //Lancer l'alerte Boss
             Debug.Log("Alerte Boss");
+            GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerBossWarning();
             level.GetComponent<EnemyManager>().enabled = false;
         }
         else if(timer > time - 2 && !bossIsActive){
@@ -50,6 +51,6 @@ public class Scrolling : MonoBehaviour
 
     IEnumerator FinishLevel(){
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("TestMainMenu", LoadSceneMode.Single);
+        GameObject.Find("PanelUI").GetComponent<PanelUIManager>().OpenEndLevelPanel();
     }
 }

@@ -26,8 +26,8 @@ public class PanelUIManager : MonoBehaviour
     private void Update() {
         if(currentPanel != indexPanel && Input.GetKey("p"))
             OpenIndexMenu();
-        if(currentPanel != indexPanel && Input.GetKey("o"))
-            OpenEndLevelPanel();
+        else if(currentPanel == indexPanel && Input.GetKey("p"))
+            CloseIndexMenu();
     }
 
     public void GoTo(GameObject target){
@@ -41,9 +41,10 @@ public class PanelUIManager : MonoBehaviour
     }   
 
     public void OpenIndexMenu(){
-        if(indexPanel != null)
+        if(indexPanel != null){
             GoTo(indexPanel);
-        else
+            Time.timeScale = 0;
+        }else
             Debug.Log("PanelUIManager : Index Panel is NULL");
     }
 
@@ -51,7 +52,7 @@ public class PanelUIManager : MonoBehaviour
         if(endLevelPanel != null)
             GoTo(endLevelPanel);
         else
-            Debug.Log("PanelUIManager : End LEvel Panel is NULL");
+            Debug.Log("PanelUIManager : End Level Panel is NULL");
     }
 
     public void OpenEndGamePanel(){
@@ -65,6 +66,7 @@ public class PanelUIManager : MonoBehaviour
         foreach (Transform child in transform)
             child.gameObject.SetActive(false);
         currentPanel = null;
+        Time.timeScale = 1;
     }
 
     public void GoToStartMenu(){
