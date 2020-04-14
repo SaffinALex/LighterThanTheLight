@@ -55,6 +55,6 @@ public class Scrolling : MonoBehaviour
 
     IEnumerator FinishLevel(){
         yield return new WaitForSeconds(2f);
-        GameObject.Find("PanelUI").GetComponent<PanelUIManager>().OpenEndLevelPanel();
+        GameObject.Find("PanelUI").GetComponent<PanelUIManager>().ToggleEndLevelPanel();
     }
 }

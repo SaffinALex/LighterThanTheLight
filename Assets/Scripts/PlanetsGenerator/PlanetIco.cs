@@ -58,7 +58,9 @@ public class PlanetIco : MonoBehaviour
 
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, BackgroundGenerator.player.transform.position);
+        float distance = 0;
+        if(BackgroundGenerator.player!= null)
+            Vector3.Distance(transform.position, BackgroundGenerator.player.transform.position);
         if (LOD)
         {
             int posZ = (int)transform.localPosition.z;

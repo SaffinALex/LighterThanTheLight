@@ -44,7 +44,7 @@ public class PlayerShip : Vaisseau
     void FixedUpdate(){
         if (life <= 0){
             Destroy(this.gameObject);
-            GameObject.Find("PanelUI").GetComponent<PanelUIManager>().OpenEndGamePanel();
+            GameObject.Find("PanelUI").GetComponent<PanelUIManager>().ToggleEndGamePanel();
         }
         //Ne pas sortir de l'écran
         Vector3 change = Vector3.zero;

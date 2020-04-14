@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtonFunctions : MonoBehaviour
 {
+    public string playSceneName;
     public void PlayGame(){
-        SceneManager.LoadScene("SceneTestAlex", LoadSceneMode.Single);
+        if (!GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(playSceneName))
+            Debug.Log("MainMenuButtonFunctions : Play Scene name give doesn't match to any In-Build Scenes");
     }
 
     public void ShowScores(){
