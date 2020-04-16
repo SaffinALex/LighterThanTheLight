@@ -518,7 +518,7 @@ PrefabInstance:
     - target: {fileID: 1171952212641748331, guid: d12123acb6e14304190a9869fc702317,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1171952212641748331, guid: d12123acb6e14304190a9869fc702317,
         type: 3}
@@ -1245,7 +1245,7 @@ PrefabInstance:
     - target: {fileID: 7791252474284189957, guid: 90a5ba9990d775f478faf11c830a5a87,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7791252474284189959, guid: 90a5ba9990d775f478faf11c830a5a87,
         type: 3}
@@ -1461,6 +1461,7 @@ MonoBehaviour:
   level: {fileID: 1283780477}
   boss: {fileID: 0}
   spawner: {fileID: 0}
+  spawnerBoss: {fileID: 0}
 --- !u!1 &2000344384
 GameObject:
   m_ObjectHideFlags: 0
