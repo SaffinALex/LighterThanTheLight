@@ -195,8 +195,8 @@ public class Node : MonoBehaviour
             childs.Add(nextChildNode);
             nextChildNode.childs.Clear();
             nextChildNode.SetComplete(false);
-            nextChildNode.scaleConstraints = 0;
         }
+        animator.SetTrigger("ConstraintsApparition");
     }
 
     public static float CalculateAngle(Vector3 from, Vector3 to) {
