@@ -469,6 +469,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f03f0cb0e93d694e98ada6b35544208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textObject: {fileID: 1656997149846889216}
+  TimeBeforeActivating: 5
 --- !u!114 &8229657317237294442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,6 +960,7 @@ MonoBehaviour:
   startSceneName: TestMainMenu
   endLevelSceneName: TestMainMenu
   endGameSceneName: TestMainMenu
+  pauseKeyBeingPressed: 0
 --- !u!114 &3796982077749445609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1024,6 +1027,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f03f0cb0e93d694e98ada6b35544208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textObject: {fileID: 195731455755214063}
+  TimeBeforeActivating: 5
 --- !u!1 &8822581648365293237
 GameObject:
   m_ObjectHideFlags: 0

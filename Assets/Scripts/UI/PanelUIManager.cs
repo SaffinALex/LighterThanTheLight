@@ -15,19 +15,31 @@ public class PanelUIManager : MonoBehaviour
     public string endLevelSceneName;
 
     public string endGameSceneName;
+    public bool pauseKeyBeingPressed;
     // Start is called before the first frame update
     void Start()
     {
+        pauseKeyBeingPressed = false;
         background = transform.GetChild(0).gameObject;
         foreach (Transform child in transform)
             child.gameObject.SetActive(false);
         currentPanel = null;
     }
     private void Update() {
-        if(currentPanel != indexPanel && Input.GetKey("p"))
-            OpenIndexMenu();
-        else if(currentPanel == indexPanel && Input.GetKey("p"))
-            CloseIndexMenu();
+        if(pauseKeyBeingPressed){
+            if(Input.GetKeyUp("p")){
+                pauseKeyBeingPressed = false;
+            }
+        }else{
+            if(currentPanel != indexPanel && Input.GetKeyDown("p")){
+                pauseKeyBeingPressed = true;
+                OpenIndexMenu();
+            }
+            else if(currentPanel == indexPanel && Input.GetKeyDown("p")){
+                pauseKeyBeingPressed = true;
+                CloseIndexMenu();
+            }
+        }
     }
 
     public void GoTo(GameObject target){
