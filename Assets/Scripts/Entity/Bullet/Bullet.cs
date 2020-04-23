@@ -4,36 +4,24 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int damage;
+    public float damage;
     public float speed;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        float posx = transform.position.x;
-        float posy = transform.position.y;
-        transform.position =  transform.position + new Vector3(0f, -1f, 0f) * speed * Time.deltaTime;
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        collision.gameObject.GetComponent<PlayerShip>().getDamage(damage);
-        Destroy(this.gameObject);
-    }
-
-    void OnBecameInvisible()
-    {
-        Destroy(this.gameObject);
-    }
-
-    public int getDamage()
+    public float getDamage()
     {
         return damage;
     }
+    public void setDamage(float s)
+    {
+        damage = s;
+    }
+    public float getSpeed()
+    {
+        return speed;
+    }
+    public void setSpeed(float s)
+    {
+        speed = s;
+    }
+
+    // Start is called before the first frame update
 }

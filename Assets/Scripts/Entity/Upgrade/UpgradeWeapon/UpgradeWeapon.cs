@@ -17,6 +17,7 @@ public abstract class UpgradeWeapon : Upgrade
 //A l'obtention de l'Upgrade
 
     public abstract void StartUpgrade(WeaponPlayer weapon);
+    public abstract void StartUpgrade(Weapon weapon);
 //Avant la suppression de l'Upgrade.
 
     public abstract void EndUpgrade(WeaponPlayer weapon);

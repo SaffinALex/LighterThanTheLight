@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpgradeSpeedWeapon : UpgradeWeapon
+public class UpgradeDamageWeapon : UpgradeWeapon
 {
     public float multiplicator;
     // Start is called before the first frame updat
@@ -19,7 +19,11 @@ public class UpgradeSpeedWeapon : UpgradeWeapon
 //A l'obtention de l'Upgrade
     override
     public void StartUpgrade(WeaponPlayer weapon){
-        weapon.setBulletSpeed(weapon.getBulletSpeed()*multiplicator);
+        weapon.setDamage(weapon.getDamage()*multiplicator);
+    }
+    override
+    public void StartUpgrade(Weapon weapon){
+       // weapon.setBulletSpeed(weapon.getBulletSpeed()*multiplicator);
     }
 //Avant la suppression de l'Upgrade.
     override

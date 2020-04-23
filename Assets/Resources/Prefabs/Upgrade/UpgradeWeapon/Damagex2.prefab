@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8912196057217071144
+--- !u!1 &6780522896525186792
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7232059111152988876}
-  - component: {fileID: -1994659459883942212}
+  - component: {fileID: 5190880069169918734}
+  - component: {fileID: 3893153559910100151}
   m_Layer: 0
-  m_Name: BaseWeaponPlayer
+  m_Name: Damagex2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7232059111152988876
+--- !u!4 &5190880069169918734
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8912196057217071144}
+  m_GameObject: {fileID: 6780522896525186792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.863613, y: 48.54663, z: 4.3210936}
+  m_LocalPosition: {x: 1.1868274, y: 0.18894646, z: -1.8753}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1994659459883942212
+--- !u!114 &3893153559910100151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8912196057217071144}
+  m_GameObject: {fileID: 6780522896525186792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4571899a94d62014a9690d1b8f4b605c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8001017825eefc946974bb15e793eb7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeWeapons: []
-  nbrMaxUpgrade: 0
-  size: 0
-  fireRateBase: 1
-  bullet: {fileID: 4416812285562530050, guid: 24da03922ed47d246a081cdd171e1995, type: 3}
-  bulletSpeedBase: 2
+  nom: 
+  description: 
+  icone: {fileID: 0}
+  multiplicator: 2

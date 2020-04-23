@@ -21,10 +21,17 @@ public class EnemyManager : MonoBehaviour
         if(canAppear){
             GameObject s = bots[Random.Range(0,bots.Count)];
             if(!s.activeSelf){
-                s.transform.gameObject.transform.position = new Vector3(0,0,0);
+                //s.transform.gameObject.transform.position = new Vector3(0,0,0);
                 s.transform.GetChild(0).gameObject.transform.position = new Vector3(spawnners[0].position.x, spawnners[0].position.y, spawnners[0].position.z);
                 s.SetActive(true);
                 s.transform.GetChild(0).GetComponent<EntitySpaceShipBehavior>().initialize(/*new Weapon(),etc... */);
+                if (s.transform.childCount >= 2){
+                    s.transform.GetChild(0).gameObject.transform.position = new Vector3(spawnners[1].position.x, spawnners[1].position.y, spawnners[1].position.z); 
+                    s.transform.GetChild(1).gameObject.transform.GetChild(0).position = new Vector3(spawnners[1].position.x, spawnners[1].position.y, spawnners[1].position.z); 
+                    s.transform.GetChild(1).gameObject.transform.GetChild(1).position = new Vector3(spawnners[1].position.x, spawnners[1].position.y, spawnners[1].position.z); 
+                } 
+              
+                
                 StartCoroutine("TimerEnemy");
             }
         }

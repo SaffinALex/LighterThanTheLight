@@ -26,7 +26,6 @@ public class Scrolling : MonoBehaviour
     void Update()
     {
         if(timer < time){
-            transform.position = new Vector3(transform.position.x, transform.position.y-speed*Time.deltaTime, transform.position.z);
             timer += Time.deltaTime;
         }
         if(timer > time - 10 && timer < time - 1 && !alertLaunched){

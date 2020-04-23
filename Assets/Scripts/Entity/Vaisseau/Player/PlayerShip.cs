@@ -51,10 +51,10 @@ public class PlayerShip : Vaisseau
         change.x = Input.GetAxis("Horizontal");
         change.y = Input.GetAxis("Vertical");
         if(canShoot && Input.GetKey("v")){
-            StartCoroutine("Shoot");
             for(int i=0; i<weapons.Count; i++){
                 weapons[i].gameObject.GetComponent<WeaponPlayer>().shoot(transform);
             }
+            StartCoroutine("Shoot");
         }
         //Onde tire
         if(canShootWave && Input.GetKey("o") && waveNumber > 0){
@@ -107,7 +107,7 @@ public class PlayerShip : Vaisseau
 
     }
 
-    public void getDamage(int damage){
+    public void getDamage(float damage){
         if(!isInvincible){
             life -= damage;
             GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,1000);
