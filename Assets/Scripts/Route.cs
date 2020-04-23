@@ -20,10 +20,13 @@ public class Route : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         controlPoints[0].position = controlPoints[0].position + new Vector3(0, -speedScrolling, 0);
         controlPoints[1].position = controlPoints[1].position + new Vector3(0, -speedScrolling, 0);
         controlPoints[2].position = controlPoints[2].position + new Vector3(0, -speedScrolling, 0);
         controlPoints[3].position = controlPoints[3].position + new Vector3(0, -speedScrolling, 0);
+        */
+        transform.position = transform.position + new Vector3(0, -speedScrolling, 0);
     }
 
     private void OnDrawGizmos()
