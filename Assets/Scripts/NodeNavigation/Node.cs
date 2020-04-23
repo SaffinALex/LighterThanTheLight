@@ -16,6 +16,8 @@ public class Node : MonoBehaviour
     public Node parent;
     //Représente les noeuds enfants
     public List<Node> childs;
+    //Représente l'intérieur de la node
+    public NodeElement nodeElement;
 
     protected List<GameObject> constraintsCubes = new List<GameObject>();
     public float scaleConstraints = 1.0f;
@@ -44,8 +46,7 @@ public class Node : MonoBehaviour
             lockElement.transform.parent = transform;
             lockElement.transform.localPosition = new Vector3(0,4.0f,0);
         }
-
-        // gameObject.SetActive(IsVisible() || (parent != null && parent.IsVisible()) );
+        GenerateNodeElement();
     }
 
     // Update is called once per frame
@@ -92,7 +93,11 @@ public class Node : MonoBehaviour
         this.accessible = a;
     }
 
-    public void SetComplete(bool c){
+    public void EnterNode(){
+        nodeElement.Begin();
+    }
+
+    void SetComplete(bool c){
         if(c && !this.complete){
             for (int i = 0; i < childs.Count; i++)
             {
@@ -155,6 +160,19 @@ public class Node : MonoBehaviour
      */
     public bool IsVisible(){
         return parent == null || (parent.IsAccessible());
+    }
+
+    void GenerateNodeElement(){
+        Debug.Log(nodeElement);
+        if(nodeElement != null) GameObject.Destroy(nodeElement.gameObject);
+        GameObject nodeElementObject = new GameObject("Node Element");
+        nodeElementObject.transform.parent = transform;
+        nodeElement = nodeElementObject.AddComponent<NodeShop>();
+        nodeElement.GetEvent().AddListener(CompleteNode);
+    }
+
+    void CompleteNode(){
+        SetComplete(true);
     }
 
     void SetOpacity(float opacity){

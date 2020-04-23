@@ -9,6 +9,7 @@ public class App : MonoBehaviour
     public static App app;
     public MusicManager sfxObject;
     public static MusicManager sfx;
+    public static PlayerManager playerManager = new PlayerManager();
 
     public void Awake(){
         DontDestroyOnLoad(gameObject);

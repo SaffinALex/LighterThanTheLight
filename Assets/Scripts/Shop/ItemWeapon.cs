@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class ItemWeapon : Item
 {
-    protected Weapon weapon;
+    protected WeaponPlayer weapon;
+
+    public WeaponPlayer ObtainItem(){
+        available = false;
+        return weapon;
+    }
 }

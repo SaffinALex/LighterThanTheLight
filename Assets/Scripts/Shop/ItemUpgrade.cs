@@ -6,9 +6,8 @@ public class ItemUpgrade : Item
 {
     protected Upgrade upgrade;
 
-    
-    public Upgrade BuyItem(int money){
-        if(money < this.price) return null;
+    public Upgrade ObtainItem() {
+        available = false;
         return upgrade;
     }
 }
