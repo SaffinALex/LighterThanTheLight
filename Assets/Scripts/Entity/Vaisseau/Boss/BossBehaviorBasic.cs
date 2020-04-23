@@ -39,16 +39,17 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     {
         base.FixedUpdate();
         move();
-        shoot();
+
+        if (transform.position.y <= p3)
+        {
+            shoot();
+        }
     }
 
     // Update is called once per frame
     new void Update()
     {
         base.Update();
-        Debug.Log(p3);
-        Debug.Log("position");
-        Debug.Log(transform.position.y);
 
         if(transform.position.y > p3)
         {
