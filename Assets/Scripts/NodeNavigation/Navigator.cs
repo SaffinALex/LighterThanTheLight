@@ -49,7 +49,7 @@ public class Navigator : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            currentNode.SetComplete(true);
+            currentNode.EnterNode();
         }
     }
 
