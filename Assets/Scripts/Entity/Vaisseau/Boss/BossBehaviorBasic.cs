@@ -40,7 +40,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         base.FixedUpdate();
         move();
 
-        if (transform.position.y <= p3)
+        if (transform.position.y <= p3 + 0.01)
         {
             shoot();
         }
@@ -51,7 +51,9 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     {
         base.Update();
 
-        if(transform.position.y > p3)
+        Debug.Log(transform.position.y);
+        Debug.Log(p3);
+        if(transform.position.y > p3 + 0.01)
         {
             positionY = p3;
         }

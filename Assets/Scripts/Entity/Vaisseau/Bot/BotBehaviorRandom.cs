@@ -12,8 +12,6 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
     {
         base.Start();
         Direction = Random.Range(0, 8);
-
-        //r2d.velocity = transform.forward * speed;
     }
 
     new void FixedUpdate()

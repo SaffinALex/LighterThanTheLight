@@ -18,8 +18,6 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
         p2 = transform.position.x;
         positionX = transform.position.x + 3;
         positionY = transform.position.y;
-
-        //r2d.velocity = transform.forward * speed;
     }
 
     new void FixedUpdate()
