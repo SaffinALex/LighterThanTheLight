@@ -39,6 +39,7 @@ public class Scrolling : MonoBehaviour
             if(boss != null){ 
                 //Le boss apparait
                 bossActive = Instantiate(boss, new Vector3(0,0,0), Quaternion.identity);
+                bossActive.transform.parent = level.transform;
                 bossActive.transform.position = spawnerBoss.position;
                 bossIsActive = true;
             }
