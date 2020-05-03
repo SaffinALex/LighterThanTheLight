@@ -155,7 +155,6 @@ public class ProceduralSpaceBackground : MonoBehaviour
         float minrange = FrontProps_MinLifetime + depthScale*(BackProps_MinLifetime - FrontProps_MinLifetime);
         float maxrange = FrontProps_MaxLifetime + depthScale*(BackProps_MaxLifetime - FrontProps_MaxLifetime);
         speed = distanceToTravel / Random.Range(minrange,maxrange);
-        Debug.Log(speed);
         return speed;
     }
 }
