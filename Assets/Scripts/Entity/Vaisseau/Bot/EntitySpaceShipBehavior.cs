@@ -53,16 +53,11 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        /*if (collision.gameObject.CompareTag("PlayerBullet"))
+        if (life <= 0 && !IsDead)
         {
-            life -= collision.gameObject.GetComponent<PlayerBullet>().getDamage();*/
-            if (life <= 0 && !IsDead)
-            {
-                IsDead = true;
-                animator.SetBool("isDead", true);
-            }
-            /*Destroy(collision.gameObject);
-        }*/
+            IsDead = true;
+            animator.SetBool("isDead", true);
+        }
     }
 
     public abstract void getDamage(int damage);

@@ -18,6 +18,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
 
     private float p1;
     private float p2;
+    private float p3;
 
     public bool sideIsDead;
 
@@ -26,11 +27,11 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     new void Start()
     {
         base.Start();
-        Direction = Random.Range(0, 2);
 
         p1 = transform.position.x + 3;
         p2 = transform.position.x;
-        positionX = transform.position.x + 3;
+        p3 = transform.position.y - 0.5f;
+        positionX = transform.position.x;
         positionY = transform.position.y;
     }
 
@@ -38,7 +39,11 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     {
         base.FixedUpdate();
         move();
-        shoot();
+
+        if (transform.position.y <= p3 + 0.01)
+        {
+            shoot();
+        }
     }
 
     // Update is called once per frame
@@ -46,8 +51,14 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     {
         base.Update();
 
-        base.Update();
-        if (transform.position.x >= p1 - 0.01)
+        Debug.Log(transform.position.y);
+        Debug.Log(p3);
+        if(transform.position.y > p3 + 0.01)
+        {
+            positionY = p3;
+        }
+
+        else if (transform.position.x >= p1 - 0.01)
         {
             positionX = transform.position.x - 3;
         }
@@ -131,5 +142,11 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         isShooting = true;
         isMoving = false;
         life = 6;
+
+        p1 = transform.position.x + 3;
+        p2 = transform.position.x;
+        p3 = transform.position.y - 0.5f;
+        positionX = transform.position.x;
+        positionY = transform.position.y;
     }
 }

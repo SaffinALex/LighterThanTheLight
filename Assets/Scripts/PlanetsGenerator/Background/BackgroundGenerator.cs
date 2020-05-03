@@ -62,7 +62,9 @@ public class BackgroundGenerator : MonoBehaviour
     }
 
     public static void setNewPivot(Transform pivot){
-        mainBackground.timerTranstionEnter = 0f;
-        mainBackground.pivotPoint = pivot;
+        if(mainBackground != null){
+            mainBackground.timerTranstionEnter = 0f;
+            mainBackground.pivotPoint = pivot;
+        }
     }
 }

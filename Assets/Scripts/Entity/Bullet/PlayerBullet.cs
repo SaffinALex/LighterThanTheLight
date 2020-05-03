@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBullet : MonoBehaviour
+public class PlayerBullet : Bullet
 {
-    public int damage;
-    public float speed;
 
     // Start is called before the first frame update
     void Start()
@@ -27,23 +25,13 @@ public class PlayerBullet : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public int getDamage(){
-        return damage;
-    }
-    public void setDamage(int d){
-        damage = d;
-    }
-    public void setSpeed(float s){
-        speed = s;
-    }
-    public float getSpeed(){
-        return speed;
-    }
+
+   
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Cockpit")
         || collision.gameObject.CompareTag("RightSide") || collision.gameObject.CompareTag("LeftSide")){
-            collision.gameObject.GetComponent<EntitySpaceShipBehavior>().getDamage(damage);
+            collision.gameObject.GetComponent<EntitySpaceShipBehavior>().getDamage((int)damage);
             Destroy(this.gameObject);
         }
     }

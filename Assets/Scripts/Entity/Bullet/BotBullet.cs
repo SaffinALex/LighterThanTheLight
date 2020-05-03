@@ -32,8 +32,5 @@ public class BotBullet : Bullet
         Destroy(this.gameObject);
     }
 
-    public int getDamage()
-    {
-        return damage;
-    }
+
 }

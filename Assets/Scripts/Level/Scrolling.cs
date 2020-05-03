@@ -26,7 +26,6 @@ public class Scrolling : MonoBehaviour
     void Update()
     {
         if(timer < time){
-            transform.position = new Vector3(transform.position.x, transform.position.y-speed*Time.deltaTime, transform.position.z);
             timer += Time.deltaTime;
         }
         if(timer > time - 10 && timer < time - 1 && !alertLaunched){
@@ -40,6 +39,7 @@ public class Scrolling : MonoBehaviour
             if(boss != null){ 
                 //Le boss apparait
                 bossActive = Instantiate(boss, new Vector3(0,0,0), Quaternion.identity);
+                bossActive.transform.parent = level.transform;
                 bossActive.transform.position = spawnerBoss.position;
                 bossIsActive = true;
             }

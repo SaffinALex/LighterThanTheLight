@@ -18,8 +18,6 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         routeToGo = 0;
         tParam = 0f;
         coroutine = true;
-
-        //r2d.velocity = transform.forward * speed;
     }
 
     new void FixedUpdate()
@@ -33,19 +31,15 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
     new void Update()
     {
         base.Update();
-
-        if (coroutine)
-        {
-            StartCoroutine("GoByRoute");
-        }
-
-        //positionY = transform.position.y - 0.5f;
     }
 
     override
     public void move()
     {
-        
+        if (coroutine)
+        {
+            StartCoroutine("GoByRoute");
+        }
     }
 
     override
@@ -97,9 +91,6 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
                 3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
                 Mathf.Pow(tParam, 3) * p3;
 
-            /*Vector3 direction = (new Vector3(shipPosition.x, shipPosition.y, transform.position.z) - transform.position).normalized;
-            force = new Vector2(direction.x, direction.y) * speedMove;
-            R2d.velocity = force;*/
             transform.position = new Vector3(shipPosition.x, shipPosition.y, 0);
             yield return new WaitForEndOfFrame();
         }
