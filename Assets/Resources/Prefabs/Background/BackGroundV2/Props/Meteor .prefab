@@ -148,5 +148,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 0, y: -1, z: 0}
-  minSize: 1
+  minSize: 3
   maxSize: 5

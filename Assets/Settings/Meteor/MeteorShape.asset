@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: MeteorShape
   m_EditorClassIdentifier: 
   planetRadius: 1.07
+  randomGeneration: 0
   noiseLayers:
   - enabled: 1
     useFirstLayerAsMask: 0
     noiseSettings:
       filterType: 0
       simpleNoiseSettings:
-        strength: 0.41
+        strength: 0.2
         numLayers: 1
-        baseRoughness: 0.95
-        roughness: 0.81
+        baseRoughness: 0.89
+        roughness: 2.86
         persistence: 0.13
         centre: {x: 4.99, y: 0, z: 0}
         minValue: 0

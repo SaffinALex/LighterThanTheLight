@@ -89,7 +89,7 @@ MonoBehaviour:
   autoUpdate: 1
   resolution: 4
   speedRotation: 5
-  devMod: 0
+  devMod: 1
   LOD: 1
   resolutionsLOD: 96000000f4010000b004000098080000ac0d0000
   shapeSettings: {fileID: 11400000, guid: 916c5ffbbbdd20548b1f6dd1f8733a57, type: 2}
@@ -148,5 +148,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 0, y: -1, z: 0}
-  minSize: 0.01
-  maxSize: 0.1
+  minSize: 0.8
+  maxSize: 1

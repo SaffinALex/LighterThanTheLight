@@ -29,4 +29,8 @@ public class BackgroundPropScript : MonoBehaviour
         GetComponent<MeshCollider>().sharedMesh = null;
         GetComponent<MeshCollider>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
     }
+
+    public void setDescentSpeed(float yspeed){
+        speed.y = -(Mathf.Abs(yspeed));
+    }
 }

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1488874878055998153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 299666025608649796}
   m_RootOrder: 2
@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 3859114784018688780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 299666025608649796}
   m_RootOrder: 0
@@ -130,9 +130,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   props:
-  - {fileID: 3486553368362715904, guid: 838ca06dfccf60d4caadda9b943188fc, type: 3}
   - {fileID: 1281990598274530298, guid: bb7463b4dbfbbb742a45579226b4f9ff, type: 3}
-  maxProps: 5
+  minDepth: 150
+  maxDepth: 500
+  margin: 25
+  maxProps: 20
+  FrontProps_MinLifetime: 3
+  FrontProps_MaxLifetime: 8
+  BackProps_MinLifetime: 25
+  BackProps_MaxLifetime: 35
 --- !u!54 &1067493536
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -211,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6969114166403524135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3648087959296590283}
@@ -235,7 +241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6997193801882070281
 Transform:
   m_ObjectHideFlags: 0
@@ -852,7 +858,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 750
+    maxNumParticles: 400
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -1555,25 +1561,25 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 1, g: 1, b: 1, a: 0.30588236}
         key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
+        key2: {r: 1, g: 1, b: 1, a: 0.30588236}
+        key3: {r: 1, g: 1, b: 1, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 65535
-        ctime2: 0
-        ctime3: 0
+        ctime2: 65535
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 30262
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
@@ -1581,7 +1587,7 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4014,9 +4020,9 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 0
-    ratio: 0
-    light: {fileID: 0}
+    enabled: 1
+    ratio: 1
+    light: {fileID: 9162458142146258760, guid: 8773370a475b887489076eb29281f94e, type: 3}
     randomDistribution: 1
     color: 1
     range: 1
