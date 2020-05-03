@@ -892,6 +892,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: PostProcess
       objectReference: {fileID: 0}
+    - target: {fileID: 1096232811647665373, guid: b602fb987ca760048b7724f6e9d7923a,
+        type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: c196117c11f06a24f91add1951621cb6,
+        type: 2}
     - target: {fileID: 1096232811647665374, guid: b602fb987ca760048b7724f6e9d7923a,
         type: 3}
       propertyPath: m_LocalPosition.x
