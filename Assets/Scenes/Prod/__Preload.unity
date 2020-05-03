@@ -220,7 +220,7 @@ MonoBehaviour:
   volume: 1
   allMusics:
   - name: TestSound
-    clip: {fileID: 8300000, guid: 8b197e4a057502c4c9b08d2a60b93c3c, type: 3}
+    clip: {fileID: 8300000, guid: 5da83a97dd9a4c0438b3578b01b0eae9, type: 3}
     loop: 1
   allSoundsEffects:
   - name: LaserShot

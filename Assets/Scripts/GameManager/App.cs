@@ -10,6 +10,7 @@ public class App : MonoBehaviour
     public MusicManager sfxObject;
     public static MusicManager sfx;
     public static PlayerManager playerManager = new PlayerManager();
+    protected static LevelGeneratorInfo levelGeneratorInfo;
 
     public void Awake(){
         DontDestroyOnLoad(gameObject);
@@ -29,5 +30,15 @@ public class App : MonoBehaviour
 
     public static bool IsInit(){
         return app != null;
+    }
+
+    //Permet de set le levelGeneratorInfo
+    public static void SetLevelGenerator(LevelGeneratorInfo l){
+        levelGeneratorInfo = l;
+    }
+
+    //Permet de get le levelGeneratorInfo
+    public static LevelGeneratorInfo GetLevelGenerator(){
+        return levelGeneratorInfo;
     }
 }
