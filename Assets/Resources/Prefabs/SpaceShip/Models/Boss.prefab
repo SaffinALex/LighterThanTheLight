@@ -105,8 +105,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 0
+  moveWithCustomTransform: {fileID: 6726654497701894528}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -4858,8 +4858,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 0
+  moveWithCustomTransform: {fileID: 6726654497701894528}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -9611,8 +9611,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 0
+  moveWithCustomTransform: {fileID: 6726654497701894528}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -14364,8 +14364,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 0
+  moveWithCustomTransform: {fileID: 6726654497701894528}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -19117,8 +19117,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 0
+  moveWithCustomTransform: {fileID: 6726654497701894528}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -23870,8 +23870,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 0
+  moveWithCustomTransform: {fileID: 6726654497701894528}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -28623,8 +28623,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 0
+  moveWithCustomTransform: {fileID: 6726654497701894528}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -33376,8 +33376,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 0
+  moveWithCustomTransform: {fileID: 6726654497701894528}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -38172,8 +38172,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 0
+  moveWithCustomTransform: {fileID: 6726654497701894528}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -42925,8 +42925,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 0
+  moveWithCustomTransform: {fileID: 6726654497701894528}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -47678,8 +47678,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 0
+  moveWithCustomTransform: {fileID: 6726654497701894528}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -52431,8 +52431,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 0
+  moveWithCustomTransform: {fileID: 6726654497701894528}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
