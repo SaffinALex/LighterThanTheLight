@@ -6,6 +6,10 @@ public class MeteorEvent : Event {
 
     protected float wait;
 
+    public override float GetDifficulty(){
+        return 1;
+    }
+
     protected override void BeginEvent()
     {
         wait = 2f;

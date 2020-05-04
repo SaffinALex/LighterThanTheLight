@@ -9,21 +9,27 @@ EditorBuildSettings:
     path: Assets/Scenes/Prod/__Preload.unity
     guid: b511cf6ea77c6084e9c8e108ac526ad0
   - enabled: 1
+    path: Assets/Scenes/UI/TestMainMenu.unity
+    guid: be971404d168a4b42a2be05851e15f45
+  - enabled: 1
+    path: Assets/Scenes/MainScenes/InLevel.unity
+    guid: aa0b56bcbf51e3145945bbff93796f56
+  - enabled: 1
+    path: Assets/Scenes/TestsDesign/Menu.unity
+    guid: ba886b62fca303542ba18375da995bb3
+  - enabled: 1
     path: Assets/Scenes/LevelGenerator/NodeScene.unity
     guid: 20584da7381a4a44b961437b81a98fe4
   - enabled: 1
     path: Assets/Scenes/LevelGenerator/LevelScene.unity
     guid: 8cc057b178417524da5887772fa92682
   - enabled: 1
-    path: Assets/Scenes/TestsDesign/Menu.unity
-    guid: ba886b62fca303542ba18375da995bb3
-  - enabled: 1
-    path: Assets/Scenes/UI/TestMainMenu.unity
-    guid: be971404d168a4b42a2be05851e15f45
-  - enabled: 0
-    path: Assets/Scenes/Dev/Levels/TestLevel.unity
-    guid: e677e3f94a0e4e44eaf75a411afbb501
+    path: Assets/Scenes/MainScenes/MainMenu.unity
+    guid: 6a5967b5c495bfd4189bc8af8022834c
   - enabled: 1
     path: Assets/Scenes/SceneTestAlex.unity
     guid: 905b3cdb749114d4fbdca01111da16af
+  - enabled: 0
+    path: Assets/Scenes/Dev/Levels/TestLevel.unity
+    guid: e677e3f94a0e4e44eaf75a411afbb501
   m_configObjects: {}

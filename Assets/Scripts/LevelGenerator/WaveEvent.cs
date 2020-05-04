@@ -7,6 +7,11 @@ public class WaveEvent : Event {
     public float wait;
     protected float currWait;
 
+    public override float GetDifficulty()
+    {
+        return 1;
+    }
+
     protected override void BeginEvent() {
         currWait = wait;
     }
