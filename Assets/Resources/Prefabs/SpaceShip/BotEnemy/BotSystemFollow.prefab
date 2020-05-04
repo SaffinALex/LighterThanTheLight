@@ -100,7 +100,7 @@ MonoBehaviour:
   weapon: {fileID: 5359264151696501870, guid: ef2544720feb09248ae5a728fe49704f, type: 3}
   life: 20
   speedMove: 0.6
-  scrolling: 0.3
+  scrolling: 0.2
   speedShoot: 0.7
   animator: {fileID: 5080416823633535157}
   isShooting: 1

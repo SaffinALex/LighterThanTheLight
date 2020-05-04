@@ -51,8 +51,6 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     {
         base.Update();
 
-        Debug.Log(transform.position.y);
-        Debug.Log(p3);
         if(transform.position.y > p3 + 0.01)
         {
             positionY = p3;
@@ -100,7 +98,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         if (isShooting)
         {
             StartCoroutine("Shoot");
-            weapon.GetComponent<Weapon>().shoot(transform);
+            weapon.GetComponent<Weapon>().shoot(transform.Find("Shoot position"));
         }
     }
     
