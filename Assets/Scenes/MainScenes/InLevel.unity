@@ -237,6 +237,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2364199843355145164, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364199843355145164, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 4609433687815977600, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -306,7 +316,7 @@ PrefabInstance:
         type: 3}
       propertyPath: weapons.Array.data[0]
       value: 
-      objectReference: {fileID: 2083393953272898251, guid: e5735a699bc087a4fafbd8c2b2395644,
+      objectReference: {fileID: 8912196057217071144, guid: 5b55086237e3bc941ac7f878d5eb5ed1,
         type: 3}
     - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}
@@ -323,6 +333,11 @@ PrefabInstance:
       propertyPath: life
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: acceleration
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4609433687815977607, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}
       propertyPath: m_Name
@@ -332,6 +347,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253427937726785058, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253427937726785058, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inSlope
+      value: 3.0286167
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253427937726785058, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outSlope
+      value: 3.0286167
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253427937726785058, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inWeight
+      value: 0.13385826
       objectReference: {fileID: 0}
     - target: {fileID: 8830797228413850533, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}
@@ -356,7 +391,7 @@ PrefabInstance:
         type: 3}
       propertyPath: props.Array.data[0]
       value: 
-      objectReference: {fileID: 3486553368362715904, guid: 838ca06dfccf60d4caadda9b943188fc,
+      objectReference: {fileID: 7549415077419360762, guid: 606306dce9eea7440af898218b014a99,
         type: 3}
     - target: {fileID: 6595348068774938789, guid: 2de89d69e11336044b27592d658d5b9e,
         type: 3}

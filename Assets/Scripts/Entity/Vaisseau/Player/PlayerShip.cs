@@ -23,6 +23,16 @@ public class PlayerShip : Vaisseau
     private bool canShootWave;
     private float width;
     private Transform oldPosition;
+
+    //Define the time to achieve the wanted direction
+    public float acceleration = 0.2f;
+
+
+    //Represent the timer to achieve
+    float timerChangeVelocity = 0.0f;
+    bool needChangeVelocity = false;
+    Vector2 lastVelocity;
+    Vector2 lastWantedVelocity;
     
     // Start is called before the first frame update
     void Start()
@@ -48,8 +58,8 @@ public class PlayerShip : Vaisseau
         }
         //Ne pas sortir de l'écran
         Vector3 change = Vector3.zero;
-        change.x = Input.GetAxis("Horizontal");
-        change.y = Input.GetAxis("Vertical");
+        change.x = Input.GetAxisRaw("Horizontal");
+        change.y = Input.GetAxisRaw("Vertical");
         if(canShoot && Input.GetKey("v")){
             for(int i=0; i<weapons.Count; i++){
                 weapons[i].gameObject.GetComponent<WeaponPlayer>().shoot(transform);
@@ -83,7 +93,30 @@ public class PlayerShip : Vaisseau
 
             //Si il ne Dash pas il peut bouger
             else{
-                myRigidBody.MovePosition(transform.position + change * speed * Time.deltaTime);
+                //myRigidBody.MovePosition(transform.position + change * speed * Time.deltaTime);
+
+                timerChangeVelocity += Time.deltaTime;
+                Vector2 wantedVelocity = new Vector2(change.x, change.y).normalized * speed;
+                Vector2 finalVelocity = wantedVelocity;
+
+                if (wantedVelocity != lastWantedVelocity) {
+                    timerChangeVelocity = 0.0f;
+                    needChangeVelocity = true;
+                    lastVelocity = myRigidBody.velocity;
+                    lastWantedVelocity = wantedVelocity;
+                }
+
+                if (needChangeVelocity) {
+                    timerChangeVelocity += Time.deltaTime;
+                    float percentage = timerChangeVelocity / acceleration;
+                    percentage = percentage > 1 ? 1 : percentage;
+                    finalVelocity = Vector2.Lerp(lastVelocity, wantedVelocity, timerChangeVelocity / acceleration);
+
+                    if(percentage == 1) needChangeVelocity = false;
+                }
+
+
+                myRigidBody.velocity = finalVelocity;
             }
         }
         
