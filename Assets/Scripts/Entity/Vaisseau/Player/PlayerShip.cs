@@ -94,7 +94,8 @@ public class PlayerShip : Vaisseau
     }
     private void OnTriggerEnter2D(Collider2D col){
         if(col.CompareTag("Enemy") ){ 
-            getDamage(5);
+            Debug.Log("touché");
+            getDamage(10);
         }
     }
     private void OnTriggerStay2D(Collider2D col){
