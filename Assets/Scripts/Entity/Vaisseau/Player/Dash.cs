@@ -41,4 +41,8 @@ public class Dash : MonoBehaviour
     public bool getCanDash(){
         return canDash;
     }
+
+    public void addUpgradeDashes(UpgradeDash u){
+        upgradeDashes.Add(u);
+    }
 }

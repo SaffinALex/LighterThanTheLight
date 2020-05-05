@@ -16,12 +16,8 @@ public class UpgradeShip : Upgrade
         
     }
 //A l'obtention de l'Upgrade
-    void StartUpgrade(PlayerShip v){
+    public void StartUpgrade(PlayerShip v){
 
-    }
-//A chaque update mettre à jour les caractéristiques.
-    void UpdateUpgrade(PlayerShip v){
-        
     }
 //Avant la suppression de l'Upgrade.
     void EndUpgrade(PlayerShip v){

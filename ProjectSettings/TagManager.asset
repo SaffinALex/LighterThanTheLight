@@ -12,6 +12,7 @@ TagManager:
   - RightSide
   - LeftSide
   - Level
+  - Upgrade
   layers:
   - Default
   - TransparentFX
