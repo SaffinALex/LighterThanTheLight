@@ -12,7 +12,7 @@ public class App : MonoBehaviour
     public static PlayerManager playerManager = new PlayerManager();
     protected static LevelGeneratorInfo levelGeneratorInfo;
     protected static float difficulty;
-    [SerializeField] protected EnemyList enemyList;
+    protected static EnemyList enemyList;
     [SerializeField] protected List<WaveEvent> waveEvents;
     [SerializeField] protected List<DisasterEvent> DisasterEvents;
     [SerializeField] protected List<BossEvent> BossEvents;
@@ -47,15 +47,27 @@ public class App : MonoBehaviour
         return levelGeneratorInfo;
     }
 
-    //Permet de set le levelGeneratorInfo
+    //Permet de set la difficulté
     public static void SetDifficulty(float d)
     {
         difficulty = d;
     }
 
-    //Permet de get le levelGeneratorInfo
+    //Permet de get la difficulté
     public static float GetDifficulty()
     {
         return difficulty;
+    }
+
+    //Permet de set l'enemyList
+    public static void SetEnemyList(EnemyList e)
+    {
+        enemyList = e;
+    }
+
+    //Permet de get l'enemyList
+    public static EnemyList GetEnemyList()
+    {
+        return enemyList;
     }
 }

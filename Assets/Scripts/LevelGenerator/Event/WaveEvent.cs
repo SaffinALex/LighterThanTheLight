@@ -22,4 +22,8 @@ public class WaveEvent : Event {
         if(currWait <= 0) this.End();
     }
 
+    public void spawnEnemy()
+    {
+
+    }
 }
