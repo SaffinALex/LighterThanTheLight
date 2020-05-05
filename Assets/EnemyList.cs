@@ -6,10 +6,10 @@ public class EnemyList : MonoBehaviour
 {
     public List<ListEnemyBehavior> list = new List<ListEnemyBehavior>();
     private int difficulLevel;
-    private List<EntitySpaceShipBehavior> listEnemy = new List<EntitySpaceShipBehavior>();
+    private List<GameObjectBotBehaviour> listEnemy = new List<GameObjectBotBehaviour>();
 
     public int DifficulLevel { get => difficulLevel; set => difficulLevel = value; }
-    public List<EntitySpaceShipBehavior> ListEnemy { get => listEnemy; set => listEnemy = value; }
+    public List<GameObjectBotBehaviour> ListEnemy { get => listEnemy; set => listEnemy = value; }
 
     // Start is called before the first frame update
     void Start()

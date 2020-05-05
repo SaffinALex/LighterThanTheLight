@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ListEnemyBehavior : MonoBehaviour
 {
-    public List<EntitySpaceShipBehavior> listEnemy = new List<EntitySpaceShipBehavior>();
+    public List<GameObjectBotBehaviour> listEnemy = new List<GameObjectBotBehaviour>();
 
     // Start is called before the first frame update
     void Start()
