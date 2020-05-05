@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1861121787632083419}
   - component: {fileID: 1861121787632083418}
+  - component: {fileID: 7065862592095880994}
   m_Layer: 10
   m_Name: BotSystemRandom+
   m_TagString: Enemy
@@ -51,6 +52,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7065862592095880994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861121787632083417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465cb594e08c2634da50cd136695edfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 1861121788763806056}
 --- !u!1 &1861121788763806059
 GameObject:
   m_ObjectHideFlags: 0

@@ -52654,6 +52654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7147630170928269076}
   - component: {fileID: 7147630170928269077}
+  - component: {fileID: 7891728673921326697}
   m_Layer: 10
   m_Name: BossSystem
   m_TagString: Enemy
@@ -52697,6 +52698,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7891728673921326697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7147630170928269079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98bf86ecf38dd8b49b28b1bf2d80ade4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 7147630171472374473}
+  listEntity:
+  - {fileID: 7147630171472374473}
+  - {fileID: 7147630170933027070}
+  - {fileID: 7147630170521740890}
 --- !u!1 &7147630170933027066
 GameObject:
   m_ObjectHideFlags: 0

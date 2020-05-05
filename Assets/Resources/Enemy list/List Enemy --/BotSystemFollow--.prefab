@@ -90,6 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5841035006419391916}
   - component: {fileID: 5841035006419391917}
+  - component: {fileID: 7744643278463955253}
   m_Layer: 10
   m_Name: BotSystemFollow--
   m_TagString: Enemy
@@ -131,6 +132,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7744643278463955253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5841035006419391918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465cb594e08c2634da50cd136695edfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 5841035007433551133}
 --- !u!1 &5841035007433551132
 GameObject:
   m_ObjectHideFlags: 0

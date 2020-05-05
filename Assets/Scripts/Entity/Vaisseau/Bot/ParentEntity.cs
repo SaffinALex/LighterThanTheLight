@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ListEnemyBehavior : MonoBehaviour
+public class ParentEntity : MonoBehaviour
 {
-    public List<GameObjectBotBehaviour> listEnemy = new List<GameObjectBotBehaviour>();
+    public EntitySpaceShipBehavior entity;
 
     // Start is called before the first frame update
     void Start()

@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyList : MonoBehaviour
 {
     public List<ListEnemyBehavior> list = new List<ListEnemyBehavior>();
-    private int difficulLevel;
-    private List<GameObjectBotBehaviour> listEnemy = new List<GameObjectBotBehaviour>();
+    private int difficultLevel;
+    private List<GameObject> listEnemy = new List<GameObject>();
 
-    public int DifficulLevel { get => difficulLevel; set => difficulLevel = value; }
-    public List<GameObjectBotBehaviour> ListEnemy { get => listEnemy; set => listEnemy = value; }
+    public int DifficultLevel { get => difficultLevel; set => difficultLevel = value; }
+    public List<GameObject> ListEnemy { get => listEnemy; set => listEnemy = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class EnemyList : MonoBehaviour
 
     public void CallList()
     {
-        switch (DifficulLevel)
+        switch (DifficultLevel)
         {
             case 0:
                 ListEnemy = list[0].listEnemy;

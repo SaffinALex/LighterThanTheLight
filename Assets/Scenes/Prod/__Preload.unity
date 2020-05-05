@@ -165,6 +165,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxObject: {fileID: 1198778463}
+  enemyList: {fileID: 0}
+  waveEvents: []
+  DisasterEvents: []
+  BossEvents: []
 --- !u!114 &211221981
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,12 @@ public abstract class Event : MonoBehaviour
     protected UnityEvent eventBegin = new UnityEvent();
     protected UnityEvent eventEnd = new UnityEvent();
 
+    private List<GameObject> listEnemies = new List<GameObject>();
+    private float difficulty;
+
+    protected List<GameObject> ListEnemies { get => listEnemies; set => listEnemies = value; }
+    protected float Difficulty { get => difficulty; set => difficulty = value; }
+
     private bool start = false;
     private bool end = false;
     //Si nombre négatif alors c'est un event qui se lance seulement si son prédécesseur qui a aussi un temps négatif se termine

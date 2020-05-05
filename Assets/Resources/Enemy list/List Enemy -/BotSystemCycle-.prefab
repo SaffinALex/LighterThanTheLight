@@ -295,6 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4362687001117018910}
   - component: {fileID: 4362687001117018911}
+  - component: {fileID: 6696541808564296745}
   m_Layer: 10
   m_Name: BotSystemCycle-
   m_TagString: Enemy
@@ -337,6 +338,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6696541808564296745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362687001117018908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465cb594e08c2634da50cd136695edfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 4362687002114929583}
 --- !u!1 &4362687002114929582
 GameObject:
   m_ObjectHideFlags: 0

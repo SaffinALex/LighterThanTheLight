@@ -11,6 +11,11 @@ public class App : MonoBehaviour
     public static MusicManager sfx;
     public static PlayerManager playerManager = new PlayerManager();
     protected static LevelGeneratorInfo levelGeneratorInfo;
+    protected static float difficulty;
+    [SerializeField] protected EnemyList enemyList;
+    [SerializeField] protected List<WaveEvent> waveEvents;
+    [SerializeField] protected List<DisasterEvent> DisasterEvents;
+    [SerializeField] protected List<BossEvent> BossEvents;
 
     public void Awake(){
         DontDestroyOnLoad(gameObject);
@@ -40,5 +45,17 @@ public class App : MonoBehaviour
     //Permet de get le levelGeneratorInfo
     public static LevelGeneratorInfo GetLevelGenerator(){
         return levelGeneratorInfo;
+    }
+
+    //Permet de set le levelGeneratorInfo
+    public static void SetDifficulty(float d)
+    {
+        difficulty = d;
+    }
+
+    //Permet de get le levelGeneratorInfo
+    public static float GetDifficulty()
+    {
+        return difficulty;
     }
 }

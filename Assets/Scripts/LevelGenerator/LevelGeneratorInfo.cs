@@ -13,12 +13,15 @@ public class LevelGeneratorInfo : MonoBehaviour {
     protected bool levelEnd = false;
 
     public List<Event> events = new List<Event>();
+    private float difficulty = 0.0f;
 
     int currentStaticEvent = -1;
     List<int> eventsDynamic = new List<int>();
     List<float> eventsDynamicTimer = new List<float>();
 
     protected UnityEvent eventEnd = new UnityEvent();
+
+    public float Difficulty { get => difficulty; set => difficulty = value; }
 
     void Start(){
         Debug.Log("LevelGeneratorInfo ! " + events.Count);
