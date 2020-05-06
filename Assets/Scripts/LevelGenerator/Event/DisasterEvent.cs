@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteorEvent : Event {
+public class DisasterEvent : Event {
 
     protected float wait;
 

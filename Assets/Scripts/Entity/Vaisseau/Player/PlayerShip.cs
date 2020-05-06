@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class PlayerShip : Vaisseau
+public class PlayerShip : Ship
 {
     public GameObject wave;
     public Dash dash;
-    public int vieShield;
+    public int shieldLife;
     public int recoveryTime;
     public int waveDamage;
     public int waveNumber;
@@ -37,7 +37,6 @@ public class PlayerShip : Vaisseau
     // Start is called before the first frame update
     void Start()
     {
-        //animator = GetComponent<Animator>();
         posx = 0;
         isInvincible = false;
         canShootWave = true;
@@ -45,8 +44,10 @@ public class PlayerShip : Vaisseau
         for(int i=0; i<weapons.Count; i++){
             weapons[i].gameObject.GetComponent<WeaponPlayer>().Initialize();
         }
-//        width = camera.orthographicSize;
-       // oldPosition.position = transform.position;
+        for(int i=0; i<upgradeShip.Count; i++){
+            upgradeShip[i].StartUpgrade(this);
+            if(shieldLife > maxShieldLife) shieldLife = maxShieldLife;
+        }
 
     }
 
@@ -83,7 +84,7 @@ public class PlayerShip : Vaisseau
             if(change.x < 0)
                 StartCoroutine("FlippingLeft");
             if(change.x > 0 )
-             StartCoroutine("FlippingRight");
+                StartCoroutine("FlippingRight");
         }
         else{
             //Si il Dash il ne peut pas bouger et (attaquer?)
@@ -127,23 +128,25 @@ public class PlayerShip : Vaisseau
     }
     private void OnTriggerEnter2D(Collider2D col){
         if(col.CompareTag("Enemy") ){ 
-            getDamage(5);
+            Debug.Log("touché");
+            getDamage(10);
+        }
+        if(col.CompareTag("Upgrade") ){ 
+            //Mettre l'Upgrade dans l'inventaire.
         }
     }
     private void OnTriggerStay2D(Collider2D col){
         if(col.CompareTag("Enemy") ){ 
-            getDamage(5);
+            getDamage(10);
         }
-    }
-    private void OnCollisionEnter2D(Collision2D col){
-        //A supprimer quand bullet sera changé, appeler getDamage() dans BotBullet
-
     }
 
     public void getDamage(float damage){
         if(!isInvincible){
-            life -= damage;
-            GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,1000);
+            if(shieldLife <= 0) life -= damage;
+            else shieldLife -= 1;
+            GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,100);
+            //Insérer la vie du shield pour l'UI ici.
             StartCoroutine("InvincibiltyCount");
         }
     }

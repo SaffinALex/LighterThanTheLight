@@ -46,6 +46,9 @@ public abstract class WeaponPlayer : MonoBehaviour
     public void setFireRate(float s){
         fireRate = s;
     }
+    public void addUpgradeWeapon(UpgradeWeapon u){
+        upgradeWeapons.Add(u);
+    }
 
     private IEnumerator Shoot(){
         canShoot = false;

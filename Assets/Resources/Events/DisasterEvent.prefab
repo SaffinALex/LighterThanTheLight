@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4683425396249285656}
   - component: {fileID: 4683425396249285663}
   m_Layer: 0
-  m_Name: MeteorEvent
+  m_Name: DisasterEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
