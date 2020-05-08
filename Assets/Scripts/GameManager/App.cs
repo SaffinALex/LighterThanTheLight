@@ -13,11 +13,11 @@ public class App : MonoBehaviour
     protected static LevelGeneratorInfo levelGeneratorInfo;
     protected static float difficulty = 0.0f;
     protected static EnemyList enemyList;
-    [SerializeField] protected List<WaveEvent> waveEvents;
-    [SerializeField] protected List<DisasterEvent> DisasterEvents;
-    [SerializeField] protected List<BossEvent> BossEvents;
+    [SerializeField] protected List<Event> waveEvents;
+    [SerializeField] protected List<Event> disasterEvents;
+    [SerializeField] protected List<Event> bossEvents;
 
-
+    protected Dictionary<string, List<Event>> ALL_EVENTS = new Dictionary<string, List<Event>>();
 
     public void Awake(){
         DontDestroyOnLoad(gameObject);
@@ -31,6 +31,8 @@ public class App : MonoBehaviour
         sfx = sfxObject;
 
         sfx.PlaySound("TestSound", 3);
+
+        addEvents();
 
         SceneManager.LoadScene(1);
     }
@@ -71,5 +73,20 @@ public class App : MonoBehaviour
     public static EnemyList GetEnemyList()
     {
         return enemyList;
+    }
+
+    //Remplit le Dico All_Events d'events
+    public void addEvents()
+    {
+        ALL_EVENTS.Add("Wave", waveEvents);
+        ALL_EVENTS.Add("Disaster", disasterEvents);
+        ALL_EVENTS.Add("Boss", bossEvents);
+
+        var enumerator = ALL_EVENTS.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            Debug.Log(enumerator.Current.Key+" : "+enumerator.Current.Value);
+        }
+
     }
 }

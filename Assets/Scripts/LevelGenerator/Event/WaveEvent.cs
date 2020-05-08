@@ -9,16 +9,16 @@ public class WaveEvent : Event
     protected float currWait;
     protected float currWait2;
     protected float currWait3;
-    protected int nbSpawn;
-    protected int nbPause;
+    public int nbSpawn;
+    public int nbPause;
     protected float factorDiff;
-    protected int nbEnemies;
+    public int nbEnemies;
     protected List<GameObject> list;
 
     public float pause = 1.0f;
-    public float spawn;
-    public float timeP;
-    public bool b;
+    private float spawn;
+    private float timeP;
+    private bool b;
 
     public override float GetDifficulty()
     {
@@ -29,14 +29,10 @@ public class WaveEvent : Event
     {
         list = new List<GameObject>();
         b = false;
-        wait = 30;
         currWait = wait;
         currWait2 = 0;
         currWait3 = 0;
         factorDiff = 0;
-        nbSpawn = 2;
-        nbPause = 3;
-        nbEnemies = 10;
         ListVector3.Add(new Vector3(-1, 0, 0));
         ListVector3.Add(new Vector3(1, 0, 0));
         timeP = (wait - nbPause) / (nbPause + 1);
