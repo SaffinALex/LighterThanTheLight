@@ -45,3 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeStart: -1
   wait: 10
+  nbSpawn: 2
+  nbPause: 0
+  nbEnemies: 10
+  pause: 1

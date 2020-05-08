@@ -165,10 +165,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxObject: {fileID: 1198778463}
-  enemyList: {fileID: 0}
-  waveEvents: []
-  DisasterEvents: []
-  BossEvents: []
+  spawnList:
+  - {x: 0, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: -2, y: 0, z: 0}
+  waveEvents:
+  - {fileID: 364398552571127021, guid: 181152d3f5ec012429a356d4141cab5a, type: 3}
+  - {fileID: 4967160765944767226, guid: c6c5f01169e90e44b8035edd9958e377, type: 3}
+  - {fileID: 1011742079119982669, guid: 27e4783f79d284e4fab70f590633dad9, type: 3}
+  - {fileID: 2652680351972472726, guid: 4604a2a0fe394854b8fb0f6ce1410e39, type: 3}
+  - {fileID: 8420325586242105233, guid: 0f8d7cf4230bba14ebf7a31b99132377, type: 3}
+  - {fileID: 2082660320601031117, guid: a60c7049fc80f5540bc823498ef0160c, type: 3}
+  - {fileID: 5680380137733526352, guid: f978cf34cb01f8e44a1b901b478fe0f4, type: 3}
+  - {fileID: 1685339730243555455, guid: e346834e779e3204a96f4d30f2a13c86, type: 3}
+  - {fileID: 2729336179883044580, guid: 29f3db2cbdc24f14781ddfb836c3b42f, type: 3}
+  - {fileID: 1571194716684214947, guid: 89f24026cce0aec46b71559f6f7fc39d, type: 3}
+  disasterEvents: []
+  bossEvents: []
 --- !u!114 &211221981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +236,7 @@ MonoBehaviour:
   startOnPlay: 1
   maxDistance: 50
   minDistance: 20
-  volume: 1
+  volume: 0
   allMusics:
   - name: TestSound
     clip: {fileID: 8300000, guid: 5da83a97dd9a4c0438b3578b01b0eae9, type: 3}
