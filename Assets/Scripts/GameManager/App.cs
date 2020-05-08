@@ -11,7 +11,7 @@ public class App : MonoBehaviour
     public static MusicManager sfx;
     public static PlayerManager playerManager = new PlayerManager();
     protected static LevelGeneratorInfo levelGeneratorInfo;
-    protected static float difficulty;
+    protected static float difficulty = 0.0f;
     protected static EnemyList enemyList;
     [SerializeField] protected List<WaveEvent> waveEvents;
     [SerializeField] protected List<DisasterEvent> DisasterEvents;

@@ -7,6 +7,7 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     private Rigidbody2D r2d;
     private int direction;
     private bool isDead;
+    private float difficult;
 
     public GameObject weapon;
     public float life;
@@ -22,6 +23,8 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     public Rigidbody2D R2d { get => r2d; set => r2d = value; }
     public int Direction { get => direction; set => direction = value; }
     public bool IsDead { get => isDead; set => isDead = value; }
+    public float Difficult { get => difficult; set => difficult = value; }
+
     //public bool IsAtRight { get => isAtRight; set => isAtRight = value; }
 
 
