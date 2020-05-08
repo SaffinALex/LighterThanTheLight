@@ -17,7 +17,7 @@ public class App : MonoBehaviour
     [SerializeField] protected List<Event> disasterEvents;
     [SerializeField] protected List<Event> bossEvents;
 
-    public Dictionary<string, List<Event>> ALL_EVENTS = new Dictionary<string, List<Event>>();
+    public static Dictionary<string, List<Event>> ALL_EVENTS = new Dictionary<string, List<Event>>();
 
     public void Awake(){
         DontDestroyOnLoad(gameObject);
