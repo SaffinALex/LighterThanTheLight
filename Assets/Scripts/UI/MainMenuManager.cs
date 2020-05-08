@@ -5,14 +5,21 @@ using UnityEngine;
 public class MainMenuManager : MonoBehaviour{
     private bool isOnTitle;
 
+    public float waitDelay = 8.0f;
+    public float waitTimer;
+
     void Start() {
         isOnTitle = true;
+        waitTimer = 0.0f;
     }
 
     void Update() {
-        if(isOnTitle && Input.anyKey){
+        if(isOnTitle)
+            waitTimer += Time.deltaTime;
+
+        if(waitTimer >= waitDelay && isOnTitle && Input.anyKey){
             isOnTitle = !isOnTitle;
-            gameObject.transform.Find("PressAnyButtonText").gameObject.SetActive(false);
+            gameObject.transform.Find("TitlePanel").Find("PressAnyButtonText").gameObject.SetActive(false);
             GetComponentInChildren<TitleScreenTitleText>().toggleTitleText();
             GetComponentInChildren<TitleScreenButtons>().show();
 
