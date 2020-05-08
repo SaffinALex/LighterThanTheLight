@@ -33,8 +33,11 @@ public class WaveEvent : Event
         currWait2 = 0;
         currWait3 = 0;
         factorDiff = 0;
-        ListVector3.Add(new Vector3(-1, 0, 0));
-        ListVector3.Add(new Vector3(1, 0, 0));
+        List<Vector3> vect3 = App.GetSpawn();
+        for(int i=0; i<nbSpawn; i++)
+        {
+            ListVector3.Add(vect3[Random.Range(0, vect3.Count)]);
+        }
         timeP = (wait - nbPause) / (nbPause + 1);
         spawn = (wait - 2) / nbEnemies;
 
