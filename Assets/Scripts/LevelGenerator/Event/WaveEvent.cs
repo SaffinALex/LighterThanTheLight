@@ -127,4 +127,11 @@ public class WaveEvent : Event
         factorDiff += 10f / wait;
         Score = Difficulty + nbSpawn + nbPause + factorDiff;
     }
+
+    override
+    public float GetScore()
+    {
+        scoreCalcul();
+        return Score;
+    }
 }

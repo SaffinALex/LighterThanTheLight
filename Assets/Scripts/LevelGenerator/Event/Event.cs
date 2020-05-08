@@ -12,7 +12,7 @@ public abstract class Event : MonoBehaviour
 {
     protected UnityEvent eventBegin = new UnityEvent();
     protected UnityEvent eventEnd = new UnityEvent();
-    private float score = 0;
+    [SerializeField] private float score = 0;
 
     private EnemyList enemyList = new EnemyList();
     private List<GameObject> listEnemies = new List<GameObject>();
@@ -47,6 +47,9 @@ public abstract class Event : MonoBehaviour
 
     //Fonction qui sera appelé lorsque l'event fonctionne
     protected abstract void UpdateEvent();
+
+    //Fonction qui sera appelé lorsque l'event fonctionne
+    public abstract float GetScore();
 
     //Renvois vrai si l'event est dynamique
     public bool IsDynamic(){
