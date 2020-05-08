@@ -13,17 +13,15 @@ public abstract class Event : MonoBehaviour
     protected UnityEvent eventBegin = new UnityEvent();
     protected UnityEvent eventEnd = new UnityEvent();
     private float score = 0;
-    private List<Vector3> listVector3 = new List<Vector3>();
 
     private EnemyList enemyList = new EnemyList();
     private List<GameObject> listEnemies = new List<GameObject>();
     private float difficulty;
 
-    protected List<GameObject> ListEnemies { get => listEnemies; set => listEnemies = value; }
-    protected float Difficulty { get => difficulty; set => difficulty = value; }
-    protected EnemyList EnemyList { get => enemyList; set => enemyList = value; }
-    protected float Score { get => score; set => score = value; }
-    protected List<Vector3> ListVector3 { get => listVector3; set => listVector3 = value; }
+    public List<GameObject> ListEnemies { get => listEnemies; set => listEnemies = value; }
+    public float Difficulty { get => difficulty; set => difficulty = value; }
+    public EnemyList EnemyList { get => enemyList; set => enemyList = value; }
+    public float Score { get => score; set => score = value; }
 
     private bool start = false;
     private bool end = false;

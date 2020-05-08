@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossEvent : Event
+public class BossEvent : WaveEvent
 {
     public float wait;
     protected float currWait;
-    
-    public override float GetDifficulty()
-    {
-        return 1;
-    }
 
     protected override void BeginEvent()
     {

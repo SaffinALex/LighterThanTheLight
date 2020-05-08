@@ -14,19 +14,16 @@ public class WaveEvent : Event
     protected float factorDiff;
     public int nbEnemies;
     protected List<GameObject> list;
+    private List<Vector3> listVector3;
 
     public float pause = 1.0f;
     private float spawn;
     private float timeP;
     private bool b;
 
-    public override float GetDifficulty()
-    {
-        return 1;
-    }
-
     protected override void BeginEvent()
     {
+        listVector3 = new List<Vector3>();
         list = new List<GameObject>();
         b = false;
         currWait = wait;
@@ -36,7 +33,7 @@ public class WaveEvent : Event
         List<Vector3> vect3 = App.GetSpawn();
         for(int i=0; i<nbSpawn; i++)
         {
-            ListVector3.Add(vect3[Random.Range(0, vect3.Count)]);
+            listVector3.Add(vect3[Random.Range(0, vect3.Count)]);
         }
         timeP = (wait - nbPause) / (nbPause + 1);
         spawn = (wait - 2) / nbEnemies;
@@ -112,7 +109,7 @@ public class WaveEvent : Event
     //Méthode de spawn d'ennemies
     public void spawnEnemy()
     {
-        GameObject g = Instantiate(list[0], ListVector3[Random.Range(0, ListVector3.Count)], Quaternion.identity);
+        GameObject g = Instantiate(list[0], listVector3[Random.Range(0, listVector3.Count)], Quaternion.identity);
         list.RemoveAt(0);
 
         /*GameObject g = Instantiate(list[Random.Range(0, list.Count)], new Vector3(0, 0, 0), Quaternion.identity);
