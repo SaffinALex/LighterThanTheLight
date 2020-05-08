@@ -48,9 +48,6 @@ public abstract class Event : MonoBehaviour
     //Fonction qui sera appelé lorsque l'event fonctionne
     protected abstract void UpdateEvent();
 
-    //Fonction qui sera appelé lorsque l'event fonctionne
-    public abstract float GetDifficulty();
-
     //Renvois vrai si l'event est dynamique
     public bool IsDynamic(){
         return timeStart >= 0;
