@@ -53,8 +53,23 @@ public class HealthBarControl : MonoBehaviour
         currentGhostDelay = ghostDelay;
     }
 
- public void setHealth(int health){
-
+    public void setHealth(int health){
         gameObject.transform.Find("HealthText").GetComponent<TextMeshProUGUI>().text = (this.healthPercent*100).ToString("0");
+    }
+
+    public void setShields(int nbShields){
+        if(nbShields == 0){
+            gameObject.transform.Find("HealthText").gameObject.SetActive(true);
+            gameObject.transform.Find("ShieldBar").gameObject.SetActive(false);
+        } else {
+            if (gameObject.transform.Find("HealthText").gameObject.activeSelf){
+                gameObject.transform.Find("HealthText").gameObject.SetActive(false);
+            }
+            if (!gameObject.activeSelf){
+                gameObject.transform.Find("ShieldBar").gameObject.SetActive(true);
+            }
+
+            gameObject.transform.GetComponentInChildren<ShieldBarControl>().setNbShield(nbShields);
+        }
     }
 }

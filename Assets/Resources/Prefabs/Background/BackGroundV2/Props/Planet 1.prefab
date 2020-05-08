@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 7549415077419360760}
   - component: {fileID: 7549415077419360763}
   - component: {fileID: 7549415077419360767}
-  m_Layer: 0
+  - component: {fileID: 747892561346354959}
+  - component: {fileID: -7965939998676893008}
+  m_Layer: 14
   m_Name: Planet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,3 +129,32 @@ MonoBehaviour:
   maxOrbitSpeed: 1
   minRotationSpeed: 20
   maxRotationSpeed: 50
+--- !u!114 &747892561346354959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7549415077419360762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58dfea0106b802b4da6d3085aba2f48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: 0, y: -1, z: 0}
+  minSize: 5
+  maxSize: 6
+--- !u!64 &-7965939998676893008
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7549415077419360762}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 0}

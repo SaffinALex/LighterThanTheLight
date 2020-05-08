@@ -53,7 +53,6 @@ public class ProceduralSpaceBackground : MonoBehaviour
         Vector3 scaleMult = new Vector3(1/transform.parent.transform.Find("Props").transform.localScale.x, 1/transform.parent.transform.Find("Props").transform.localScale.y, 1/transform.parent.transform.Find("Props").transform.localScale.z); 
         newProp.transform.localPosition = new Vector3(randomWidth*scaleMult.x, randomHeight*scaleMult.y, depth*scaleMult.z);
         newProp.GetComponent<BackgroundPropScript>().setDescentSpeed(getPropRandomDepthScaledSpeed(depth,cameraHeight));
-        
     }
 
     private void placeAtRandomTopPos(GameObject newProp){
@@ -73,9 +72,7 @@ public class ProceduralSpaceBackground : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other) {
-        Destroy(other.gameObject);
-        int randomIndex = Random.Range(0, props.Count);
-        placeAtRandomTopPos(Instantiate(props[randomIndex]));
+        placeAtRandomTopPos(other.gameObject);
     }
 
     private Mesh getGeneratedMesh(float frontDepth, float backDepth){

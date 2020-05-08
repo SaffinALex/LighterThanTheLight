@@ -632,6 +632,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7809563407705820986}
     m_Modifications:
+    - target: {fileID: 5351574858980721243, guid: 808a1501ccef1414b8cb7bc25214aa1b,
+        type: 3}
+      propertyPath: maxAlpha
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351574858980721243, guid: 808a1501ccef1414b8cb7bc25214aa1b,
+        type: 3}
+      propertyPath: minAlpha
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8683723473116905650, guid: 808a1501ccef1414b8cb7bc25214aa1b,
         type: 3}
       propertyPath: m_textInfo.characterCount

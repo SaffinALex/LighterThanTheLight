@@ -13,7 +13,6 @@ public class ChargeDisplayControl : MonoBehaviour
     public bool showing = false;
     public bool hiding = false;
     public Image image;
-    public RectTransform rectTranform;
 
     void Update()
     {

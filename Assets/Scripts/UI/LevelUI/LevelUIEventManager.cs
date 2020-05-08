@@ -19,14 +19,15 @@ public class LevelUIEventManager : MonoBehaviour
             dashCdBar.setMaxNbCharges(1);
             dashCdBar.FillCharges();
 
-            bombCdBar.setMaxCd(GameObject.Find("playerShip").GetComponent<Dash>().attenteDash);
+            bombCdBar.setMaxCd(GameObject.Find("playerShip").GetComponent<PlayerShip>().waveRecovery);
             bombCdBar.setMaxNbCharges(1);
             bombCdBar.FillCharges();
         }
     }
 
-    public void TriggerPlayerHealthChange(int health, int maxHealth){
+    public void TriggerPlayerHealthChange(int health, int maxHealth, int nbShields){
         healthBar.setHealth(health);
+        healthBar.setShields(nbShields);
         healthBar.setHealthPercent(health,maxHealth);
     }
 

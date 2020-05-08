@@ -10,6 +10,7 @@ public class PlayerShip : Ship
     public int recoveryTime;
     public int waveDamage;
     public int waveNumber;
+    public float waveRecovery;
     public float shootRecovery;
     public float waveRadius;
 
@@ -49,6 +50,7 @@ public class PlayerShip : Ship
             if(shieldLife > maxShieldLife) shieldLife = maxShieldLife;
         }
 
+        GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,(int) life,shieldLife);
     }
 
     // Update is called once per frame
@@ -73,7 +75,7 @@ public class PlayerShip : Ship
             waveNumber --;
             GameObject waveBullet = Instantiate(wave, transform.position, Quaternion.identity);
             waveBullet.GetComponent<CircleCollider2D>().radius = waveRadius; 
-            
+            GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerBomb();
         }
         //Le Dash se fait seulement sur X.
         if(dash.getCanDash() && Input.GetKeyDown("k") && !isInvincible && change.x != 0){
@@ -145,7 +147,7 @@ public class PlayerShip : Ship
         if(!isInvincible){
             if(shieldLife <= 0) life -= damage;
             else shieldLife -= 1;
-            GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,100);
+            GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,1000,shieldLife);
             //Insérer la vie du shield pour l'UI ici.
             StartCoroutine("InvincibiltyCount");
         }
@@ -181,7 +183,7 @@ public class PlayerShip : Ship
     }
     private IEnumerator ShootWave(){
         canShootWave = false;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(waveRecovery);
         canShootWave = true;
     }
 }

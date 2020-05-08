@@ -23,7 +23,7 @@ MonoBehaviour:
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 54548
+    ctime1: 65535
     ctime2: 0
     ctime3: 0
     ctime4: 0
@@ -41,4 +41,4 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  planetMaterial: {fileID: 2100000, guid: f6e6d2a5274156d4bae3222ff4d3ae14, type: 2}
+  planetMaterial: {fileID: 2100000, guid: 3c6c7abb753620e44b45339618cf9137, type: 2}
