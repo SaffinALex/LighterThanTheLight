@@ -12,7 +12,7 @@ public abstract class Event : MonoBehaviour
 {
     protected UnityEvent eventBegin = new UnityEvent();
     protected UnityEvent eventEnd = new UnityEvent();
-    [SerializeField] private float score = 0;
+    private float score = 0;
 
     private EnemyList enemyList = new EnemyList();
     private List<GameObject> listEnemies = new List<GameObject>();

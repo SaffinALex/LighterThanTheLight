@@ -37,6 +37,7 @@ public class WaveEvent : Event
         }
         timeP = (wait - nbPause) / (nbPause + 1);
         spawn = (wait - 2) / nbEnemies;
+        Debug.Log("Spawn : " + spawn);
 
         initializeListEnemies();
     }
@@ -109,7 +110,8 @@ public class WaveEvent : Event
     //Méthode de spawn d'ennemies
     public void spawnEnemy()
     {
-        GameObject g = Instantiate(list[0], listVector3[Random.Range(0, listVector3.Count)], Quaternion.identity);
+
+        Instantiate(list[0], listVector3[Random.Range(0, listVector3.Count)], Quaternion.identity);
         list.RemoveAt(0);
 
         /*GameObject g = Instantiate(list[Random.Range(0, list.Count)], new Vector3(0, 0, 0), Quaternion.identity);
@@ -120,6 +122,7 @@ public class WaveEvent : Event
     //Calcul du score de l'event
     public void scoreCalcul()
     {
+        factorDiff = 0;
         for (int i = 0; i < list.Count; i++)
         {
             factorDiff += (0.1f + 0.1f * list[i].GetComponentInChildren<EntitySpaceShipBehavior>().Difficult);
