@@ -10,6 +10,7 @@ public class BotBehaviorFollow : EntitySpaceShipBehavior
     new void Start()
     {
         base.Start();
+        Type = "Bot";
     }
 
     new void FixedUpdate()
@@ -56,5 +57,11 @@ public class BotBehaviorFollow : EntitySpaceShipBehavior
         isMoving = false;
         life = 6;
         transform.position = new Vector3(0, 0, 0);
+    }
+
+    public override string getType()
+    {
+        Type = "Bot";
+        return Type;
     }
 }

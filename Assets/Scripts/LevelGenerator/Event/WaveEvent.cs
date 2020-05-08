@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class WaveEvent : Event
 {
+    private float score = 0;
+
+    private EnemyList enemyList = new EnemyList();
+    private List<GameObject> listEnemies = new List<GameObject>();
+    private float difficulty;
+
+    public List<GameObject> ListEnemies { get => listEnemies; set => listEnemies = value; }
+    public float Difficulty { get => difficulty; set => difficulty = value; }
+    public EnemyList EnemyList { get => enemyList; set => enemyList = value; }
+    public float Score { get => score; set => score = value; }
 
     public float wait;
     protected float currWait;
@@ -14,12 +24,12 @@ public class WaveEvent : Event
     protected float factorDiff;
     public int nbEnemies;
     protected List<GameObject> list;
-    private List<Vector3> listVector3;
+    protected List<Vector3> listVector3;
 
     public float pause = 1.0f;
-    private float spawn;
-    private float timeP;
-    private bool b;
+    protected float spawn;
+    protected float timeP;
+    protected bool b;
 
     protected override void BeginEvent()
     {
@@ -36,10 +46,10 @@ public class WaveEvent : Event
             listVector3.Add(vect3[Random.Range(0, vect3.Count)]);
         }
         timeP = (wait - nbPause) / (nbPause + 1);
-        spawn = (wait - 2) / nbEnemies;
-        Debug.Log("Spawn : " + spawn);
+        spawn = (wait - pause*nbPause - 1) / nbEnemies;
 
         initializeListEnemies();
+        //positionBoss();
     }
 
     protected override void UpdateEvent()
@@ -92,7 +102,7 @@ public class WaveEvent : Event
         ListEnemies = EnemyList.CallList();
         for (int i = 0; i < nb1; i++)
         {
-            GameObject g = ListEnemies[Random.Range(0, ListEnemies.Count)];
+            GameObject g = ListEnemies[Random.Range(0, ListEnemies.Count-1)];
             list.Add(g);
         }
 
@@ -110,7 +120,6 @@ public class WaveEvent : Event
     //Méthode de spawn d'ennemies
     public void spawnEnemy()
     {
-
         Instantiate(list[0], listVector3[Random.Range(0, listVector3.Count)], Quaternion.identity);
         list.RemoveAt(0);
 

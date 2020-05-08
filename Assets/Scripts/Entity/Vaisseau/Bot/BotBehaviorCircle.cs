@@ -18,6 +18,7 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         routeToGo = 0;
         tParam = 0f;
         coroutine = true;
+        Type = "Bot";
     }
 
     new void FixedUpdate()
@@ -106,4 +107,9 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         coroutine = true;
     }
 
+    public override string getType()
+    {
+        Type = "Bot";
+        return Type;
+    }
 }

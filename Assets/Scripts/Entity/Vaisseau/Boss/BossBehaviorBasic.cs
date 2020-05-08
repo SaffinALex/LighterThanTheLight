@@ -33,6 +33,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         p3 = transform.position.y - 0.5f;
         positionX = transform.position.x;
         positionY = transform.position.y;
+        Type = "Boss";
     }
 
     new void FixedUpdate()
@@ -146,5 +147,11 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         p3 = transform.position.y - 0.5f;
         positionX = transform.position.x;
         positionY = transform.position.y;
+    }
+
+    public override string getType()
+    {
+        Type = "Boss";
+        return Type;
     }
 }

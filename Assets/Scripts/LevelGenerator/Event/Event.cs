@@ -12,16 +12,6 @@ public abstract class Event : MonoBehaviour
 {
     protected UnityEvent eventBegin = new UnityEvent();
     protected UnityEvent eventEnd = new UnityEvent();
-    private float score = 0;
-
-    private EnemyList enemyList = new EnemyList();
-    private List<GameObject> listEnemies = new List<GameObject>();
-    private float difficulty;
-
-    public List<GameObject> ListEnemies { get => listEnemies; set => listEnemies = value; }
-    public float Difficulty { get => difficulty; set => difficulty = value; }
-    public EnemyList EnemyList { get => enemyList; set => enemyList = value; }
-    public float Score { get => score; set => score = value; }
 
     private bool start = false;
     private bool end = false;

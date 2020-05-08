@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 838855087739282855}
-  - component: {fileID: 5514313660650504602}
+  - component: {fileID: 862503326397044410}
   m_Layer: 0
   m_Name: BossEvent0
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5514313660650504602
+--- !u!114 &862503326397044410
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeStart: -1
-  wait: 5
+  wait: 10
   nbSpawn: 4
   nbPause: 0
-  nbEnemies: 20
+  nbEnemies: 10
   pause: 1

@@ -18,6 +18,7 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
         p2 = transform.position.x;
         positionX = transform.position.x + 3;
         positionY = transform.position.y;
+        Type = "Bot";
     }
 
     new void FixedUpdate()
@@ -76,5 +77,11 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
         p2 = transform.position.x;
         positionX = transform.position.x + 3;
         positionY = transform.position.y;
+    }
+
+    public override string getType()
+    {
+        Type = "Bot";
+        return Type;
     }
 }

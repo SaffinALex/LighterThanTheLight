@@ -12,6 +12,7 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
     {
         base.Start();
         Direction = Random.Range(0, 8);
+        Type = "Bot";
     }
 
     new void FixedUpdate()
@@ -89,5 +90,9 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
         Direction = Random.Range(0, 8);
     }
 
-
+    public override string getType()
+    {
+        Type = "Bot";
+        return Type;
+    }
 }

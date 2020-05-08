@@ -14,7 +14,7 @@ public class EnemyList : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        list[0].moveBoss();
     }
 
     // Update is called once per frame

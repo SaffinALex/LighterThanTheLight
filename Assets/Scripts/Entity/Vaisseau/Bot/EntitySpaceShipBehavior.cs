@@ -19,11 +19,13 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     public bool isMoving;
     //public bool isAtRight;
     public Vector2 force;
+    private string type;
 
     public Rigidbody2D R2d { get => r2d; set => r2d = value; }
     public int Direction { get => direction; set => direction = value; }
     public bool IsDead { get => isDead; set => isDead = value; }
     public float Difficult { get => difficult; set => difficult = value; }
+    public string Type { get => type; set => type = value; }
 
     //public bool IsAtRight { get => isAtRight; set => isAtRight = value; }
 
@@ -64,6 +66,8 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     }
 
     public abstract void getDamage(int damage);
+
+    public abstract string getType();
 
     public abstract void move();
 
