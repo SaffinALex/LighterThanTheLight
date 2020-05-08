@@ -11,6 +11,8 @@ public abstract class WeaponPlayer : MonoBehaviour
     public float fireRateBase;
     private float fireRate;
     public GameObject bullet;
+    public int price;
+    public int weight;
     public float bulletSpeedBase;
     private float bulletSpeed;
     private float damage;
@@ -24,6 +26,15 @@ public abstract class WeaponPlayer : MonoBehaviour
         }
        
     }
+
+    public int numberUpgradeCanAdd(){
+        int cpt = 0;
+        for(int i = 0; i<upgradeWeapons.Count; i++){
+            cpt+= upgradeWeapons[i].getWeight();
+        }
+        return nbrMaxUpgrade - cpt;
+    }
+
     abstract public void shoot(Transform t);
     public void setBulletSpeed(float s){
         bulletSpeed = s;
@@ -39,6 +50,14 @@ public abstract class WeaponPlayer : MonoBehaviour
     }
     public bool getCanShoot(){
         return canShoot;
+    }
+
+    public int getWeight(){
+        return weight;
+    }
+
+    public int getPrice(){
+        return price;
     }
     public float getFireRate(){
         return fireRate;

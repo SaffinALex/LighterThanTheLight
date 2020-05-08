@@ -6,8 +6,10 @@ public class PlayerShip : Ship
 {
     public GameObject wave;
     public Dash dash;
-    public int shieldLife;
-    public int recoveryTime;
+    public int initialShieldLife;
+    private int shieldLife;
+    public float initialRecoveryTime;
+    private float recoveryTime;
     public int waveDamage;
     public int waveNumber;
     public float waveRecovery;
@@ -24,6 +26,7 @@ public class PlayerShip : Ship
     private bool canShootWave;
     private float width;
     private Transform oldPosition;
+    private int totalLife;
 
     //Define the time to achieve the wanted direction
     public float acceleration = 0.2f;
@@ -39,9 +42,13 @@ public class PlayerShip : Ship
     void Start()
     {
         posx = 0;
+        setLife(initialLife);
+        shieldLife = initialShieldLife;
+        recoveryTime = initialRecoveryTime;
         isInvincible = false;
         canShootWave = true;
         canShoot = true;
+        dash.initialize();
         for(int i=0; i<weapons.Count; i++){
             weapons[i].gameObject.GetComponent<WeaponPlayer>().Initialize();
         }
@@ -49,13 +56,14 @@ public class PlayerShip : Ship
             upgradeShip[i].StartUpgrade(this);
             if(shieldLife > maxShieldLife) shieldLife = maxShieldLife;
         }
+        totalLife = (int)getLife();
 
-        LevelUIEventManager.GetLevelUI().TriggerPlayerHealthChange((int) life,(int) life,shieldLife);
+        LevelUIEventManager.GetLevelUI().TriggerPlayerHealthChange((int) getLife(),(int)totalLife,getShieldLife());
     }
 
     // Update is called once per frame
     void FixedUpdate(){
-        if (life <= 0){
+        if (getLife() <= 0){
             Destroy(this.gameObject);
             PanelUIManager.GetPanelUI().ToggleEndGamePanel();
         }
@@ -139,19 +147,37 @@ public class PlayerShip : Ship
     }
     private void OnTriggerStay2D(Collider2D col){
         if(col.CompareTag("Enemy") ){ 
+            Debug.Log("touché");
             getDamage(10);
         }
     }
 
     public void getDamage(float damage){
         if(!isInvincible){
-            if(shieldLife <= 0) life -= damage;
+            if(shieldLife <= 0) setLife(getLife() - damage);
             else shieldLife -= 1;
-            LevelUIEventManager.GetLevelUI().TriggerPlayerHealthChange((int) life,1000,shieldLife);
+            LevelUIEventManager.GetLevelUI().TriggerPlayerHealthChange((int) getLife(),(int)totalLife,getShieldLife());
             //Insérer la vie du shield pour l'UI ici.
+            Debug.Log("touchéB");
             StartCoroutine("InvincibiltyCount");
         }
     }
+
+    public int getShieldLife(){
+        return shieldLife;
+    }
+    public void setShieldLife(int s){
+        shieldLife = shieldLife + s;
+    }
+
+    public float getRecoveryTime(){
+        return recoveryTime;
+    }
+    public void setRecoveryTime(float s){
+        recoveryTime = initialRecoveryTime + s;
+    }
+
+
     private IEnumerator InvincibiltyCount(){
         isInvincible = true;
         animator.SetBool("isTouch", true);

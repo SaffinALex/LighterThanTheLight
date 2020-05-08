@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!60 &8004070836160650126
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3723695709282302130}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -4.9542803e-10, y: 0.010580878}
+      - {x: -0.0026400015, y: 0.0046871677}
+      - {x: -0.007840136, y: -0.0045867357}
+      - {x: 0.008052646, y: -0.004586737}
+      - {x: 0.0030650254, y: 0.0034138407}
 --- !u!1 &4609433687815977607
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,9 +77,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2bd96402578314dafacfc4b5a70b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attenteDash: 2
-  distance: 1
-  vitesse: 1
+  initialRecoveryDash: 2
+  InitialDistance: 0.5
+  initialSpeed: 1
   upgradeDashes: []
   nbrUpgradeMax: 2
 --- !u!114 &4609433687815977604
@@ -64,20 +94,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f56c5d5d09d7549a620a2603185798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbrMaxArmes: 0
-  life: 100
+  nbrMaxWeapons: 2
+  nbrMaxUpgradeShip: 2
+  initialLife: 100
   speed: 2
+  maxShieldLife: 8
   weapons:
   - {fileID: 8912196057217071144, guid: 5b55086237e3bc941ac7f878d5eb5ed1, type: 3}
+  upgradeShip: []
   wave: {fileID: 7237810773343739811, guid: 1f35fce770403cd489dbd332e41f783d, type: 3}
   dash: {fileID: 4609433687815977602}
-  vieShield: 0
-  recoveryTime: 2
+  initialShieldLife: 3
+  initialRecoveryTime: 1
   waveDamage: 1000
   waveNumber: 5
+  waveRecovery: 0
   shootRecovery: 1
   waveRadius: 10
-  animator: {fileID: 0}
+  animator: {fileID: 4609433686791282158}
   bullet: {fileID: 4416812285562530050, guid: 24da03922ed47d246a081cdd171e1995, type: 3}
   myRigidBody: {fileID: 2364199843355145164}
   acceleration: 0.2
@@ -294,6 +328,12 @@ GameObject:
 --- !u!4 &4974064950899303704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5702115351539302822, guid: 2729776a4c2de3f43a77388d7f14267b,
+    type: 3}
+  m_PrefabInstance: {fileID: 731436965175469246}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3723695709282302130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4146600913453538316, guid: 2729776a4c2de3f43a77388d7f14267b,
     type: 3}
   m_PrefabInstance: {fileID: 731436965175469246}
   m_PrefabAsset: {fileID: 0}

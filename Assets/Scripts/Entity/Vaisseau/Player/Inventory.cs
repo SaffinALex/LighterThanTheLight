@@ -2,12 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract  class UpgradeShip : Upgrade
+public class Inventory : MonoBehaviour
 {
+    public GameObject player;
+    public List<GameObject> Weapons;
+    public List<GameObject> UpgradeDashes;
+    public List<GameObject> UpgradeShip;
+
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = icone;
+        
+    }
+
+    public void equipShip(){
+        
     }
 
     // Update is called once per frame
@@ -15,7 +24,4 @@ public abstract  class UpgradeShip : Upgrade
     {
         
     }
-   public abstract void StartUpgrade(PlayerShip v);
-//Avant la suppression de l'Upgrade.
-    public abstract void EndUpgrade(PlayerShip v);
 }

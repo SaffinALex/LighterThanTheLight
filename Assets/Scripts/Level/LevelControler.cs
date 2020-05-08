@@ -7,7 +7,11 @@ public class LevelControler : MonoBehaviour
     public int numberBot;
     public List<GameObject> bots;
     public GameObject w;
+    public GameObject control;
     // Start is called before the first frame update
+    public void Start(){
+       // Instantiate(control, new Vector3(0, 0, 0), Quaternion.identity);
+    }
     public void LoadBot(){
         for(int i = 0; i<numberBot; i++){
             GameObject s = Instantiate(bots[Random.Range(0,bots.Count)], new Vector3(0, 0, 0), Quaternion.identity);

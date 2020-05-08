@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class UpgradeDash : Upgrade
+public class UpgradeShieldShip : UpgradeShip
 {
+    public int ShieldBonus;
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = icone;
+        
     }
 
     // Update is called once per frame
@@ -15,11 +16,14 @@ public abstract class UpgradeDash : Upgrade
     {
         
     }
-//A l'obtention de l'Upgrade
-    public abstract void StartUpgrade(Dash d);
-//A chaque update mettre à jour les caractéristiques.
-    public void EndUpgrade(Dash d){
+    override
+    public void StartUpgrade(PlayerShip v){
+        v.setShieldLife(ShieldBonus);
+
+    }
+//Avant la suppression de l'Upgrade.
+    override
+    public void EndUpgrade(PlayerShip v){
         Destroy(this);
     }
-
 }

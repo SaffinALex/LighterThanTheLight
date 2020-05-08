@@ -18,7 +18,7 @@ public class LevelUIEventManager : MonoBehaviour
         bombCdBar = transform.Find("BombCooldownBar").GetComponent<CooldownBarControl>();
         bossWarn = GetComponentInChildren<BossWarning>();
         if(GameObject.Find("playerShip") != null){
-            dashCdBar.setMaxCd(GameObject.Find("playerShip").GetComponent<Dash>().attenteDash);
+            dashCdBar.setMaxCd(GameObject.Find("playerShip").GetComponent<Dash>().getRecoveryDash());
             dashCdBar.setMaxNbCharges(1);
             dashCdBar.FillCharges();
 
