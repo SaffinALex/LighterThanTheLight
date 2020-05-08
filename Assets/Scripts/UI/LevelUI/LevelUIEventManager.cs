@@ -9,7 +9,10 @@ public class LevelUIEventManager : MonoBehaviour
     private CooldownBarControl bombCdBar;
     private BossWarning bossWarn;
 
+    private static LevelUIEventManager instance = null;
+
     void Start() {
+        instance = this;
         healthBar = transform.Find("HealthBar").GetComponent<HealthBarControl>();
         dashCdBar = transform.Find("DashCooldownBar").GetComponent<CooldownBarControl>();
         bombCdBar = transform.Find("BombCooldownBar").GetComponent<CooldownBarControl>();
@@ -35,13 +38,24 @@ public class LevelUIEventManager : MonoBehaviour
         dashCdBar.consumeCharge();
     }
 
-    public void TriggerPlayerBomb()
-    {
+    public void TriggerPlayerBomb(){
         bombCdBar.consumeCharge();
     }
 
-    public void TriggerBossWarning()
-    {
-        bossWarn.show();
+    public void TriggerBossWarning(){
+        bossWarn.show("Boss en Approche");
+    }
+
+    public void TriggerWarning(string text, float lifetimeDuration = -1, float showDelay = -1, float hideDelay = -1){
+        bossWarn.show(text, lifetimeDuration, showDelay, hideDelay);
+    }
+
+    public static LevelUIEventManager GetLevelUI(){
+        if(instance == null){
+            Debug.LogError("Aucune instance de LevelUI présente dans la scene");
+            return null;
+        }
+        else
+            return instance;
     }
 }

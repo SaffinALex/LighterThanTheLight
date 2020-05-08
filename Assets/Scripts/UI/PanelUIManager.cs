@@ -16,9 +16,13 @@ public class PanelUIManager : MonoBehaviour
 
     public string endGameSceneName;
     public bool pauseKeyBeingPressed;
+
+    private static PanelUIManager instance = null;
     // Start is called before the first frame update
     void Start()
     {
+        
+        instance = this;
         pauseKeyBeingPressed = false;
         background = transform.GetChild(0).gameObject;
         foreach (Transform child in transform)
@@ -92,30 +96,51 @@ public class PanelUIManager : MonoBehaviour
     public void GoToStartMenu(){
         if(startSceneName == null)
             Debug.Log("PanelUIManager : Scene name for StartMenu is NULL");
-        else
-            if (!GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(startSceneName))
+        else{
+            int returnStatus = GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(startSceneName);
+            if (returnStatus == -1)
                 Debug.Log("PanelUIManager : Scene name give doesn't match to any In-Build Scenes");
-            else
+            else if(returnStatus == 0)
                 Time.timeScale = 1;
+            else
+                Debug.Log("PanelUIManager : Scene already loading");
+        }
     }
 
     public void GoToEndLevelMenu(){
         if(endLevelSceneName == null)
             Debug.Log("PanelUIManager : Scene name for EndLevelMenu is NULL");
-        else
-            if (!GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(endLevelSceneName))
+        else{
+            int returnStatus = GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(endLevelSceneName);
+            if (returnStatus == -1)
                 Debug.Log("PanelUIManager : Scene name give doesn't match to any In-Build Scenes");
-            else
+            else if(returnStatus == 0)
                 Time.timeScale = 1;
+            else
+                Debug.Log("PanelUIManager : Scene already loading");
+        }
     }
 
     public void GoToEndGameMenu(){
         if(endGameSceneName == null)
             Debug.Log("PanelUIManager : Scene name for EndGameMenu is NULL");
-        else
-            if (!GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(endGameSceneName))
+        else{
+            int returnStatus = GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(endGameSceneName);
+            if (returnStatus == -1)
                 Debug.Log("PanelUIManager : Scene name give doesn't match to any In-Build Scenes");
-            else
+            else if(returnStatus == 0)
                 Time.timeScale = 1;
+            else
+                Debug.Log("PanelUIManager : Scene already loading");
+        }
+    }
+
+    public static PanelUIManager GetPanelUI(){
+        if(instance == null){
+            Debug.LogError("Aucune instance de LevelUI présente dans la scene");
+            return null;
+        }
+        else
+            return instance;
     }
 }

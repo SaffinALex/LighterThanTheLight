@@ -17,19 +17,19 @@ public class CameraLimit : MonoBehaviour
 
     Vector2 CameraSize(){
         float halfFieldOfView = Camera.main.fieldOfView * 0.5f * Mathf.Deg2Rad;
-        float height = (2) * Mathf.Tan(halfFieldOfView) * 2.0f;
+        float height = (Mathf.Abs(Camera.main.transform.position.z)) * Mathf.Tan(halfFieldOfView) * 2.0f;
         float width = Camera.main.aspect * height;
 
         return new Vector2(width, height);
     }
 
     float heightZone(){
-        float heightZone =  Mathf.Abs(ZoneLimit.size.y - CameraSize().y);
+        float heightZone =  Mathf.Abs(PlayerBorder.size.y - CameraSize().y);
         return heightZone;
     }
 
     float widthZone(){
-        float widthZone =  Mathf.Abs(ZoneLimit.size.x - CameraSize().x);
+        float widthZone =  Mathf.Abs(PlayerBorder.size.x - CameraSize().x);
         return widthZone;
     }
 

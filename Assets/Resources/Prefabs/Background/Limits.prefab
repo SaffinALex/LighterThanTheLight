@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862296739585501233}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1862296739670347778}
@@ -104,6 +104,7 @@ Transform:
   m_Children:
   - {fileID: 1862296739585501199}
   - {fileID: 1862296739738895382}
+  - {fileID: 5618042928592992967}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -119,7 +120,7 @@ GameObject:
   - component: {fileID: 1862296739738895385}
   - component: {fileID: 1862296739738895383}
   m_Layer: 13
-  m_Name: LevelBorder
+  m_Name: PlayerBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,4 +173,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0846bd29920afe44aab8252e3c595dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneSize: {x: 15, y: 10}
+  marginScale: {x: 1.2, y: 1.2}
+--- !u!1 &8947165192152395384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5618042928592992967}
+  - component: {fileID: 727236658471259831}
+  - component: {fileID: 3472459473956297661}
+  m_Layer: 13
+  m_Name: EnnemiesBorder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5618042928592992967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8947165192152395384}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1862296739670347778}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &727236658471259831
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8947165192152395384}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -20, y: -10}
+  - {x: 20, y: -10}
+  - {x: 20, y: 10}
+  - {x: -20, y: 10}
+  - {x: -20, y: -10}
+--- !u!114 &3472459473956297661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8947165192152395384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb6259d94a3cf54cb2532a13d33ac9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  marginScale: {x: 1.2, y: 1.2}

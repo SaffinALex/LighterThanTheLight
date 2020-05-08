@@ -14,6 +14,10 @@ public class TypeWriterEffect : MonoBehaviour
             text = GetComponent<TextMeshProUGUI>().text;
     }
 
+    public void setText(string text){
+        this.text = text;
+    }
+
     public void resetText(){
         currentText = "";
         if(text == null || text.Length == 0)

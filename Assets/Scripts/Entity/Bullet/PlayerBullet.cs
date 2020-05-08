@@ -6,9 +6,8 @@ public class PlayerBullet : Bullet
 {
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start(){
+        GetComponent<Rigidbody2D>().velocity = (new Vector3(0f, 1f, 0f)*speed);
     }
 
     // Update is called once per frame
@@ -16,9 +15,6 @@ public class PlayerBullet : Bullet
     {
         float posx = transform.position.x;
         float posy = transform.position.y;
-
-        GetComponent<Rigidbody2D>().MovePosition(transform.position + new Vector3(0f, 1f, 0f)*speed * Time.deltaTime);
-
     }
 
     void OnBecameInvisible() {

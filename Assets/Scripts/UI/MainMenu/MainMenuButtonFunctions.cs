@@ -7,8 +7,8 @@ public class MainMenuButtonFunctions : MonoBehaviour
 {
     public string playSceneName;
     public void PlayGame(){
-        if (!GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(playSceneName))
-            Debug.Log("MainMenuButtonFunctions : Play Scene name give doesn't match to any In-Build Scenes");
+        if (GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(playSceneName) == -1)
+            Debug.Log("MainMenuButtonFunctions : Play Scene name given doesn't match to any In-Build Scenes");
     }
 
     public void ShowScores(){

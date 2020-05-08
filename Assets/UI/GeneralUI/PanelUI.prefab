@@ -957,9 +957,9 @@ MonoBehaviour:
   indexPanel: {fileID: 6065159802213639834}
   endLevelPanel: {fileID: 1830931010914782785}
   endGamePanel: {fileID: 4186872317424843963}
-  startSceneName: TestMainMenu
-  endLevelSceneName: TestMainMenu
-  endGameSceneName: TestMainMenu
+  startSceneName: MainMenu
+  endLevelSceneName: MainMenu
+  endGameSceneName: MainMenu
   pauseKeyBeingPressed: 0
 --- !u!114 &3796982077749445609
 MonoBehaviour:

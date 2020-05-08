@@ -27,9 +27,9 @@ TagManager:
   - Enemy
   - PlayerBullet
   - BotBullet
-  - Limit
+  - PlayerBorder
   - Background
-  - 
+  - EnnemiesBorder
   - 
   - 
   - 

@@ -50,14 +50,14 @@ public class PlayerShip : Ship
             if(shieldLife > maxShieldLife) shieldLife = maxShieldLife;
         }
 
-        GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,(int) life,shieldLife);
+        LevelUIEventManager.GetLevelUI().TriggerPlayerHealthChange((int) life,(int) life,shieldLife);
     }
 
     // Update is called once per frame
     void FixedUpdate(){
         if (life <= 0){
             Destroy(this.gameObject);
-            GameObject.Find("PanelUI").GetComponent<PanelUIManager>().ToggleEndGamePanel();
+            PanelUIManager.GetPanelUI().ToggleEndGamePanel();
         }
         //Ne pas sortir de l'écran
         Vector3 change = Vector3.zero;
@@ -75,13 +75,13 @@ public class PlayerShip : Ship
             waveNumber --;
             GameObject waveBullet = Instantiate(wave, transform.position, Quaternion.identity);
             waveBullet.GetComponent<CircleCollider2D>().radius = waveRadius; 
-            GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerBomb();
+            LevelUIEventManager.GetLevelUI().TriggerPlayerBomb();
         }
         //Le Dash se fait seulement sur X.
         if(dash.getCanDash() && Input.GetKeyDown("k") && !isInvincible && change.x != 0){
             Debug.Log("Dash");
             posx = dash.runDash(change.x);
-            GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerDash();
+            LevelUIEventManager.GetLevelUI().TriggerPlayerDash();
 
             if(change.x < 0)
                 StartCoroutine("FlippingLeft");
@@ -147,7 +147,7 @@ public class PlayerShip : Ship
         if(!isInvincible){
             if(shieldLife <= 0) life -= damage;
             else shieldLife -= 1;
-            GameObject.Find("LevelUI").GetComponent<LevelUIEventManager>().TriggerPlayerHealthChange((int) life,1000,shieldLife);
+            LevelUIEventManager.GetLevelUI().TriggerPlayerHealthChange((int) life,1000,shieldLife);
             //Insérer la vie du shield pour l'UI ici.
             StartCoroutine("InvincibiltyCount");
         }

@@ -19,6 +19,10 @@ public class BossWarning : MonoBehaviour
     private GameObject descText;
     private GameObject holder;
 
+    private float default_lifetimeDuration;
+    public float default_hideDelay;
+    public float default_showDelay;
+
     private void Start() {
         //Init
         group = GetComponent<CanvasGroup>();
@@ -28,11 +32,29 @@ public class BossWarning : MonoBehaviour
         wrnBox = holder.GetComponentInChildren<WarningBox>();
         lifetimeTimer = lifetimeDuration;
         showing = false; hiding = false; holding = false;
-
+        default_lifetimeDuration = lifetimeDuration;
+        default_showDelay = showDelay;
+        default_hideDelay = hideDelay;
         //Test
         //show();
     }
-    public void show(){
+    public void show(string text, float lifetimeDuration = -1, float showDelay = -1, float hideDelay = -1){
+        if(lifetimeDuration != -1)
+            this.lifetimeDuration = lifetimeDuration;
+        else
+            this.lifetimeDuration = default_lifetimeDuration;
+
+        if(showDelay != -1)
+            this.showDelay = showDelay;
+        else
+            this.showDelay = default_showDelay;
+
+        if(hideDelay != -1)
+            this.hideDelay = hideDelay;
+        else
+            this.hideDelay = default_hideDelay;
+
+        twEffect.setText(text);
         twEffect.resetText();
         wrnBox.resetBlinking();
         descText.SetActive(false);

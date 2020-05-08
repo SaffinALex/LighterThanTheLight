@@ -13,24 +13,25 @@ public class LoadingPanelManager : MonoBehaviour
             child.gameObject.SetActive(false);
     }
     private string sceneToLoad;
-    public bool startSceneLoad(string sceneName){
-        if (!Application.CanStreamedLevelBeLoaded(sceneName) || isLoadingScene)
-            return false;
+    public int startSceneLoad(string sceneName){
+        if (!Application.CanStreamedLevelBeLoaded(sceneName))
+            return -1;
+        if (isLoadingScene)
+            return -2;
 
         sceneToLoad = sceneName;
         isLoadingScene = true;
         foreach (Transform child in transform)
             child.gameObject.SetActive(true);
         StartCoroutine(LoadAsyncOperation());
-        return true;
+        return 0;
     }
 
     IEnumerator LoadAsyncOperation(){
         AsyncOperation gameLevel = SceneManager.LoadSceneAsync(sceneToLoad,LoadSceneMode.Single);
         if(gameLevel.isDone)
             isLoadingScene = false;
-        while(!gameLevel.isDone)
-        {
+        while(!gameLevel.isDone){
             GetComponentInChildren<LoadingWheel>().updateLoadingWheel(gameLevel.progress);
 
             yield return new WaitForEndOfFrame();

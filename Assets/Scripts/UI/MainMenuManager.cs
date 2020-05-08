@@ -2,14 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenuManager : MonoBehaviour
-{
+public class MainMenuManager : MonoBehaviour{
+    private bool isOnTitle;
+
+    void Start() {
+        isOnTitle = true;
+    }
+
+    void Update() {
+        if(isOnTitle && Input.anyKey){
+            isOnTitle = !isOnTitle;
+            gameObject.transform.Find("PressAnyButtonText").gameObject.SetActive(false);
+            GetComponentInChildren<TitleScreenTitleText>().toggleTitleText();
+            GetComponentInChildren<TitleScreenButtons>().show();
+
+            GameObject.Find("Ship").GetComponent<Animation>().Play();
+        }
+    }
+
     public void ShowMenu(){
-        foreach(Transform child in transform)
-            child.gameObject.SetActive(true);
+        if(!isOnTitle)
+            foreach(Transform child in transform)
+                child.gameObject.SetActive(true);
     }
     public void HideMenu(){
-        foreach(Transform child in transform)
-            child.gameObject.SetActive(false);
+        if(!isOnTitle)
+            foreach(Transform child in transform)
+                child.gameObject.SetActive(false);
     }
 }
