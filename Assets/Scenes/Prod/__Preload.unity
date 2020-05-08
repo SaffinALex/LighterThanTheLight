@@ -165,7 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxObject: {fileID: 1198778463}
-  enemyList: {fileID: 0}
   waveEvents: []
   DisasterEvents: []
   BossEvents: []
@@ -221,7 +220,7 @@ MonoBehaviour:
   startOnPlay: 1
   maxDistance: 50
   minDistance: 20
-  volume: 1
+  volume: 0
   allMusics:
   - name: TestSound
     clip: {fileID: 8300000, guid: 5da83a97dd9a4c0438b3578b01b0eae9, type: 3}

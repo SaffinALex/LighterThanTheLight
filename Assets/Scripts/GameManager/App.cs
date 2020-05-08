@@ -17,6 +17,8 @@ public class App : MonoBehaviour
     [SerializeField] protected List<DisasterEvent> DisasterEvents;
     [SerializeField] protected List<BossEvent> BossEvents;
 
+
+
     public void Awake(){
         DontDestroyOnLoad(gameObject);
         app = this;

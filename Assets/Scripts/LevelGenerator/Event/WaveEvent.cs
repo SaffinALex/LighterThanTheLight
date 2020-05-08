@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveEvent : Event {
+public class WaveEvent : Event
+{
 
     public float wait;
     protected float currWait;
@@ -24,7 +25,8 @@ public class WaveEvent : Event {
         return 1;
     }
 
-    protected override void BeginEvent() {
+    protected override void BeginEvent()
+    {
         list = new List<GameObject>();
         b = false;
         wait = 30;
@@ -43,13 +45,15 @@ public class WaveEvent : Event {
         initializeListEnemies();
     }
 
-    protected override void UpdateEvent(){
+    protected override void UpdateEvent()
+    {
 
         if (list.Count == 0)
         {
             this.End();
         }
-        else {
+        else
+        {
             //Segmentation de l'event
             if (currWait2 >= timeP)
             {
@@ -62,7 +66,7 @@ public class WaveEvent : Event {
             //Pause
             if (b && currWait2 >= pause)
             {
-                Debug.Log("Fin Pause au bout de : "+currWait2);
+                Debug.Log("Fin Pause au bout de : " + currWait2);
                 b = false;
                 currWait2 = 0;
             }
@@ -120,7 +124,7 @@ public class WaveEvent : Event {
     //Calcul du score de l'event
     public void scoreCalcul()
     {
-        for(int i = 0; i<list.Count; i++)
+        for (int i = 0; i < list.Count; i++)
         {
             factorDiff += (0.1f + 0.1f * list[i].GetComponentInChildren<EntitySpaceShipBehavior>().Difficult);
         }
