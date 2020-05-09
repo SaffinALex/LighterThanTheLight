@@ -8,10 +8,10 @@ public class WaveEvent : Event
 
     private EnemyList enemyList = new EnemyList();
     private List<GameObject> listEnemies = new List<GameObject>();
-    private float difficulty;
+    private int difficulty;
 
     public List<GameObject> ListEnemies { get => listEnemies; set => listEnemies = value; }
-    public float Difficulty { get => difficulty; set => difficulty = value; }
+    public int Difficulty { get => difficulty; set => difficulty = value; }
     public EnemyList EnemyList { get => enemyList; set => enemyList = value; }
     public float Score { get => score; set => score = value; }
 
@@ -99,15 +99,15 @@ public class WaveEvent : Event
         EnemyList.DifficultLevel = Difficulty;
 
         int nb1 = 60 * nbEnemies / 100;
-        ListEnemies = EnemyList.CallList();
+        ListEnemies = EnemyList.CallListEnemies();
         for (int i = 0; i < nb1; i++)
         {
-            GameObject g = ListEnemies[Random.Range(0, ListEnemies.Count-1)];
+            GameObject g = ListEnemies[Random.Range(0, ListEnemies.Count)];
             list.Add(g);
         }
 
         EnemyList.DifficultLevel = Difficulty + 1;
-        ListEnemies = EnemyList.CallList();
+        ListEnemies = EnemyList.CallListEnemies();
         int nb2 = nbEnemies - nb1;
         for (int i = 0; i < nb2; i++)
         {

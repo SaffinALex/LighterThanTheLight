@@ -5,6 +5,7 @@ using UnityEngine;
 public class ListEnemyBehavior : MonoBehaviour
 {
     public List<GameObject> listEnemy = new List<GameObject>();
+    public List<GameObject> listBoss = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -16,20 +17,5 @@ public class ListEnemyBehavior : MonoBehaviour
     void Update()
     {
         
-    }
-
-    //Place le Boss dans la liste en dernière position
-    public void moveBoss()
-    {
-        GameObject g = null;
-        for (int i = 0; i < listEnemy.Count; i++)
-        {
-            if (listEnemy[i].GetComponentInChildren<EntitySpaceShipBehavior>().getType().Equals("Boss"))
-            {
-                g = listEnemy[i];
-                listEnemy.RemoveAt(i);
-            }
-        }
-        listEnemy.Add(g);
     }
 }
