@@ -4,27 +4,36 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    public static int TotalNode = 0;
-    public static float distanceNodes = 10.0f;
+    
+    /** STATIC VARIABLES **/
+        //Nombre total de noeud dans la scène
+        public static int TotalNode = 0;
+        //Permet de savoir la distance physique entre deux nodes
+        public static float distanceNodes = 10.0f;
+        //GameObject permettant de regrouper tout le visuel
+        public static GameObject CONSTRAINTS_DESIGN; //Permet d'avoir un objet regroupant toutes les designs contraintes (les cubes qui relient les nodes)
+        public static GameObject NODES_CHILDS; //Permet d'avoir un objet regroupant toutes les designs contraintes (les cubes qui relient les nodes)
+
+
+    /** VARIABLE INFORMATION **/
     //Représente l'accessibilité d'un noeud
     public bool accessible = false;
-    //Rend le noeud pour toujours innaccessible
-    public bool disabled = false;
-    //Représente le fait d'avoir réussi le noeud
-    public bool complete = false;
-    //Représente le noeud parent
-    public Node parent;
-    //Représente les noeuds enfants
-    public List<Node> childs;
-    //Représente l'intérieur de la node
-    public NodeElement nodeElement;
+        //Rend le noeud pour toujours innaccessible
+        public bool disabled = false;
+        //Représente le fait d'avoir réussi le noeud
+        public bool complete = false;
+        //Représente le noeud parent
+        public Node parent;
+        //Représente les noeuds enfants
+        public List<Node> childs;
+        //Représente l'intérieur de la node
+        public NodeElement nodeElement;
 
+    //Enregistre la position des contraintes sur les enfants
     protected List<GameObject> constraintsCubes = new List<GameObject>();
     public float scaleConstraints = 1.0f;
 
-    public static GameObject CONSTRAINTS_DESIGN; //Permet d'avoir un objet regroupant toutes les designs contraintes (les cubes qui relient les nodes)
-    public static GameObject NODES_CHILDS; //Permet d'avoir un objet regroupant toutes les designs contraintes (les cubes qui relient les nodes)
-
+    //Design d'un verrou pour montrer qu'un niveau est innaccessible
     public Locker lockElement;
 
     public bool generateTree = false;
@@ -46,6 +55,7 @@ public class Node : MonoBehaviour
             lockElement.transform.parent = transform;
             lockElement.transform.localPosition = new Vector3(0,4.0f,0);
         }
+        //Permet de créer un node element
         GenerateNodeElement();
     }
 
@@ -164,7 +174,7 @@ public class Node : MonoBehaviour
 
     void GenerateNodeElement(){
         Debug.Log(nodeElement);
-        if(nodeElement != null) GameObject.Destroy(nodeElement.gameObject);
+        if(nodeElement != null) GameObject.Destroy(nodeElement.gameObject); //On supprime le nodeElement précédent
         GameObject nodeElementObject = new GameObject("Node Element");
         nodeElementObject.transform.parent = transform;
         nodeElement = nodeElementObject.AddComponent<NodeShop>();
@@ -198,7 +208,7 @@ public class Node : MonoBehaviour
     public void GenerateTree(int depth = 10){
         if(depth <= 0 || alreadyGenerate) return;
         alreadyGenerate = true;
-        int childsNumber = Random.Range(0, 3);
+        int childsNumber = Random.Range(0, 2);
         for(int i = 0; i <= childsNumber; i++){
             GameObject nextChild = Instantiate(gameObject);
             nextChild.name = "NodeChild" + (++TotalNode);
