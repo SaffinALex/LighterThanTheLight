@@ -48,4 +48,5 @@ MonoBehaviour:
   - {fileID: 2064434575908398254, guid: 523c7fceded3985498ae0d522d3f5da4, type: 3}
   - {fileID: 5841035006419391918, guid: 0d7ebdf3078abfb4796289d4568dea19, type: 3}
   - {fileID: 7790174105719540030, guid: 2615858b59a7e8a4ab5ee746b9b9b4f5, type: 3}
+  listBoss:
   - {fileID: 7885657485564900595, guid: ef8f13672d716054b8d3c4415f610cff, type: 3}

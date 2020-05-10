@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BossEvent : WaveEvent
 {
-    public GameObject boss;
+    public List<GameObject> boss;
     public float timer;
     public float t;
 
     protected override void BeginEvent()
     {
         base.BeginEvent();
-        Debug.Log(boss);
+        boss = new List<GameObject>();
         initializeListEnemies();
         timer = 1;
         t = 0;
@@ -21,6 +21,7 @@ public class BossEvent : WaveEvent
     {
         if (list.Count == 0)
         {
+            //LevelUIEventManager.GetLevelUI().TriggerWarning("Attention Boss en approche !");
             goBoss();
         }
         else
@@ -51,7 +52,7 @@ public class BossEvent : WaveEvent
             currWait3 += Time.deltaTime;
             if (currWait <= 0)
             {
-                LevelUIEventManager.GetLevelUI().TriggerWarning("Attention Boss en approche !");
+                //LevelUIEventManager.GetLevelUI().TriggerWarning("Attention Boss en approche !");
                 goBoss();
             }
         }
@@ -62,16 +63,20 @@ public class BossEvent : WaveEvent
     
     new public void initializeListEnemies()
     {
-        boss = ListEnemies[ListEnemies.Count - 1];
-        Debug.Log(boss);
+        EnemyList.DifficultLevel = Difficulty;
+        boss = EnemyList.CallListBoss();
     }
 
 
     //Spawn du Boss
     public void goBoss()
     {
-        Debug.Log("C'est l'heure du BOSS");
-        Instantiate(boss, listVector3[Random.Range(0, listVector3.Count)], Quaternion.identity);
+        if (boss.Count > 0)
+        {
+            Debug.Log("C'est l'heure du BOSS");
+            Instantiate(boss[0], listVector3[Random.Range(0, listVector3.Count)], Quaternion.identity);
+            boss.RemoveAt(0);
+        }
 
         if (t >= timer)
             this.End();

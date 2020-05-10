@@ -13,10 +13,13 @@ public class LevelGenerator : MonoBehaviour
     {
         Debug.Log("Début du niveau !");
         levelGeneratorInfo = App.GetLevelGenerator();
-        levelGeneratorInfo = GameObject.Instantiate(levelGeneratorInfo).GetComponent<LevelGeneratorInfo>();
-        levelGeneratorInfo.GetEventEnd().AddListener(LevelEnd);
-        levelGeneratorInfo.Difficulty = App.GetDifficulty();
         App.SetEnemyList(enemyList);
+
+        //Debut du niveau
+        levelGeneratorInfo = GameObject.Instantiate(levelGeneratorInfo).GetComponent<LevelGeneratorInfo>();
+        levelGeneratorInfo.Difficulty = App.GetDifficulty();
+        levelGeneratorInfo.StartLevel();
+        levelGeneratorInfo.GetEventEnd().AddListener(LevelEnd);
     }
 
     // Update is called once per frame

@@ -11,7 +11,7 @@ public class App : MonoBehaviour
     public static MusicManager sfx;
     public static PlayerManager playerManager = new PlayerManager();
     protected static LevelGeneratorInfo levelGeneratorInfo;
-    protected static float difficulty = 0.0f;
+    protected static int difficulty = 0;
     protected static EnemyList enemyList;
     [SerializeField] public List<Vector3> spawnList;
     [SerializeField] protected List<Event> waveEvents;
@@ -53,13 +53,13 @@ public class App : MonoBehaviour
     }
 
     //Permet de set la difficulté
-    public static void SetDifficulty(float d)
+    public static void SetDifficulty(int d)
     {
         difficulty = d;
     }
 
     //Permet de get la difficulté
-    public static float GetDifficulty()
+    public static int GetDifficulty()
     {
         return difficulty;
     }

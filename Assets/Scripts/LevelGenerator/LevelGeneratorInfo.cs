@@ -11,6 +11,7 @@ using UnityEngine;
  */
 public class LevelGeneratorInfo : MonoBehaviour {
     protected bool levelEnd = false;
+    bool levelStart = false; //Savoir si le niveau a commencé
 
     public List<Event> events = new List<Event>();
     private float difficulty = 0.0f;
@@ -23,13 +24,20 @@ public class LevelGeneratorInfo : MonoBehaviour {
 
     public float Difficulty { get => difficulty; set => difficulty = value; }
 
-    void Start(){
+    void Awake(){
         Debug.Log("LevelGeneratorInfo ! " + events.Count);
+        levelStart = false;
+    }
+
+    public void StartLevel(){
+        Debug.Log("DEBUT DU NIVEAU");
         //Initialisation de l'évènement courrant à -1 pour pouvoir commencer
         currentStaticEvent = -1;
         levelEnd = false;
+        levelStart = true;
         //On écoute la fin et le début de chaques events
-        for(int i = 0; i < events.Count; i++){
+        for (int i = 0; i < events.Count; i++)
+        {
             int j = i; //Création d'une copie de i pour pouvoir récupérer l'index, en effet i existe sur tout le contexte du for
             events[i].Reset();
             events[i].GetEventBegin().AddListener(() => { EventBegin(j); });
@@ -40,7 +48,7 @@ public class LevelGeneratorInfo : MonoBehaviour {
     }
 
     void Update(){
-        if(!levelEnd){
+        if(!levelEnd && levelStart){
             for (int i = 0; i < eventsDynamic.Count; i++)
             {
                 if (events[eventsDynamic[i]].IsRunning())

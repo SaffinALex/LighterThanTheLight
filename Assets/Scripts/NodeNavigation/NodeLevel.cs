@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeLevel : MonoBehaviour
+public class NodeLevel : NodeElement
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("Je suis un NodeLevel");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    
+    public override void Begin() {
+        Debug.Log("Début du niveau !");
+        // this.End();
+        return;
     }
 }

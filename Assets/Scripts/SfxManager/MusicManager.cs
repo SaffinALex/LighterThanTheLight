@@ -55,7 +55,7 @@ public class MusicManager : MonoBehaviour
             else currTimeTransition = 0f;
             // Others
             for (int i = 0; i < allSources.Count - 1; i++) {
-                allSources[i].volume = Mathf.Lerp(0f, allSourcesBaseVolume[i], currTimeTransition/timeToTransition);
+                allSources[i].volume = Mathf.SmoothStep(0f, allSourcesBaseVolume[i], currTimeTransition/timeToTransition);
                 if(allSources[i].volume == 0f)
                 {
                     //Remove AudioSource
@@ -67,7 +67,7 @@ public class MusicManager : MonoBehaviour
             }
             //Last
             lastIndex = allSources.Count - 1;
-            if(allSources[lastIndex]) allSources[lastIndex].volume = Mathf.Lerp(volume, allSourcesBaseVolume[lastIndex], currTimeTransition/timeToTransition);
+            if(allSources[lastIndex]) allSources[lastIndex].volume = Mathf.SmoothStep(volume, allSourcesBaseVolume[lastIndex], currTimeTransition/timeToTransition);
         }
         for(int i = 0; i < allSourcesSoundsEffects.Count; i++)
         {
