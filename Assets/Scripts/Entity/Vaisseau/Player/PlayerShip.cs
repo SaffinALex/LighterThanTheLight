@@ -13,7 +13,6 @@ public class PlayerShip : Ship
     public int waveDamage;
     public int waveNumber;
     public float waveRecovery;
-    public float shootRecovery;
     public float waveRadius;
 
     //IsInvincible = Recovery Time pour éviter de se faire enchainer trop violemment.
@@ -50,7 +49,7 @@ public class PlayerShip : Ship
         canShoot = true;
         dash.initialize();
         for(int i=0; i<weapons.Count; i++){
-            weapons[i].gameObject.GetComponent<WeaponPlayer>().Initialize();
+            weapons[i].Initialize();
         }
         for(int i=0; i<upgradeShip.Count; i++){
             upgradeShip[i].StartUpgrade(this);
@@ -73,17 +72,17 @@ public class PlayerShip : Ship
         change.y = Input.GetAxisRaw("Vertical");
         if(Input.GetKey("v")){
             for(int i=0; i<weapons.Count; i++){
-                weapons[i].gameObject.GetComponent<WeaponPlayer>().shoot(transform);
+                weapons[i].shoot(transform);
             }
         }
         //Onde tire
-        if(canShootWave && Input.GetKey("o") && waveNumber > 0){
+   /*     if(canShootWave && Input.GetKey("o") && waveNumber > 0){
             StartCoroutine("ShootWave");
             waveNumber --;
             GameObject waveBullet = Instantiate(wave, transform.position, Quaternion.identity);
             waveBullet.GetComponent<CircleCollider2D>().radius = waveRadius; 
             LevelUIEventManager.GetLevelUI().TriggerPlayerBomb();
-        }
+        } */
         //Le Dash se fait seulement sur X.
         if(dash.getCanDash() && Input.GetKeyDown("k") && !isInvincible && change.x != 0){
             Debug.Log("Dash");
@@ -134,7 +133,7 @@ public class PlayerShip : Ship
     void Update()
     {
         for(int i=0; i<weapons.Count; i++){
-            weapons[i].gameObject.GetComponent<WeaponPlayer>().updateTimer();
+            weapons[i].updateTimer();
         }
         
     }
@@ -169,14 +168,14 @@ public class PlayerShip : Ship
         return shieldLife;
     }
     public void setShieldLife(int s){
-        shieldLife = shieldLife + s;
+        shieldLife = s;
     }
 
     public float getRecoveryTime(){
         return recoveryTime;
     }
     public void setRecoveryTime(float s){
-        recoveryTime = initialRecoveryTime + s;
+        recoveryTime =  s;
     }
 
 
@@ -204,11 +203,6 @@ public class PlayerShip : Ship
         animator.SetBool("isFlipLeft", false);
     }
 
-    private IEnumerator Shoot(){
-        canShoot = false;
-        yield return new WaitForSeconds(shootRecovery);
-        canShoot = true;
-    }
     private IEnumerator ShootWave(){
         canShootWave = false;
         yield return new WaitForSeconds(waveRecovery);

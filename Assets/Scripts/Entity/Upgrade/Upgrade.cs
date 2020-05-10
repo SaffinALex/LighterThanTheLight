@@ -23,11 +23,18 @@ public class Upgrade : MonoBehaviour
         
     }
 
-    public int getWeight(){
-        return weight;
-    }
 
     public int getPrice(){
         return price;
     }
+    public void setPrice(int s){
+        price = s;
+    }
+    public int getWeight(){
+        return weight;
+    }
+    public void setWeight(int w){
+        weight = w;
+    }
+
 }

@@ -13,7 +13,7 @@ public class Ship : MonoBehaviour
     private double life;
     public float speed;
     public int maxShieldLife;
-    public List<GameObject> weapons;
+    public List<WeaponPlayer> weapons;
     public List<UpgradeShip> upgradeShip;
     void Start()
     {
@@ -34,7 +34,7 @@ public class Ship : MonoBehaviour
         return nbrMaxUpgradeShip - cpt;
     }
 
-    public int numberWeaponCanAss(){
+    public int numberWeaponCanAdd(){
         int cpt = 0;
         for(int i = 0; i<weapons.Count; i++){
             cpt+= weapons[i].gameObject.GetComponent<WeaponPlayer>().getWeight();
@@ -68,7 +68,7 @@ public class Ship : MonoBehaviour
     public void setNbrMaxWeapons(int n){
         this.nbrMaxWeapons = n;
     }
-    public void addWeapons(GameObject w){
+    public void addWeapons(WeaponPlayer w){
         weapons.Add(w);
     }
     public void addUpgradeShip(UpgradeShip u){

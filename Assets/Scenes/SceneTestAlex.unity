@@ -348,13 +348,13 @@ PrefabInstance:
     - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}
       propertyPath: upgradeShip.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}
       propertyPath: weapons.Array.data[0]
       value: 
-      objectReference: {fileID: 4858229881090144325, guid: e5735a699bc087a4fafbd8c2b2395644,
+      objectReference: {fileID: 2083393953272898251, guid: e5735a699bc087a4fafbd8c2b2395644,
         type: 3}
     - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}
@@ -375,8 +375,7 @@ PrefabInstance:
         type: 3}
       propertyPath: upgradeShip.Array.data[0]
       value: 
-      objectReference: {fileID: 6040405114794667504, guid: 82f75acb5b2eed54ba857ba67d414bba,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}
       propertyPath: upgradeShip.Array.data[1]

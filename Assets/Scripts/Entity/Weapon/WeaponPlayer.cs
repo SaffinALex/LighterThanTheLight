@@ -73,6 +73,9 @@ public abstract class WeaponPlayer : MonoBehaviour
         fireRate = s;
         Debug.Log(fireRate);
     }
+
+ 
+
     public void addUpgradeWeapon(UpgradeWeapon u){
         upgradeWeapons.Add(u);
     }

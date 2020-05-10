@@ -18,7 +18,7 @@ public class UpgradeShieldShip : UpgradeShip
     }
     override
     public void StartUpgrade(PlayerShip v){
-        v.setShieldLife(ShieldBonus);
+        v.setShieldLife(v.getShieldLife()+ShieldBonus);
 
     }
 //Avant la suppression de l'Upgrade.
