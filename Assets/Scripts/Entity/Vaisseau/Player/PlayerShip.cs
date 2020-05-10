@@ -71,11 +71,10 @@ public class PlayerShip : Ship
         Vector3 change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
-        if(canShoot && Input.GetKey("v")){
+        if(Input.GetKey("v")){
             for(int i=0; i<weapons.Count; i++){
                 weapons[i].gameObject.GetComponent<WeaponPlayer>().shoot(transform);
             }
-            StartCoroutine("Shoot");
         }
         //Onde tire
         if(canShootWave && Input.GetKey("o") && waveNumber > 0){
@@ -134,6 +133,9 @@ public class PlayerShip : Ship
     }
     void Update()
     {
+        for(int i=0; i<weapons.Count; i++){
+            weapons[i].gameObject.GetComponent<WeaponPlayer>().updateTimer();
+        }
         
     }
     private void OnTriggerEnter2D(Collider2D col){

@@ -7,7 +7,7 @@ public abstract class WeaponPlayer : MonoBehaviour
     public List<UpgradeWeapon> upgradeWeapons;
     public int nbrMaxUpgrade;
     public int size;
-    private bool canShoot = true;
+    private bool canShoot;
     public float fireRateBase;
     private float fireRate;
     public GameObject bullet;
@@ -17,6 +17,7 @@ public abstract class WeaponPlayer : MonoBehaviour
     private float bulletSpeed;
     private float damage;
     // Start is called before the first frame update
+    private float timer;
     public void Initialize(){
         setBulletSpeed(bulletSpeedBase);
         setFireRate(fireRateBase);
@@ -24,6 +25,8 @@ public abstract class WeaponPlayer : MonoBehaviour
         for(int i=0; i<upgradeWeapons.Count; i++){
             upgradeWeapons[i].StartUpgrade(this);
         }
+        canShoot = true;
+        timer = 0;
        
     }
 
@@ -52,6 +55,10 @@ public abstract class WeaponPlayer : MonoBehaviour
         return canShoot;
     }
 
+    public void setCanShoot(bool b){
+        canShoot = b;
+    }
+
     public int getWeight(){
         return weight;
     }
@@ -64,14 +71,17 @@ public abstract class WeaponPlayer : MonoBehaviour
     }
     public void setFireRate(float s){
         fireRate = s;
+        Debug.Log(fireRate);
     }
     public void addUpgradeWeapon(UpgradeWeapon u){
         upgradeWeapons.Add(u);
     }
 
-    private IEnumerator Shoot(){
-        canShoot = false;
-        yield return new WaitForSeconds(fireRate);
-        canShoot = true;
+    public void updateTimer(){
+        timer += Time.deltaTime;
+        if(timer >= fireRate){
+            timer = 0;
+            canShoot = true;
+        }
     }
 }
