@@ -11,7 +11,7 @@ public class EnnemiesBorder : MonoBehaviour
 
     public static Vector2 size;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         limits = GetComponent<EdgeCollider2D>();
 

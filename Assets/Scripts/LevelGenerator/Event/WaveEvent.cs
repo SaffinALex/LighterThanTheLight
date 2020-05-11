@@ -43,7 +43,7 @@ public class WaveEvent : Event
         List<Vector3> vect3 = App.GetSpawn();
         for(int i=0; i<nbSpawn; i++)
         {
-            listVector3.Add(vect3[Random.Range(0, vect3.Count)]);
+            listVector3.Add(vect3[Random.Range(0, vect3.Count - 1)]);
         }
         timeP = (wait - nbPause) / (nbPause + 1);
         spawn = (wait - pause*nbPause - 1) / nbEnemies;
@@ -102,7 +102,7 @@ public class WaveEvent : Event
         ListEnemies = EnemyList.CallListEnemies();
         for (int i = 0; i < nb1; i++)
         {
-            GameObject g = ListEnemies[Random.Range(0, ListEnemies.Count)];
+            GameObject g = ListEnemies[Random.Range(0, ListEnemies.Count - 1)];
             list.Add(g);
         }
 
@@ -111,7 +111,7 @@ public class WaveEvent : Event
         int nb2 = nbEnemies - nb1;
         for (int i = 0; i < nb2; i++)
         {
-            GameObject g = ListEnemies[Random.Range(0, ListEnemies.Count)];
+            GameObject g = ListEnemies[Random.Range(0, ListEnemies.Count - 1)];
             list.Add(g);
         }
     }
@@ -120,7 +120,7 @@ public class WaveEvent : Event
     //Méthode de spawn d'ennemies
     public void spawnEnemy()
     {
-        Instantiate(list[0], listVector3[Random.Range(0, listVector3.Count)], Quaternion.identity);
+        Instantiate(list[0], listVector3[Random.Range(0, listVector3.Count - 1)], Quaternion.identity);
         list.RemoveAt(0);
 
         /*GameObject g = Instantiate(list[Random.Range(0, list.Count)], new Vector3(0, 0, 0), Quaternion.identity);

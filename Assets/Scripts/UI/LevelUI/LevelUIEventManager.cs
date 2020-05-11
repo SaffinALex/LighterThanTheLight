@@ -11,13 +11,14 @@ public class LevelUIEventManager : MonoBehaviour
 
     private static LevelUIEventManager instance = null;
 
-    void Start() {
+    void Awake(){
         instance = this;
         healthBar = transform.Find("HealthBar").GetComponent<HealthBarControl>();
         dashCdBar = transform.Find("DashCooldownBar").GetComponent<CooldownBarControl>();
         bombCdBar = transform.Find("BombCooldownBar").GetComponent<CooldownBarControl>();
         bossWarn = GetComponentInChildren<BossWarning>();
-        if(GameObject.Find("playerShip") != null){
+        if (GameObject.Find("playerShip") != null)
+        {
             dashCdBar.setMaxCd(GameObject.Find("playerShip").GetComponent<Dash>().getRecoveryDash());
             dashCdBar.setMaxNbCharges(1);
             dashCdBar.FillCharges();
@@ -26,6 +27,9 @@ public class LevelUIEventManager : MonoBehaviour
             bombCdBar.setMaxNbCharges(1);
             bombCdBar.FillCharges();
         }
+    }
+
+    void Start() {
     }
 
     public void TriggerPlayerHealthChange(int health, int maxHealth, int nbShields){
