@@ -100,7 +100,7 @@ MonoBehaviour:
   speed: 2
   maxShieldLife: 8
   weapons:
-  - {fileID: 8912196057217071144, guid: 5b55086237e3bc941ac7f878d5eb5ed1, type: 3}
+  - {fileID: 2083393953272898251, guid: e5735a699bc087a4fafbd8c2b2395644, type: 3}
   upgradeShip: []
   wave: {fileID: 7237810773343739811, guid: 1f35fce770403cd489dbd332e41f783d, type: 3}
   dash: {fileID: 4609433687815977602}
@@ -109,7 +109,6 @@ MonoBehaviour:
   waveDamage: 1000
   waveNumber: 5
   waveRecovery: 0
-  shootRecovery: 1
   waveRadius: 10
   animator: {fileID: 4609433686791282158}
   bullet: {fileID: 4416812285562530050, guid: 24da03922ed47d246a081cdd171e1995, type: 3}
