@@ -348,7 +348,7 @@ PrefabInstance:
     - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}
       propertyPath: upgradeShip.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}

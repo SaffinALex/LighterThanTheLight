@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
 {
     public Ship player;
     public int money;
+    public int score;
     public List<WeaponPlayer> Weapons;
     public List<UpgradeDash> UpgradeDashes;
     public List<UpgradeShip> UpgradeShip;
@@ -80,6 +81,13 @@ public class Inventory : MonoBehaviour
     }
     public void setMoney(int m){
         money = m;
+    }
+
+    public int getScore(){
+        return score;
+    }
+    public void setScore(int m){
+        score = m;
     }
     // Update is called once per frame
     void Update()
