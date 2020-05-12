@@ -24,6 +24,8 @@ public class LevelGeneratorInfo : MonoBehaviour {
 
     public float Difficulty { get => difficulty; set => difficulty = value; }
 
+    public bool DevMod = false;
+
     void Awake(){
         Debug.Log("LevelGeneratorInfo ! " + events.Count);
         levelStart = false;
@@ -39,15 +41,18 @@ public class LevelGeneratorInfo : MonoBehaviour {
         for (int i = 0; i < events.Count; i++)
         {
             int j = i; //Création d'une copie de i pour pouvoir récupérer l'index, en effet i existe sur tout le contexte du for
-            events[i].Reset();
-            events[i].GetEventBegin().AddListener(() => { EventBegin(j); });
-            events[i].GetEventEnd().AddListener(() => { EventFinish(j); });
+            Event e = Instantiate(events[i]);
+            e.Reset();
+            e.GetEventBegin().AddListener(() => { EventBegin(j); });
+            e.GetEventEnd().AddListener(() => { EventFinish(j); });
+            events[i] = e;
         }
 
         BeginGenerator();
     }
 
     void Update(){
+        if(DevMod && !levelStart){ StartLevel(); }
         if(!levelEnd && levelStart){
             for (int i = 0; i < eventsDynamic.Count; i++)
             {
@@ -146,6 +151,7 @@ public class LevelGeneratorInfo : MonoBehaviour {
 
     protected void EndGenerator(){
         if(!levelEnd){
+            Debug.Log("FIN DU NIVEAU");
             levelEnd = true;
             eventEnd.Invoke();
         }

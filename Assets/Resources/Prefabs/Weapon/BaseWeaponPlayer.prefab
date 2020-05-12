@@ -46,6 +46,8 @@ MonoBehaviour:
   upgradeWeapons: []
   nbrMaxUpgrade: 0
   size: 0
-  fireRateBase: 1
-  bullet: {fileID: 4416812285562530050, guid: 24da03922ed47d246a081cdd171e1995, type: 3}
-  bulletSpeedBase: 2
+  fireRateBase: 0.2
+  bullet: {fileID: 741788068531152253, guid: ff4828655a57f9a46aa06c71ca9a2e60, type: 3}
+  price: 0
+  weight: 0
+  bulletSpeedBase: 30

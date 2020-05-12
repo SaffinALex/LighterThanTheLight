@@ -9,6 +9,7 @@ public class BotBehaviorFollow : EntitySpaceShipBehavior
     // Start is called before the first frame update
     new void Start()
     {
+        player = GameObject.Find("playerShip");
         base.Start();
         Type = "Bot";
     }

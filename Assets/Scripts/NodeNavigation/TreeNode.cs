@@ -24,7 +24,7 @@ public class TreeNode : MonoBehaviour
         levelFlow.Add("Wave");
         levelFlow.Add("Wave");
         levelFlow.Add("Wave");
-        List<Event> levelEvents = GeneratorLGI.GenerateLevel(6 * levelFlow.Count, 3, levelFlow);
+        List<Event> levelEvents = GeneratorLGI.GenerateLevel(4 * levelFlow.Count, 3, levelFlow);
         levelGeneratorInfo.events = levelEvents;
         Debug.Log(levelGeneratorInfo);
         App.SetLevelGenerator(levelGeneratorInfo);
