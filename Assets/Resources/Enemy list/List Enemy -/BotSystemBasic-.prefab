@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 215432106614203235}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: -0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4653595317926246612}
   - {fileID: 215432107813668315}
@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 215432107437731121}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.076, y: 0.058, z: -0.134}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 215432106614203234}
   m_RootOrder: 2
@@ -4814,7 +4814,7 @@ Transform:
   m_GameObject: {fileID: 215432107813668312}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.513, y: 0.152, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 215432106614203234}
   m_RootOrder: 1
@@ -9567,7 +9567,7 @@ Transform:
   m_GameObject: {fileID: 1467866978900985923}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.076, y: 0.058, z: 0.133}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 215432106614203234}
   m_RootOrder: 3
@@ -14385,7 +14385,7 @@ GameObject:
   - component: {fileID: 3186004780137720421}
   - component: {fileID: 8160202949183248626}
   - component: {fileID: 3186004780137720423}
-  - component: {fileID: 3186004780137720420}
+  - component: {fileID: 3423751515378615038}
   m_Layer: 10
   m_Name: Bot
   m_TagString: Enemy
@@ -14451,7 +14451,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &3186004780137720420
+--- !u!61 &3423751515378615038
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14464,7 +14464,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0005604327, y: -0.019147813}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -14475,7 +14475,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.28502434, y: 0.32484627}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &3186004781135254224
 GameObject:
