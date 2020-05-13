@@ -33,7 +33,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         p3 = transform.position.y - 0.5f;
         positionX = transform.position.x;
         positionY = transform.position.y;
-        Type = "Boss";
+        type = "BossBasic";
     }
 
     new void FixedUpdate()
@@ -90,7 +90,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     {
         Vector3 direction = (new Vector3(positionX, positionY, transform.position.z) - transform.position).normalized;
         force = new Vector2(direction.x, direction.y) * speedMove;
-        R2d.velocity = force;
+        r2d.velocity = force;
     }
 
     override
@@ -103,7 +103,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         }
     }
     
-    public void OnCollisionEnter2D(Collision2D collision)
+    public new void OnCollisionEnter2D(Collision2D collision)
     {/*
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
@@ -130,12 +130,6 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     }
 
     override
-    public void getDamage(int damage)
-    {
-        life -= damage;
-    }
-
-    override
     public void initialize()
     {
         isShooting = true;
@@ -151,7 +145,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
 
     public override string getType()
     {
-        Type = "Boss";
-        return Type;
+        type = "BossBasic";
+        return type;
     }
 }

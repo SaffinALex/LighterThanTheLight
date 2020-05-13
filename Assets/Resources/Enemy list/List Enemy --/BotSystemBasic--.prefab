@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 2002527521201377530}
   - component: {fileID: 5098711417289269869}
   - component: {fileID: 2002527521201377528}
-  - component: {fileID: 2002527521201377531}
+  - component: {fileID: 1595210846879694965}
   m_Layer: 10
   m_Name: Bot
   m_TagString: Enemy
@@ -136,6 +136,7 @@ MonoBehaviour:
   isShooting: 1
   isMoving: 0
   force: {x: 0, y: 0}
+  score: 5
   isAtRight: 0
 --- !u!50 &2002527521201377528
 Rigidbody2D:
@@ -158,7 +159,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &2002527521201377531
+--- !u!61 &1595210846879694965
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,7 +172,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0005604327, y: -0.019147813}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -182,7 +183,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.28502434, y: 0.32484627}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &2002527522350934095
 GameObject:
@@ -276,7 +277,7 @@ Transform:
   m_GameObject: {fileID: 2567745997795209948}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.076, y: 0.058, z: 0.133}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3819545065707854333}
   m_RootOrder: 3
@@ -5027,7 +5028,7 @@ Transform:
   m_GameObject: {fileID: 3819545065707854332}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: -0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8604261319702659659}
   - {fileID: 3819545066387177284}
@@ -5063,7 +5064,7 @@ Transform:
   m_GameObject: {fileID: 3819545065955710894}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.076, y: 0.058, z: -0.134}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3819545065707854333}
   m_RootOrder: 2
@@ -9816,7 +9817,7 @@ Transform:
   m_GameObject: {fileID: 3819545066387177287}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.513, y: 0.152, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3819545065707854333}
   m_RootOrder: 1

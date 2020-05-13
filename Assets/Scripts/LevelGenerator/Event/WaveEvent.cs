@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class WaveEvent : Event
 {
-    private float score = 0;
 
-    private EnemyList enemyList = new EnemyList();
-    private List<GameObject> listEnemies = new List<GameObject>();
-    private int difficulty;
-
-    public List<GameObject> ListEnemies { get => listEnemies; set => listEnemies = value; }
-    public int Difficulty { get => difficulty; set => difficulty = value; }
-    public EnemyList EnemyList { get => enemyList; set => enemyList = value; }
-    public float Score { get => score; set => score = value; }
+    public List<GameObject> listEnemies { get; set; }
+    public int difficulty { get; set; }
+    public EnemyList enemyList { get; set; }
+    public float score { get; set; }
 
     public float wait;
     protected float currWait;
     protected float currWait2;
     protected float currWait3;
-    public int nbSpawn;
     public int nbPause;
-    protected float factorDiff;
     public int nbEnemies;
     protected List<GameObject> list;
     protected List<Vector3> listVector3;
@@ -39,14 +32,10 @@ public class WaveEvent : Event
         currWait = wait;
         currWait2 = 0;
         currWait3 = 0;
-        factorDiff = 0;
-        List<Vector3> vect3 = App.GetSpawn();
-        for(int i=0; i<nbSpawn; i++)
-        {
-            listVector3.Add(vect3[Random.Range(0, vect3.Count - 1)]);
-        }
+        listVector3 = App.GetSpawn();
         timeP = (wait - nbPause) / (nbPause + 1);
         spawn = (wait - pause*nbPause - 1) / nbEnemies;
+        score = 0;
 
         initializeListEnemies();
         //positionBoss();
@@ -93,25 +82,25 @@ public class WaveEvent : Event
     //Initialisation des listes d'ennemies et de la difficulté de l'event
     public void initializeListEnemies()
     {
-        Difficulty = App.GetDifficulty();
-        EnemyList = App.GetEnemyList();
-        EnemyList = GameObject.Instantiate(EnemyList).GetComponent<EnemyList>();
-        EnemyList.DifficultLevel = Difficulty;
+        difficulty = App.GetDifficulty();
+        enemyList = App.GetEnemyList();
+        enemyList = GameObject.Instantiate(enemyList).GetComponent<EnemyList>();
+        enemyList.DifficultLevel = difficulty;
 
         int nb1 = 60 * nbEnemies / 100;
-        ListEnemies = EnemyList.CallListEnemies();
+        listEnemies = enemyList.CallListEnemies();
         for (int i = 0; i < nb1; i++)
         {
-            GameObject g = ListEnemies[Random.Range(0, ListEnemies.Count - 1)];
+            GameObject g = listEnemies[Random.Range(0, listEnemies.Count)];
             list.Add(g);
         }
 
-        EnemyList.DifficultLevel = Difficulty + 1;
-        ListEnemies = EnemyList.CallListEnemies();
+        enemyList.DifficultLevel = difficulty + 1;
+        listEnemies = enemyList.CallListEnemies();
         int nb2 = nbEnemies - nb1;
         for (int i = 0; i < nb2; i++)
         {
-            GameObject g = ListEnemies[Random.Range(0, ListEnemies.Count - 1)];
+            GameObject g = listEnemies[Random.Range(0, listEnemies.Count)];
             list.Add(g);
         }
     }
@@ -120,7 +109,7 @@ public class WaveEvent : Event
     //Méthode de spawn d'ennemies
     public void spawnEnemy()
     {
-        Instantiate(list[0], listVector3[Random.Range(0, listVector3.Count - 1)], Quaternion.identity);
+        Instantiate(list[0], listVector3[Random.Range(0, listVector3.Count)], Quaternion.identity);
         list.RemoveAt(0);
 
         /*GameObject g = Instantiate(list[Random.Range(0, list.Count)], new Vector3(0, 0, 0), Quaternion.identity);
@@ -131,19 +120,17 @@ public class WaveEvent : Event
     //Calcul du score de l'event
     public void scoreCalcul()
     {
-        factorDiff = 0;
+        score = 0;
         for (int i = 0; i < list.Count; i++)
         {
-            factorDiff += (0.1f + 0.1f * list[i].GetComponentInChildren<EntitySpaceShipBehavior>().Difficult);
+            score += list[i].GetComponentInChildren<EntitySpaceShipBehavior>().getScore();
         }
-        factorDiff += 10f / wait;
-        Score = Difficulty + nbSpawn + nbPause + factorDiff;
     }
 
     override
     public float GetScore()
     {
         scoreCalcul();
-        return Score;
+        return score;
     }
 }
