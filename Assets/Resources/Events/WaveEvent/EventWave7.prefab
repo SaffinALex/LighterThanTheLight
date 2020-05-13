@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &515973850707680338
+--- !u!1 &5419175455025878355
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 515973850707680332}
-  - component: {fileID: 515973850707680339}
+  - component: {fileID: 5649532915216237694}
+  - component: {fileID: 1685339730243555455}
   m_Layer: 0
-  m_Name: List--
+  m_Name: EventWave7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &515973850707680332
+--- !u!4 &5649532915216237694
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 515973850707680338}
+  m_GameObject: {fileID: 5419175455025878355}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.39118177, y: -0.6153298, z: 0.6904297}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &515973850707680339
+--- !u!114 &1685339730243555455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 515973850707680338}
+  m_GameObject: {fileID: 5419175455025878355}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0b5bc6da32f5c74da6d32c0c513b730, type: 3}
+  m_Script: {fileID: 11500000, guid: b7016a515552e974fbab71971fb026f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listEnemy:
-  - {fileID: 2002527522350934095, guid: 6ee852038c274a5488c9a64efb50a829, type: 3}
-  - {fileID: 2064434575908398254, guid: 523c7fceded3985498ae0d522d3f5da4, type: 3}
-  - {fileID: 5841035006419391918, guid: 0d7ebdf3078abfb4796289d4568dea19, type: 3}
-  - {fileID: 7790174105719540030, guid: 2615858b59a7e8a4ab5ee746b9b9b4f5, type: 3}
-  listBoss:
-  - {fileID: 7885657485564900595, guid: ef8f13672d716054b8d3c4415f610cff, type: 3}
+  timeStart: -1
+  wait: 18
+  nbSpawn: 3
+  nbPause: 0
+  nbEnemies: 20
+  pause: 1

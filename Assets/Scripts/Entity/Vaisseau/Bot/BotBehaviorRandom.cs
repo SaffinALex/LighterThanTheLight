@@ -4,27 +4,15 @@ using UnityEngine;
 
 public class BotBehaviorRandom : EntitySpaceShipBehavior
 {
-    Vector2 initialPosition;
-    Vector2 nextPosition;
-
-    protected float timeChangePosition; //Représente le temps pour changer de position ( il sera calculé en fonction de la distance et la vitesse )
-    protected float timePause = 5f;
-    protected bool beginPause = false; //Si la pause a commencé
-    protected bool endPause = false; //Si la pause est terminé
-
-    protected float timerPause = 0f;            //Représente le timer de la pause
-    protected float timerChangePosition = 0f;   //Représente le timer pour changer de position ( va servir pour l'arrivée et le départ )
+    private float timerWait = 0.0f;
+    private float timeWait = 2.0f;
 
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
-        type = "BotRandom";
-
-        initialPosition = transform.position;
-        nextPosition = initialPosition + new Vector2(0, -EnnemiesBorder.size.y / 3);
-
-        timeChangePosition = Vector2.Distance(initialPosition, nextPosition) / speedMove;
+        Direction = Random.Range(0, 8);
+        Type = "Bot";
     }
 
     new void FixedUpdate()
@@ -37,45 +25,43 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
     {
         base.Update();
         move();
+        shoot();
+
+        if (timerWait < timeWait)
+        {
+            timerWait += Time.deltaTime;
+        }
     }
 
     override
     public void move()
     {
-        // 1 - La pause n'a pas commencé on arrive
-        if (!beginPause && timerChangePosition < timeChangePosition)
+        if (timerWait >= timeWait)
         {
-            timerChangePosition += Time.deltaTime;
-            transform.position = Vector2.Lerp(initialPosition, nextPosition, Mathf.SmoothStep(0, 1, timerChangePosition / timeChangePosition));
-            if (timerChangePosition >= timeChangePosition)
-            {
-                beginPause = true; //On commence la pause
-                timerChangePosition = 0;
-            }
+            //Debug.Log("Time wait fini !");
+            timerWait = 0.0f;
+            Direction = Random.Range(0, 8);
         }
-        else if (beginPause && !endPause && timerPause < timePause)
-        {
-            timerPause += Time.deltaTime;
-            shoot();
-            if (timerPause >= timePause)
-            {
-                endPause = true;
-                Vector2 tmp = initialPosition;
-                initialPosition = nextPosition;
-                nextPosition = tmp;
-            }
-        }
-        
-        else if (beginPause && endPause)
-        {
-            timerChangePosition += Time.deltaTime;
-            transform.position = Vector2.Lerp(initialPosition, nextPosition, Mathf.SmoothStep(0, 1, timerChangePosition / timeChangePosition));
 
-            if (timerChangePosition >= timeChangePosition)
-            {
-                shoot();
-                //isDead = true;
-            }
+        if (Direction == 0)
+        {
+            R2d.velocity = new Vector2(speedMove, -scrolling);
+        }
+        else if (Direction == 1)
+        {
+            R2d.velocity = new Vector2(0, speedMove - scrolling);
+        }
+        else if (Direction == 2)
+        {
+            R2d.velocity = new Vector2(-speedMove, -scrolling);
+        }
+        else if (Direction == 3)
+        {
+            R2d.velocity = new Vector2(0, -speedMove - scrolling);
+        }
+        else
+        {
+            R2d.velocity = new Vector2(0, -scrolling);
         }
     }
 
@@ -90,17 +76,23 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
     }
 
     override
+    public void getDamage(int damage)
+    {
+        life -= damage;
+    }
+
+    override
     public void initialize()
     {
         isShooting = true;
         isMoving = false;
         life = 6;
-        direction = Random.Range(0, 8);
+        Direction = Random.Range(0, 8);
     }
 
     public override string getType()
     {
-        type = "BotRandom";
-        return type;
+        Type = "Bot";
+        return Type;
     }
 }

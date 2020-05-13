@@ -4,6 +4,11 @@ using UnityEngine;
 
 public abstract class EntitySpaceShipBehavior : MonoBehaviour
 {
+    private Rigidbody2D r2d;
+    private int direction;
+    private bool isDead;
+    private float difficult;
+
     public GameObject weapon;
     public float life;
     public float speedMove;
@@ -14,16 +19,13 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     public bool isMoving;
     //public bool isAtRight;
     public Vector2 force;
-    public float score;
+    private string type;
 
-    const float timerTouch = 0.05f;
-    protected float currTimerTouch = 0;
-
-    public Rigidbody2D r2d { get; set; }
-    public int direction { get; set; }
-    public bool isDead { get; set; }
-    public float difficult { get; set; }
-    public string type { get; set; }
+    public Rigidbody2D R2d { get => r2d; set => r2d = value; }
+    public int Direction { get => direction; set => direction = value; }
+    public bool IsDead { get => isDead; set => isDead = value; }
+    public float Difficult { get => difficult; set => difficult = value; }
+    public string Type { get => type; set => type = value; }
 
     //public bool IsAtRight { get => isAtRight; set => isAtRight = value; }
 
@@ -31,17 +33,17 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
-        r2d = GetComponent<Rigidbody2D>();
+        R2d = GetComponent<Rigidbody2D>();
         gameObject.transform.parent.gameObject.SetActive(true);
-        isDead = false;
+        IsDead = false;
     }
 
     protected void FixedUpdate()
     {
-        if (isDead)
+        if (IsDead)
         {
             // Destroy(this.gameObject);
-            isDead = false;
+            IsDead = false;
             isMoving = false;
 
             gameObject.transform.parent.gameObject.SetActive(false);
@@ -51,38 +53,19 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        currTimerTouch += Time.deltaTime;
-        if(life <= 0 && !isDead || transform.position.y < -EnnemiesBorder.size.y / 2 + 1)
-        {
-            isDead = true;
-            animator.SetBool("isDead", true);
-        }
-        if (currTimerTouch >= timerTouch)
-        {
-            transform.GetChild(0).gameObject.SetActive(true);
-        }
+
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (life <= 0 && !isDead)
+        if (life <= 0 && !IsDead)
         {
-            isDead = true;
+            IsDead = true;
             animator.SetBool("isDead", true);
         }
     }
 
-    public float getScore()
-    {
-        return score;
-    }
-
-    public void getDamage(float damage)
-    {
-        transform.GetChild(0).gameObject.SetActive(false);
-        currTimerTouch = 0;
-        life -= damage;
-    }
+    public abstract void getDamage(int damage);
 
     public abstract string getType();
 

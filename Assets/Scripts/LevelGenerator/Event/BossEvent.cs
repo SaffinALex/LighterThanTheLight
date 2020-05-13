@@ -63,8 +63,8 @@ public class BossEvent : WaveEvent
     
     new public void initializeListEnemies()
     {
-        enemyList.DifficultLevel = difficulty;
-        boss = enemyList.CallListBoss();
+        EnemyList.DifficultLevel = Difficulty;
+        boss = EnemyList.CallListBoss();
     }
 
 

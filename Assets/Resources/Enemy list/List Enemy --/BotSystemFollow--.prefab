@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 5841035007433551131}
   - component: {fileID: 5841035007433551133}
   - component: {fileID: 5841035007433551129}
-  - component: {fileID: 1688450630983375149}
+  - component: {fileID: 5841035007433551130}
   m_Layer: 10
   m_Name: Bot
   m_TagString: Enemy
@@ -193,15 +193,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 5359264151696501870, guid: ef2544720feb09248ae5a728fe49704f, type: 3}
   life: 20
-  speedMove: 5
+  speedMove: 0.6
   scrolling: 0.2
   speedShoot: 0.7
   animator: {fileID: 5841035006419391917}
   isShooting: 1
   isMoving: 0
   force: {x: 0, y: 0}
-  score: 4
-  player: {fileID: 4609433687815977607, guid: 20cdf949a649da44ca265d37803d97bc, type: 3}
+  player: {fileID: 0}
 --- !u!50 &5841035007433551129
 Rigidbody2D:
   serializedVersion: 4
@@ -223,7 +222,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &1688450630983375149
+--- !u!61 &5841035007433551130
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -236,7 +235,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0005604327, y: -0.023251817}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -247,7 +246,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.23546255, y: 0.21144024}
   m_EdgeRadius: 0
 --- !u!1 &6818170620175743405
 GameObject:
@@ -276,7 +275,7 @@ Transform:
   m_GameObject: {fileID: 6818170620175743405}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.244, y: 0.048, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 6818170620758641517}
   m_RootOrder: 0
@@ -5027,7 +5026,7 @@ Transform:
   m_GameObject: {fileID: 6818170620758641516}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: -0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 6818170620175743406}
   - {fileID: 8762494722381966411}

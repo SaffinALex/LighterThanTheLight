@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5136265472207999312}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: -0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 5136265472673145746}
   - {fileID: 6936122541464548983}
@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 5136265472673145745}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.244, y: 0.048, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 5136265472207999313}
   m_RootOrder: 0
@@ -4796,7 +4796,7 @@ GameObject:
   - component: {fileID: 5248710420552726311}
   - component: {fileID: 5248710420552726305}
   - component: {fileID: 5248710420552726309}
-  - component: {fileID: 4817206763356975511}
+  - component: {fileID: 5248710420552726310}
   m_Layer: 10
   m_Name: Bot
   m_TagString: Enemy
@@ -4840,7 +4840,7 @@ MonoBehaviour:
   isShooting: 1
   isMoving: 0
   force: {x: 0, y: 0}
-  player: {fileID: 4609433687815977607, guid: 20cdf949a649da44ca265d37803d97bc, type: 3}
+  player: {fileID: 0}
 --- !u!50 &5248710420552726309
 Rigidbody2D:
   serializedVersion: 4
@@ -4862,7 +4862,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &4817206763356975511
+--- !u!61 &5248710420552726310
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4875,7 +4875,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0005604327, y: -0.023251817}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4886,7 +4886,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.23546255, y: 0.21144024}
   m_EdgeRadius: 0
 --- !u!1 &5248710421684342674
 GameObject:

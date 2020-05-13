@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 2050479714741147311}
   - component: {fileID: 4718909573869462584}
   - component: {fileID: 2050479714741147309}
-  - component: {fileID: 3832881225637138142}
+  - component: {fileID: 2050479714741147310}
   m_Layer: 10
   m_Name: Bot
   m_TagString: Enemy
@@ -223,7 +223,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &3832881225637138142
+--- !u!61 &2050479714741147310
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -236,7 +236,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0005604327, y: -0.019147813}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -247,7 +247,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.28502434, y: 0.32484627}
   m_EdgeRadius: 0
 --- !u!1 &2602195636982854793
 GameObject:
@@ -276,7 +276,7 @@ Transform:
   m_GameObject: {fileID: 2602195636982854793}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.076, y: 0.058, z: 0.133}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 3656760463497125800}
   m_RootOrder: 3
@@ -5029,7 +5029,7 @@ Transform:
   m_GameObject: {fileID: 3656760462834858258}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.513, y: 0.152, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 3656760463497125800}
   m_RootOrder: 1
@@ -9782,7 +9782,7 @@ Transform:
   m_GameObject: {fileID: 3656760463129989627}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.076, y: 0.058, z: -0.134}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 3656760463497125800}
   m_RootOrder: 2
@@ -14533,7 +14533,7 @@ Transform:
   m_GameObject: {fileID: 3656760463497125801}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: -0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 8130921821750838302}
   - {fileID: 3656760462834858257}
