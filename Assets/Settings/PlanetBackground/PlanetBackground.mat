@@ -84,7 +84,7 @@ Material:
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0.03137255, g: 0.03137255, b: 0.1254902, a: 1}
     - _SpecColor: {r: 0.10980392, g: 0.14509805, b: 0.30588236, a: 1}
-    - _elevationMinMax: {r: 140.1197, g: 148.1971, b: 0, a: 0}
+    - _elevationMinMax: {r: 140.14998, g: 148.2395, b: 0, a: 0}
 --- !u!114 &7832462879868379194
 MonoBehaviour:
   m_ObjectHideFlags: 11

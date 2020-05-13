@@ -4,12 +4,14 @@ using UnityEngine;
 
 public abstract class WeaponPlayer : MonoBehaviour
 {
+    public static readonly float minFireRate = 0.001f;
+
     public List<UpgradeWeapon> upgradeWeapons;
     public int nbrMaxUpgrade;
     public int size;
-    private bool canShoot;
+    protected bool canShoot;
     public float fireRateBase;
-    private float fireRate;
+    protected float fireRate;
     public GameObject bullet;
     public int price;
     public int weight;
@@ -17,8 +19,9 @@ public abstract class WeaponPlayer : MonoBehaviour
     private float bulletSpeed;
     private float damage;
     // Start is called before the first frame update
-    private float timer;
+    protected float timerShoot;
     public void Initialize(){
+        fireRateBase = fireRateBase <= minFireRate ? minFireRate : fireRateBase;
         setBulletSpeed(bulletSpeedBase);
         setFireRate(fireRateBase);
         damage = bullet.GetComponent<Bullet>().damage;
@@ -26,7 +29,7 @@ public abstract class WeaponPlayer : MonoBehaviour
             upgradeWeapons[i].StartUpgrade(this);
         }
         canShoot = true;
-        timer = 0;
+        timerShoot = 0;
        
     }
 
@@ -80,10 +83,17 @@ public abstract class WeaponPlayer : MonoBehaviour
         upgradeWeapons.Add(u);
     }
 
+    protected void reloadShoot(){
+        timerShoot -= Mathf.Floor(timerShoot / fireRate) * fireRate;
+        timerShoot = timerShoot < 0 ? 0 : timerShoot;
+        canShoot = false;
+    }
+
     public void updateTimer(){
-        timer += Time.deltaTime;
-        if(timer >= fireRate){
-            timer = 0;
+        if(timerShoot <= fireRate){
+            timerShoot += Time.deltaTime;
+        }
+        if (timerShoot >= fireRate) {
             canShoot = true;
         }
     }

@@ -4,26 +4,22 @@ using UnityEngine;
 
 public class BotBulletPrototype : Bullet
 {
-    protected Rigidbody2D rgbd2D;
 
-    void Start()
-    {
-        rgbd2D = GetComponent<Rigidbody2D>();
+    void Start() {
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        rgbd2D.velocity = - transform.up.normalized * speed;
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+    void FixedUpdate() {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, speed * Time.fixedDeltaTime);
+        if (hit.collider != null)
         {
-            collision.gameObject.GetComponent<PlayerShip>().getDamage(damage);
-            Destroy(this.gameObject);
+            Collider2D collision = hit.collider;
+            if (collision.gameObject.CompareTag("Player")) {
+                collision.gameObject.GetComponent<PlayerShip>().getDamage(damage);
+                Destroy(this.gameObject);
+            }
         }
+        transform.position += -transform.up.normalized * speed * Time.fixedDeltaTime;
     }
 
     void OnBecameInvisible()

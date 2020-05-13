@@ -66,6 +66,11 @@ public class PlayerShip : Ship
             Destroy(this.gameObject);
             PanelUIManager.GetPanelUI().ToggleEndGamePanel();
         }
+        //On update les timer des weapons
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            weapons[i].updateTimer();
+        }
         //Ne pas sortir de l'écran
         Vector3 change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
@@ -127,13 +132,6 @@ public class PlayerShip : Ship
 
                 myRigidBody.velocity = finalVelocity;
             }
-        }
-        
-    }
-    void Update()
-    {
-        for(int i=0; i<weapons.Count; i++){
-            weapons[i].updateTimer();
         }
         
     }
