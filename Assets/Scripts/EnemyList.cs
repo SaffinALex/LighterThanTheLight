@@ -36,6 +36,21 @@ public class EnemyList : MonoBehaviour
         return ListEnemy;
     }
 
+    public GameObject getEnemy(string s)
+    {
+        ListEnemy = list[DifficultLevel].listEnemy;
+        GameObject enemy = null;
+        for (int i = 0; i < ListEnemy.Count; i++)
+        {
+            if (ListEnemy[i].GetComponentInChildren<EntitySpaceShipBehavior>().getType().Equals(s))
+            {
+                ListEnemy[i].GetComponentInChildren<EntitySpaceShipBehavior>().difficult = DifficultLevel;
+                enemy = ListEnemy[i];
+            }
+        }
+        return enemy;
+    }
+
     public List<GameObject> CallListBoss()
     {
         ListBoss = list[DifficultLevel].listBoss;
@@ -45,4 +60,6 @@ public class EnemyList : MonoBehaviour
         }
         return ListBoss;
     }
+
+    public 
 }

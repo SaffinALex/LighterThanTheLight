@@ -44,7 +44,7 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
             isDead = false;
             isMoving = false;
 
-            gameObject.transform.parent.gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 
