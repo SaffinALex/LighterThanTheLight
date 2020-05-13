@@ -11,19 +11,19 @@ public class WaveEvent_Prototype : Event
         public BlockWave block;
     }
 
-    [SerializeField] protected List<BlockWaveElement> enemiesWave;
+    [SerializeField] protected List<BlockWaveElement> waveBlocksElements;
     protected float currentTime;
     protected List<BlockWave> allBlockWave;
 
     //Fonction qui sera appelé lorsque l'event débute, permet l'initialisation
     protected override void BeginEvent(){
-
+        Debug.Log("SCORE : " + GetScore());
         App.GetEnemyList().ListEnemy.GetType();
 
         currentTime = 0;
         allBlockWave = new List<BlockWave>();
-        for(int i = 0; i < enemiesWave.Count; i++){
-            BlockWave e = Instantiate(enemiesWave[i].block, new Vector3(), Quaternion.identity);
+        for(int i = 0; i < waveBlocksElements.Count; i++){
+            BlockWave e = Instantiate(waveBlocksElements[i].block, new Vector3(), Quaternion.identity);
             allBlockWave.Add(e);
             e.gameObject.SetActive(false);
         }
@@ -38,7 +38,7 @@ public class WaveEvent_Prototype : Event
         for (int i = 0; i < allBlockWave.Count; i++) {
             if (allBlockWave[i] != null) {
                 allDead = false;
-                if(enemiesWave[i].timeAppear < currentTime && !allBlockWave[i].gameObject.activeSelf){
+                if(waveBlocksElements[i].timeAppear < currentTime && !allBlockWave[i].gameObject.activeSelf){
                         allBlockWave[i].gameObject.SetActive(true);
                 }
             }
@@ -48,8 +48,12 @@ public class WaveEvent_Prototype : Event
         if(allDead) End();
     }
 
-    //Fonction qui sera appelé lorsque l'event fonctionne
+    // Permet de récupérer le score
     public override float GetScore(){
-        return 0;
+        float score = 0f;
+        for(int i = 0; i < waveBlocksElements.Count; i++){
+            score += waveBlocksElements[i].block.GetScore();
+        }
+        return score;
     }
 }

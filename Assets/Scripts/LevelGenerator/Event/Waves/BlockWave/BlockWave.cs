@@ -63,6 +63,10 @@ public class BlockWave : MonoBehaviour
 
     //Fonction qui sera appelé lorsque l'event fonctionne
     public float GetScore() {
-        return 0;
+        float score = 0f;
+        for(int i = 0; i < enemiesWave.Count; i++){
+            score += App.GetEnemyList().getEnemy(enemiesWave[i].enemyType.ToString("g"), enemiesWave[i].enemyDifficulty).GetComponentInChildren<EntitySpaceShipBehavior>().getScore();
+        }
+        return score;
     }
 }
