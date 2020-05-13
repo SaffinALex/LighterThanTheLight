@@ -17,20 +17,20 @@ public class TreeNode : MonoBehaviour
             Destroy(gameObject);
         }
 
-        List<string> levelFlow = new List<string>();
-        levelFlow.Add("Wave");
-        levelFlow.Add("Wave");
-        levelFlow.Add("Wave");
-        levelFlow.Add("Wave");
-        levelFlow.Add("Wave");
-        levelFlow.Add("Wave");
-        List<Event> levelEvents = GeneratorLGI.GenerateLevel(4 * levelFlow.Count, 3, levelFlow);
-        levelGeneratorInfo.events = levelEvents;
-        Debug.Log(levelGeneratorInfo);
-        App.SetLevelGenerator(levelGeneratorInfo);
+        // List<string> levelFlow = new List<string>();
+        // levelFlow.Add("Wave");
+        // levelFlow.Add("Wave");
+        // levelFlow.Add("Wave");
+        // levelFlow.Add("Wave");
+        // levelFlow.Add("Wave");
+        // levelFlow.Add("Wave");
+        // List<Event> levelEvents = GeneratorLGI.GenerateLevel(4 * levelFlow.Count, 3, levelFlow);
+        // levelGeneratorInfo.events = levelEvents;
+        // Debug.Log(levelGeneratorInfo);
+        // App.SetLevelGenerator(levelGeneratorInfo);
 
-        Debug.Log("START SCENE");
-        SceneManager.LoadScene("LevelScene", LoadSceneMode.Single);
+        // Debug.Log("START SCENE");
+        // SceneManager.LoadScene("LevelScene", LoadSceneMode.Single);
     }
 
     // Update is called once per frame

@@ -13,6 +13,9 @@ TagManager:
   - LeftSide
   - Level
   - Upgrade
+  - Money
+  - Heart
+  - Shield
   layers:
   - Default
   - TransparentFX

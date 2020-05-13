@@ -48,13 +48,18 @@ public class Node : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        /** On récupère les gameobject en statique si ils n'ont pas été assignés **/
         if(CONSTRAINTS_DESIGN == null){ CONSTRAINTS_DESIGN = GameObject.Find("CONSTRAINTS_DESIGN"); }
         if (NODES_CHILDS == null) { NODES_CHILDS = GameObject.Find("NODES_CHILDS"); }
+
+        /** Si un objet verrou n'a pas été généré alors on en créé un **/
         if(lockElement == null){
             lockElement = Instantiate(Resources.Load("Prefabs/UI_3D/Lock") as GameObject).GetComponent<Locker>();
             lockElement.transform.parent = transform;
             lockElement.transform.localPosition = new Vector3(0,4.0f,0);
         }
+
         //Permet de créer un node element
         GenerateNodeElement();
     }
@@ -173,7 +178,6 @@ public class Node : MonoBehaviour
     }
 
     void GenerateNodeElement(){
-        Debug.Log(nodeElement);
         if(nodeElement != null) GameObject.Destroy(nodeElement.gameObject); //On supprime le nodeElement précédent
         GameObject nodeElementObject = new GameObject("Node Element");
         nodeElementObject.transform.parent = transform;
@@ -181,6 +185,7 @@ public class Node : MonoBehaviour
         nodeElement.GetEvent().AddListener(CompleteNode);
     }
 
+    /** Permet de compléter un node, c'est à dire que son nodeElement est terminé **/
     void CompleteNode(){
         SetComplete(true);
     }
