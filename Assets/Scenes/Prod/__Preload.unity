@@ -236,7 +236,7 @@ MonoBehaviour:
   startOnPlay: 1
   maxDistance: 50
   minDistance: 20
-  volume: 0.353
+  volume: 0
   allMusics:
   - name: SplashScreen
     clip: {fileID: 8300000, guid: 5da83a97dd9a4c0438b3578b01b0eae9, type: 3}
