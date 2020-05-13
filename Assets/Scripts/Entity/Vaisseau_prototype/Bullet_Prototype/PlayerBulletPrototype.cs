@@ -8,6 +8,8 @@ public class PlayerBulletPrototype : Bullet
 
     void Start()
     {
+
+        App.sfx.PlayEffect("LaserShot", 0.2f);
         rgbd2D = GetComponent<Rigidbody2D>();
     }
 

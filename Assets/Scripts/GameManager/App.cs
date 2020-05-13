@@ -8,7 +8,7 @@ public class App : MonoBehaviour
 {
     public static App app;
     public MusicManager sfxObject;
-    public static MusicManager sfx;
+    public static MusicManager sfx = new MusicManager();
     public static PlayerManager playerManager = new PlayerManager();
     protected static LevelGeneratorInfo levelGeneratorInfo;
     protected static int difficulty = 0;

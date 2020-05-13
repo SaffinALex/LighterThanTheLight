@@ -23,6 +23,7 @@ public class BotBullet : Bullet
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerShip>().getDamage(damage);
+            // App.sfx.PlaySound();
             Destroy(this.gameObject);
         }
     }

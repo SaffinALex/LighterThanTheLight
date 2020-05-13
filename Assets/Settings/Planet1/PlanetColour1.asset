@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gradient:
     serializedVersion: 2
-    key0: {r: 0.5707547, g: 0.9674402, b: 1, a: 1}
-    key1: {r: 0.38679248, g: 0.29588643, b: 0.2536045, a: 1}
-    key2: {r: 0.735849, g: 0.56939167, b: 0.48940903, a: 0}
+    key0: {r: 0.24230152, g: 0.30083874, b: 0.4245283, a: 1}
+    key1: {r: 0.21698111, g: 0.17002071, b: 0.1504539, a: 1}
+    key2: {r: 0.027450982, g: 0.027450982, b: 0.10980393, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 20046
-    ctime1: 45875
+    ctime0: 16577
+    ctime1: 30262
     ctime2: 65535
     ctime3: 0
     ctime4: 0

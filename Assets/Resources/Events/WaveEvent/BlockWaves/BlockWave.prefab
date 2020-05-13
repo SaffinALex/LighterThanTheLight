@@ -45,8 +45,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesWave:
   - timeAppear: 0
-    enemyType: 0
-    enemyDifficulty: -1
-    positionAppear: {x: 0, y: -2}
-    spawnPosition: 5
-    angleAppear: 0
+    enemyType: 4
+    enemyDifficulty: 0
+    positionAppear: {x: 0, y: -1}
+    spawnPosition: 2
+    angleAppear: 60
+  - timeAppear: 2
+    enemyType: 4
+    enemyDifficulty: 0
+    positionAppear: {x: 0, y: -1}
+    spawnPosition: 2
+    angleAppear: 60
+  - timeAppear: 4
+    enemyType: 4
+    enemyDifficulty: 0
+    positionAppear: {x: 0, y: -1}
+    spawnPosition: 2
+    angleAppear: 60
+  - timeAppear: 0
+    enemyType: 4
+    enemyDifficulty: 0
+    positionAppear: {x: 0, y: -1}
+    spawnPosition: 3
+    angleAppear: -60
+  - timeAppear: 2
+    enemyType: 4
+    enemyDifficulty: 0
+    positionAppear: {x: 0, y: -1}
+    spawnPosition: 3
+    angleAppear: -60
+  - timeAppear: 4
+    enemyType: 4
+    enemyDifficulty: 0
+    positionAppear: {x: 0, y: -1}
+    spawnPosition: 3
+    angleAppear: -60

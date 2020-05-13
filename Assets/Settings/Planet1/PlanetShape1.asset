@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a88b1a322240b445895b6a2417f671f, type: 3}
   m_Name: PlanetShape1
   m_EditorClassIdentifier: 
-  planetRadius: 100
+  planetRadius: 768
   randomGeneration: 14.22
   noiseLayers:
   - enabled: 1

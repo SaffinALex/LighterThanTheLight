@@ -32,12 +32,12 @@ public class BlockWave : MonoBehaviour
         for (int i = 0; i < enemiesWave.Count; i++) {
             Vector2 positionEnemy = new Vector2(enemiesWave[i].positionAppear.x, enemiesWave[i].positionAppear.y);
 
-            if (enemiesWave[i].spawnPosition == PositionSpawner.Left) positionEnemy += new Vector2(-EnnemiesBorder.size.x / 2, 0);
-            else if (enemiesWave[i].spawnPosition == PositionSpawner.Right) positionEnemy += new Vector2(EnnemiesBorder.size.x / 2, 0);
-            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopLeft) positionEnemy += new Vector2(- EnnemiesBorder.size.x / 2, EnnemiesBorder.size.y / 2);
-            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopRight) positionEnemy += new Vector2(EnnemiesBorder.size.x / 2, EnnemiesBorder.size.y / 2);
-            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopCenter) positionEnemy += new Vector2(0, EnnemiesBorder.size.y / 2);
-            else if (enemiesWave[i].spawnPosition == PositionSpawner.PlayerX) positionEnemy += new Vector2(0, EnnemiesBorder.size.y / 2);
+            if (enemiesWave[i].spawnPosition == PositionSpawner.Left) positionEnemy += new Vector2(-EnnemiesBorder.size.x / 2 + 1, 0);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.Right) positionEnemy += new Vector2(EnnemiesBorder.size.x / 2 - 1, 0);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopLeft) positionEnemy += new Vector2(- EnnemiesBorder.size.x / 2 + 1, EnnemiesBorder.size.y / 2 - 1);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopRight) positionEnemy += new Vector2(EnnemiesBorder.size.x / 2- 1, EnnemiesBorder.size.y / 2- 1);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopCenter) positionEnemy += new Vector2(0, EnnemiesBorder.size.y / 2 - 1);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.PlayerX) positionEnemy += new Vector2(0, EnnemiesBorder.size.y / 2 - 1);
 
             GameObject e = Instantiate(App.GetEnemyList().getEnemy(enemiesWave[i].enemyType.ToString("g"), enemiesWave[i].enemyDifficulty), positionEnemy, Quaternion.AngleAxis(enemiesWave[i].angleAppear, Vector3.forward));
             allEnemy.Add(e.GetComponentInChildren<EntitySpaceShipBehavior>());
