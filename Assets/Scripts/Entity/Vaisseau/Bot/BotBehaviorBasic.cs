@@ -9,16 +9,24 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
     private float positionY;
     private float p1;
     private float p2;
+    private float p3;
+    private bool right;
 
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
-        p1 = transform.position.x + 3;
+        p1 = transform.position.x + EnnemiesBorder.size.x/3;
         p2 = transform.position.x;
-        positionX = transform.position.x + 3;
+        p3 = transform.position.x - EnnemiesBorder.size.x / 3;
+        positionX = transform.position.x;
         positionY = transform.position.y;
         type = "BotBasic";
+
+        if (GetComponentInParent<BotBehaviorBasic>().transform.position.x < 0)
+            right = true;
+        else
+            right = false;
     }
 
     new void FixedUpdate()
@@ -32,15 +40,29 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
     new void Update()
     {
         base.Update();
-        if (transform.position.x >= p1 - 0.01){
-            positionX = transform.position.x - 3;
+        if (right) { 
+            if (transform.position.x > p1 - 1)
+            {
+                positionX = -EnnemiesBorder.size.x / 3;
+            }
+            else if (transform.position.x < p2 + 1)
+            {
+                positionX = EnnemiesBorder.size.x / 3;
+            }
         }
-        else if(transform.position.x <= p2 + 0.01)
+        else
         {
-            positionX = transform.position.x + 3;
+            if (transform.position.x < p3 + 1)
+            {
+                positionX = EnnemiesBorder.size.x / 3;
+            }
+            else if (transform.position.x > p2 - 1)
+            {
+                positionX = -EnnemiesBorder.size.x / 3;
+            }
         }
         
-        positionY = transform.position.y - 0.05f;
+        positionY = transform.position.y - scrolling;
     }
 
     override
