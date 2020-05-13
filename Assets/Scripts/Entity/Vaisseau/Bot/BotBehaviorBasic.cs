@@ -18,7 +18,7 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
         p2 = transform.position.x;
         positionX = transform.position.x + 3;
         positionY = transform.position.y;
-        Type = "Bot";
+        type = "BotBasic";
     }
 
     new void FixedUpdate()
@@ -48,7 +48,7 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
     {
         Vector3 direction = (new Vector3(positionX, positionY, transform.position.z) - transform.position).normalized;
         force = new Vector2(direction.x, direction.y) * speedMove;
-        R2d.velocity = force;
+        r2d.velocity = force;
     }
 
     override
@@ -59,12 +59,6 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
             StartCoroutine("Shoot");
             weapon.gameObject.GetComponent<Weapon>().shoot(transform);
         }
-    }
-
-    override
-    public void getDamage(int damage)
-    {
-        life -= damage;
     }
 
     override
@@ -81,7 +75,7 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
 
     public override string getType()
     {
-        Type = "Bot";
-        return Type;
+        type = "BotBasic";
+        return type;
     }
 }

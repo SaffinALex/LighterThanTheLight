@@ -22,7 +22,7 @@ public class PlayerBulletPrototype : Bullet
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Cockpit")
         || collision.gameObject.CompareTag("RightSide") || collision.gameObject.CompareTag("LeftSide"))
         {
-            collision.gameObject.GetComponent<EntitySpaceShip>().InfligeDamage(damage);
+            collision.gameObject.GetComponent<EntitySpaceShipBehavior>().getDamage(damage);
             Destroy(this.gameObject);
         }
     }

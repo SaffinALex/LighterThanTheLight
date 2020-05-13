@@ -18,7 +18,7 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         routeToGo = 0;
         tParam = 0f;
         coroutine = true;
-        Type = "Bot";
+        type = "BotCircle";
     }
 
     new void FixedUpdate()
@@ -51,12 +51,6 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
             StartCoroutine("Shoot");
             weapon.gameObject.GetComponent<Weapon>().shoot(transform);
         }
-    }
-
-    override
-    public void getDamage(int damage)
-    {
-        life -= damage;
     }
 
     override
@@ -109,7 +103,7 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
 
     public override string getType()
     {
-        Type = "Bot";
-        return Type;
+        type = "BotCircle";
+        return type;
     }
 }
