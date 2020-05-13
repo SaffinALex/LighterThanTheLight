@@ -9,7 +9,7 @@ public class BotBehaviorCross : EntitySpaceShipBehavior
     {
         base.Start();
         r2d = GetComponent<Rigidbody2D>();
-        type = "BotThrow";
+        type = "BotCross";
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class BotBehaviorCross : EntitySpaceShipBehavior
 
     public override string getType()
     {
-        type = "BotThrow";
+        type = "BotCross";
         return type;
     }
 
@@ -43,7 +43,7 @@ public class BotBehaviorCross : EntitySpaceShipBehavior
         if (isShooting)
         {
             StartCoroutine("Shoot");
-            weapon.GetComponent<Weapon>().shoot(transform);
+            weapon.GetComponent<Weapon>().shoot(transform.Find("Shoot position"));
         }
     }
 }

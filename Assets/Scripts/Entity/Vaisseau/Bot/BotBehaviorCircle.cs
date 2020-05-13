@@ -49,7 +49,7 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         if (isShooting)
         {
             StartCoroutine("Shoot");
-            weapon.gameObject.GetComponent<Weapon>().shoot(transform);
+            weapon.GetComponent<Weapon>().shoot(transform.Find("Shoot position"));
         }
     }
 

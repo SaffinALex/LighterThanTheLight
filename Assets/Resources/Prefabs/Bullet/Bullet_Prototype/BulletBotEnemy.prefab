@@ -4743,7 +4743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
-  speed: 5
+  speed: 10
 --- !u!199 &7871241776792002299
 ParticleSystemRenderer:
   serializedVersion: 6

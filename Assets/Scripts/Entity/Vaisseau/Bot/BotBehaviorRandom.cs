@@ -85,7 +85,7 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
         if (isShooting)
         {
             StartCoroutine("Shoot");
-            weapon.GetComponent<Weapon>().shoot(transform);
+            weapon.GetComponent<Weapon>().shoot(transform.Find("Shoot position"));
         }
     }
 
