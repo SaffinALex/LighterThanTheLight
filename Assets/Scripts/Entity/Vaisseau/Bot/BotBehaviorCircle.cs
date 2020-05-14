@@ -19,12 +19,12 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         tParam = 0f;
         coroutine = true;
         type = "BotCircle";
+        move();
     }
 
     new void FixedUpdate()
     {
         base.FixedUpdate();
-        move();
         shoot();
     }
 
@@ -32,6 +32,7 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
     new void Update()
     {
         base.Update();
+        move();
     }
 
     override

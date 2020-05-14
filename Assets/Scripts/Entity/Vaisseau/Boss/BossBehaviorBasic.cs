@@ -24,6 +24,11 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     public bool sideIsDead;
     private bool right;
 
+    protected float timePause = 5f;
+    protected float timerPause;
+    private float timemove;
+    private float timer;
+
     // Start is called before the first frame update
     new void Start()
     {
@@ -37,6 +42,9 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
         type = "BossBasic";
         r2d = GetComponentInParent<Rigidbody2D>();
+        timer = 0f;
+        timerPause = 0f;
+        timemove = Vector2.Distance(new Vector2(positionX, 0), new Vector2(p1, 0)) / speedMove;
 
         if (GetComponentInParent<BossBehaviorBasic>().transform.position.x < 0)
             right = true;
@@ -56,42 +64,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     {
         base.Update();
 
-        if (right)
-        {
-            if (GetComponentInParent<BossBehaviorBasic>().transform.position.y > p4 + 1)
-            {
-                positionY = p4;
-            }
-
-            else if (GetComponentInParent<BossBehaviorBasic>().transform.position.x > p1 - 1)
-            {
-                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x - EnnemiesBorder.size.x / 2;
-                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
-            }
-            else if (GetComponentInParent<BossBehaviorBasic>().transform.position.x < p2 + 1)
-            {
-                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x + EnnemiesBorder.size.x / 2;
-                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
-            }
-        }
-        else
-        {
-            if (GetComponentInParent<BossBehaviorBasic>().transform.position.y > p4 + 1)
-            {
-                positionY = p4;
-            }
-
-            else if (GetComponentInParent<BossBehaviorBasic>().transform.position.x < p3 + 1)
-            {
-                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x + EnnemiesBorder.size.x / 2;
-                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
-            }
-            else if (GetComponentInParent<BossBehaviorBasic>().transform.position.x > p2 - 1)
-            {
-                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x - EnnemiesBorder.size.x / 2;
-                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
-            }
-        }
+        moveto();
 
         if (sideIsDead)
         {
@@ -118,6 +91,71 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         Vector3 direction = (new Vector3(positionX, positionY, 0) - GetComponentInParent<BossBehaviorBasic>().transform.position).normalized;
         force = new Vector2(direction.x, direction.y) * speedMove;
         r2d.velocity = force;
+    }
+
+    public void moveto()
+    {
+        if (right)
+        {
+            if (GetComponentInParent<BossBehaviorBasic>().transform.position.y > p4 + 1)
+            {
+                positionY = p4;
+            }
+
+            else if(timer >= timemove)
+            {
+                timerPause += Time.deltaTime;
+                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x;
+                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
+                if(timerPause >= timePause)
+                {
+                    timer = 0;
+                    timerPause = 0;
+                }
+
+            }
+
+            else if (GetComponentInParent<BossBehaviorBasic>().transform.position.x > p1 - 1)
+            {
+                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x - EnnemiesBorder.size.x / 2;
+                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
+                timer += Time.deltaTime;
+            }
+            else if (GetComponentInParent<BossBehaviorBasic>().transform.position.x < p2 + 1)
+            {
+                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x + EnnemiesBorder.size.x / 2;
+                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
+                timer += Time.deltaTime;
+            }
+        }
+        else
+        {
+            if (GetComponentInParent<BossBehaviorBasic>().transform.position.y > p4 + 1)
+            {
+                positionY = p4;
+            }
+
+            else if (GetComponentInParent<BossBehaviorBasic>().transform.position.x < p3 + 1)
+            {
+                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x + EnnemiesBorder.size.x / 2;
+                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
+            }
+            else if (GetComponentInParent<BossBehaviorBasic>().transform.position.x > p2 - 1)
+            {
+                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x - EnnemiesBorder.size.x / 2;
+                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
+            }
+        }
+        /*
+        switch (difficult)
+        {
+            case 0:
+                positionY = p1;
+                break;
+            case 1:
+                positionY = p2;
+                break;
+        }*/
     }
     
     public new void OnCollisionEnter2D(Collision2D collision)

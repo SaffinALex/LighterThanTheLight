@@ -14421,7 +14421,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e8642bfe066c94ab6b54425121ba98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 5359264151696501870, guid: ef2544720feb09248ae5a728fe49704f, type: 3}
+  weapons:
+  - {fileID: 574912439305186582, guid: 3676bed24711a5847b1e8940237f0da4, type: 3}
+  overrideDefaultWeapon: 0
+  startWeaponFireRate: 0
+  startWeaponBulletSpeed: 0
+  startWeaponBulletDamage: 0
   life: 15
   speedMove: 1
   scrolling: 0.1
