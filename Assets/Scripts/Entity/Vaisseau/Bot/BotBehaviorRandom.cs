@@ -54,7 +54,6 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
         {
             timerChangePosition += Time.deltaTime;
             positionY = p3;
-            //transform.position = Vector2.Lerp(initialPosition, nextPosition, Mathf.SmoothStep(0, 1, timerChangePosition / timeChangePosition));
 
             if (timerChangePosition >= timeChangePosition)
             {
@@ -67,25 +66,34 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
             timerPause += Time.deltaTime;
             positionY = transform.position.y;
             shoot();
-            if (timerPause >= timePause)
+            if (timerPause >= timePause && timerChangePosition == 0)
             {
                 endPause = true;
-
+                timerPause = 0;
+            }
+            else if(timerPause >= timePause && timerChangePosition != 0)
+            {
+                beginPause = false;
+                timerChangePosition = 0;
+                timerPause = 0;
             }
         }
 
         else if (beginPause && endPause)
         {
             timerChangePosition += Time.deltaTime;
-            positionY = p1;
-            //transform.position = Vector2.Lerp(initialPosition, nextPosition, Mathf.SmoothStep(0, 1, timerChangePosition / timeChangePosition));
-
-            /*
-            if (timerChangePosition >= timeChangePosition)
-            {
-                shoot();
-                //isDead = true;
-            }*/
+            switch(difficult){
+                case 0:
+                    positionY = p1;
+                    break;
+                case 1:
+                    positionY = p2;
+                    if (timerChangePosition >= timeChangePosition)
+                    {
+                        endPause = false;
+                    }
+                    break;
+            }
         }
 
         move();

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2391345029857012044}
   - component: {fileID: 1384141016963765576}
   m_Layer: 0
-  m_Name: List-
+  m_Name: List1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,3 +48,4 @@ MonoBehaviour:
   - {fileID: 4362687001117018908, guid: 2c69b5aa0ac68524294f3494ffd707d3, type: 3}
   - {fileID: 7258720313653769845, guid: fee47c6a256049847a595094d5b701f7, type: 3}
   - {fileID: 8977640565233263549, guid: 2415428db0815a9448999fc91e7c995b, type: 3}
+  listBoss: []
