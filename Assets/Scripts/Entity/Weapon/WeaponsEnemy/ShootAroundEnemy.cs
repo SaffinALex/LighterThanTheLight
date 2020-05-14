@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShootAroundEnemy : WeaponEnemy
 {
+    [SerializeField] protected int maxNumberWaveShoot = 5;
     [SerializeField] protected float numberAround = 8f;
     [SerializeField] protected float rotateOverTime = 0f;
 
@@ -17,7 +18,7 @@ public class ShootAroundEnemy : WeaponEnemy
         {
             Rigidbody2D playerRgbd = t.gameObject.GetComponent<Rigidbody2D>();
             int numberShoot = Mathf.RoundToInt(timerShoot / fireRate);
-            Vector3 shootPosition = transform.Find("Shoot position").position;
+            Vector3 shootPosition = t.Find("Shoot position").position;
             Vector2 nextPositionPlayer = playerRgbd.velocity * Time.fixedDeltaTime;
             float i = 0;
             for (i = 0; i < numberShoot; i++)

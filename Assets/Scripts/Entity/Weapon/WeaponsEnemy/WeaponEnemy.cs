@@ -15,7 +15,6 @@ public abstract class WeaponEnemy : Weapon
     [SerializeField] protected float timeWaitBegin; //Le temps avant que l'arme puisse commencer au début
 
     [Header("Reload Informations")]
-    [SerializeField] protected int maxNumberWaveShoot = 5;
     [SerializeField] protected float timeReloadWaveShoot = 5f;
 
     protected bool canShoot;

@@ -4,7 +4,13 @@ using UnityEngine;
 
 public abstract class EntitySpaceShipBehavior : MonoBehaviour
 {
+    [Header("Armes")]
     public List<WeaponEnemy> weapons;
+    [SerializeField] protected float startWeaponFireRate;
+    [SerializeField] protected float startWeaponBulletSpeed;
+    [SerializeField] protected float startWeaponBulletDamage;
+
+    [Header("Entity properties")]
     public float life;
     public float speedMove;
     public float scrolling;
@@ -37,6 +43,10 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
 
         for (int i = 0; i < weapons.Count; i++) {
             weapons[i] = Instantiate(weapons[i], Vector3.zero, Quaternion.identity, transform);
+            //Permet de modifier les valeurs par défauts des armes
+            weapons[i].SetBulletDamage(startWeaponBulletDamage);
+            weapons[i].SetBulletSpeed(startWeaponBulletSpeed);
+            weapons[i].SetFireRate(startWeaponFireRate);
         }
     }
 
