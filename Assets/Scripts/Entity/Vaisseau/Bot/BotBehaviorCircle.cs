@@ -25,6 +25,8 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
     new void FixedUpdate()
     {
         base.FixedUpdate();
+        if (!needGoAway) move();
+        else if(coroutine) GoAwayMove();
         shoot();
     }
 
@@ -32,7 +34,6 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
     new void Update()
     {
         base.Update();
-        move();
     }
 
     override
@@ -47,8 +48,6 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
     override
     public void initialize()
     {
-        isShooting = true;
-        isMoving = false;
         life = 6;
         routeToGo = 0;
         tParam = 0f;

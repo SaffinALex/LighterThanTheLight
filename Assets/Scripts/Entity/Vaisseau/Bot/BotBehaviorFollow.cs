@@ -17,7 +17,8 @@ public class BotBehaviorFollow : EntitySpaceShipBehavior
     new void FixedUpdate()
     {
         base.FixedUpdate();
-        move();
+        if (!needGoAway) move();
+        else GoAwayMove();
         shoot();
     }
 
@@ -38,8 +39,6 @@ public class BotBehaviorFollow : EntitySpaceShipBehavior
     override
     public void initialize()
     {
-        isShooting = true;
-        isMoving = false;
         life = 6;
         transform.position = new Vector3(0, 0, 0);
     }

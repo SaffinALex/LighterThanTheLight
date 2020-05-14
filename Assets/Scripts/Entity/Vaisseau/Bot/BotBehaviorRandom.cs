@@ -42,6 +42,8 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
     new void FixedUpdate()
     {
         base.FixedUpdate();
+        if (!needGoAway) move();
+        else GoAwayMove();
     }
 
     // Update is called once per frame
@@ -95,8 +97,6 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
                     break;
             }
         }
-
-        move();
     }
 
     override
@@ -110,8 +110,6 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
     override
     public void initialize()
     {
-        isShooting = true;
-        isMoving = false;
         life = 6;
         direction = Random.Range(0, 8);
     }

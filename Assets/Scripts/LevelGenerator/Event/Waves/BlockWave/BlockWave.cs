@@ -69,4 +69,10 @@ public class BlockWave : MonoBehaviour
         }
         return score;
     }
+
+    public void GoAway(){
+        for (int i = 0; i < allEnemy.Count; i++) {
+            if(allEnemy[i] != null) allEnemy[i].GoAway();
+        }
+    }
 }

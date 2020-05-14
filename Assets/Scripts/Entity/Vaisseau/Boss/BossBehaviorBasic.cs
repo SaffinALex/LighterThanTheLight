@@ -193,8 +193,6 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     override
     public void initialize()
     {
-        isShooting = true;
-        isMoving = false;
         life = 6;
 
         p1 = transform.position.x + 3;

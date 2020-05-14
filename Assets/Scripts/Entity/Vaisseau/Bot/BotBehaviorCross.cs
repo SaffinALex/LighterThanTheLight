@@ -16,8 +16,8 @@ public class BotBehaviorCross : EntitySpaceShipBehavior
     new void Update()
     {
         base.Update();
-        // transform.Rotate(0,0,Time.deltaTime * 200);
-        move();
+        if (!needGoAway) move();
+        else GoAwayMove();
     }
 
     public override string getType()
@@ -28,8 +28,6 @@ public class BotBehaviorCross : EntitySpaceShipBehavior
 
     public override void initialize()
     {
-        isShooting = true;
-        isMoving = false;
         life = 6;
     }
 

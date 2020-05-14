@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WaveEvent_Prototype : Event
 {
+    [SerializeField] protected float maxTimeWave = 0f;
     //Représente l'apparition d'un ennemi
     [System.Serializable]
     public struct BlockWaveElement {
@@ -46,6 +47,14 @@ public class WaveEvent_Prototype : Event
 
         //Tous les ennemis sont mort on s'arrête
         if(allDead) End();
+
+        if(currentTime > maxTimeWave && maxTimeWave > 0){
+            for (int i = 0; i < allBlockWave.Count; i++) {
+                if (allBlockWave[i] != null) {
+                    allBlockWave[i].GoAway();
+                }
+            }
+        }
     }
 
     // Permet de récupérer le score

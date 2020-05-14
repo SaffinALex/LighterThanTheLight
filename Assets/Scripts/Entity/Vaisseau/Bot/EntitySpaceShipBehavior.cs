@@ -13,12 +13,18 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
 
     [Header("Entity properties")]
     public float life;
+    [SerializeField] protected bool canDieOutside = true;
     public float speedMove;
     public float scrolling;
-    public float speedShoot;
     public Animator animator;
-    public bool isShooting;
-    public bool isMoving;
+
+    //Go Away informations
+    protected bool needGoAway = false;
+    protected bool alreadyGoAway = false;
+    protected float timeGoAway = 1f;
+    protected float timerGoAway = 0f;
+    protected Vector3 saveVelocity;
+    
     //public bool isAtRight;
     public Vector2 force;
     public float score;
@@ -61,7 +67,6 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
         {
             // Destroy(this.gameObject);
             isDead = false;
-            isMoving = false;
 
             Destroy(transform.parent.gameObject);
         }
@@ -71,7 +76,7 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     protected void Update()
     {
         currTimerTouch += Time.deltaTime;
-        if(life <= 0 && !isDead || transform.position.y < -EnnemiesBorder.size.y/2 || transform.position.y > EnnemiesBorder.size.y / 2 || transform.position.x < -EnnemiesBorder.size.x / 2 || transform.position.x > EnnemiesBorder.size.x / 2)
+        if((life <= 0 || ((transform.position.y < -EnnemiesBorder.size.y/2 || transform.position.y > EnnemiesBorder.size.y / 2 || transform.position.x < -EnnemiesBorder.size.x / 2 || transform.position.x > EnnemiesBorder.size.x / 2) && (canDieOutside || needGoAway))) && !isDead)
         {
             isDead = true;
             animator.SetBool("isDead", true);
@@ -103,9 +108,27 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
         life -= damage;
     }
 
+    public void GoAway(){
+        if(!alreadyGoAway){
+            alreadyGoAway = true;
+            canDieOutside = true;
+            needGoAway = true;
+            if(r2d != null) saveVelocity = r2d.velocity;
+        }
+    }
+
     public abstract string getType();
 
     public abstract void move();
+
+    protected void GoAwayMove(){
+        timerGoAway += Time.deltaTime;
+        timerGoAway = timerGoAway > timeGoAway ? timeGoAway : timerGoAway;
+        r2d.velocity = Vector3.Lerp(saveVelocity, transform.position.normalized * 5, timerGoAway / timeGoAway);
+        
+        float angle = Mathf.Atan2(r2d.velocity.y, r2d.velocity.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Lerp(Quaternion.AngleAxis(angle + 90, Vector3.forward), transform.rotation, Mathf.SmoothStep(0,1, timerGoAway / timeGoAway));
+    }
 
     public abstract void initialize();
 
