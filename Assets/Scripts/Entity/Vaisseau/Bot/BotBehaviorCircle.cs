@@ -15,7 +15,6 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
     private int routeToGo;
     private float tParam;
     private Vector2 shipPosition;
-    private bool coroutine;
 
     // Start is called before the first frame update
     new void Start()
@@ -23,16 +22,14 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         base.Start();
         routeToGo = 0;
         tParam = 0f;
-        coroutine = true;
         type = "BotCircle";
-        move();
     }
 
     new void FixedUpdate()
     {
         base.FixedUpdate();
         if (!needGoAway) move();
-        else if(coroutine) GoAwayMove();
+        else GoAwayMove();
         shoot();
     }
 
@@ -45,7 +42,7 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
     override
     public void move()
     {
-        RotateCircle();
+        GoByRoute();
         // if (coroutine)
         // {
         //     StartCoroutine("GoByRoute");
@@ -58,14 +55,13 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         life = 6;
         routeToGo = 0;
         tParam = 0f;
-        coroutine = true;
         transform.position = new Vector3(0, 0, 0);
         for(int i = 0; i < routes.Length; i++){
             if(routes[i].routes != null) routes[i].routes.position = new Vector3(0, 0, 0);
         }
     }
 
-    protected void RotateCircle(){
+    protected void GoByRoute(){
 
         if(routes[routeToGo].routes != null){
             Vector2 p0 = routes[routeToGo].routes.GetChild(0).position;

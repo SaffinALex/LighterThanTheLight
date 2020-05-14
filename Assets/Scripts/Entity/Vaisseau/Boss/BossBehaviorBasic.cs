@@ -30,6 +30,19 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     private float timemove;
     private float timer;
 
+    [System.Serializable]
+    public struct PathBot
+    {
+        public float timeTravel;
+        public Transform routes;
+    }
+
+    [SerializeField]
+    private PathBot[] routes;
+    private int routeToGo;
+    private float tParam;
+    private Vector2 shipPosition;
+
     // Start is called before the first frame update
     new void Start()
     {
@@ -57,7 +70,9 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     new void FixedUpdate()
     {
         base.FixedUpdate();
-        move();
+        if (!needGoAway) move();
+        else GoAwayMove();
+        shoot();
         shoot();
     }
 
@@ -66,7 +81,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     {
         base.Update();
 
-        moveto();
+        //moveto();
 
         if (sideIsDead)
         {
@@ -95,7 +110,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
             {
                 positionY = p4;
             }
-
+            /*
             else if (timer >= timemove)
             {
                 timerPause += Time.deltaTime;
@@ -109,7 +124,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
                     pause = false;
                 }
 
-            }
+            }*/
 
             else if (!pause && GetComponentInParent<BossBehaviorBasic>().transform.position.x > p1 - 1)
             {
@@ -159,9 +174,41 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     override
     public void move()
     {
+        GoByRoute();
+        /*
         Vector3 direction = (new Vector3(positionX, positionY, 0) - GetComponentInParent<BossBehaviorBasic>().transform.position).normalized;
         force = new Vector2(direction.x, direction.y) * speedMove;
-        r2d.velocity = force;
+        r2d.velocity = force;*/
+    }
+
+    protected void GoByRoute()
+    {
+        if (routes[routeToGo].routes != null)
+        {
+            Vector2 p0 = routes[routeToGo].routes.GetChild(0).position;
+            Vector2 p1 = routes[routeToGo].routes.GetChild(1).position;
+            Vector2 p2 = routes[routeToGo].routes.GetChild(2).position;
+            Vector2 p3 = routes[routeToGo].routes.GetChild(3).position;
+            float percentT = tParam / routes[routeToGo].timeTravel;
+            shipPosition = Mathf.Pow(1 - percentT, 3) * p0 +
+                    3 * Mathf.Pow(1 - percentT, 2) * percentT * p1 +
+                    3 * (1 - percentT) * Mathf.Pow(percentT, 2) * p2 +
+                    Mathf.Pow(percentT, 3) * p3;
+            transform.position = new Vector3(shipPosition.x, shipPosition.y, 0);
+        }
+        else
+        {
+            transform.position = routes[(routeToGo + 1) % routes.Length].routes.GetChild(0).position;
+        }
+
+        tParam += Time.deltaTime;
+        tParam = tParam >= routes[routeToGo].timeTravel ? routes[routeToGo].timeTravel : tParam;
+
+        if (tParam == routes[routeToGo].timeTravel)
+        {
+            routeToGo = (routeToGo + 1) % routes.Length;
+            tParam = 0;
+        }
     }
 
     public new void OnCollisionEnter2D(Collision2D collision)
@@ -200,6 +247,14 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         p3 = transform.position.y - 0.5f;
         positionX = transform.position.x;
         positionY = transform.position.y;
+
+        routeToGo = 0;
+        tParam = 0f;
+        transform.position = new Vector3(0, 0, 0);
+        for (int i = 0; i < routes.Length; i++)
+        {
+            if (routes[i].routes != null) routes[i].routes.position = new Vector3(0, 0, 0);
+        }
     }
 
     public override string getType()
