@@ -15,20 +15,10 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     public float positionX;
     public float positionY;
     public Transform t;
-
-    private float p1;
-    private float p2;
-    private float p3;
-    private float p4;
+    
+    private float p;
 
     public bool sideIsDead;
-    private bool right;
-    private bool pause;
-
-    protected float timePause = 5f;
-    protected float timerPause;
-    private float timemove;
-    private float timer;
 
     [System.Serializable]
     public struct PathBot
@@ -47,24 +37,43 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     new void Start()
     {
         base.Start();
-
-        p1 = GetComponentInParent<BossBehaviorBasic>().transform.position.x + EnnemiesBorder.size.x / 2;
-        p2 = GetComponentInParent<BossBehaviorBasic>().transform.position.x;
-        p3 = GetComponentInParent<BossBehaviorBasic>().transform.position.x - EnnemiesBorder.size.x / 2;
-        p4 = GetComponentInParent<BossBehaviorBasic>().transform.position.y - EnnemiesBorder.size.x / 8;
+        p = GetComponentInParent<BossBehaviorBasic>().transform.position.y - EnnemiesBorder.size.y / 8;
         positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x;
         positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
         type = "BossBasic";
         r2d = GetComponentInParent<Rigidbody2D>();
-        timer = 0f;
-        timerPause = 0f;
-        timemove = Vector2.Distance(new Vector2(positionX, 0), new Vector2(p1/2, 0)) / speedMove;
-        pause = false;
 
-        if (GetComponentInParent<BossBehaviorBasic>().transform.position.x < 0)
-            right = true;
-        else
-            right = false;
+        for (int i = 0; i < routes.Length; i++)
+        {
+            if (routes[i].routes != null)
+            {
+                if(i == 0)
+                {
+                    for (int j = 1; j < 4; j++)
+                    {
+                        routes[i].routes.GetChild(j).position = new Vector3(EnnemiesBorder.size.x / 3, GetComponentInParent<BossBehaviorBasic>().transform.position.y);
+                    }
+                }
+                else if(i == routes.Length - 1)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        routes[i].routes.GetChild(j).position = new Vector3(-EnnemiesBorder.size.x / 3, GetComponentInParent<BossBehaviorBasic>().transform.position.y);
+                    }
+                }
+                else
+                {
+                    for (int j = 0; j < 2; j++)
+                    {
+                        routes[i].routes.GetChild(j).position = new Vector3(EnnemiesBorder.size.x / 3, GetComponentInParent<BossBehaviorBasic>().transform.position.y);
+                    }
+                    for (int j = 2; j < 4; j++)
+                    {
+                        routes[i].routes.GetChild(j).position = new Vector3(-EnnemiesBorder.size.x / 3, GetComponentInParent<BossBehaviorBasic>().transform.position.y);
+                    }
+                }
+            }
+        }
     }
 
     new void FixedUpdate()
@@ -88,8 +97,6 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     {
         base.Update();
 
-        //moveto();
-
         if (sideIsDead)
         {
             if (gameObject.CompareTag("Cockpit")) {
@@ -107,83 +114,30 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         }
     }
 
-    public void moveto()
-    {
-        if (right)
-        {
-            if (GetComponentInParent<BossBehaviorBasic>().transform.position.y > p4 + 1)
-            {
-                positionY = p4;
-            }
-            /*
-            else if (timer >= timemove)
-            {
-                timerPause += Time.deltaTime;
-                pause = true;
-                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x;
-                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
-                if(timerPause >= timePause)
-                {
-                    timer = 0;
-                    timerPause = 0;
-                    pause = false;
-                }
-
-            }*/
-
-            else if (!pause && GetComponentInParent<BossBehaviorBasic>().transform.position.x > p1 - 1)
-            {
-                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x - EnnemiesBorder.size.x / 2;
-                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
-                // timer += Time.deltaTime;
-            }
-            else if (!pause && GetComponentInParent<BossBehaviorBasic>().transform.position.x < p2 + 1)
-            {
-                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x + EnnemiesBorder.size.x / 2;
-                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
-                //timer += Time.deltaTime;
-            }
-            timer += Time.deltaTime;
-            // Debug.Log(transform.parent.transform.position.x);
-        }
-        else
-        {
-            if (GetComponentInParent<BossBehaviorBasic>().transform.position.y > p4 + 1)
-            {
-                positionY = p4;
-            }
-
-            else if (GetComponentInParent<BossBehaviorBasic>().transform.position.x < p3 + 1)
-            {
-                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x + EnnemiesBorder.size.x / 2;
-                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
-            }
-            else if (GetComponentInParent<BossBehaviorBasic>().transform.position.x > p2 - 1)
-            {
-                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x - EnnemiesBorder.size.x / 2;
-                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
-            }
-        }
-        /*
-        switch (difficult)
-        {
-            case 0:
-                positionY = p1;
-                break;
-            case 1:
-                positionY = p2;
-                break;
-        }*/
-    }
-
     override
     public void move()
     {
-        if(routes.Length > 0) GoByRoute();
-        /*
-        Vector3 direction = (new Vector3(positionX, positionY, 0) - GetComponentInParent<BossBehaviorBasic>().transform.position).normalized;
-        force = new Vector2(direction.x, direction.y) * speedMove;
-        r2d.velocity = force;*/
+        if (GetComponentInParent<BossBehaviorBasic>().transform.position.y > p + 1)
+        {
+            positionY = p;
+            Vector3 direction = (new Vector3(positionX, positionY, transform.position.z) - transform.position).normalized;
+            force = new Vector2(direction.x, direction.y) * speedMove;
+            r2d.velocity = force;
+
+            for (int i = 0; i < routes.Length; i++)
+            {
+                if (routes[i].routes != null)
+                {
+                    routes[i].routes.position = new Vector3(0, GetComponentInParent<BossBehaviorBasic>().transform.position.y);
+                    routes[i].routes.localPosition = new Vector3(0, routes[i].routes.localPosition.y);
+                }
+            }
+        }
+
+        else
+        {
+            if (routes.Length > 0) GoByRoute();
+        }
     }
 
     protected void GoByRoute()
@@ -247,9 +201,6 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     {
         life = 6;
 
-        p1 = transform.position.x + 3;
-        p2 = transform.position.x;
-        p3 = transform.position.y - 0.5f;
         positionX = transform.position.x;
         positionY = transform.position.y;
 

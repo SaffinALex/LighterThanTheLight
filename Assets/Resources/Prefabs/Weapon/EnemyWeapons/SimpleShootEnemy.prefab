@@ -50,3 +50,5 @@ MonoBehaviour:
   bulletDamage: 1
   bulletSpeed: 20
   timeWaitBegin: 1.5
+  timeReloadWaveShoot: 0
+  maxShootToReload: 0
