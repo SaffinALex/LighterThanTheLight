@@ -37,13 +37,4 @@ public class BotBehaviorCross : EntitySpaceShipBehavior
     {
         r2d.velocity = -transform.up * speedMove;
     }
-
-    public override void shoot()
-    {
-        if (isShooting)
-        {
-            StartCoroutine("Shoot");
-            weapon.GetComponent<Weapon>().shoot(transform.Find("Shoot position"));
-        }
-    }
 }

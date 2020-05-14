@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBulletPrototype : Bullet {
 
-    float maxTimeAlive = 4f;
+    float maxTimeAlive = 4000f;
 
     void Start()
     {
@@ -13,19 +13,29 @@ public class PlayerBulletPrototype : Bullet {
 
     // Update is called once per frame
     void FixedUpdate() {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up.normalized);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up.normalized, speed * Time.fixedDeltaTime);
         
-        if (hit.collider != null) {
-            Collider2D collision = hit.collider;
-            if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Cockpit")
-                || collision.gameObject.CompareTag("RightSide") || collision.gameObject.CompareTag("LeftSide"))
-            {
-                collision.gameObject.GetComponent<EntitySpaceShipBehavior>().getDamage(damage);
+        if (hits.Length > 0) {
+            Collider2D collisionNear = null;
+            float nearDistance = -1;
+            for(int i = 0; i < hits.Length; i++){
+                if (hits[i].collider.gameObject.CompareTag("Enemy") || hits[i].collider.gameObject.CompareTag("Cockpit")
+                || hits[i].collider.gameObject.CompareTag("RightSide") || hits[i].collider.gameObject.CompareTag("LeftSide"))
+                {
+                    if(nearDistance == -1 || nearDistance > hits[i].distance){
+                        collisionNear = hits[i].collider;
+                        nearDistance = hits[i].distance;
+                    }
+                }
+            }
+            if(collisionNear != null){
+                collisionNear.gameObject.GetComponent<EntitySpaceShipBehavior>().getDamage(damage);
                 Destroy(this.gameObject);
             }
         }
         maxTimeAlive -= Time.fixedDeltaTime;
         if(maxTimeAlive <= 0) Destroy(this.gameObject);
+
         transform.position += transform.up.normalized * speed * Time.fixedDeltaTime;
     }
 

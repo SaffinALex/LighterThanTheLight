@@ -48,11 +48,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     {
         base.FixedUpdate();
         move();
-
-        if (GetComponentInParent<BossBehaviorBasic>().transform.position.y <= p4 + 1)
-        {
-            shoot();
-        }
+        shoot();
     }
 
     // Update is called once per frame
@@ -122,16 +118,6 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         Vector3 direction = (new Vector3(positionX, positionY, 0) - GetComponentInParent<BossBehaviorBasic>().transform.position).normalized;
         force = new Vector2(direction.x, direction.y) * speedMove;
         r2d.velocity = force;
-    }
-
-    override
-    public void shoot()
-    {
-        if (isShooting)
-        {
-            StartCoroutine("Shoot");
-            weapon.GetComponent<Weapon>().shoot(transform.Find("Shoot position"));
-        }
     }
     
     public new void OnCollisionEnter2D(Collision2D collision)

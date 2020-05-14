@@ -108,16 +108,6 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
     }
 
     override
-    public void shoot()
-    {
-        if (isShooting)
-        {
-            StartCoroutine("Shoot");
-            weapon.GetComponent<Weapon>().shoot(transform.Find("Shoot position"));
-        }
-    }
-
-    override
     public void initialize()
     {
         isShooting = true;

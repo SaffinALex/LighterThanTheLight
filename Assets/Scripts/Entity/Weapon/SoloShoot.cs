@@ -23,8 +23,6 @@ public class SoloShoot : WeaponPlayer
                 o1.GetComponent<Bullet>().setDamage(getDamage());
             }
             reloadShoot();
-        }else{
-            Debug.Log("NOPE " + fireRate + " " + timerShoot);
         }
     }
 }

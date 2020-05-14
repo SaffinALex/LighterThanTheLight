@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class EntitySpaceShipBehavior : MonoBehaviour
 {
-    public GameObject weapon;
+    public List<WeaponEnemy> weapons;
     public float life;
     public float speedMove;
     public float scrolling;
@@ -34,10 +34,16 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
         r2d = GetComponent<Rigidbody2D>();
         gameObject.transform.parent.gameObject.SetActive(true);
         isDead = false;
+
+        for (int i = 0; i < weapons.Count; i++) {
+            weapons[i] = Instantiate(weapons[i], Vector3.zero, Quaternion.identity, transform);
+        }
     }
 
     protected void FixedUpdate()
     {
+        for (int i = 0; i < weapons.Count; i++) { weapons[i].updateTimer(); }
+
         if (isDead)
         {
             // Destroy(this.gameObject);
@@ -88,14 +94,12 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
 
     public abstract void move();
 
-    public abstract void shoot();
-
     public abstract void initialize();
 
-    private IEnumerator Shoot()
-    {
-        isShooting = false;
-        yield return new WaitForSeconds(speedShoot);
-        isShooting = true;
+    public void shoot() {
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            weapons[i].shoot(transform);
+        }
     }
 }

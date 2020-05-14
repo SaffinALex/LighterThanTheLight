@@ -25,11 +25,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -4.9542803e-10, y: 0.010580878}
-      - {x: -0.0026400015, y: 0.0046871677}
-      - {x: -0.007840136, y: -0.0045867357}
-      - {x: 0.008052646, y: -0.004586737}
-      - {x: 0.0030650254, y: 0.0034138407}
+    - - {x: 0.0026225694, y: 0.007485696}
+      - {x: -0.0026481214, y: 0.0074877036}
+      - {x: -0.004107192, y: 0.00023396195}
+      - {x: -0.0041024964, y: -0.0034894655}
+      - {x: 0.0041243914, y: -0.0035936558}
+      - {x: 0.0040761996, y: 0.00033600393}
 --- !u!1 &4609433687815977607
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,7 +43,7 @@ GameObject:
   - component: {fileID: 4609433687815977602}
   - component: {fileID: 4609433687815977604}
   - component: {fileID: 2364199843355145164}
-  - component: {fileID: 6384636828540082080}
+  - component: {fileID: 2740919470220617848}
   m_Layer: 9
   m_Name: playerShip
   m_TagString: Player
@@ -97,10 +98,10 @@ MonoBehaviour:
   nbrMaxWeapons: 2
   nbrMaxUpgradeShip: 2
   initialLife: 100
-  speed: 2
+  speed: 8
   maxShieldLife: 8
   weapons:
-  - {fileID: 2083393953272898251, guid: e5735a699bc087a4fafbd8c2b2395644, type: 3}
+  - {fileID: -1994659459883942212, guid: 5b55086237e3bc941ac7f878d5eb5ed1, type: 3}
   upgradeShip: []
   wave: {fileID: 7237810773343739811, guid: 1f35fce770403cd489dbd332e41f783d, type: 3}
   dash: {fileID: 4609433687815977602}
@@ -135,7 +136,7 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!60 &6384636828540082080
+--- !u!60 &2740919470220617848
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,16 +161,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.19559771, y: -0.115564585}
-      - {x: 0.14339837, y: -0.03966546}
-      - {x: 0.116116494, y: 0.029603481}
-      - {x: 0.039659306, y: 0.2072289}
-      - {x: -0.0026924014, y: 0.08483529}
-      - {x: -0.051234588, y: 0.18843007}
-      - {x: -0.11081883, y: 0.034926414}
-      - {x: -0.14048937, y: -0.041395664}
-      - {x: -0.032681346, y: -0.03390503}
-      - {x: 0.0016255677, y: -0.105513334}
+    - - {x: 0.25124013, y: 0.7511058}
+      - {x: -0.24912444, y: 0.7508757}
+      - {x: -0.40654188, y: 0.024303466}
+      - {x: -0.40983924, y: -0.3641521}
+      - {x: 0.39204478, y: -0.36059317}
+      - {x: 0.39230603, y: 0.042098135}
 --- !u!95 &4609433686791282158
 Animator:
   serializedVersion: 3

@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class WeaponPlayer : MonoBehaviour
+public abstract class WeaponPlayer : Weapon
 {
     public static readonly float minFireRate = 0.001f;
-
-    public List<UpgradeWeapon> upgradeWeapons;
-    public int nbrMaxUpgrade;
+    
     public int size;
     protected bool canShoot;
     public float fireRateBase;
     protected float fireRate;
-    public GameObject bullet;
     public int price;
     public int weight;
     public float bulletSpeedBase;
@@ -32,16 +29,7 @@ public abstract class WeaponPlayer : MonoBehaviour
         timerShoot = 0;
        
     }
-
-    public int numberUpgradeCanAdd(){
-        int cpt = 0;
-        for(int i = 0; i<upgradeWeapons.Count; i++){
-            cpt+= upgradeWeapons[i].getWeight();
-        }
-        return nbrMaxUpgrade - cpt;
-    }
-
-    abstract public void shoot(Transform t);
+    
     public void setBulletSpeed(float s){
         bulletSpeed = s;
     }

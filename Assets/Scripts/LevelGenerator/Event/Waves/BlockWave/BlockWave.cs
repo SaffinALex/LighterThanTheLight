@@ -5,7 +5,7 @@ using UnityEngine;
 public class BlockWave : MonoBehaviour
 {
     public enum PositionSpawner { Left, Right, TopLeft, TopRight, TopCenter, PlayerX }
-    public enum EnemyType { BotBasic, BotCircle, BotFollow, BotRandom, BotThrow }
+    public enum EnemyType { BotBasic, BotCircle, BotFollow, BotRandom, BotCross}
 
     [System.Serializable]
     public struct EnemyElement {
