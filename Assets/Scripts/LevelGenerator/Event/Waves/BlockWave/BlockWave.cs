@@ -7,6 +7,8 @@ public class BlockWave : MonoBehaviour
     public enum PositionSpawner { Left, Right, TopLeft, TopRight, TopCenter, PlayerX }
     public enum EnemyType { BotBasic, BotCircle, BotFollow, BotRandom, BotCross}
 
+    protected bool isGoingAway = false;
+
     [System.Serializable]
     public struct EnemyElement {
         public float timeAppear;
@@ -71,6 +73,7 @@ public class BlockWave : MonoBehaviour
     }
 
     public void GoAway(){
+        isGoingAway = true;
         for (int i = 0; i < allEnemy.Count; i++) {
             if(allEnemy[i] != null) allEnemy[i].GoAway();
         }

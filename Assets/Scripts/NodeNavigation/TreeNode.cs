@@ -13,6 +13,8 @@ public class TreeNode : MonoBehaviour
         //Singleton
         if(!treeNode){
             treeNode = gameObject;
+            DontDestroyOnLoad(gameObject);
+            App.SetTreeNode(this);
         }else{
             Destroy(gameObject);
         }

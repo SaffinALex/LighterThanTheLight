@@ -17,12 +17,15 @@ public class App : MonoBehaviour
     [SerializeField] protected List<Event> waveEvents;
     [SerializeField] protected List<Event> disasterEvents;
     [SerializeField] protected List<Event> bossEvents;
+    [SerializeField] protected EnemyList enemiesList;
+    static protected TreeNode treeNode;
 
     public static Dictionary<string, List<Event>> ALL_EVENTS = new Dictionary<string, List<Event>>();
 
     public void Awake(){
         DontDestroyOnLoad(gameObject);
         app = this;
+        SetEnemyList(enemiesList);
     }
 
     void Start(){
@@ -96,5 +99,19 @@ public class App : MonoBehaviour
             Debug.Log(enumerator.Current.Key+" : "+enumerator.Current.Value);
         }
         */
+    }
+
+    static public void SetTreeNode(TreeNode tree){
+        treeNode = tree;
+    }
+
+    static public void StartLevel(){
+        treeNode.gameObject.SetActive(false);
+        SceneManager.LoadScene("LevelPrototype");
+    }
+
+    static public void EndLevel(){
+        SceneManager.LoadScene("NodeNavigation");
+        treeNode.gameObject.SetActive(true);
     }
 }

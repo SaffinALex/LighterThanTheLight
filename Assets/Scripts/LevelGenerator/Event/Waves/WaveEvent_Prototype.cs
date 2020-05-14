@@ -46,7 +46,7 @@ public class WaveEvent_Prototype : Event
         }
 
         //Tous les ennemis sont mort on s'arrête
-        if(allDead) End();
+        if(allDead || currentTime > maxTimeWave) End();
 
         if(currentTime > maxTimeWave && maxTimeWave > 0){
             for (int i = 0; i < allBlockWave.Count; i++) {

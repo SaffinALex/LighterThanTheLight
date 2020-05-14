@@ -28,6 +28,10 @@ public class Node : MonoBehaviour
         public List<Node> childs;
         //Représente l'intérieur de la node
         public NodeElement nodeElement;
+    
+    /** VARIABLE ALEATOIRE POUR LA GENERATION DE NODE ELEMENT */
+    static readonly float probaLevel = 0.98f;
+    static readonly float probaShop = 0.02f;
 
     //Enregistre la position des contraintes sur les enfants
     protected List<GameObject> constraintsCubes = new List<GameObject>();
@@ -181,7 +185,13 @@ public class Node : MonoBehaviour
         if(nodeElement != null) GameObject.Destroy(nodeElement.gameObject); //On supprime le nodeElement précédent
         GameObject nodeElementObject = new GameObject("Node Element");
         nodeElementObject.transform.parent = transform;
-        nodeElement = nodeElementObject.AddComponent<NodeShop>();
+
+        float randomElement = Random.Range(0f,1f);
+        if(randomElement > probaLevel){
+            nodeElement = nodeElementObject.AddComponent<NodeShop>();
+        }else{
+            nodeElement = nodeElementObject.AddComponent<NodeLevel>();
+        }
         nodeElement.GetEvent().AddListener(CompleteNode);
     }
 
