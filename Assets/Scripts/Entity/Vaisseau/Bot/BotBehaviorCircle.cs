@@ -16,10 +16,15 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
     private float tParam;
     private Vector2 shipPosition;
 
+    [SerializeField] protected float minTimeAlive = 5f;
+    protected float timerMinTimeAlive = 0f;
+    protected bool initMinTime = false;
+
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
+        canDieOutside = false;
         routeToGo = 0;
         tParam = 0f;
         type = "BotCircle";
@@ -37,6 +42,11 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
     new void Update()
     {
         base.Update();
+        timerMinTimeAlive += Time.deltaTime;
+        if(timerMinTimeAlive >= minTimeAlive && !initMinTime){
+            initMinTime = true;
+            canDieOutside = true;
+        }
     }
 
     override
