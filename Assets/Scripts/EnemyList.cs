@@ -43,7 +43,7 @@ public class EnemyList : MonoBehaviour
         GameObject enemy = null;
         for (int i = 0; i < ListEnemy.Count; i++) {
             if (ListEnemy[i].GetComponentInChildren<EntitySpaceShipBehavior>().getType().Equals(s)) {
-                ListEnemy[i].GetComponentInChildren<EntitySpaceShipBehavior>().difficult = DifficultLevel;
+                ListEnemy[i].GetComponentInChildren<EntitySpaceShipBehavior>().difficult = difficulty;
                 enemy = ListEnemy[i];
             }
         }

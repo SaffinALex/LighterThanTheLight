@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BotBehaviorRandom : EntitySpaceShipBehavior
 {
-    Vector2 initialPosition;
-    Vector2 nextPosition;
+    float initialPosition;
+    float nextPosition;
 
     protected float timeChangePosition; //Représente le temps pour changer de position ( il sera calculé en fonction de la distance et la vitesse )
     protected float timePause = 5f;
@@ -15,16 +15,28 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
     protected float timerPause = 0f;            //Représente le timer de la pause
     protected float timerChangePosition = 0f;   //Représente le timer pour changer de position ( va servir pour l'arrivée et le départ )
 
+    private float positionX;
+    private float positionY;
+    private float p1;
+    private float p2;
+    private float p3;
+
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
         type = "BotRandom";
 
-        initialPosition = transform.position;
-        nextPosition = initialPosition + new Vector2(0, -EnnemiesBorder.size.y / 3);
+        p1 = transform.position.y + EnnemiesBorder.size.y / 6;
+        p2 = transform.position.y;
+        p3 = transform.position.y - EnnemiesBorder.size.y / 6;
+        positionX = transform.position.x;
+        positionY = transform.position.y;
 
-        timeChangePosition = Vector2.Distance(initialPosition, nextPosition) / speedMove;
+        initialPosition = transform.position.y;
+        nextPosition = initialPosition - EnnemiesBorder.size.y / 6;
+
+        timeChangePosition = Vector2.Distance(new Vector2(0, initialPosition), new Vector2(0, nextPosition)) / speedMove;
     }
 
     new void FixedUpdate()
@@ -36,17 +48,14 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
     new void Update()
     {
         base.Update();
-        move();
-    }
 
-    override
-    public void move()
-    {
         // 1 - La pause n'a pas commencé on arrive
-        if (!beginPause && timerChangePosition < timeChangePosition)
+        if (!beginPause && transform.position.y > p3)
         {
             timerChangePosition += Time.deltaTime;
-            transform.position = Vector2.Lerp(initialPosition, nextPosition, Mathf.SmoothStep(0, 1, timerChangePosition / timeChangePosition));
+            positionY = p3;
+            //transform.position = Vector2.Lerp(initialPosition, nextPosition, Mathf.SmoothStep(0, 1, timerChangePosition / timeChangePosition));
+
             if (timerChangePosition >= timeChangePosition)
             {
                 beginPause = true; //On commence la pause
@@ -56,27 +65,38 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
         else if (beginPause && !endPause && timerPause < timePause)
         {
             timerPause += Time.deltaTime;
+            positionY = transform.position.y;
             shoot();
             if (timerPause >= timePause)
             {
                 endPause = true;
-                Vector2 tmp = initialPosition;
-                initialPosition = nextPosition;
-                nextPosition = tmp;
+
             }
         }
-        
+
         else if (beginPause && endPause)
         {
             timerChangePosition += Time.deltaTime;
-            transform.position = Vector2.Lerp(initialPosition, nextPosition, Mathf.SmoothStep(0, 1, timerChangePosition / timeChangePosition));
+            positionY = p1;
+            //transform.position = Vector2.Lerp(initialPosition, nextPosition, Mathf.SmoothStep(0, 1, timerChangePosition / timeChangePosition));
 
+            /*
             if (timerChangePosition >= timeChangePosition)
             {
                 shoot();
                 //isDead = true;
-            }
+            }*/
         }
+
+        move();
+    }
+
+    override
+    public void move()
+    {
+        Vector3 direction = (new Vector3(positionX, positionY, transform.position.z) - transform.position).normalized;
+        force = new Vector2(direction.x, direction.y) * speedMove;
+        r2d.velocity = force;
     }
 
     override

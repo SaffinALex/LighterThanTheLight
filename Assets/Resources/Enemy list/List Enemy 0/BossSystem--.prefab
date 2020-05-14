@@ -52667,7 +52667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 5359264151696501870, guid: ef2544720feb09248ae5a728fe49704f, type: 3}
   life: 30
-  speedMove: 0.5
+  speedMove: 2
   scrolling: 0.1
   speedShoot: 1
   animator: {fileID: 7885657485564900593}
@@ -52783,7 +52783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 5359264151696501870, guid: ef2544720feb09248ae5a728fe49704f, type: 3}
   life: 50
-  speedMove: 0.5
+  speedMove: 2
   scrolling: 0.1
   speedShoot: 1
   animator: {fileID: 7885657485564900593}
@@ -52893,7 +52893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 5359264151696501870, guid: ef2544720feb09248ae5a728fe49704f, type: 3}
   life: 30
-  speedMove: 0.5
+  speedMove: 2
   scrolling: 0.1
   speedShoot: 1
   animator: {fileID: 7885657485564900593}
@@ -52978,7 +52978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7885657485564900595}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.18, y: -0.58000183, z: 4}
+  m_LocalPosition: {x: -0.18, y: -0.58000183, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 7885657485020502318}

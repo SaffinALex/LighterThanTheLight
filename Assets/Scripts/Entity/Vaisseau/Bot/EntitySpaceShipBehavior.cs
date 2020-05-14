@@ -44,7 +44,7 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
             isDead = false;
             isMoving = false;
 
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 
@@ -52,7 +52,7 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     protected void Update()
     {
         currTimerTouch += Time.deltaTime;
-        if(life <= 0 && !isDead || transform.position.y < -EnnemiesBorder.size.y / 2 + 1)
+        if(life <= 0 && !isDead || transform.position.y < -EnnemiesBorder.size.y/2 || transform.position.y > EnnemiesBorder.size.y / 2 || transform.position.x < -EnnemiesBorder.size.x / 2 || transform.position.x > EnnemiesBorder.size.x / 2)
         {
             isDead = true;
             animator.SetBool("isDead", true);

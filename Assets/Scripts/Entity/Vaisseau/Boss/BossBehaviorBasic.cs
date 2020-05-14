@@ -19,21 +19,29 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     private float p1;
     private float p2;
     private float p3;
+    private float p4;
 
     public bool sideIsDead;
-
+    private bool right;
 
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
 
-        p1 = transform.position.x + 3;
-        p2 = transform.position.x;
-        p3 = transform.position.y - 0.5f;
-        positionX = transform.position.x;
-        positionY = transform.position.y;
+        p1 = GetComponentInParent<BossBehaviorBasic>().transform.position.x + EnnemiesBorder.size.x / 2;
+        p2 = GetComponentInParent<BossBehaviorBasic>().transform.position.x;
+        p3 = GetComponentInParent<BossBehaviorBasic>().transform.position.x - EnnemiesBorder.size.x / 2;
+        p4 = GetComponentInParent<BossBehaviorBasic>().transform.position.y - EnnemiesBorder.size.x / 8;
+        positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x;
+        positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
         type = "BossBasic";
+        r2d = GetComponentInParent<Rigidbody2D>();
+
+        if (GetComponentInParent<BossBehaviorBasic>().transform.position.x < 0)
+            right = true;
+        else
+            right = false;
     }
 
     new void FixedUpdate()
@@ -41,7 +49,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         base.FixedUpdate();
         move();
 
-        if (transform.position.y <= p3 + 0.01)
+        if (GetComponentInParent<BossBehaviorBasic>().transform.position.y <= p4 + 1)
         {
             shoot();
         }
@@ -52,18 +60,41 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     {
         base.Update();
 
-        if(transform.position.y > p3 + 0.01)
+        if (right)
         {
-            positionY = p3;
-        }
+            if (GetComponentInParent<BossBehaviorBasic>().transform.position.y > p4 + 1)
+            {
+                positionY = p4;
+            }
 
-        else if (transform.position.x >= p1 - 0.01)
-        {
-            positionX = transform.position.x - 3;
+            else if (GetComponentInParent<BossBehaviorBasic>().transform.position.x > p1 - 1)
+            {
+                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x - EnnemiesBorder.size.x / 2;
+                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
+            }
+            else if (GetComponentInParent<BossBehaviorBasic>().transform.position.x < p2 + 1)
+            {
+                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x + EnnemiesBorder.size.x / 2;
+                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
+            }
         }
-        else if (transform.position.x <= p2 + 0.01)
+        else
         {
-            positionX = transform.position.x + 3;
+            if (GetComponentInParent<BossBehaviorBasic>().transform.position.y > p4 + 1)
+            {
+                positionY = p4;
+            }
+
+            else if (GetComponentInParent<BossBehaviorBasic>().transform.position.x < p3 + 1)
+            {
+                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x + EnnemiesBorder.size.x / 2;
+                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
+            }
+            else if (GetComponentInParent<BossBehaviorBasic>().transform.position.x > p2 - 1)
+            {
+                positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x - EnnemiesBorder.size.x / 2;
+                positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
+            }
         }
 
         if (sideIsDead)
@@ -88,7 +119,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     override
     public void move()
     {
-        Vector3 direction = (new Vector3(positionX, positionY, transform.position.z) - transform.position).normalized;
+        Vector3 direction = (new Vector3(positionX, positionY, 0) - GetComponentInParent<BossBehaviorBasic>().transform.position).normalized;
         force = new Vector2(direction.x, direction.y) * speedMove;
         r2d.velocity = force;
     }

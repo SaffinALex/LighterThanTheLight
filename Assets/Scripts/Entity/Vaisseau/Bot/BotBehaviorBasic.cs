@@ -16,9 +16,9 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
     new void Start()
     {
         base.Start();
-        p1 = transform.position.x + EnnemiesBorder.size.x/3;
+        p1 = transform.position.x + EnnemiesBorder.size.x/2;
         p2 = transform.position.x;
-        p3 = transform.position.x - EnnemiesBorder.size.x / 3;
+        p3 = transform.position.x - EnnemiesBorder.size.x / 2;
         positionX = transform.position.x;
         positionY = transform.position.y;
         type = "BotBasic";
@@ -43,22 +43,22 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
         if (right) { 
             if (transform.position.x > p1 - 1)
             {
-                positionX = -EnnemiesBorder.size.x / 3;
+                positionX = -EnnemiesBorder.size.x / 2;
             }
             else if (transform.position.x < p2 + 1)
             {
-                positionX = EnnemiesBorder.size.x / 3;
+                positionX = EnnemiesBorder.size.x / 2;
             }
         }
         else
         {
             if (transform.position.x < p3 + 1)
             {
-                positionX = EnnemiesBorder.size.x / 3;
+                positionX = EnnemiesBorder.size.x / 2;
             }
             else if (transform.position.x > p2 - 1)
             {
-                positionX = -EnnemiesBorder.size.x / 3;
+                positionX = -EnnemiesBorder.size.x / 2;
             }
         }
         
