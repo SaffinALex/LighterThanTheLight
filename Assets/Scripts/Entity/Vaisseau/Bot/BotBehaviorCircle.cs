@@ -57,6 +57,10 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         // {
         //     StartCoroutine("GoByRoute");
         // }
+        for (int i = 0; i < routes.Length; i++)
+        {
+            routes[i].routes.position = routes[i].routes.position + new Vector3(0, -scrolling, 0);
+        }
     }
 
     override
@@ -91,7 +95,7 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         tParam += Time.deltaTime;
         tParam = tParam >= routes[routeToGo].timeTravel ? routes[routeToGo].timeTravel : tParam;
 
-        if(tParam == routes[routeToGo].timeTravel){
+        if (tParam == routes[routeToGo].timeTravel){
             routeToGo = (routeToGo + 1) % routes.Length;
             tParam = 0;
         }
