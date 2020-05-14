@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SimpleShootEnemy : WeaponEnemy
 {
+    [SerializeField] protected int maxShootToReload = 5;
+    int currentShoot = 0;
     override
     public void shoot(Transform t)
     {
@@ -18,6 +20,11 @@ public class SimpleShootEnemy : WeaponEnemy
                 GameObject o1 = Instantiate(bullet, new Vector3(t.position.x - nextPositionPlayer.x * (i / numberShoot), t.position.y + ((i / numberShoot) * bulletSpeed * Time.fixedDeltaTime) - nextPositionPlayer.y * (i / numberShoot), t.position.z), Quaternion.identity);
                 o1.GetComponent<Bullet>().setSpeed(bulletSpeed);
                 o1.GetComponent<Bullet>().setDamage(bulletDamage);
+                currentShoot++;
+                if(currentShoot >= maxShootToReload){
+                    StartReload();
+                    currentShoot = 0;
+                }
             }
             reloadShoot();
         }

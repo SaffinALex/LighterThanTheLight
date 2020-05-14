@@ -30,7 +30,7 @@ public class ShootAroundEnemy : WeaponEnemy
                 rotate += rotateOverTime;
                 currentTimeWaveShoot++;
                 if(currentTimeWaveShoot >= maxNumberWaveShoot - 1){
-                    timerReloadWaveShoot = 0f;
+                    StartReload();
                     currentTimeWaveShoot = 0;
                 }
             }
