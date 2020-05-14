@@ -42,7 +42,7 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
     override
     public void move()
     {
-        GoByRoute();
+        if (routes.Length > 0) GoByRoute();
         // if (coroutine)
         // {
         //     StartCoroutine("GoByRoute");

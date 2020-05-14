@@ -69,10 +69,17 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
 
     new void FixedUpdate()
     {
-        base.FixedUpdate();
+        for (int i = 0; i < weapons.Count; i++) { weapons[i].updateTimer(); }
+
+        if (isDead)
+        {
+            // Destroy(this.gameObject);
+            isDead = false;
+            sideIsDead = true;
+        }
+
         if (!needGoAway) move();
         else GoAwayMove();
-        shoot();
         shoot();
     }
 
@@ -85,12 +92,10 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
 
         if (sideIsDead)
         {
-            if (gameObject.CompareTag("Cockpit"))
-            {
-                Destroy(this.gameObject);
+            if (gameObject.CompareTag("Cockpit")) {
+                Destroy(transform.parent.gameObject);
             }
-            else if (gameObject.CompareTag("RightSide"))
-            {
+            else if (gameObject.CompareTag("RightSide")) {
                 Destroy(this.gameObject);
                 animator.SetBool("rightSideIsDead", false);
             }
@@ -174,7 +179,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     override
     public void move()
     {
-        GoByRoute();
+        if(routes.Length > 0) GoByRoute();
         /*
         Vector3 direction = (new Vector3(positionX, positionY, 0) - GetComponentInParent<BossBehaviorBasic>().transform.position).normalized;
         force = new Vector2(direction.x, direction.y) * speedMove;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1226630851873110141}
   - component: {fileID: 1226630851873110140}
   m_Layer: 0
-  m_Name: BlockWave 3
+  m_Name: BlockWave 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,38 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesWave:
   - timeAppear: 0
-    enemyType: 4
+    enemyType: 1
     enemyDifficulty: 0
     positionAppear: {x: 0, y: 0}
-    spawnPosition: 1
-    angleAppear: -120
-  - timeAppear: 2
-    enemyType: 4
-    enemyDifficulty: 0
-    positionAppear: {x: 0, y: 0}
-    spawnPosition: 1
-    angleAppear: -120
-  - timeAppear: 4
-    enemyType: 4
-    enemyDifficulty: 0
-    positionAppear: {x: 0, y: 0}
-    spawnPosition: 1
-    angleAppear: -120
-  - timeAppear: 0
-    enemyType: 4
-    enemyDifficulty: 0
-    positionAppear: {x: 0, y: 0}
-    spawnPosition: 0
-    angleAppear: 120
-  - timeAppear: 2
-    enemyType: 4
-    enemyDifficulty: 0
-    positionAppear: {x: 0, y: 0}
-    spawnPosition: 0
-    angleAppear: 120
-  - timeAppear: 4
-    enemyType: 4
-    enemyDifficulty: 0
-    positionAppear: {x: 0, y: 0}
-    spawnPosition: 0
-    angleAppear: 120
+    spawnPosition: 4
+    angleAppear: 0
