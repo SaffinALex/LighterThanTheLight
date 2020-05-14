@@ -124,7 +124,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
                 //timer += Time.deltaTime;
             }
             timer += Time.deltaTime;
-            Debug.Log(transform.parent.transform.position.x);
+            // Debug.Log(transform.parent.transform.position.x);
         }
         else
         {

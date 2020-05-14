@@ -182,17 +182,17 @@ MonoBehaviour:
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
   life: 20
+  canDieOutside: 1
   speedMove: 0.4
   scrolling: 0.1
-  speedShoot: 1
   animator: {fileID: 2064434575908398253}
-  isShooting: 1
-  isMoving: 0
   force: {x: 0, y: 0}
   score: 7
   routes:
-  - {fileID: 7823866990449366349}
-  - {fileID: 3229261679980189158}
+  - timeTravel: 3
+    routes: {fileID: 7823866990449366349}
+  - timeTravel: 3
+    routes: {fileID: 3229261679980189158}
 --- !u!50 &2064434576922549273
 Rigidbody2D:
   serializedVersion: 4
