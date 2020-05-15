@@ -42,7 +42,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
         positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
         type = "BossBasic";
         r2d = GetComponentInParent<Rigidbody2D>();
-
+        /*
         for (int i = 0; i < routes.Length; i++)
         {
             if (routes[i].routes != null)
@@ -73,7 +73,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
                     }
                 }
             }
-        }
+        }*/
     }
 
     new void FixedUpdate()

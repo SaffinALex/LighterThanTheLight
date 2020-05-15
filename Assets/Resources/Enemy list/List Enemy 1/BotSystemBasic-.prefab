@@ -14428,12 +14428,10 @@ MonoBehaviour:
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
   life: 15
-  speedMove: 1
-  scrolling: 0.1
-  speedShoot: 1.3
+  canDieOutside: 1
+  speedMove: 2
+  scrolling: 1
   animator: {fileID: 3186004781135254227}
-  isShooting: 1
-  isMoving: 0
   force: {x: 0, y: 0}
   score: 0
   isAtRight: 0
