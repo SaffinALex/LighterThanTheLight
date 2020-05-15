@@ -143,21 +143,21 @@ public class PlayerShip : Ship
         if(col.CompareTag("Upgrade") ){ 
            // this.gameObject.GetComponent<Inventory>().addUpgradeInventory(col.gameObject.GetComponent<Upgrade>());
         }
-    /*    if(col.CompareTag("Heart") ){ 
+        if(col.CompareTag("Heart") ){ 
             setLife(getLife() + 5);
             if(getLife() > initialLife){
                 setLife(initialLife);
             }
         }
         if(col.CompareTag("Money") ){ 
-            this.gameObject.GetComponent<Inventory>().setMoney(getMoney() + 5);
+            this.gameObject.GetComponent<Inventory>().setMoney(this.gameObject.GetComponent<Inventory>().getMoney() + 5);
         }
         if(col.CompareTag("Shield") ){ 
             setShieldLife(getShieldLife() + 1 );
             if(shieldLife > maxShieldLife){
                 shieldLife = maxShieldLife;
             }
-        } */
+        } 
     }
     private void OnTriggerStay2D(Collider2D col){
         if(col.CompareTag("Enemy") ){ 

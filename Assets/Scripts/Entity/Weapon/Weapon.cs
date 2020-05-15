@@ -17,6 +17,8 @@ public abstract class Weapon : MonoBehaviour
         }
         return nbrMaxUpgrade - cpt;
     }
-
+    public List<UpgradeWeapon> getUpgrade(){
+        return this.upgradeWeapons;
+    }
     public abstract void shoot(Transform t);
 }

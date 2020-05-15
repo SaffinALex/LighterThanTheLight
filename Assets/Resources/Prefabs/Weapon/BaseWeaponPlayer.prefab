@@ -45,9 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeWeapons: []
   nbrMaxUpgrade: 0
-  size: 0
-  fireRateBase: 0.1
   bullet: {fileID: 741788068531152253, guid: ff4828655a57f9a46aa06c71ca9a2e60, type: 3}
+  size: 0
+  fireRateBase: 1
   price: 0
   weight: 0
   bulletSpeedBase: 50

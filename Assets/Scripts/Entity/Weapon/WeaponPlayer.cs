@@ -65,6 +65,8 @@ public abstract class WeaponPlayer : Weapon
         Debug.Log(fireRate);
     }
 
+  
+
  
 
     public void addUpgradeWeapon(UpgradeWeapon u){
