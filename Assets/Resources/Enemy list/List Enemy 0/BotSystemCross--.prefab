@@ -119,12 +119,10 @@ MonoBehaviour:
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
   life: 15
-  speedMove: 1
-  scrolling: 0.1
-  speedShoot: 1
+  canDieOutside: 1
+  speedMove: 3
+  scrolling: 0.01
   animator: {fileID: 191577826010292947}
-  isShooting: 1
-  isMoving: 0
   force: {x: 0, y: 0}
   score: 2
 --- !u!50 &191577827158661735

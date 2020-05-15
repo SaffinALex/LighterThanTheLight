@@ -229,12 +229,10 @@ MonoBehaviour:
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
   life: 10
+  canDieOutside: 1
   speedMove: 5
-  scrolling: 0.2
-  speedShoot: 1.5
+  scrolling: 0.01
   animator: {fileID: 5841035006419391917}
-  isShooting: 1
-  isMoving: 0
   force: {x: 0, y: 0}
   score: 4
   player: {fileID: 4609433687815977607, guid: 20cdf949a649da44ca265d37803d97bc, type: 3}

@@ -5014,12 +5014,10 @@ MonoBehaviour:
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
   life: 25
+  canDieOutside: 1
   speedMove: 2
-  scrolling: 0.1
-  speedShoot: 2
+  scrolling: 0.01
   animator: {fileID: 7790174105719540029}
-  isShooting: 1
-  isMoving: 0
   force: {x: 0, y: 0}
   score: 3
 --- !u!50 &7790174106717090185

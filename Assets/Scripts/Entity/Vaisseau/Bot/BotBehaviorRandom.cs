@@ -34,7 +34,7 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
         positionY = transform.position.y;
 
         initialPosition = transform.position.y;
-        nextPosition = initialPosition - EnnemiesBorder.size.y / 6;
+        nextPosition = initialPosition - EnnemiesBorder.size.y / 6 + 1;
 
         timeChangePosition = Vector2.Distance(new Vector2(0, initialPosition), new Vector2(0, nextPosition)) / speedMove;
     }
@@ -66,6 +66,7 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
         else if (beginPause && !endPause && timerPause < timePause)
         {
             timerPause += Time.deltaTime;
+            transform.position = transform.position + new Vector3(0, -scrolling, 0);
             positionY = transform.position.y;
             shoot();
             if (timerPause >= timePause && timerChangePosition == 0)
