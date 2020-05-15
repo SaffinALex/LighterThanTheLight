@@ -44,8 +44,8 @@ public class BlockWave : MonoBehaviour
             else if (enemiesWave[i].spawnPosition == PositionSpawner.TopRightHalf) positionEnemy += new Vector2(EnnemiesBorder.size.x / 4, EnnemiesBorder.size.y / 2 - 1);
             else if (enemiesWave[i].spawnPosition == PositionSpawner.TopLeftQuart) positionEnemy += new Vector2(- EnnemiesBorder.size.x / 8, EnnemiesBorder.size.y / 2 - 1);
             else if (enemiesWave[i].spawnPosition == PositionSpawner.TopRightQuart) positionEnemy += new Vector2(EnnemiesBorder.size.x / 8, EnnemiesBorder.size.y / 2 - 1);
-            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopLeft3Quart) positionEnemy += new Vector2(- (3 * EnnemiesBorder.size.x) / 4, EnnemiesBorder.size.y / 2 - 1);
-            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopRight3Quart) positionEnemy += new Vector2((3 * EnnemiesBorder.size.x) / 4, EnnemiesBorder.size.y / 2 - 1);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopLeft3Quart) positionEnemy += new Vector2(- (3 * EnnemiesBorder.size.x) / 8, EnnemiesBorder.size.y / 2 - 1);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopRight3Quart) positionEnemy += new Vector2((3 * EnnemiesBorder.size.x) / 8, EnnemiesBorder.size.y / 2 - 1);
             else if (enemiesWave[i].spawnPosition == PositionSpawner.LeftHalfTop) positionEnemy += new Vector2(-EnnemiesBorder.size.x / 2 + 1, EnnemiesBorder.size.y / 4);
             else if (enemiesWave[i].spawnPosition == PositionSpawner.RightHalfTop) positionEnemy += new Vector2(EnnemiesBorder.size.x / 2 - 1, EnnemiesBorder.size.y / 4);
             else if (enemiesWave[i].spawnPosition == PositionSpawner.LeftHalfBot) positionEnemy += new Vector2(-EnnemiesBorder.size.x / 2 + 1, - EnnemiesBorder.size.y / 4);
