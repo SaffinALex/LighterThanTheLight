@@ -7,7 +7,8 @@ public abstract class UpgradeDash : Upgrade
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = icone;
+        if(GetComponent<SpriteRenderer>())
+            GetComponent<SpriteRenderer>().sprite = icone;
     }
 
     // Update is called once per frame
