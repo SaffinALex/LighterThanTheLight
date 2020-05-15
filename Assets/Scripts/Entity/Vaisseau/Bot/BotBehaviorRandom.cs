@@ -57,6 +57,11 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
         base.FixedUpdate();
         if (!needGoAway) move();
         else GoAwayMove();
+
+        if (difficult == 2 || difficult == 3 || difficult == 4)
+        {
+            shoot();
+        }
     }
 
     // Update is called once per frame
@@ -96,7 +101,10 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
         else
         {
             transform.position = routes[(routeToGo + 1) % routes.Length].routes.GetChild(0).position;
-            shoot();
+            if(difficult == 0 || difficult == 1)
+            {
+                shoot();
+            }
         }
 
         tParam += Time.deltaTime;

@@ -5015,7 +5015,7 @@ MonoBehaviour:
   startWeaponBulletDamage: 0
   life: 15
   canDieOutside: 1
-  speedMove: 1
+  speedMove: 4
   scrolling: 1
   animator: {fileID: 8806198341957466828}
   force: {x: 0, y: 0}
