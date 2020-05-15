@@ -66,7 +66,7 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
         else if (beginPause && !endPause && timerPause < timePause)
         {
             timerPause += Time.deltaTime;
-            transform.position = transform.position + new Vector3(0, -scrolling, 0);
+            transform.position = transform.position + new Vector3(0, -scrolling, 0) * Time.deltaTime;
             positionY = transform.position.y;
             shoot();
             if (timerPause >= timePause && timerChangePosition == 0)

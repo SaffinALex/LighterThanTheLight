@@ -32,10 +32,8 @@ public class BotBehaviorFollow : EntitySpaceShipBehavior
     public void move()
     {
         Vector3 direction = (new Vector3(player.transform.position.x, player.transform.position.y, 0) - transform.position).normalized;
-        force = new Vector2(direction.x, direction.y) * speedMove;
+        force = new Vector2(direction.x, -scrolling) * speedMove;
         r2d.velocity = force;
-
-        transform.position = transform.position + new Vector3(0, -scrolling, 0);
     }
 
     override
