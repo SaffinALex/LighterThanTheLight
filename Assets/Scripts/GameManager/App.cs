@@ -8,7 +8,7 @@ public class App : MonoBehaviour
 {
     public static App app;
     public MusicManager sfxObject;
-    public static MusicManager sfx = new MusicManager();
+    public static MusicManager sfx;
     public static PlayerManager playerManager = new PlayerManager();
     protected static LevelGeneratorInfo levelGeneratorInfo;
     protected static int difficulty = 0;
@@ -20,6 +20,9 @@ public class App : MonoBehaviour
     [SerializeField] protected EnemyList enemiesList;
     static protected TreeNode treeNode;
 
+    static public PlayerShip playerShip;
+    public PlayerShip playerShipPrefab;
+
     public static Dictionary<string, List<Event>> ALL_EVENTS = new Dictionary<string, List<Event>>();
 
     public void Awake(){
@@ -29,6 +32,8 @@ public class App : MonoBehaviour
     }
 
     void Start(){
+        playerShip = playerShipPrefab;
+
         InputManager.Subscribe(GetComponent<KeyboardInputSystem>());
 
         DontDestroyOnLoad(sfxObject.gameObject);
@@ -101,15 +106,24 @@ public class App : MonoBehaviour
         */
     }
 
+    /**
+     * Permet d'ajouter l'objet contenant l'arborescence des niveaux
+     */
     static public void SetTreeNode(TreeNode tree){
         treeNode = tree;
     }
 
+    /**
+     * Commence un niveau
+     */
     static public void StartLevel(){
         treeNode.gameObject.SetActive(false);
         SceneManager.LoadScene("LevelPrototype");
     }
 
+    /**
+     * Finir un niveau
+     */
     static public void EndLevel(){
         SceneManager.LoadScene("NodeNavigation");
         treeNode.gameObject.SetActive(true);

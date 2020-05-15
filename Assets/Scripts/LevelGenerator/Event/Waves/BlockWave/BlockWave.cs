@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlockWave : MonoBehaviour
 {
-    public enum PositionSpawner { Left, Right, TopLeft, TopRight, TopCenter, PlayerX }
+    public enum PositionSpawner { Left, Right, TopLeft, TopRight, TopCenter, PlayerX, TopLeftHalf, TopRightHalf, TopLeftQuart, TopRightQuart, TopLeft3Quart, TopRight3Quart, LeftHalfTop, RightHalfTop, LeftHalfBot, RightHalfBot }
     public enum EnemyType { BotBasic, BotCircle, BotFollow, BotRandom, BotCross}
 
     protected bool isGoingAway = false;
@@ -39,7 +39,18 @@ public class BlockWave : MonoBehaviour
             else if (enemiesWave[i].spawnPosition == PositionSpawner.TopLeft) positionEnemy += new Vector2(- EnnemiesBorder.size.x / 2 + 1, EnnemiesBorder.size.y / 2 - 1);
             else if (enemiesWave[i].spawnPosition == PositionSpawner.TopRight) positionEnemy += new Vector2(EnnemiesBorder.size.x / 2- 1, EnnemiesBorder.size.y / 2- 1);
             else if (enemiesWave[i].spawnPosition == PositionSpawner.TopCenter) positionEnemy += new Vector2(0, EnnemiesBorder.size.y / 2 - 1);
-            else if (enemiesWave[i].spawnPosition == PositionSpawner.PlayerX) positionEnemy += new Vector2(0, EnnemiesBorder.size.y / 2 - 1);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.PlayerX) positionEnemy += new Vector2(GameObject.Find("PlayerShip").transform.position.x, EnnemiesBorder.size.y / 2 - 1);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopLeftHalf) positionEnemy += new Vector2(-EnnemiesBorder.size.x / 4, EnnemiesBorder.size.y / 2 - 1);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopRightHalf) positionEnemy += new Vector2(EnnemiesBorder.size.x / 4, EnnemiesBorder.size.y / 2 - 1);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopLeftQuart) positionEnemy += new Vector2(- EnnemiesBorder.size.x / 8, EnnemiesBorder.size.y / 2 - 1);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopRightQuart) positionEnemy += new Vector2(EnnemiesBorder.size.x / 8, EnnemiesBorder.size.y / 2 - 1);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopLeft3Quart) positionEnemy += new Vector2(- (3 * EnnemiesBorder.size.x) / 4, EnnemiesBorder.size.y / 2 - 1);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.TopRight3Quart) positionEnemy += new Vector2((3 * EnnemiesBorder.size.x) / 4, EnnemiesBorder.size.y / 2 - 1);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.LeftHalfTop) positionEnemy += new Vector2(-EnnemiesBorder.size.x / 2 + 1, EnnemiesBorder.size.y / 4);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.RightHalfTop) positionEnemy += new Vector2(EnnemiesBorder.size.x / 2 - 1, EnnemiesBorder.size.y / 4);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.LeftHalfBot) positionEnemy += new Vector2(-EnnemiesBorder.size.x / 2 + 1, - EnnemiesBorder.size.y / 4);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.RightHalfBot) positionEnemy += new Vector2(EnnemiesBorder.size.x / 2 -1, - EnnemiesBorder.size.y / 4);
+            
 
             GameObject e = Instantiate(App.GetEnemyList().getEnemy(enemiesWave[i].enemyType.ToString("g"), enemiesWave[i].enemyDifficulty), positionEnemy, Quaternion.AngleAxis(enemiesWave[i].angleAppear, Vector3.forward));
             allEnemy.Add(e.GetComponentInChildren<EntitySpaceShipBehavior>());
