@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7258720313653769845}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.32, y: 0.48, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7258720314802294464}
@@ -149,12 +149,10 @@ MonoBehaviour:
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
   life: 20
-  speedMove: 0.6
-  scrolling: 0.2
-  speedShoot: 0.7
+  canDieOutside: 1
+  speedMove: 3
+  scrolling: 0.5
   animator: {fileID: 7258720313653769846}
-  isShooting: 1
-  isMoving: 0
   force: {x: 0, y: 0}
   score: 0
   player: {fileID: 4609433687815977607, guid: 20cdf949a649da44ca265d37803d97bc, type: 3}

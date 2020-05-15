@@ -34,5 +34,6 @@ public class BotBehaviorCross : EntitySpaceShipBehavior
     public override void move()
     {
         r2d.velocity = -transform.up * speedMove;
+        transform.position = transform.position + new Vector3(0, -scrolling, 0) * Time.deltaTime;
     }
 }

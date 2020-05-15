@@ -59,7 +59,7 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
         // }
         for (int i = 0; i < routes.Length; i++)
         {
-            routes[i].routes.position = routes[i].routes.position + new Vector3(0, -scrolling, 0);
+            routes[i].routes.position = routes[i].routes.position + new Vector3(0, -scrolling, 0) * Time.deltaTime;
         }
     }
 

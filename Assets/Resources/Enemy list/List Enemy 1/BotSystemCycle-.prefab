@@ -580,7 +580,7 @@ MonoBehaviour:
   life: 20
   canDieOutside: 1
   speedMove: 0.4
-  scrolling: 0.1
+  scrolling: 0.5
   animator: {fileID: 4362687001117018911}
   force: {x: 0, y: 0}
   score: 0
@@ -593,6 +593,7 @@ MonoBehaviour:
     routes: {fileID: 2529738056324427301}
   - timeTravel: 3
     routes: {fileID: 8498212008623227958}
+  minTimeAlive: 5
 --- !u!50 &4362687002114929579
 Rigidbody2D:
   serializedVersion: 4

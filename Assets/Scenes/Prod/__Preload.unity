@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -180,6 +180,8 @@ MonoBehaviour:
   bossEvents: []
   enemiesList: {fileID: 8515238202460999836, guid: d4c92d38b09ebfe4c927509ecbccdb0d,
     type: 3}
+  playerShipPrefab: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
+    type: 3}
 --- !u!114 &211221981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +234,7 @@ MonoBehaviour:
   startOnPlay: 1
   maxDistance: 50
   minDistance: 20
-  volume: 0.531
+  volume: 0
   allMusics:
   - name: SplashScreen
     clip: {fileID: 8300000, guid: 5da83a97dd9a4c0438b3578b01b0eae9, type: 3}
