@@ -19,6 +19,8 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     private float p;
 
     public bool sideIsDead;
+    private float timer = 1;
+    private float time;
 
     [System.Serializable]
     public struct PathBot
@@ -37,6 +39,7 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     new void Start()
     {
         base.Start();
+        time = 0;
         p = GetComponentInParent<BossBehaviorBasic>().transform.position.y - EnnemiesBorder.size.y / 8;
         positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x;
         positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
@@ -89,13 +92,26 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
 
         if (!needGoAway) move();
         else GoAwayMove();
-        shoot();
+        shoot(0);
     }
 
     // Update is called once per frame
     new void Update()
     {
         base.Update();
+
+        if(difficult == 3)
+        {
+            time += Time.deltaTime;
+            if(time >= timer)
+            {
+                if (weapons[0].GetFireRate() > 0.1)
+                {
+                    weapons[0].SetFireRate(weapons[0].GetFireRate() - 0.01f);
+                    time = 0;
+                }
+            }
+        }
 
         if (sideIsDead)
         {
@@ -154,10 +170,19 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
                     3 * (1 - percentT) * Mathf.Pow(percentT, 2) * p2 +
                     Mathf.Pow(percentT, 3) * p3;
             transform.position = new Vector3(shipPosition.x, shipPosition.y, 0);
+
+            if(difficult == 4)
+            {
+                if(routeToGo == 0 || routeToGo == 5 || routeToGo == 10)
+                {
+                    shoot(2);
+                }
+            }
         }
         else
         {
             transform.position = routes[(routeToGo + 1) % routes.Length].routes.GetChild(0).position;
+            shoot(1);
         }
 
         tParam += Time.deltaTime;
@@ -168,6 +193,12 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
             routeToGo = (routeToGo + 1) % routes.Length;
             tParam = 0;
         }
+    }
+
+    public void shoot(int w)
+    {
+
+        weapons[w].shoot(transform);
     }
 
     public new void OnCollisionEnter2D(Collision2D collision)

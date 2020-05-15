@@ -29145,6 +29145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 574912439305186582, guid: 3676bed24711a5847b1e8940237f0da4, type: 3}
+  - {fileID: 2864468351171722414, guid: 219fb7a11ba75b54ba886dcf8b5f1da6, type: 3}
+  - {fileID: 9121906638916084724, guid: 5b8da2c35f02a7a468faf0d8c2e42146, type: 3}
   overrideDefaultWeapon: 0
   startWeaponFireRate: 0
   startWeaponBulletSpeed: 0
@@ -29163,23 +29165,23 @@ MonoBehaviour:
   routes:
   - timeTravel: 3
     routes: {fileID: 4846534479893799333}
-  - timeTravel: 3
+  - timeTravel: 6
     routes: {fileID: 0}
   - timeTravel: 6
     routes: {fileID: 5675445426132671600}
   - timeTravel: 6
     routes: {fileID: 4898023721987689130}
-  - timeTravel: 3
+  - timeTravel: 6
     routes: {fileID: 0}
   - timeTravel: 6
     routes: {fileID: 5895229481215947769}
-  - timeTravel: 3
+  - timeTravel: 6
     routes: {fileID: 0}
   - timeTravel: 6
     routes: {fileID: 84469714396455309}
   - timeTravel: 6
     routes: {fileID: 2561243513023941331}
-  - timeTravel: 3
+  - timeTravel: 6
     routes: {fileID: 0}
   - timeTravel: 3
     routes: {fileID: 5488638573270754984}
