@@ -2,29 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBulletPrototype : Bullet
-{
-    protected Rigidbody2D rgbd2D;
+public class PlayerBulletPrototype : Bullet {
+
+    float maxTimeAlive = 4000f;
 
     void Start()
     {
-        rgbd2D = GetComponent<Rigidbody2D>();
+        App.sfx.PlayEffect("LaserShot", 0.2f);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        rgbd2D.velocity = transform.up.normalized * speed;
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Cockpit")
-        || collision.gameObject.CompareTag("RightSide") || collision.gameObject.CompareTag("LeftSide"))
-        {
-            collision.gameObject.GetComponent<EntitySpaceShip>().InfligeDamage(damage);
-            Destroy(this.gameObject);
+    void FixedUpdate() {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up.normalized, speed * Time.fixedDeltaTime);
+        
+        if (hits.Length > 0) {
+            Collider2D collisionNear = null;
+            float nearDistance = -1;
+            for(int i = 0; i < hits.Length; i++){
+                if (hits[i].collider.gameObject.CompareTag("Enemy") || hits[i].collider.gameObject.CompareTag("Cockpit")
+                || hits[i].collider.gameObject.CompareTag("RightSide") || hits[i].collider.gameObject.CompareTag("LeftSide"))
+                {
+                    if(nearDistance == -1 || nearDistance > hits[i].distance){
+                        collisionNear = hits[i].collider;
+                        nearDistance = hits[i].distance;
+                    }
+                }
+            }
+            if(collisionNear != null){
+                collisionNear.gameObject.GetComponent<EntitySpaceShipBehavior>().getDamage(damage);
+                Destroy(this.gameObject);
+            }
         }
+        maxTimeAlive -= Time.fixedDeltaTime;
+        if(maxTimeAlive <= 0) Destroy(this.gameObject);
+
+        transform.position += transform.up.normalized * speed * Time.fixedDeltaTime;
     }
 
     void OnBecameInvisible()

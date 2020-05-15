@@ -17,7 +17,7 @@ public class LevelControler : MonoBehaviour
             GameObject s = Instantiate(bots[Random.Range(0,bots.Count)], new Vector3(0, 0, 0), Quaternion.identity);
             s.transform.GetChild(0).tag="Enemy"; 
             s.SetActive(false);
-            s.transform.GetChild(0).GetComponent<EntitySpaceShipBehavior>().weapon = w;
+            // s.transform.GetChild(0).GetComponent<EntitySpaceShipBehavior>().weapon = w;
          //  Debug.Log("o");
             GetComponent<EnemyManager>().addBot(s);
         }

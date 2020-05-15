@@ -172,18 +172,14 @@ MonoBehaviour:
   - {x: 2, y: 0, z: 0}
   - {x: -2, y: 0, z: 0}
   waveEvents:
-  - {fileID: 364398552571127021, guid: 181152d3f5ec012429a356d4141cab5a, type: 3}
-  - {fileID: 4967160765944767226, guid: c6c5f01169e90e44b8035edd9958e377, type: 3}
-  - {fileID: 1011742079119982669, guid: 27e4783f79d284e4fab70f590633dad9, type: 3}
-  - {fileID: 2652680351972472726, guid: 4604a2a0fe394854b8fb0f6ce1410e39, type: 3}
-  - {fileID: 8420325586242105233, guid: 0f8d7cf4230bba14ebf7a31b99132377, type: 3}
-  - {fileID: 2082660320601031117, guid: a60c7049fc80f5540bc823498ef0160c, type: 3}
-  - {fileID: 5680380137733526352, guid: f978cf34cb01f8e44a1b901b478fe0f4, type: 3}
-  - {fileID: 1685339730243555455, guid: e346834e779e3204a96f4d30f2a13c86, type: 3}
-  - {fileID: 2729336179883044580, guid: 29f3db2cbdc24f14781ddfb836c3b42f, type: 3}
-  - {fileID: 1571194716684214947, guid: 89f24026cce0aec46b71559f6f7fc39d, type: 3}
+  - {fileID: 908749146122416438, guid: db26a9f659d30284b8931ec059ed8432, type: 3}
+  - {fileID: 4865883333038698864, guid: bfd11c69d1cf774498b1fb93106442ce, type: 3}
+  - {fileID: 5946505611432030358, guid: 712b3b100d8e85a4899c4afcbc2dd00a, type: 3}
+  - {fileID: 8021695518439611926, guid: 913c50edaf293e5438151835b5b80a5a, type: 3}
   disasterEvents: []
   bossEvents: []
+  enemiesList: {fileID: 8515238202460999836, guid: d4c92d38b09ebfe4c927509ecbccdb0d,
+    type: 3}
 --- !u!114 &211221981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,10 +243,11 @@ MonoBehaviour:
   allSoundsEffects:
   - name: LaserShot
     variants:
-    - {fileID: 8300000, guid: 4dc65c95850fb2f4eb9443a1d69b2f9a, type: 3}
+    - {fileID: 8300000, guid: 0cdd7f83a1d16804d9359d91a3e2f9ab, type: 3}
   - name: SelectMenu
     variants:
     - {fileID: 8300000, guid: b3b9dde9737399543b50ebf6faa3aa4d, type: 3}
+    - {fileID: 8300000, guid: 0aac05da0a21c42419a52385722769e3, type: 3}
 --- !u!4 &1198778464
 Transform:
   m_ObjectHideFlags: 0

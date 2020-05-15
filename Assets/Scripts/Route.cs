@@ -26,7 +26,7 @@ public class Route : MonoBehaviour
         controlPoints[2].position = controlPoints[2].position + new Vector3(0, -speedScrolling, 0);
         controlPoints[3].position = controlPoints[3].position + new Vector3(0, -speedScrolling, 0);
         */
-        transform.position = transform.position + new Vector3(0, -speedScrolling, 0);
+        //transform.position = transform.position + new Vector3(0, -speedScrolling, 0);
     }
 
     private void OnDrawGizmos()

@@ -4,32 +4,28 @@ using UnityEngine;
 
 public class WaveEvent_Prototype : Event
 {
+    [SerializeField] protected float maxTimeWave = 0f;
     //Représente l'apparition d'un ennemi
     [System.Serializable]
-    public struct EnemyElement {
+    public struct BlockWaveElement {
         public float timeAppear;
-        public EnemySpaceShip enemy;
-        public Vector2 positionAppear;
-        public bool relativeLeftCorner;
-        public bool relativeRightCorner;
-        public float angleAppear;
-
-        private GameObject prefab;
-        private bool instancied;
+        public BlockWave block;
     }
 
-    [SerializeField] protected List<EnemyElement> enemiesWave;
+    [SerializeField] protected List<BlockWaveElement> waveBlocksElements;
     protected float currentTime;
-    protected List<EnemySpaceShip> allEnemy;
+    protected List<BlockWave> allBlockWave;
 
     //Fonction qui sera appelé lorsque l'event débute, permet l'initialisation
     protected override void BeginEvent(){
+        Debug.Log("SCORE : " + GetScore());
+        App.GetEnemyList().ListEnemy.GetType();
+
         currentTime = 0;
-        allEnemy = new List<EnemySpaceShip>();
-        for(int i = 0; i < enemiesWave.Count; i++){
-            Vector2 positionEnemy = new Vector2(enemiesWave[i].positionAppear.x + (enemiesWave[i].relativeLeftCorner ? - EnnemiesBorder.size.x / 2 : 0) + (enemiesWave[i].relativeRightCorner ? EnnemiesBorder.size.x / 2 : 0), EnnemiesBorder.size.y / 2 + enemiesWave[i].positionAppear.y);
-            EnemySpaceShip e = Instantiate(enemiesWave[i].enemy, positionEnemy, Quaternion.AngleAxis(enemiesWave[i].angleAppear, Vector3.forward));
-            allEnemy.Add(e);
+        allBlockWave = new List<BlockWave>();
+        for(int i = 0; i < waveBlocksElements.Count; i++){
+            BlockWave e = Instantiate(waveBlocksElements[i].block, new Vector3(), Quaternion.identity);
+            allBlockWave.Add(e);
             e.gameObject.SetActive(false);
         }
     }
@@ -40,21 +36,33 @@ public class WaveEvent_Prototype : Event
 
         bool allDead = true;
 
-        for (int i = 0; i < allEnemy.Count; i++) {
-            if (allEnemy[i] != null) {
+        for (int i = 0; i < allBlockWave.Count; i++) {
+            if (allBlockWave[i] != null) {
                 allDead = false;
-                if(enemiesWave[i].timeAppear < currentTime && !allEnemy[i].gameObject.activeSelf){
-                        allEnemy[i].gameObject.SetActive(true);
+                if(waveBlocksElements[i].timeAppear < currentTime && !allBlockWave[i].gameObject.activeSelf){
+                        allBlockWave[i].gameObject.SetActive(true);
                 }
             }
         }
 
         //Tous les ennemis sont mort on s'arrête
-        if(allDead) End();
+        if(allDead || currentTime > maxTimeWave) End();
+
+        if(currentTime > maxTimeWave && maxTimeWave > 0){
+            for (int i = 0; i < allBlockWave.Count; i++) {
+                if (allBlockWave[i] != null) {
+                    allBlockWave[i].GoAway();
+                }
+            }
+        }
     }
 
-    //Fonction qui sera appelé lorsque l'event fonctionne
+    // Permet de récupérer le score
     public override float GetScore(){
-        return 0;
+        float score = 0f;
+        for(int i = 0; i < waveBlocksElements.Count; i++){
+            score += waveBlocksElements[i].block.GetScore();
+        }
+        return score;
     }
 }

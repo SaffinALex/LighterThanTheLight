@@ -20,9 +20,9 @@ public class DoubleShoot : WeaponPlayer
     override
     public void shoot(Transform t)
     {
-
         if(getCanShoot()){
             setCanShoot(false);
+            Debug.Log(getFireRate());
             GameObject o1 = Instantiate(bullet, new Vector3(t.position.x-0.2f, t.position.y, t.position.z), Quaternion.identity);
             GameObject o2 = Instantiate(bullet, new Vector3(t.position.x+0.2f, t.position.y, t.position.z), Quaternion.identity);
             o2.GetComponent<Bullet>().setSpeed(getBulletSpeed());

@@ -11,13 +11,14 @@ public class BotBehaviorFollow : EntitySpaceShipBehavior
     {
         player = GameObject.Find("playerShip");
         base.Start();
-        Type = "Bot";
+        type = "BotFollow";
     }
 
     new void FixedUpdate()
     {
         base.FixedUpdate();
-        move();
+        if (!needGoAway) move();
+        else GoAwayMove();
         shoot();
     }
 
@@ -32,37 +33,19 @@ public class BotBehaviorFollow : EntitySpaceShipBehavior
     {
         Vector3 direction = (new Vector3(player.transform.position.x, player.transform.position.y, 0) - transform.position).normalized;
         force = new Vector2(direction.x, -scrolling) * speedMove;
-        R2d.velocity = force;
-    }
-
-    override
-    public void shoot()
-    {
-        if (isShooting)
-        {
-            StartCoroutine("Shoot");
-            weapon.gameObject.GetComponent<Weapon>().shoot(transform);
-        }
-    }
-
-    override
-    public void getDamage(int damage)
-    {
-        life -= damage;
+        r2d.velocity = force;
     }
 
     override
     public void initialize()
     {
-        isShooting = true;
-        isMoving = false;
         life = 6;
         transform.position = new Vector3(0, 0, 0);
     }
 
     public override string getType()
     {
-        Type = "Bot";
-        return Type;
+        type = "BotFollow";
+        return type;
     }
 }

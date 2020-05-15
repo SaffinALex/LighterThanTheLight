@@ -4,27 +4,37 @@ using UnityEngine;
 
 public class BotBehaviorCircle : EntitySpaceShipBehavior
 {
+    [System.Serializable]
+    public struct PathBot {
+        public float timeTravel;
+        public Transform routes;
+    }
+
     [SerializeField]
-    private Transform[] routes;
+    private PathBot[] routes;
     private int routeToGo;
     private float tParam;
     private Vector2 shipPosition;
-    private bool coroutine;
+
+    [SerializeField] protected float minTimeAlive = 5f;
+    protected float timerMinTimeAlive = 0f;
+    protected bool initMinTime = false;
 
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
+        canDieOutside = false;
         routeToGo = 0;
         tParam = 0f;
-        coroutine = true;
-        Type = "Bot";
+        type = "BotCircle";
     }
 
     new void FixedUpdate()
     {
         base.FixedUpdate();
-        move();
+        if (!needGoAway) move();
+        else GoAwayMove();
         shoot();
     }
 
@@ -32,84 +42,101 @@ public class BotBehaviorCircle : EntitySpaceShipBehavior
     new void Update()
     {
         base.Update();
+        timerMinTimeAlive += Time.deltaTime;
+        if(timerMinTimeAlive >= minTimeAlive && !initMinTime){
+            initMinTime = true;
+            canDieOutside = true;
+        }
     }
 
     override
     public void move()
     {
-        if (coroutine)
+        if (routes.Length > 0) GoByRoute();
+        // if (coroutine)
+        // {
+        //     StartCoroutine("GoByRoute");
+        // }
+        for (int i = 0; i < routes.Length; i++)
         {
-            StartCoroutine("GoByRoute");
+            routes[i].routes.position = routes[i].routes.position + new Vector3(0, -scrolling, 0) * Time.deltaTime;
         }
-    }
-
-    override
-    public void shoot()
-    {
-        if (isShooting)
-        {
-            StartCoroutine("Shoot");
-            weapon.gameObject.GetComponent<Weapon>().shoot(transform);
-        }
-    }
-
-    override
-    public void getDamage(int damage)
-    {
-        life -= damage;
     }
 
     override
     public void initialize()
     {
-        isShooting = true;
-        isMoving = false;
         life = 6;
         routeToGo = 0;
         tParam = 0f;
-        coroutine = true;
         transform.position = new Vector3(0, 0, 0);
-        routes[0].transform.position = new Vector3(0, 0, 0);
-        routes[1].transform.position = new Vector3(0, 0, 0);
-
+        for(int i = 0; i < routes.Length; i++){
+            if(routes[i].routes != null) routes[i].routes.position = new Vector3(0, 0, 0);
+        }
     }
 
-    private IEnumerator GoByRoute()
-    {
-        coroutine = false;
+    protected void GoByRoute(){
 
-        while (tParam < 1)
-        {
-            tParam += Time.deltaTime * speedMove;
-
-            Vector2 p0 = routes[routeToGo].GetChild(0).position;
-            Vector2 p1 = routes[routeToGo].GetChild(1).position;
-            Vector2 p2 = routes[routeToGo].GetChild(2).position;
-            Vector2 p3 = routes[routeToGo].GetChild(3).position;
-
-            shipPosition = Mathf.Pow(1 - tParam, 3) * p0 +
-                3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
-                3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
-                Mathf.Pow(tParam, 3) * p3;
-
+        if(routes[routeToGo].routes != null){
+            Vector2 p0 = routes[routeToGo].routes.GetChild(0).position;
+            Vector2 p1 = routes[routeToGo].routes.GetChild(1).position;
+            Vector2 p2 = routes[routeToGo].routes.GetChild(2).position;
+            Vector2 p3 = routes[routeToGo].routes.GetChild(3).position;
+            float percentT = tParam / routes[routeToGo].timeTravel;
+            shipPosition = Mathf.Pow(1 - percentT, 3) * p0 +
+                    3 * Mathf.Pow(1 - percentT, 2) * percentT * p1 +
+                    3 * (1 - percentT) * Mathf.Pow(percentT, 2) * p2 +
+                    Mathf.Pow(percentT, 3) * p3;
             transform.position = new Vector3(shipPosition.x, shipPosition.y, 0);
-            yield return new WaitForEndOfFrame();
+        }else{
+            transform.position = routes[(routeToGo + 1) % routes.Length].routes.GetChild(0).position;
         }
 
-        tParam = 0f;
-        routeToGo += 1;
+        tParam += Time.deltaTime;
+        tParam = tParam >= routes[routeToGo].timeTravel ? routes[routeToGo].timeTravel : tParam;
 
-        if (routeToGo > routes.Length - 1)
-        {
-            routeToGo = 0;
+        if (tParam == routes[routeToGo].timeTravel){
+            routeToGo = (routeToGo + 1) % routes.Length;
+            tParam = 0;
         }
-
-        coroutine = true;
     }
+
+    // private IEnumerator GoByRoute()
+    // {
+    //     coroutine = false;
+
+    //     while (tParam < 1)
+    //     {
+    //         tParam += Time.deltaTime * speedMove;
+
+    //         Vector2 p0 = routes[routeToGo].GetChild(0).position;
+    //         Vector2 p1 = routes[routeToGo].GetChild(1).position;
+    //         Vector2 p2 = routes[routeToGo].GetChild(2).position;
+    //         Vector2 p3 = routes[routeToGo].GetChild(3).position;
+
+    //         shipPosition = Mathf.Pow(1 - tParam, 3) * p0 +
+    //             3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
+    //             3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
+    //             Mathf.Pow(tParam, 3) * p3;
+
+    //         transform.position = new Vector3(shipPosition.x, shipPosition.y, 0);
+    //         yield return new WaitForEndOfFrame();
+    //     }
+
+    //     tParam = 0f;
+    //     routeToGo += 1;
+
+    //     if (routeToGo > routes.Length - 1)
+    //     {
+    //         routeToGo = 0;
+    //     }
+
+    //     coroutine = true;
+    // }
 
     public override string getType()
     {
-        Type = "Bot";
-        return Type;
+        type = "BotCircle";
+        return type;
     }
 }

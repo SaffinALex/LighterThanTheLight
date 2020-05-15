@@ -66,6 +66,11 @@ public class PlayerShip : Ship
             Destroy(this.gameObject);
             PanelUIManager.GetPanelUI().ToggleEndGamePanel();
         }
+        //On update les timer des weapons
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            weapons[i].updateTimer();
+        }
         //Ne pas sortir de l'écran
         Vector3 change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
@@ -130,13 +135,6 @@ public class PlayerShip : Ship
         }
         
     }
-    void Update()
-    {
-        for(int i=0; i<weapons.Count; i++){
-            weapons[i].updateTimer();
-        }
-        
-    }
     private void OnTriggerEnter2D(Collider2D col){
         if(col.CompareTag("Enemy") ){ 
             Debug.Log("touché");
@@ -145,21 +143,21 @@ public class PlayerShip : Ship
         if(col.CompareTag("Upgrade") ){ 
            // this.gameObject.GetComponent<Inventory>().addUpgradeInventory(col.gameObject.GetComponent<Upgrade>());
         }
-    /*    if(col.CompareTag("Heart") ){ 
+        if(col.CompareTag("Heart") ){ 
             setLife(getLife() + 5);
             if(getLife() > initialLife){
                 setLife(initialLife);
             }
         }
         if(col.CompareTag("Money") ){ 
-            this.gameObject.GetComponent<Inventory>().setMoney(getMoney() + 5);
+            this.gameObject.GetComponent<Inventory>().setMoney(this.gameObject.GetComponent<Inventory>().getMoney() + 5);
         }
         if(col.CompareTag("Shield") ){ 
             setShieldLife(getShieldLife() + 1 );
             if(shieldLife > maxShieldLife){
                 shieldLife = maxShieldLife;
             }
-        } */
+        } 
     }
     private void OnTriggerStay2D(Collider2D col){
         if(col.CompareTag("Enemy") ){ 

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a88b1a322240b445895b6a2417f671f, type: 3}
   m_Name: Planet3Shape
   m_EditorClassIdentifier: 
-  planetRadius: 1
-  randomGeneration: 10
+  planetRadius: 1.07
+  randomGeneration: 11.16
   noiseLayers:
   - enabled: 1
     useFirstLayerAsMask: 0

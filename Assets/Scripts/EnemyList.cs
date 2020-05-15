@@ -31,9 +31,23 @@ public class EnemyList : MonoBehaviour
         ListEnemy = list[DifficultLevel].listEnemy;
         for (int i = 0; i<ListEnemy.Count; i++)
         {
-            ListEnemy[i].GetComponentInChildren<EntitySpaceShipBehavior>().Difficult = DifficultLevel;
+            ListEnemy[i].GetComponentInChildren<EntitySpaceShipBehavior>().difficult = DifficultLevel;
         }
         return ListEnemy;
+    }
+
+    public GameObject getEnemy(string s, int difficulty)
+    {
+        difficulty = difficulty < 0 ? DifficultLevel : difficulty;
+        ListEnemy = list[difficulty].listEnemy;
+        GameObject enemy = null;
+        for (int i = 0; i < ListEnemy.Count; i++) {
+            if (ListEnemy[i].GetComponentInChildren<EntitySpaceShipBehavior>().getType().Equals(s)) {
+                ListEnemy[i].GetComponentInChildren<EntitySpaceShipBehavior>().difficult = difficulty;
+                enemy = ListEnemy[i];
+            }
+        }
+        return enemy;
     }
 
     public List<GameObject> CallListBoss()
@@ -41,7 +55,7 @@ public class EnemyList : MonoBehaviour
         ListBoss = list[DifficultLevel].listBoss;
         for (int i = 0; i < ListBoss.Count; i++)
         {
-            ListBoss[i].GetComponentInChildren<EntitySpaceShipBehavior>().Difficult = DifficultLevel;
+            ListBoss[i].GetComponentInChildren<EntitySpaceShipBehavior>().difficult = DifficultLevel;
         }
         return ListBoss;
     }

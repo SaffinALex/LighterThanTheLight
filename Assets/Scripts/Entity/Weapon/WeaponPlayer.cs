@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class WeaponPlayer : MonoBehaviour
+public abstract class WeaponPlayer : Weapon
 {
-    public List<UpgradeWeapon> upgradeWeapons;
-    public int nbrMaxUpgrade;
+    public static readonly float minFireRate = 0.001f;
+    
     public int size;
-    private bool canShoot;
+    protected bool canShoot;
     public float fireRateBase;
-    private float fireRate;
-    public GameObject bullet;
+    protected float fireRate;
     public int price;
     public int weight;
     public float bulletSpeedBase;
     private float bulletSpeed;
     private float damage;
     // Start is called before the first frame update
-    private float timer;
+    protected float timerShoot;
     public void Initialize(){
+        fireRateBase = fireRateBase <= minFireRate ? minFireRate : fireRateBase;
         setBulletSpeed(bulletSpeedBase);
         setFireRate(fireRateBase);
         damage = bullet.GetComponent<Bullet>().damage;
@@ -26,19 +26,10 @@ public abstract class WeaponPlayer : MonoBehaviour
             upgradeWeapons[i].StartUpgrade(this);
         }
         canShoot = true;
-        timer = 0;
+        timerShoot = 0;
        
     }
-
-    public int numberUpgradeCanAdd(){
-        int cpt = 0;
-        for(int i = 0; i<upgradeWeapons.Count; i++){
-            cpt+= upgradeWeapons[i].getWeight();
-        }
-        return nbrMaxUpgrade - cpt;
-    }
-
-    abstract public void shoot(Transform t);
+    
     public void setBulletSpeed(float s){
         bulletSpeed = s;
     }
@@ -74,16 +65,25 @@ public abstract class WeaponPlayer : MonoBehaviour
         Debug.Log(fireRate);
     }
 
+  
+
  
 
     public void addUpgradeWeapon(UpgradeWeapon u){
         upgradeWeapons.Add(u);
     }
 
+    protected void reloadShoot(){
+        timerShoot -= Mathf.Floor(timerShoot / fireRate) * fireRate;
+        timerShoot = timerShoot < 0 ? 0 : timerShoot;
+        canShoot = false;
+    }
+
     public void updateTimer(){
-        timer += Time.deltaTime;
-        if(timer >= fireRate){
-            timer = 0;
+        if(timerShoot <= fireRate){
+            timerShoot += Time.deltaTime;
+        }
+        if (timerShoot >= fireRate) {
             canShoot = true;
         }
     }

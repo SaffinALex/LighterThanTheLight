@@ -9,22 +9,33 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
     private float positionY;
     private float p1;
     private float p2;
+    private float p3;
+    private bool right;
 
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
-        p1 = transform.position.x + 3;
+        p1 = transform.position.x + EnnemiesBorder.size.x/2;
         p2 = transform.position.x;
-        positionX = transform.position.x + 3;
+        p3 = transform.position.x - EnnemiesBorder.size.x / 2;
+        positionX = transform.position.x;
         positionY = transform.position.y;
-        Type = "Bot";
+        type = "BotBasic";
+
+        if (GetComponentInParent<BotBehaviorBasic>().transform.position.x < 0)
+            right = true;
+        else
+            right = false;
     }
 
     new void FixedUpdate()
     {
         base.FixedUpdate();
-        move();
+
+        if(!needGoAway) move();
+        else GoAwayMove();
+
         shoot();
     }
 
@@ -32,15 +43,29 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
     new void Update()
     {
         base.Update();
-        if (transform.position.x >= p1 - 0.01){
-            positionX = transform.position.x - 3;
+        if (right) { 
+            if (transform.position.x > p1 - 1)
+            {
+                positionX = -EnnemiesBorder.size.x / 2;
+            }
+            else if (transform.position.x < p2 + 1)
+            {
+                positionX = EnnemiesBorder.size.x / 2;
+            }
         }
-        else if(transform.position.x <= p2 + 0.01)
+        else
         {
-            positionX = transform.position.x + 3;
+            if (transform.position.x < p3 + 1)
+            {
+                positionX = EnnemiesBorder.size.x / 2;
+            }
+            else if (transform.position.x > p2 - 1)
+            {
+                positionX = -EnnemiesBorder.size.x / 2;
+            }
         }
         
-        positionY = transform.position.y - 0.05f;
+        positionY = transform.position.y - scrolling;
     }
 
     override
@@ -48,30 +73,14 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
     {
         Vector3 direction = (new Vector3(positionX, positionY, transform.position.z) - transform.position).normalized;
         force = new Vector2(direction.x, direction.y) * speedMove;
-        R2d.velocity = force;
-    }
+        r2d.velocity = force;
 
-    override
-    public void shoot()
-    {
-        if (isShooting)
-        {
-            StartCoroutine("Shoot");
-            weapon.gameObject.GetComponent<Weapon>().shoot(transform);
-        }
-    }
-
-    override
-    public void getDamage(int damage)
-    {
-        life -= damage;
+        transform.position = transform.position + new Vector3(0, -scrolling, 0) * Time.deltaTime;
     }
 
     override
     public void initialize()
     {
-        isShooting = true;
-        isMoving = false;
         life = 6;
         p1 = transform.position.x + 3;
         p2 = transform.position.x;
@@ -81,7 +90,7 @@ public class BotBehaviorBasic : EntitySpaceShipBehavior
 
     public override string getType()
     {
-        Type = "Bot";
-        return Type;
+        type = "BotBasic";
+        return type;
     }
 }

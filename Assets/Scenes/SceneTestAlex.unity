@@ -354,7 +354,7 @@ PrefabInstance:
         type: 3}
       propertyPath: weapons.Array.data[0]
       value: 
-      objectReference: {fileID: 2083393953272898251, guid: e5735a699bc087a4fafbd8c2b2395644,
+      objectReference: {fileID: -1994659459883942212, guid: 5b55086237e3bc941ac7f878d5eb5ed1,
         type: 3}
     - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}
@@ -382,10 +382,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6040405114794667504, guid: 82f75acb5b2eed54ba857ba67d414bba,
         type: 3}
+    - target: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: -1994659459883942212, guid: 5b55086237e3bc941ac7f878d5eb5ed1,
+        type: 3}
     - target: {fileID: 4609433687815977607, guid: 20cdf949a649da44ca265d37803d97bc,
         type: 3}
       propertyPath: m_Name
       value: playerShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974064950899303704, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974064950899303704, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974064950899303704, guid: 20cdf949a649da44ca265d37803d97bc,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20cdf949a649da44ca265d37803d97bc, type: 3}
@@ -902,7 +923,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284436175}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 565275faac517214d9b4d787cb50ec46, type: 3}
   m_Name: 
@@ -919,15 +940,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284436175}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf78982e58102ed419bef5f303a57a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBot: 3
-  bots:
-  - {fileID: 7791252474284189957, guid: 90a5ba9990d775f478faf11c830a5a87, type: 3}
-  - {fileID: 1741663641790697569, guid: 8cc6e09bd73f4764cafe2d5edd2e3ba5, type: 3}
+  numberBot: 0
+  bots: []
   w: {fileID: 5359264151696501870, guid: ef2544720feb09248ae5a728fe49704f, type: 3}
   control: {fileID: 0}
 --- !u!1001 &1428793669
