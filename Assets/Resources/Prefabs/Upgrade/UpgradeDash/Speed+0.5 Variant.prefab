@@ -65,12 +65,27 @@ PrefabInstance:
     - target: {fileID: 54485851179321486, guid: ad8fa7f7f92d9d149ba6fad6dec2d8a7,
         type: 3}
       propertyPath: m_Name
-      value: Speed+0.5
+      value: Speed+0.5 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6103312125193389701, guid: ad8fa7f7f92d9d149ba6fad6dec2d8a7,
         type: 3}
       propertyPath: speedBonus
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103312125193389701, guid: ad8fa7f7f92d9d149ba6fad6dec2d8a7,
+        type: 3}
+      propertyPath: weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103312125193389701, guid: ad8fa7f7f92d9d149ba6fad6dec2d8a7,
+        type: 3}
+      propertyPath: price
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103312125193389701, guid: ad8fa7f7f92d9d149ba6fad6dec2d8a7,
+        type: 3}
+      propertyPath: nom
+      value: Reacteur ++
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad8fa7f7f92d9d149ba6fad6dec2d8a7, type: 3}

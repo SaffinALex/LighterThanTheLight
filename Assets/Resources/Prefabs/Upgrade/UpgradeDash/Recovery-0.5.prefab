@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6869085935178745065}
   m_Layer: 0
   m_Name: Recovery-0.5
-  m_TagString: Untagged
+  m_TagString: UpgradeDash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2216c46d30cc23843959a3e57b80bf30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nom: 
-  description: 
+  nom: Aileron d'acier
+  description: Little bit faster
   icone: {fileID: 0}
+  price: 500
+  weight: 2
   recoveryBonus: -0.5

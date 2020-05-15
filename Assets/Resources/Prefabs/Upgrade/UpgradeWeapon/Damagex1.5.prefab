@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8609127478707311948}
   m_Layer: 0
   m_Name: Damagex1.5
-  m_TagString: Untagged
+  m_TagString: UpgradeWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8001017825eefc946974bb15e793eb7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nom: 
-  description: 
+  nom: "Balle am\xE9lior\xE9"
+  description: "Degat am\xE9lior\xE9"
   icone: {fileID: 0}
+  price: 2000
+  weight: 2
   multiplicator: 1.5

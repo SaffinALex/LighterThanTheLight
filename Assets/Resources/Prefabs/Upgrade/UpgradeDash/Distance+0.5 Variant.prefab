@@ -12,6 +12,21 @@ PrefabInstance:
       propertyPath: distanceBonus
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5941315056976107944, guid: 2ac3fdb84552a624480aefa5b1283306,
+        type: 3}
+      propertyPath: weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941315056976107944, guid: 2ac3fdb84552a624480aefa5b1283306,
+        type: 3}
+      propertyPath: price
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941315056976107944, guid: 2ac3fdb84552a624480aefa5b1283306,
+        type: 3}
+      propertyPath: nom
+      value: "Aileron Boost\xE9"
+      objectReference: {fileID: 0}
     - target: {fileID: 6103657758981898892, guid: 2ac3fdb84552a624480aefa5b1283306,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -70,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 6103657758981898895, guid: 2ac3fdb84552a624480aefa5b1283306,
         type: 3}
       propertyPath: m_Name
-      value: Distance+0.5
+      value: Distance+0.5 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ac3fdb84552a624480aefa5b1283306, type: 3}

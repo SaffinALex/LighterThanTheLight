@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 273446763852583257, guid: 0c9e05a7240a42845a7c3d35ddf0465f,
         type: 3}
       propertyPath: m_Name
-      value: Recovery-1
+      value: Recovery-1 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5008668258724972457, guid: 0c9e05a7240a42845a7c3d35ddf0465f,
         type: 3}
@@ -71,6 +71,21 @@ PrefabInstance:
         type: 3}
       propertyPath: recoveryBonus
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869085935178745065, guid: 0c9e05a7240a42845a7c3d35ddf0465f,
+        type: 3}
+      propertyPath: price
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869085935178745065, guid: 0c9e05a7240a42845a7c3d35ddf0465f,
+        type: 3}
+      propertyPath: nom
+      value: Aile en titane
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869085935178745065, guid: 0c9e05a7240a42845a7c3d35ddf0465f,
+        type: 3}
+      propertyPath: description
+      value: Recovery increase
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c9e05a7240a42845a7c3d35ddf0465f, type: 3}

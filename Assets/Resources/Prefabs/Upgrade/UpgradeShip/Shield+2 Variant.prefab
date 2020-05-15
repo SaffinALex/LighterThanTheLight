@@ -65,12 +65,32 @@ PrefabInstance:
     - target: {fileID: 5568209456664214846, guid: 88fc16218cea7604b8e9db2422b98a86,
         type: 3}
       propertyPath: m_Name
-      value: Shield+2
+      value: Shield+2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8893945093777068812, guid: 88fc16218cea7604b8e9db2422b98a86,
         type: 3}
       propertyPath: ShieldBonus
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893945093777068812, guid: 88fc16218cea7604b8e9db2422b98a86,
+        type: 3}
+      propertyPath: weight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893945093777068812, guid: 88fc16218cea7604b8e9db2422b98a86,
+        type: 3}
+      propertyPath: price
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893945093777068812, guid: 88fc16218cea7604b8e9db2422b98a86,
+        type: 3}
+      propertyPath: nom
+      value: Bouclier en acier
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893945093777068812, guid: 88fc16218cea7604b8e9db2422b98a86,
+        type: 3}
+      propertyPath: description
+      value: "Bouclier renforc\xE9"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88fc16218cea7604b8e9db2422b98a86, type: 3}

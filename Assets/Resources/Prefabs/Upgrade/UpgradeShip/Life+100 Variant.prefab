@@ -12,6 +12,26 @@ PrefabInstance:
       propertyPath: life
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6040405114794667504, guid: 82f75acb5b2eed54ba857ba67d414bba,
+        type: 3}
+      propertyPath: weight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6040405114794667504, guid: 82f75acb5b2eed54ba857ba67d414bba,
+        type: 3}
+      propertyPath: price
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6040405114794667504, guid: 82f75acb5b2eed54ba857ba67d414bba,
+        type: 3}
+      propertyPath: description
+      value: Plus de vie
+      objectReference: {fileID: 0}
+    - target: {fileID: 6040405114794667504, guid: 82f75acb5b2eed54ba857ba67d414bba,
+        type: 3}
+      propertyPath: nom
+      value: "Robot M\xE9canicien"
+      objectReference: {fileID: 0}
     - target: {fileID: 8319165602866587424, guid: 82f75acb5b2eed54ba857ba67d414bba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -70,7 +90,7 @@ PrefabInstance:
     - target: {fileID: 8319165602866587425, guid: 82f75acb5b2eed54ba857ba67d414bba,
         type: 3}
       propertyPath: m_Name
-      value: Life+100
+      value: Life+100 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82f75acb5b2eed54ba857ba67d414bba, type: 3}

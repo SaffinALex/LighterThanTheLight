@@ -140,8 +140,17 @@ public class PlayerShip : Ship
             Debug.Log("touché");
             getDamage(10);
         }
-        if(col.CompareTag("Upgrade") ){ 
-           // this.gameObject.GetComponent<Inventory>().addUpgradeInventory(col.gameObject.GetComponent<Upgrade>());
+        if(col.CompareTag("UpgradeDash") ){ 
+           this.gameObject.GetComponent<Inventory>().addUpgradeInventory(col.gameObject.GetComponent<UpgradeDash>());
+        }
+        if(col.CompareTag("UpgradeWeapon") ){ 
+           this.gameObject.GetComponent<Inventory>().addUpgradeInventory(col.gameObject.GetComponent<UpgradeWeapon>());
+        }
+        if(col.CompareTag("UpgradeShip") ){ 
+           this.gameObject.GetComponent<Inventory>().addUpgradeInventory(col.gameObject.GetComponent<UpgradeShip>());
+        }
+        if(col.CompareTag("Weapon") ){ 
+           this.gameObject.GetComponent<Inventory>().addWeaponInventory(col.gameObject.GetComponent<WeaponPlayer>());
         }
         if(col.CompareTag("Heart") ){ 
             setLife(getLife() + 5);
