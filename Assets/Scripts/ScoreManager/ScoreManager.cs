@@ -63,6 +63,9 @@ public class ScoreManager
         
     }
 
+    /**
+     * Permet de supprimer tous les scores (utile pour réinitialiser)
+     */
     static public void DeleteAllScores(){
         if (File.Exists(Application.persistentDataPath + fileStore))
         {
@@ -70,6 +73,9 @@ public class ScoreManager
         }
     }
 
+    /**
+     * Permet de charger les scores
+     */
     static protected void LoadBestScores(){
         if (File.Exists(Application.persistentDataPath + fileStore)){
             BinaryFormatter bf = new BinaryFormatter();
