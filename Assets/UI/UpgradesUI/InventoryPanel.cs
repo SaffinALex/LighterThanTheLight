@@ -39,24 +39,28 @@ public class InventoryPanel : MonoBehaviour
         for (int i = 0; i < playerManager.getShipMaxUpgradeAmount(); i++){
             GameObject go = Instantiate(shipUpgradeSlotPrefab);
             go.transform.SetParent(shipUpgradeSlotContainer.transform, false);
+            go.GetComponent<InventorySlot>().setItemIndex(i);
             shipUpgradeSlots.Add(go);
         }
         for (int i = 0; i < playerManager.getOndeMaxUpgradeAmount(); i++)
         {
             GameObject go = Instantiate(ondeUpgradeSlotPrefab);
             go.transform.SetParent(ondeUpgradeSlotContainer.transform, false);
-            dashUpgradeSlots.Add(go);
+            go.GetComponent<InventorySlot>().setItemIndex(i);
+            ondeUpgradeSlots.Add(go);
         }
         for (int i = 0; i < playerManager.getDashMaxUpgradeAmount(); i++)
         {
             GameObject go = Instantiate(dashUpgradeSlotPrefab);
             go.transform.SetParent(dashUpgradeSlotContainer.transform, false);
-            ondeUpgradeSlots.Add(go);
+            go.GetComponent<InventorySlot>().setItemIndex(i);
+            dashUpgradeSlots.Add(go);
         }
         for (int i = 0; i < playerManager.getMaxWeaponsAmount(); i++)
         {
             GameObject go = Instantiate(weaponSlotPrefab);
             go.transform.SetParent(weaponSlotContainer.transform, false);
+            go.GetComponent<InventorySlot>().setItemIndex(i);
             weaponSlots.Add(go);
         }
         feedInventoryUI();
@@ -68,6 +72,8 @@ public class InventoryPanel : MonoBehaviour
         int i = 0;
         foreach (UpgradeShip up in playerManager.getShipUpgrades())
         {
+            if (up == null)
+                continue;
             GameObject go = Instantiate(upgradeObjectPrefab);
             GameObject upGO = new GameObject();
             upGO.name = "UpgradeContainer";
@@ -85,6 +91,8 @@ public class InventoryPanel : MonoBehaviour
         i = 0;
         foreach (UpgradeOnde up in playerManager.getOndeUpgrades())
         {
+            if (up == null)
+                continue;
             GameObject go = Instantiate(upgradeObjectPrefab);
             GameObject upGO = new GameObject();
             upGO.name = "UpgradeContainer";
@@ -102,6 +110,8 @@ public class InventoryPanel : MonoBehaviour
         i = 0;
         foreach (UpgradeDash up in playerManager.getDashUpgrades())
         {
+            if (up == null)
+                continue;
             GameObject go = Instantiate(upgradeObjectPrefab);
             GameObject upGO = new GameObject();
             upGO.name = "UpgradeContainer";
@@ -120,6 +130,8 @@ public class InventoryPanel : MonoBehaviour
         i = 0;
         foreach (WeaponPlayer up in playerManager.getWeapons())
         {
+            if (up == null)
+                continue;
             GameObject go = Instantiate(upgradeObjectPrefab);
             GameObject upGO = new GameObject();
             upGO.name = "UpgradeContainer";
@@ -139,6 +151,8 @@ public class InventoryPanel : MonoBehaviour
             i = 0;
             foreach (UpgradeWeapon up in playerManager.getWeapons()[0].upgradeWeapons)
             {
+                if (up == null)
+                    continue;
                 GameObject go = Instantiate(upgradeObjectPrefab);
                 GameObject upGO = new GameObject();
                 upGO.name = "UpgradeContainer";

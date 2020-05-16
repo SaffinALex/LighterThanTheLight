@@ -36,7 +36,21 @@ public class PlayerShip : Ship
     bool needChangeVelocity = false;
     Vector2 lastVelocity;
     Vector2 lastWantedVelocity;
-    
+
+    void Awake()
+    {
+        List<WeaponPlayer> bufferWeapon = new List<WeaponPlayer>(new WeaponPlayer[this.getNbrMaxWeapons()]);
+        foreach (WeaponPlayer wp in weapons)
+            bufferWeapon.Add(wp);
+        weapons = bufferWeapon;
+
+        List<UpgradeShip> bufferShipUpgrades = new List<UpgradeShip>(new UpgradeShip[getNbrMaxUpgradeShip()]);
+        foreach (UpgradeShip up in upgradeShip)
+            bufferShipUpgrades.Add(up);
+        upgradeShip = bufferShipUpgrades;
+        Debug.Log(upgradeShip.Count);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,16 +74,6 @@ public class PlayerShip : Ship
         totalLife = (int)getLife();
 
         LevelUIEventManager.GetLevelUI().TriggerPlayerHealthChange((int) getLife(),(int)totalLife,getShieldLife());
-
-        List<WeaponPlayer> bufferWeapon = new List<WeaponPlayer>(new WeaponPlayer[this.getNbrMaxWeapons()]);
-        foreach (WeaponPlayer wp in weapons)
-            bufferWeapon.Add(wp);
-        weapons = bufferWeapon;
-
-        List<UpgradeShip> bufferShipUpgrades = new List<UpgradeShip>(new UpgradeShip[getNbrMaxUpgradeShip()]);
-        foreach (UpgradeShip up in upgradeShip)
-            bufferShipUpgrades.Add(up);
-        upgradeShip = bufferShipUpgrades;
     }
 
     // Update is called once per frame

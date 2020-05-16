@@ -7,7 +7,16 @@ public class UpgradeOndeSlot : InventorySlot
 {
     protected override void actionOnDrop(PointerEventData eventData)
     {
-        Debug.Log("Onde Upgrade Equiped !");
+        Debug.Log("Onde Upgrade Equiped !"); 
+        DraggableObject dragObj = eventData.pointerDrag.GetComponent<DraggableObject>();
+
+        if (dragObj is InventoryObject)
+        {
+            InventorySlot sender = dragObj.getInventorySlotParent();
+            if (sender != null)
+                if(App.playerManager.swapOndeUpgrades(this.getItemIndex(), sender.getItemIndex()))
+                    EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
+        }
     }
 
     protected override bool isValidDrop(PointerEventData eventData)

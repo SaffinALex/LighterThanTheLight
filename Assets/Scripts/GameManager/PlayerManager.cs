@@ -23,6 +23,42 @@ public class PlayerManager {
         this.player = player;
         this.onde = player.wave.GetComponent<Onde>();
         this.dash = player.dash;
+
+        
+        List<UpgradeOnde> bufferOndeUpgrades = new List<UpgradeOnde>(new UpgradeOnde[onde.nbrUpgradeMax]);
+        for (int i = 0; i < onde.upgradeOndes.Count; i++)
+        {
+            bufferOndeUpgrades[i] = onde.upgradeOndes[i];
+            if (i >= bufferOndeUpgrades.Count)
+                break;
+        }
+        onde.upgradeOndes = bufferOndeUpgrades;
+
+        List<UpgradeDash> bufferDashUpgrades = new List<UpgradeDash>(new UpgradeDash[dash.nbrUpgradeMax]);
+
+        Debug.Log(player.dash.upgradeDashes.Count);
+        foreach (UpgradeDash wp in player.dash.upgradeDashes)
+        {
+            Debug.Log(wp);
+        }
+        for (int i = 0; i < dash.upgradeDashes.Count; i++)
+        {
+            bufferDashUpgrades[i] = dash.upgradeDashes[i];
+            if (i >= bufferDashUpgrades.Count)
+                break;
+        }
+        dash.upgradeDashes = bufferDashUpgrades;
+
+        Debug.Log(dash.upgradeDashes.Count);
+        foreach (UpgradeDash wp in dash.upgradeDashes)
+        {
+            Debug.Log(wp);
+        }
+    }
+
+    public void expandLists()
+    {
+        
     }
 
     /* ------------------------------------------

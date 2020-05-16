@@ -49,11 +49,15 @@ public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeg
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log(canvas.scaleFactor * this.transform.parent.gameObject.GetComponent<RectTransform>().localScale.x);
         rect.anchoredPosition += eventData.delta / (canvas.scaleFactor * this.transform.parent.gameObject.GetComponent<RectTransform>().localScale.x);
     }
 
     public bool UpgradeIsOfType<ComponentType>() where ComponentType : UnityEngine.Component
+    {
+        return upgrade.GetComponent<ComponentType>() != null;
+    }
+
+    public bool ThisIsOfType<ComponentType>() where ComponentType : UnityEngine.Component
     {
         return upgrade.GetComponent<ComponentType>() != null;
     }
@@ -67,6 +71,11 @@ public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeg
     {
         if (originalPos != null)
             rect.anchoredPosition = originalPos;
+    }
+
+    public InventorySlot getInventorySlotParent()
+    {
+        return GetComponentInParent<InventorySlot>();
     }
 }
 

@@ -1,12 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/UI/UpgradesUI/DashUpgradeSlot.prefab.meta
-guid: 31c0d85a0e6cb664fa32c55e4c368ba1
-PrefabImporter:
-=======
-guid: 3ffe007f033d7fc4f907a94a20089c53
+guid: d4dec1c2a2c7b7d4aaea59bb8ceed64b
 folderAsset: yes
 DefaultImporter:
->>>>>>> master:Assets/Scripts/ScoreManager.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

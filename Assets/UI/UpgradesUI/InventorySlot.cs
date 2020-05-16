@@ -11,10 +11,8 @@ public abstract class InventorySlot : MonoBehaviour, IDropHandler
         //Debug.Log("OnDrop : " + this.gameObject.name);
         
         if (eventData.pointerDrag != null && eventData.pointerDrag.GetComponent<DraggableObject>() != null) {
-            if (isValidDrop(eventData)){
-                eventData.pointerDrag.transform.SetParent(this.transform);
-                eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-
+            if (isValidDrop(eventData))
+            {
                 actionOnDrop(eventData);
             }
             else

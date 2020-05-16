@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 482209482789143377}
   - component: {fileID: 482209482789143374}
   - component: {fileID: 482209482789143379}
-  - component: {fileID: 482209482789143376}
+  - component: {fileID: 42558857266915641}
   m_Layer: 5
-  m_Name: UpgradeSlot1
+  m_Name: DashUpgradeSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_FlexibleWidth: 1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
---- !u!114 &482209482789143376
+--- !u!114 &42558857266915641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,6 +104,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 482209482789143372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ffac2708da092448901899834a36530, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b00e0a4abeb358479ab5c7e038da299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
