@@ -151,21 +151,25 @@ public class PlayerShip : Ship
         }
         if(col.CompareTag("Weapon") ){ 
            this.gameObject.GetComponent<Inventory>().addWeaponInventory(col.gameObject.GetComponent<WeaponPlayer>());
+           Destroy(col.gameObject);
         }
         if(col.CompareTag("Heart") ){ 
             setLife(getLife() + 5);
             if(getLife() > initialLife){
                 setLife(initialLife);
             }
+            Destroy(col.gameObject);
         }
         if(col.CompareTag("Money") ){ 
             this.gameObject.GetComponent<Inventory>().setMoney(this.gameObject.GetComponent<Inventory>().getMoney() + 5);
+            Destroy(col.gameObject);
         }
         if(col.CompareTag("Shield") ){ 
             setShieldLife(getShieldLife() + 1 );
             if(shieldLife > maxShieldLife){
                 shieldLife = maxShieldLife;
             }
+            Destroy(col.gameObject);
         } 
     }
     private void OnTriggerStay2D(Collider2D col){
