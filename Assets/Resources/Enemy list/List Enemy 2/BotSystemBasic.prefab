@@ -202,7 +202,7 @@ MonoBehaviour:
   life: 15
   canDieOutside: 1
   speedMove: 3
-  scrolling: 1
+  scrolling: 0.5
   animator: {fileID: 2050479713742695961}
   force: {x: 0, y: 0}
   score: 0
