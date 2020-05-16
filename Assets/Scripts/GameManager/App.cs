@@ -9,7 +9,7 @@ public class App : MonoBehaviour
     public static App app;
     public MusicManager sfxObject;
     public static MusicManager sfx;
-    public static PlayerManager playerManager = new PlayerManager();
+    public static PlayerManager playerManager;
     protected static LevelGeneratorInfo levelGeneratorInfo;
     protected static int difficulty = 0;
     protected static EnemyList enemyList;
@@ -33,6 +33,8 @@ public class App : MonoBehaviour
 
     void Start(){
         playerShip = playerShipPrefab;
+
+        playerManager = new PlayerManager(playerShip.GetComponent<PlayerShip>());
 
         InputManager.Subscribe(GetComponent<KeyboardInputSystem>());
 
@@ -126,6 +128,7 @@ public class App : MonoBehaviour
      */
     static public void EndLevel(){
         SceneManager.LoadScene("NodeNavigation");
+        playerManager.endOfLevelRoutine();
         treeNode.gameObject.SetActive(true);
     }
 }

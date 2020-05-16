@@ -2,21 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory
 {
-    public Ship player;
-    public int money;
-    public int score;
-    public List<WeaponPlayer> Weapons;
-    public List<UpgradeDash> UpgradeDashes;
-    public List<UpgradeShip> UpgradeShip;
-    public List<UpgradeWeapon> UpgradeWeapon;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Ship player;
+    private int money;
+    private int score;
+    private List<WeaponPlayer> Weapons;
+    private List<UpgradeDash> UpgradeDashes;
+    private List<UpgradeOnde> UpgradesOnde;
+    private List<UpgradeShip> UpgradeShip;
+    private List<UpgradeWeapon> UpgradeWeapon;
 
     public List<WeaponPlayer> getWeapons(){
         return this.Weapons;
@@ -24,11 +19,15 @@ public class Inventory : MonoBehaviour
     public List<UpgradeShip> getUpgradeShip(){
         return this.UpgradeShip;
     }
+    public List<UpgradeOnde> getUpgradesOnde()
+    {
+        return this.UpgradesOnde;
+    }
     public List<UpgradeDash> getUpgradeDashes(){
         return this.UpgradeDashes;
     }
     public List<UpgradeWeapon> getUpgradeWeapon(WeaponPlayer p){
-        return p.getUpgrade();
+        return this.UpgradeWeapon;
     }
     public void addUpgradeInventory(UpgradeDash d){
         UpgradeDashes.Add(d);
@@ -39,62 +38,13 @@ public class Inventory : MonoBehaviour
     public void addUpgradeInventory(UpgradeShip d){
         UpgradeShip.Add(d);
     }
-
+    public void addUpgradeInventory(UpgradeOnde d)
+    {
+        UpgradesOnde.Add(d);
+    }
     public void addWeaponInventory(WeaponPlayer d){
         Weapons.Add(d);
     }
-
-    public int equipShipUpgrade(UpgradeShip u){
-        int token = player.numberUpgradeCanAdd();
-        if(token >= u.getWeight()){
-            player.addUpgradeShip(u);
-            return 1;
-        }
-        else{
-            return -1;
-            //Impossible d'equiper 
-        }
-    }
-
-    public int equipWeaponUpgrade(WeaponPlayer w, UpgradeWeapon u){
-        //On regarde combien de slot disponible sur l'arme
-        int token = w.numberUpgradeCanAdd();
-        //Si assez de place on met l'arme sinon impossible
-        if(token >= u.getWeight()){
-            w.addUpgradeWeapon(u);
-            return 1;
-        }
-        else{
-            //Impossible d'equiper l'arme
-            return -1;
-        }
-    }
-
-    public int equipDashUpgrade(Dash d, UpgradeDash u){
-        int token = d.numberUpgradeCanAdd();
-        if(token >= u.getWeight()){
-            d.addUpgradeDashes(u);
-            return 1;
-        }
-        else{
-            //Impossible d'equiper sur le dash
-            return -1;
-        }
-    }
-
-    public int equipWeapon(WeaponPlayer w){
-        int token = player.numberWeaponCanAdd();
-        if(token >= w.getWeight()){
-            player.addWeapons(w);
-            return 1;
-        }
-        else{
-            //Impossible d'equiper 
-            return -1;
-        }
-    }
-
-    //public void deleteUpgrade(Upgrade upgrade, )
 
     public int getMoney(){
         return money;
@@ -109,9 +59,25 @@ public class Inventory : MonoBehaviour
     public void setScore(int m){
         score = m;
     }
-    // Update is called once per frame
-    void Update()
+
+    public List<Upgrade> getUpgrades()
     {
-        
+        List<Upgrade> upgrades = new List<Upgrade>();
+
+        upgrades.AddRange(UpgradeDashes);
+        upgrades.AddRange(UpgradeShip);
+        upgrades.AddRange(UpgradeWeapon);
+        upgrades.AddRange(UpgradesOnde);
+
+        return upgrades;
+    }
+
+    public void flushItemInventory()
+    {
+        Weapons.Clear();
+        UpgradeDashes.Clear();
+        UpgradeShip.Clear();
+        UpgradeWeapon.Clear();
+        UpgradesOnde.Clear();
     }
 }

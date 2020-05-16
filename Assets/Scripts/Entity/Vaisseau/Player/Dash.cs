@@ -19,6 +19,11 @@ public class Dash : MonoBehaviour
     void Start()
     {
         canDash = true;
+
+        List<UpgradeDash> bufferUpgrades = new List<UpgradeDash>(new UpgradeDash[nbrUpgradeMax]);
+        foreach (UpgradeDash wp in upgradeDashes)
+            bufferUpgrades.Add(wp);
+        upgradeDashes = bufferUpgrades;
     }
 
     // Update is called once per frame

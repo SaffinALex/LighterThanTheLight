@@ -6,10 +6,11 @@ using UnityEngine.UIElements;
 
 public abstract class InventorySlot : MonoBehaviour, IDropHandler
 {
+    private int itemIndex = -1;
     public void OnDrop(PointerEventData eventData) {
-        Debug.Log("OnDrop");
+        //Debug.Log("OnDrop : " + this.gameObject.name);
         
-        if (eventData.pointerDrag != null && eventData.pointerDrag.GetComponent<UpgradeObject>() != null) {
+        if (eventData.pointerDrag != null && eventData.pointerDrag.GetComponent<DraggableObject>() != null) {
             if (isValidDrop(eventData)){
                 eventData.pointerDrag.transform.SetParent(this.transform);
                 eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
@@ -18,10 +19,13 @@ public abstract class InventorySlot : MonoBehaviour, IDropHandler
             }
             else
             {
-                eventData.pointerDrag.GetComponent<UpgradeObject>().ResetPos();
+                eventData.pointerDrag.GetComponent<DraggableObject>().ResetPos();
             }
         }
     }
+
+    public int getItemIndex() { return itemIndex; }
+    public void setItemIndex(int itemIndex) { this.itemIndex = itemIndex; }
 
     protected abstract bool isValidDrop(PointerEventData eventData);
     protected abstract void actionOnDrop(PointerEventData eventData);

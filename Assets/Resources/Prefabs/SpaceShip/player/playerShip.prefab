@@ -40,7 +40,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4609433687815977600}
-  - component: {fileID: 9210776662013460694}
   - component: {fileID: 4609433687815977602}
   - component: {fileID: 4609433687815977604}
   - component: {fileID: 2364199843355145164}
@@ -67,25 +66,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9210776662013460694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4609433687815977607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ae22d3469a5ff94993b4c70c730966f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 4609433687815977604}
-  money: 0
-  score: 0
-  Weapons: []
-  UpgradeDashes: []
-  UpgradeShip: []
-  UpgradeWeapon: []
 --- !u!114 &4609433687815977602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,8 +81,9 @@ MonoBehaviour:
   initialRecoveryDash: 2
   InitialDistance: 0.5
   initialSpeed: 1
-  upgradeDashes: []
-  nbrUpgradeMax: 2
+  upgradeDashes:
+  - {fileID: 8854370083140717181, guid: ff089746e20fa594c8a2ce756c7199a5, type: 3}
+  nbrUpgradeMax: 3
 --- !u!114 &4609433687815977604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,14 +96,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f56c5d5d09d7549a620a2603185798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbrMaxWeapons: 2
-  nbrMaxUpgradeShip: 2
+  nbrMaxWeapons: 4
+  nbrMaxUpgradeShip: 6
   initialLife: 100
   speed: 8
   maxShieldLife: 8
   weapons:
   - {fileID: -1994659459883942212, guid: 5b55086237e3bc941ac7f878d5eb5ed1, type: 3}
-  upgradeShip: []
+  upgradeShip:
+  - {fileID: 5781174164529675812, guid: 29018d479007b544b9baa764fa2bcbd6, type: 3}
   wave: {fileID: 7237810773343739811, guid: 1f35fce770403cd489dbd332e41f783d, type: 3}
   dash: {fileID: 4609433687815977602}
   initialShieldLife: 3

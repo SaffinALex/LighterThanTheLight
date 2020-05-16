@@ -96,7 +96,7 @@ MonoBehaviour:
   radius: 0
   damage: 2000
   upgradeOndes: []
-  nbrUpgradeMax: 0
+  nbrUpgradeMax: 3
   timeBeforeExplosion: 2
 --- !u!58 &7237810773343739809
 CircleCollider2D:

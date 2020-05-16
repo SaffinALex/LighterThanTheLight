@@ -17,6 +17,11 @@ public class Onde : MonoBehaviour
         timer = 0;
         animator = GetComponent<Animator>();
         GetComponent<CircleCollider2D>().enabled = false;
+
+        List<UpgradeOnde> bufferUpgrades = new List<UpgradeOnde>(new UpgradeOnde[nbrUpgradeMax]);
+        foreach (UpgradeOnde wp in upgradeOndes)
+            bufferUpgrades.Add(wp);
+        upgradeOndes = bufferUpgrades;
     }
     // Update is called once per frame
     void Update()

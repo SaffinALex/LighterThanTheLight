@@ -48,9 +48,11 @@ public class PlayerShip : Ship
         canShootWave = true;
         canShoot = true;
         dash.initialize();
-        for(int i=0; i<weapons.Count; i++){
-            weapons[i].Initialize();
-        }
+        if (weapons.Count != 0)
+            for (int i = 0; i < weapons.Count; i++)
+                weapons[i].Initialize();
+        else
+            Debug.Log("Aucune armes définies !");
         for(int i=0; i<upgradeShip.Count; i++){
             upgradeShip[i].StartUpgrade(this);
             if(shieldLife > maxShieldLife) shieldLife = maxShieldLife;
@@ -58,6 +60,16 @@ public class PlayerShip : Ship
         totalLife = (int)getLife();
 
         LevelUIEventManager.GetLevelUI().TriggerPlayerHealthChange((int) getLife(),(int)totalLife,getShieldLife());
+
+        List<WeaponPlayer> bufferWeapon = new List<WeaponPlayer>(new WeaponPlayer[this.getNbrMaxWeapons()]);
+        foreach (WeaponPlayer wp in weapons)
+            bufferWeapon.Add(wp);
+        weapons = bufferWeapon;
+
+        List<UpgradeShip> bufferShipUpgrades = new List<UpgradeShip>(new UpgradeShip[getNbrMaxUpgradeShip()]);
+        foreach (UpgradeShip up in upgradeShip)
+            bufferShipUpgrades.Add(up);
+        upgradeShip = bufferShipUpgrades;
     }
 
     // Update is called once per frame
@@ -67,12 +79,13 @@ public class PlayerShip : Ship
             PanelUIManager.GetPanelUI().ToggleEndGamePanel();
         }
         //On update les timer des weapons
-        for (int i = 0; i < weapons.Count; i++)
-        {
-            weapons[i].updateTimer();
-        }
-        //Ne pas sortir de l'écran
-        Vector3 change = Vector3.zero;
+        if (weapons.Count != 0)
+            for (int i = 0; i < weapons.Count; i++)
+                weapons[i].updateTimer();
+        else
+                Debug.Log("Aucune armes définies !");
+            //Ne pas sortir de l'écran
+            Vector3 change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
         if(Input.GetKey("v")){
@@ -140,17 +153,21 @@ public class PlayerShip : Ship
             Debug.Log("touché");
             getDamage(10);
         }
-        if(col.CompareTag("UpgradeDash") ){ 
-           this.gameObject.GetComponent<Inventory>().addUpgradeInventory(col.gameObject.GetComponent<UpgradeDash>());
+        if (col.CompareTag("UpgradeOnde"))
+        {
+            App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeOnde>());
         }
-        if(col.CompareTag("UpgradeWeapon") ){ 
-           this.gameObject.GetComponent<Inventory>().addUpgradeInventory(col.gameObject.GetComponent<UpgradeWeapon>());
+        if (col.CompareTag("UpgradeDash") ){
+            App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeDash>());
         }
-        if(col.CompareTag("UpgradeShip") ){ 
-           this.gameObject.GetComponent<Inventory>().addUpgradeInventory(col.gameObject.GetComponent<UpgradeShip>());
+        if(col.CompareTag("UpgradeWeapon") ){
+            App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeWeapon>());
         }
-        if(col.CompareTag("Weapon") ){ 
-           this.gameObject.GetComponent<Inventory>().addWeaponInventory(col.gameObject.GetComponent<WeaponPlayer>());
+        if(col.CompareTag("UpgradeShip") ){
+            App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeShip>());
+        }
+        if(col.CompareTag("Weapon") ){
+            App.playerManager.getInventory().addWeaponInventory(col.gameObject.GetComponent<WeaponPlayer>());
         }
         if(col.CompareTag("Heart") ){ 
             setLife(getLife() + 5);
@@ -158,8 +175,8 @@ public class PlayerShip : Ship
                 setLife(initialLife);
             }
         }
-        if(col.CompareTag("Money") ){ 
-            this.gameObject.GetComponent<Inventory>().setMoney(this.gameObject.GetComponent<Inventory>().getMoney() + 5);
+        if(col.CompareTag("Money") ){
+            App.playerManager.getInventory().setMoney(App.playerManager.getInventory().getMoney() + 5);
         }
         if(col.CompareTag("Shield") ){ 
             setShieldLife(getShieldLife() + 1 );

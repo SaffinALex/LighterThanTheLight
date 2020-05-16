@@ -12,19 +12,7 @@ public class UpgradeOndeSlot : InventorySlot
 
     protected override bool isValidDrop(PointerEventData eventData)
     {
-        UpgradeObject upgradeObj = eventData.pointerDrag.GetComponent<UpgradeObject>();
+        DraggableObject upgradeObj = eventData.pointerDrag.GetComponent<DraggableObject>();
         return upgradeObj.UpgradeIsOfType<UpgradeOnde>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
