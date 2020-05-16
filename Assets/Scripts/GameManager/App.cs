@@ -22,6 +22,14 @@ public class App : MonoBehaviour
     public WeaponPlayer baseWeaponPrefab;
     static public WeaponPlayer baseWeapon;
 
+    public static RessourcesLoader ressourcesLoader;
+
+    public string weaponsPrefabsFolderPath;
+    public string shipUpgradesPrefabsFolderPath;
+    public string dashUpgradesPrefabsFolderPath;
+    public string ondeUpgradesPrefabsFolderPath;
+    public string weaponUpgradesPrefabsFolderPath;
+
     static public PlayerShip playerShip;
     public PlayerShip playerShipPrefab;
 
@@ -39,6 +47,7 @@ public class App : MonoBehaviour
         baseWeapon = baseWeaponPrefab;
 
         playerManager = new PlayerManager(playerShip.GetComponent<PlayerShip>());
+        ressourcesLoader = new RessourcesLoader(weaponsPrefabsFolderPath, shipUpgradesPrefabsFolderPath, dashUpgradesPrefabsFolderPath, ondeUpgradesPrefabsFolderPath, weaponUpgradesPrefabsFolderPath);
 
         InputManager.Subscribe(GetComponent<KeyboardInputSystem>());
 

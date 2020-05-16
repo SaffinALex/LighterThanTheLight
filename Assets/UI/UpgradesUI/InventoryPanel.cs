@@ -76,7 +76,6 @@ public class InventoryPanel : MonoBehaviour
             int index = new int();
             index = i;
             go.GetComponent<Button>().onClick.AddListener(delegate {
-                Debug.Log(currentSelectedWeapon);
                 currentSelectedWeapon = index;
                 if (playerManager.getWeapons()[index] != null)
                 {
@@ -180,9 +179,7 @@ public class InventoryPanel : MonoBehaviour
         }
 
         for (int j = 0; j < playerManager.getWeapons().Count; j++){
-            Debug.Log(j);
             if (playerManager.getWeapons()[j] != null){
-                Debug.Log("Weapon trouvé");
                 currentSelectedWeapon = j;
             }
         }
@@ -191,28 +188,21 @@ public class InventoryPanel : MonoBehaviour
 
     public void selectWeapon(int index)
     {
-        //Debug.Log("Check weapon valide");
         if (currentSelectedWeapon == -1 || playerManager.getWeapons()[index] == null)
             return;
 
-        //Debug.Log("Boucle upgrades");
         for (int j = 0; j < playerManager.getWeapons()[index].upgradeWeapons.Count; j++)
         {
-            Debug.Log(j);
-            //weaponUpgradeSlots.Clear();
             GameObject slot = Instantiate(weaponUpgradeSlotPrefab);
             slot.transform.SetParent(weaponUpgradeSlotContainer.transform, false);
             slot.GetComponent<InventorySlot>().setItemIndex(j);
             slot.GetComponent<UpgradeWeaponSlot>().WeaponIndex = index;
             weaponUpgradeSlots.Add(slot);
 
-            //Debug.Log("Test upgradevalide");
             UpgradeWeapon up = playerManager.getWeapons()[index].upgradeWeapons[j];
             if (up == null){
-                //Debug.Log("ça pue");
                 continue;
             }
-            //Debug.Log("c'est bon");
 
             GameObject go = Instantiate(upgradeObjectPrefab);
             GameObject upGO = new GameObject();
@@ -220,11 +210,9 @@ public class InventoryPanel : MonoBehaviour
             UnityEditorInternal.ComponentUtility.CopyComponent(up);
             UnityEditorInternal.ComponentUtility.PasteComponentAsNew(upGO);
             upGO.transform.SetParent(go.transform);
-            //Debug.Log("on rattache l'upgrade");
             go.GetComponent<DraggableObject>().canvas = gameObject.transform.parent.GetComponent<Canvas>();
             go.GetComponent<DraggableObject>().upgrade = upGO;
             go.transform.SetParent(slot.transform);
-            //Debug.Log("on rattache l'upgrade object");
 
             go.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         }

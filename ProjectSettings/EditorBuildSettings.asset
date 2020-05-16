@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Prod/__Preload.unity
     guid: b511cf6ea77c6084e9c8e108ac526ad0
   - enabled: 1
+    path: Assets/Scenes/Dev/NodeNavigation/NodeNavigationBis.unity
+    guid: 2e5626754f67c654aa1d25da11128808
+  - enabled: 1
     path: Assets/Scenes/LevelGenerator/Prototype/LevelPrototype.unity
     guid: acbdd19f1a6bc0440b8ee3f3c0813138
   - enabled: 1
@@ -17,9 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestsDesign/SplashScreenIntro.unity
     guid: 7d7e994b3227d1c48bfaa415454b8de9
-  - enabled: 1
-    path: Assets/Scenes/Dev/NodeNavigation/NodeNavigation.unity
-    guid: 2e5626754f67c654aa1d25da11128808
   - enabled: 1
     path: Assets/Scenes/LevelGenerator/NodeScene.unity
     guid: 20584da7381a4a44b961437b81a98fe4

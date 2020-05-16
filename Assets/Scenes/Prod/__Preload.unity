@@ -200,6 +200,11 @@ MonoBehaviour:
     type: 3}
   baseWeaponPrefab: {fileID: -1994659459883942212, guid: 5b55086237e3bc941ac7f878d5eb5ed1,
     type: 3}
+  weaponsPrefabsFolderPath: Prefabs/Weapon
+  shipUpgradesPrefabsFolderPath: Prefabs/Upgrade/UpgradeShip
+  dashUpgradesPrefabsFolderPath: Prefabs/Upgrade/UpgradeDash
+  ondeUpgradesPrefabsFolderPath: Prefabs/Upgrade/UpgradeOnde
+  weaponUpgradesPrefabsFolderPath: Prefabs/Upgrade/UpgradeWeapon
   playerShipPrefab: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
     type: 3}
 --- !u!114 &211221981
