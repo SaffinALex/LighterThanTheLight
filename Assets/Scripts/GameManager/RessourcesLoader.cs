@@ -67,7 +67,7 @@ public class RessourcesLoader
         foreach (GameObject go in tempListeWeaponUpgrades)
             GameObject.Destroy(go);*/
 
-        printAll();
+        //printAll();
     }
 
     public ReadOnlyCollection<GameObject> getWeapons() => this.listeWeapons.AsReadOnly();
