@@ -87,5 +87,11 @@ PrefabInstance:
       propertyPath: nom
       value: Reacteur ++
       objectReference: {fileID: 0}
+    - target: {fileID: 6103312125193389701, guid: ad8fa7f7f92d9d149ba6fad6dec2d8a7,
+        type: 3}
+      propertyPath: icone
+      value: 
+      objectReference: {fileID: 21300000, guid: 11be59b601d7a4549a44d3e54cead4c4,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad8fa7f7f92d9d149ba6fad6dec2d8a7, type: 3}

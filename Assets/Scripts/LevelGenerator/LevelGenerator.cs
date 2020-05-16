@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public EnemyList enemyList = new EnemyList();
     protected float timeTransitionEnd = 5f;
     protected float timerTransitionEnd = 0f;
     
@@ -16,8 +15,11 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
         Debug.Log("Début du niveau !");
+        PlayerShip playerShip = Instantiate(App.playerShip);
+        playerShip.transform.position = Vector3.zero;
+        playerShip.gameObject.name = "playerShip";
+        
         levelGeneratorInfo = App.GetLevelGenerator();
-        App.SetEnemyList(enemyList);
 
         //Debut du niveau
         levelGeneratorInfo = GameObject.Instantiate(levelGeneratorInfo).GetComponent<LevelGeneratorInfo>();
