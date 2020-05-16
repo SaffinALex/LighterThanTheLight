@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8912196057217071144
+--- !u!1 &33684336025262991
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7232059111152988876}
-  - component: {fileID: -1994659459883942212}
+  - component: {fileID: 33684336025263025}
+  - component: {fileID: 33684336025263024}
   m_Layer: 0
-  m_Name: BaseWeaponPlayer
+  m_Name: BossEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7232059111152988876
+--- !u!4 &33684336025263025
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8912196057217071144}
+  m_GameObject: {fileID: 33684336025262991}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.863613, y: 48.54663, z: 4.3210936}
+  m_LocalPosition: {x: -1.9332496, y: 2.0030172, z: -35.078125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1994659459883942212
+--- !u!114 &33684336025263024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8912196057217071144}
+  m_GameObject: {fileID: 33684336025262991}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4571899a94d62014a9690d1b8f4b605c, type: 3}
+  m_Script: {fileID: 11500000, guid: 23d7f2a554544734ca73bbba5bac0323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeWeapons: []
-  nbrMaxUpgrade: 0
-  bullet: {fileID: 741788068531152253, guid: ff4828655a57f9a46aa06c71ca9a2e60, type: 3}
-  size: 0
-  fireRateBase: 0.5
-  price: 0
-  weight: 0
-  bulletSpeedBase: 50
-  damage: 2
+  timeStart: -1
+  maxTimeWave: 0
+  callGoAway: 0
+  bossBlocksElement:
+    timeAppear: 0
+    block: {fileID: 1046470294644499877, guid: a57924035b93dcd4d8793866b999085b, type: 3}
+  waveBlocksElements:
+  - timeAppear: 15
+    block: {fileID: 7103815308605442905, guid: cc990fe49f1a96748ab2dbfae486150f, type: 3}
+  - timeAppear: 25
+    block: {fileID: 3441784513647446740, guid: 88681d29c676a644eb0d99125b77dd74, type: 3}

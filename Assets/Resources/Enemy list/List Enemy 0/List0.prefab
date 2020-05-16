@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 515973850707680332}
   - component: {fileID: 515973850707680339}
   m_Layer: 0
-  m_Name: List--
+  m_Name: List0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,5 +49,6 @@ MonoBehaviour:
   - {fileID: 5841035006419391918, guid: 0d7ebdf3078abfb4796289d4568dea19, type: 3}
   - {fileID: 7790174105719540030, guid: 2615858b59a7e8a4ab5ee746b9b9b4f5, type: 3}
   - {fileID: 191577826010292944, guid: 3a435791da57a1842b0caa88a4ecb96e, type: 3}
+  - {fileID: 7885657485564900595, guid: ef8f13672d716054b8d3c4415f610cff, type: 3}
   listBoss:
   - {fileID: 7885657485564900595, guid: ef8f13672d716054b8d3c4415f610cff, type: 3}

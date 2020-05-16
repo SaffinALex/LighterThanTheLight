@@ -49,5 +49,6 @@ MonoBehaviour:
   - {fileID: 4812075356918021318, guid: 25409b5b62dd12145b8e4d7755173a59, type: 3}
   - {fileID: 7017041177283564645, guid: de8206bfc8b2dca468f532009ece5e56, type: 3}
   - {fileID: 2242825120025298910, guid: 7c5677b70b7006945b031193b2e28fb7, type: 3}
+  - {fileID: 9036835859873297194, guid: f5e7481bf44f4434e94b24a0d2eb6b5f, type: 3}
   listBoss:
   - {fileID: 9036835859873297194, guid: f5e7481bf44f4434e94b24a0d2eb6b5f, type: 3}

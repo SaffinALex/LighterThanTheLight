@@ -40,7 +40,14 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
     {
         base.Start();
         time = 0;
-        p = GetComponentInParent<BossBehaviorBasic>().transform.position.y - EnnemiesBorder.size.y / 8;
+        if (gameObject.CompareTag("Cockpit"))
+        {
+            p = transform.parent.transform.position.y - EnnemiesBorder.size.y / 8;
+        }
+        else
+        {
+            p = transform.parent.transform.position.y - EnnemiesBorder.size.y / 8;
+        }
         positionX = GetComponentInParent<BossBehaviorBasic>().transform.position.x;
         positionY = GetComponentInParent<BossBehaviorBasic>().transform.position.y;
         type = "BossBasic";
@@ -149,10 +156,13 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
                 }
             }
         }
-
+        
         else
         {
-            if (routes.Length > 0) GoByRoute();
+            if (routes.Length > 0)
+            {
+                GoByRoute();
+            }
         }
     }
 
@@ -169,7 +179,8 @@ public class BossBehaviorBasic : EntitySpaceShipBehavior
                     3 * Mathf.Pow(1 - percentT, 2) * percentT * p1 +
                     3 * (1 - percentT) * Mathf.Pow(percentT, 2) * p2 +
                     Mathf.Pow(percentT, 3) * p3;
-            transform.position = new Vector3(shipPosition.x, shipPosition.y, 0);
+
+            GetComponentInParent<BossBehaviorBasic>().transform.position = new Vector3(shipPosition.x, shipPosition.y, 0);
 
             if(difficult == 4)
             {

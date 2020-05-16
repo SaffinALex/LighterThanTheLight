@@ -20,7 +20,7 @@ TagManager:
   - UpgradeShip
   - UpgradeWeapon
   - Weapon
-  - UpgradeOnde
+  - Boss
   layers:
   - Default
   - TransparentFX

@@ -5275,14 +5275,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 574912439305186582, guid: 3676bed24711a5847b1e8940237f0da4, type: 3}
-  overrideDefaultWeapon: 0
-  startWeaponFireRate: 0
-  startWeaponBulletSpeed: 0
-  startWeaponBulletDamage: 0
-  life: 25
+  - {fileID: 574912439305186582, guid: 712b79a05f27fa54f938940995dd3a83, type: 3}
+  overrideDefaultWeapon: 1
+  startWeaponFireRate: 0.95
+  startWeaponBulletSpeed: 20
+  startWeaponBulletDamage: 5
+  life: 14
   canDieOutside: 1
-  speedMove: 2
+  speedMove: 0
   scrolling: 0.5
   animator: {fileID: 7790174105719540029}
   force: {x: 0, y: 0}
