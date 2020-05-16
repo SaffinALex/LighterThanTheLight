@@ -4796,6 +4796,7 @@ GameObject:
   - component: {fileID: 3263743872911200131}
   - component: {fileID: 3263743872911200130}
   - component: {fileID: 3308105449328775623}
+  - component: {fileID: 3113929440902001662}
   m_Layer: 10
   m_Name: BotSystemFollow++
   m_TagString: Enemy
@@ -4850,6 +4851,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 3263743873909241650}
+--- !u!114 &3113929440902001662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3263743872911200129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0825fd722c66b724da38d3c3a64e7bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3263743873909241651
 GameObject:
   m_ObjectHideFlags: 0

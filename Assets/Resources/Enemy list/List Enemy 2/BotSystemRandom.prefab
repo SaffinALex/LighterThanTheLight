@@ -5218,6 +5218,7 @@ GameObject:
   - component: {fileID: 6898224678110655065}
   - component: {fileID: 6898224678110655064}
   - component: {fileID: 2491329186267794041}
+  - component: {fileID: 19760185213134798}
   m_Layer: 10
   m_Name: BotSystemRandom
   m_TagString: Enemy
@@ -5273,6 +5274,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 6898224676960668394}
+--- !u!114 &19760185213134798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6898224678110655067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0825fd722c66b724da38d3c3a64e7bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7217382205748969921
 GameObject:
   m_ObjectHideFlags: 0
