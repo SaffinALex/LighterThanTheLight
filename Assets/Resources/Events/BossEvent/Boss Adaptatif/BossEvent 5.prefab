@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &33684336025262991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 33684336025263025}
+  - component: {fileID: 33684336025263024}
+  m_Layer: 0
+  m_Name: BossEvent 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &33684336025263025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33684336025262991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.9332496, y: 2.0030172, z: -35.078125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &33684336025263024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33684336025262991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d7f2a554544734ca73bbba5bac0323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeStart: -1
+  maxTimeWave: 0
+  callGoAway: 0
+  bossBlocksElement:
+    timeAppear: 0
+    block: {fileID: 1046470294644499877, guid: a57924035b93dcd4d8793866b999085b, type: 3}
+  waveBlocksElements:
+  - timeAppear: 15
+    block: {fileID: 7103815308605442905, guid: cc990fe49f1a96748ab2dbfae486150f, type: 3}
+  - timeAppear: 25
+    block: {fileID: 6308688934891045557, guid: c84e1aa81a46d60488305a7b31338a72, type: 3}
