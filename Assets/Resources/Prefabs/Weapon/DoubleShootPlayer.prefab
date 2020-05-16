@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb277442c043584ea0234f69985d7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeWeapons: []
-  nbrMaxUpgrade: 0
+  upgradeWeapons:
+  - {fileID: 3893153559910100151, guid: 0a8d62831103eb44080daf31b7a481fe, type: 3}
+  nbrMaxUpgrade: 4
   bullet: {fileID: 741788068531152253, guid: ff4828655a57f9a46aa06c71ca9a2e60, type: 3}
   size: 0
   fireRateBase: 0.15

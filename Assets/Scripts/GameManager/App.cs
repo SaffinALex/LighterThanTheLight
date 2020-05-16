@@ -19,6 +19,8 @@ public class App : MonoBehaviour
     [SerializeField] protected List<Event> bossEvents;
     [SerializeField] protected EnemyList enemiesList;
     static protected TreeNode treeNode;
+    public WeaponPlayer baseWeaponPrefab;
+    static public WeaponPlayer baseWeapon;
 
     static public PlayerShip playerShip;
     public PlayerShip playerShipPrefab;
@@ -32,7 +34,9 @@ public class App : MonoBehaviour
     }
 
     void Start(){
-        playerShip = playerShipPrefab;
+        playerShip = Instantiate(playerShipPrefab);
+        playerShip.enabled = false;
+        baseWeapon = baseWeaponPrefab;
 
         playerManager = new PlayerManager(playerShip.GetComponent<PlayerShip>());
 

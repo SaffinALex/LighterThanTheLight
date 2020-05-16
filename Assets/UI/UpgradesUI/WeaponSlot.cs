@@ -14,8 +14,11 @@ public class WeaponSlot : InventorySlot
         {
             InventorySlot sender = dragObj.getInventorySlotParent();
             if (sender != null)
-                if(App.playerManager.swapWeapons(this.getItemIndex(), sender.getItemIndex()))
+            {
+                if (App.playerManager.swapWeapons(this.getItemIndex(), sender.getItemIndex()))
                     EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
+            }
+                
         }
     }
 

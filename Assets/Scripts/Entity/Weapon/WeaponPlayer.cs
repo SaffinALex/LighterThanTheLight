@@ -26,11 +26,6 @@ public abstract class WeaponPlayer : Weapon
         }
         canShoot = true;
         timerShoot = 0;
-
-        List<UpgradeWeapon> bufferUpgrades = new List<UpgradeWeapon>(new UpgradeWeapon[nbrMaxUpgrade]);
-        foreach (UpgradeWeapon wp in upgradeWeapons)
-            bufferUpgrades.Add(wp);
-        upgradeWeapons = bufferUpgrades;
     }
     
     public void setBulletSpeed(float s){

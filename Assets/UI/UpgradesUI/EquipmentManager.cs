@@ -10,21 +10,14 @@ public class EquipmentManager : MonoBehaviour
 
     private static EquipmentManager instance = null;
 
-    private bool b = true;
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-
     }
 
     void Update()
     {
-        if (b)
-        {
-            App.playerManager.expandLists();
-            b = false;
-        }
     }
 
     public void reloadInventoryPanel()

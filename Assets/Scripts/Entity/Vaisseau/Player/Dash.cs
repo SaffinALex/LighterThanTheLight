@@ -22,12 +22,6 @@ public class Dash : MonoBehaviour
         canDash = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public int numberUpgradeCanAdd(){
         int cpt = 0;
         for(int i = 0; i<upgradeDashes.Count; i++){
@@ -83,9 +77,9 @@ public class Dash : MonoBehaviour
         recoveryDash = initialRecoveryDash;
         distance = InitialDistance;
         for(int i=0; i<upgradeDashes.Count; i++){
-            upgradeDashes[i].StartUpgrade(this);
+            if (upgradeDashes[i] != null)
+                upgradeDashes[i].StartUpgrade(this);
         }
-
     }
 
 }

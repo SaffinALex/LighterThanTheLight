@@ -30,26 +30,11 @@ public class PlayerShip : Ship
     //Define the time to achieve the wanted direction
     public float acceleration = 0.2f;
 
-
     //Represent the timer to achieve
     float timerChangeVelocity = 0.0f;
     bool needChangeVelocity = false;
     Vector2 lastVelocity;
     Vector2 lastWantedVelocity;
-
-    void Awake()
-    {
-        List<WeaponPlayer> bufferWeapon = new List<WeaponPlayer>(new WeaponPlayer[this.getNbrMaxWeapons()]);
-        foreach (WeaponPlayer wp in weapons)
-            bufferWeapon.Add(wp);
-        weapons = bufferWeapon;
-
-        List<UpgradeShip> bufferShipUpgrades = new List<UpgradeShip>(new UpgradeShip[getNbrMaxUpgradeShip()]);
-        foreach (UpgradeShip up in upgradeShip)
-            bufferShipUpgrades.Add(up);
-        upgradeShip = bufferShipUpgrades;
-        Debug.Log(upgradeShip.Count);
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -64,11 +49,14 @@ public class PlayerShip : Ship
         dash.initialize();
         if (weapons.Count != 0)
             for (int i = 0; i < weapons.Count; i++)
-                weapons[i].Initialize();
+                if (weapons[i] != null)
+                    weapons[i].Initialize();
         else
             Debug.Log("Aucune armes définies !");
-        for(int i=0; i<upgradeShip.Count; i++){
-            upgradeShip[i].StartUpgrade(this);
+        for(int i=0; i<upgradeShip.Count; i++)
+        {
+            if (upgradeShip[i] != null)
+                upgradeShip[i].StartUpgrade(this);
             if(shieldLife > maxShieldLife) shieldLife = maxShieldLife;
         }
         totalLife = (int)getLife();
@@ -85,7 +73,10 @@ public class PlayerShip : Ship
         //On update les timer des weapons
         if (weapons.Count != 0)
             for (int i = 0; i < weapons.Count; i++)
-                weapons[i].updateTimer();
+            {
+                if(weapons[i] !=null)
+                    weapons[i].updateTimer();
+            }
         else
                 Debug.Log("Aucune armes définies !");
             //Ne pas sortir de l'écran

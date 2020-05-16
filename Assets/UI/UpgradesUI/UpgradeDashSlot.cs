@@ -14,9 +14,10 @@ public class UpgradeDashSlot : InventorySlot
         {
             InventorySlot sender = dragObj.getInventorySlotParent();
             if (sender != null)
-                if (App.playerManager.swapDashUpgrades(this.getItemIndex(), sender.getItemIndex()))
+            {
+                if (App.playerManager.swapDashUpgrades(getItemIndex(), sender.getItemIndex()))
                     EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
-
+            }
         }
     }
 

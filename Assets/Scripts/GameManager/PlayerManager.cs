@@ -24,41 +24,50 @@ public class PlayerManager {
         this.onde = player.wave.GetComponent<Onde>();
         this.dash = player.dash;
 
-        
+        List<UpgradeShip> bufferShipUpgrades = new List<UpgradeShip>(new UpgradeShip[player.nbrMaxUpgradeShip]);
+        for (int i = 0; i < player.upgradeShip.Count; i++)
+            bufferShipUpgrades[i] = player.upgradeShip[i];
+        player.upgradeShip = bufferShipUpgrades;
+
         List<UpgradeOnde> bufferOndeUpgrades = new List<UpgradeOnde>(new UpgradeOnde[onde.nbrUpgradeMax]);
         for (int i = 0; i < onde.upgradeOndes.Count; i++)
-        {
             bufferOndeUpgrades[i] = onde.upgradeOndes[i];
-            if (i >= bufferOndeUpgrades.Count)
-                break;
-        }
         onde.upgradeOndes = bufferOndeUpgrades;
 
         List<UpgradeDash> bufferDashUpgrades = new List<UpgradeDash>(new UpgradeDash[dash.nbrUpgradeMax]);
-
-        Debug.Log(player.dash.upgradeDashes.Count);
-        foreach (UpgradeDash wp in player.dash.upgradeDashes)
-        {
-            Debug.Log(wp);
-        }
         for (int i = 0; i < dash.upgradeDashes.Count; i++)
-        {
             bufferDashUpgrades[i] = dash.upgradeDashes[i];
-            if (i >= bufferDashUpgrades.Count)
-                break;
-        }
         dash.upgradeDashes = bufferDashUpgrades;
 
-        Debug.Log(dash.upgradeDashes.Count);
-        foreach (UpgradeDash wp in dash.upgradeDashes)
+        List<WeaponPlayer> bufferWeapons = new List<WeaponPlayer>(new WeaponPlayer[player.nbrMaxWeapons]);
+        for (int i = 0; i < player.weapons.Count; i++)
         {
-            Debug.Log(wp);
+            bufferWeapons[i] = player.weapons[i];
         }
+        player.weapons = bufferWeapons;
+
+        int c = 0;
+        for (int i = 0; i < player.weapons.Count; i++)
+        {
+            WeaponPlayer wp = player.weapons[i];
+            if (wp != null)
+            {
+                c++;
+                this.extendListSize(i);
+            }
+        }
+        if (c == 0)
+            setWeapon(0, App.baseWeapon);
     }
 
-    public void expandLists()
+    public void extendListSize(int weaponIndex)
     {
-        
+        List<UpgradeWeapon> bufferWeapons = new List<UpgradeWeapon>(new UpgradeWeapon[player.weapons[weaponIndex].nbrMaxUpgrade]);
+        for (int i = 0; i < player.weapons[weaponIndex].upgradeWeapons.Count; i++)
+        {
+            bufferWeapons[i] = player.weapons[weaponIndex].upgradeWeapons[i];
+        }
+        player.weapons[weaponIndex].upgradeWeapons = bufferWeapons;
     }
 
     /* ------------------------------------------
@@ -198,6 +207,11 @@ public class PlayerManager {
         if (!(0 <= weapon1Index && weapon1Index < this.player.nbrMaxWeapons && 0 <= weapon2Index && weapon2Index < this.player.nbrMaxWeapons))  
             return false;
 
+        //Swap
+        WeaponPlayer buffer = player.weapons[weapon1Index];
+        player.weapons[weapon1Index] = player.weapons[weapon2Index];
+        player.weapons[weapon2Index] = buffer;
+
         return true; //Tout s'est bien passé
     }
 
@@ -223,6 +237,11 @@ public class PlayerManager {
         upgrades[upgrade1Index] = upgrades[upgrade2Index];
         upgrades[upgrade2Index] = buffer;
 
+        foreach(UpgradeWeapon wpUp in wp.upgradeWeapons)
+        {
+            Debug.Log(wpUp);
+        }
+
         return true; //Tout s'est bien passé
     }
 
@@ -238,10 +257,15 @@ public class PlayerManager {
             return false;
 
         //Swap
+        foreach (UpgradeDash wp in dash.upgradeDashes)
+            Debug.Log(wp);
         List<UpgradeDash> upgrades = dash.upgradeDashes;
         UpgradeDash buffer = upgrades[upgrade1Index];
         upgrades[upgrade1Index] = upgrades[upgrade2Index];
         upgrades[upgrade2Index] = buffer;
+
+        foreach (UpgradeDash wp in dash.upgradeDashes)
+            Debug.Log(wp);
 
         return true; //Tout s'est bien passé
     }
@@ -298,6 +322,8 @@ public class PlayerManager {
             return false;
 
         this.player.weapons[weaponIndex] = weapon;
+
+        this.extendListSize(weaponIndex);
         return true; //Tout s'est bien passé
     }
 
