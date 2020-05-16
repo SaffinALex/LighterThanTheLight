@@ -119,7 +119,7 @@ MonoBehaviour:
   startWeaponFireRate: 0
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
-  life: 15
+  life: 6
   canDieOutside: 1
   speedMove: 3
   scrolling: 1

@@ -130,12 +130,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 574912439305186582, guid: 3676bed24711a5847b1e8940237f0da4, type: 3}
-  overrideDefaultWeapon: 0
-  startWeaponFireRate: 0
-  startWeaponBulletSpeed: 0
-  startWeaponBulletDamage: 0
-  life: 15
+  - {fileID: 574912439305186582, guid: aac073d6bf3efd042b01737e2b014e89, type: 3}
+  overrideDefaultWeapon: 1
+  startWeaponFireRate: 1
+  startWeaponBulletSpeed: 15
+  startWeaponBulletDamage: 4
+  life: 10
   canDieOutside: 1
   speedMove: 2
   scrolling: 0.5
