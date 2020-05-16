@@ -51,3 +51,4 @@ MonoBehaviour:
   price: 0
   weight: 0
   bulletSpeedBase: 50
+  damage: 2

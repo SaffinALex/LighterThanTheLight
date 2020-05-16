@@ -121,7 +121,7 @@ MonoBehaviour:
   speed: 8
   maxShieldLife: 8
   weapons:
-  - {fileID: -1994659459883942212, guid: 5b55086237e3bc941ac7f878d5eb5ed1, type: 3}
+  - {fileID: -1994659459883942212, guid: 299723f057a345a4cbc650127dff64d8, type: 3}
   upgradeShip: []
   wave: {fileID: 7237810773343739811, guid: 1f35fce770403cd489dbd332e41f783d, type: 3}
   dash: {fileID: 4609433687815977602}

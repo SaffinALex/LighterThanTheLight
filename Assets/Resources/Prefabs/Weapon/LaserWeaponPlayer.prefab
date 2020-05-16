@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5359264151696501870
+--- !u!1 &8912196057217071144
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8861936024182271322}
-  - component: {fileID: 3640939119029945716}
+  - component: {fileID: 7232059111152988876}
+  - component: {fileID: -1994659459883942212}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: LaserWeaponPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8861936024182271322
+--- !u!4 &7232059111152988876
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5359264151696501870}
+  m_GameObject: {fileID: 8912196057217071144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.79966533, y: 40.366116, z: -0.7731546}
+  m_LocalPosition: {x: 3.863613, y: 48.54663, z: 4.3210936}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3640939119029945716
+--- !u!114 &-1994659459883942212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5359264151696501870}
+  m_GameObject: {fileID: 8912196057217071144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e7ef042cce59141ad6eab1771f819d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4571899a94d62014a9690d1b8f4b605c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeWeapons: []
   nbrMaxUpgrade: 0
-  bullet: {fileID: 7871241776792002272, guid: b3ce537aa0da2b64893b6ef22339204a, type: 3}
+  bullet: {fileID: 741788068531152253, guid: 99620480d37ffb64784e0658dc6d03cb, type: 3}
+  size: 0
+  fireRateBase: 0.001
+  price: 0
+  weight: 0
+  bulletSpeedBase: 100
+  damage: 0.02

@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBulletPrototype : Bullet {
+public class PlayerBulletLaser : Bullet {
 
     float maxTimeAlive = 4000f;
-
-    void Start()
-    {
-        App.sfx.PlayEffect("LaserShot", 0.05f);
-    }
 
     // Update is called once per frame
     void FixedUpdate() {

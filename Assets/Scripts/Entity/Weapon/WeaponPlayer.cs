@@ -14,14 +14,13 @@ public abstract class WeaponPlayer : Weapon
     public int weight;
     public float bulletSpeedBase;
     private float bulletSpeed;
-    private float damage;
+    [SerializeField] private float damage;
     // Start is called before the first frame update
     protected float timerShoot;
     public void Initialize(){
         fireRateBase = fireRateBase <= minFireRate ? minFireRate : fireRateBase;
         setBulletSpeed(bulletSpeedBase);
         setFireRate(fireRateBase);
-        damage = bullet.GetComponent<Bullet>().damage;
         for(int i=0; i<upgradeWeapons.Count; i++){
             upgradeWeapons[i].StartUpgrade(this);
         }
