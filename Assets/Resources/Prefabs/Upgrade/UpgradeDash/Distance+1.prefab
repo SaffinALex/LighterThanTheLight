@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5941315056976107944}
   m_Layer: 0
   m_Name: Distance+1
-  m_TagString: Untagged
+  m_TagString: UpgradeDash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b89edc17acb7448a0c7852277abc71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nom: 
-  description: 
+  nom: "Aileron am\xE9lior\xE9"
+  description: Plus de distance
   icone: {fileID: 0}
+  price: 1000
+  weight: 1
   distanceBonus: 1

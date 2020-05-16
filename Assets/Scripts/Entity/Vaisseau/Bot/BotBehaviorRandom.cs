@@ -21,6 +21,19 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
     private float p2;
     private float p3;
 
+    [System.Serializable]
+    public struct PathBot
+    {
+        public float timeTravel;
+        public Transform routes;
+    }
+
+    [SerializeField]
+    private PathBot[] routes;
+    private int routeToGo;
+    private float tParam;
+    private Vector2 shipPosition;
+
     // Start is called before the first frame update
     new void Start()
     {
@@ -44,68 +57,64 @@ public class BotBehaviorRandom : EntitySpaceShipBehavior
         base.FixedUpdate();
         if (!needGoAway) move();
         else GoAwayMove();
+
+        if (difficult == 2 || difficult == 3 || difficult == 4)
+        {
+            shoot();
+        }
     }
 
     // Update is called once per frame
     new void Update()
     {
         base.Update();
-
-        // 1 - La pause n'a pas commencé on arrive
-        if (!beginPause && transform.position.y > p3)
-        {
-            timerChangePosition += Time.deltaTime;
-            positionY = p3;
-
-            if (timerChangePosition >= timeChangePosition)
-            {
-                beginPause = true; //On commence la pause
-                timerChangePosition = 0;
-            }
-        }
-        else if (beginPause && !endPause && timerPause < timePause)
-        {
-            timerPause += Time.deltaTime;
-            transform.position = transform.position + new Vector3(0, -scrolling, 0) * Time.deltaTime;
-            positionY = transform.position.y;
-            shoot();
-            if (timerPause >= timePause && timerChangePosition == 0)
-            {
-                endPause = true;
-                timerPause = 0;
-            }
-            else if(timerPause >= timePause && timerChangePosition != 0)
-            {
-                beginPause = false;
-                timerChangePosition = 0;
-                timerPause = 0;
-            }
-        }
-
-        else if (beginPause && endPause)
-        {
-            timerChangePosition += Time.deltaTime;
-            switch(difficult){
-                case 0:
-                    positionY = p1;
-                    break;
-                case 1:
-                    positionY = p2;
-                    if (timerChangePosition >= timeChangePosition)
-                    {
-                        endPause = false;
-                    }
-                    break;
-            }
-        }
     }
 
     override
     public void move()
     {
-        Vector3 direction = (new Vector3(positionX, positionY, transform.position.z) - transform.position).normalized;
-        force = new Vector2(direction.x, direction.y) * speedMove;
-        r2d.velocity = force;
+        if (routes.Length > 0) GoByRoute();
+
+        for (int i = 0; i < routes.Length; i++)
+        {
+            if (routes[i].routes != null) {
+                routes[i].routes.position = routes[i].routes.position + new Vector3(0, -scrolling, 0) * Time.deltaTime;
+            }
+        }
+    }
+
+    protected void GoByRoute()
+    {
+        if (routes[routeToGo].routes != null)
+        {
+            Vector2 p0 = routes[routeToGo].routes.GetChild(0).position;
+            Vector2 p1 = routes[routeToGo].routes.GetChild(1).position;
+            Vector2 p2 = routes[routeToGo].routes.GetChild(2).position;
+            Vector2 p3 = routes[routeToGo].routes.GetChild(3).position;
+            float percentT = tParam / routes[routeToGo].timeTravel;
+            shipPosition = Mathf.Pow(1 - percentT, 3) * p0 +
+                    3 * Mathf.Pow(1 - percentT, 2) * percentT * p1 +
+                    3 * (1 - percentT) * Mathf.Pow(percentT, 2) * p2 +
+                    Mathf.Pow(percentT, 3) * p3;
+            transform.position = new Vector3(shipPosition.x, shipPosition.y, 0);
+        }
+        else
+        {
+            transform.position = routes[(routeToGo + 1) % routes.Length].routes.GetChild(0).position;
+            if(difficult == 0 || difficult == 1)
+            {
+                shoot();
+            }
+        }
+
+        tParam += Time.deltaTime;
+        tParam = tParam >= routes[routeToGo].timeTravel ? routes[routeToGo].timeTravel : tParam;
+
+        if (tParam == routes[routeToGo].timeTravel)
+        {
+            routeToGo = (routeToGo + 1) % routes.Length;
+            tParam = 0;
+        }
     }
 
     override

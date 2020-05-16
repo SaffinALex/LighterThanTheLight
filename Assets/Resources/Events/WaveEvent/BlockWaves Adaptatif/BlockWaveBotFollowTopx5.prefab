@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8502584322115436750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8502584322115436784}
+  - component: {fileID: 8502584322115436785}
+  m_Layer: 0
+  m_Name: BlockWaveBotFollowTopx5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8502584322115436784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8502584322115436750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8502584322115436785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8502584322115436750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8636aa0f5349854408b0529b223bf20b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesWave:
+  - timeAppear: 3
+    enemyType: 2
+    enemyDifficulty: -1
+    positionAppear: {x: 0, y: 0}
+    spawnPosition: 6
+    angleAppear: 0
+  - timeAppear: 3
+    enemyType: 2
+    enemyDifficulty: -1
+    positionAppear: {x: 0, y: 0}
+    spawnPosition: 7
+    angleAppear: 0
+  - timeAppear: 6
+    enemyType: 2
+    enemyDifficulty: -1
+    positionAppear: {x: 0, y: 0}
+    spawnPosition: 2
+    angleAppear: 0
+  - timeAppear: 6
+    enemyType: 2
+    enemyDifficulty: -1
+    positionAppear: {x: 0, y: 0}
+    spawnPosition: 3
+    angleAppear: 0
+  - timeAppear: 0
+    enemyType: 2
+    enemyDifficulty: -1
+    positionAppear: {x: 0, y: 0}
+    spawnPosition: 4
+    angleAppear: 0

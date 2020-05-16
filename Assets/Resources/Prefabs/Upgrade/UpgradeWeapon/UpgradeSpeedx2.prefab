@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7641070597103525435}
   m_Layer: 0
   m_Name: UpgradeSpeedx2
-  m_TagString: Untagged
+  m_TagString: UpgradeWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,4 +46,6 @@ MonoBehaviour:
   nom: DoubleRation
   description: Double speed
   icone: {fileID: 0}
+  price: 2000
+  weight: 2
   multiplicator: 2

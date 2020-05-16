@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3893153559910100151}
   m_Layer: 0
   m_Name: Damagex2
-  m_TagString: Untagged
+  m_TagString: UpgradeWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8001017825eefc946974bb15e793eb7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nom: 
-  description: 
+  nom: "Balle renforc\xE9"
+  description: Plus de degat
   icone: {fileID: 0}
+  price: 2500
+  weight: 3
   multiplicator: 2

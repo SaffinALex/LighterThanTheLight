@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8893945093777068812}
   m_Layer: 0
   m_Name: Shield+1
-  m_TagString: Untagged
+  m_TagString: UpgradeWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5c86028146c894bae608be2f6de289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nom: 
-  description: 
+  nom: "D\xE9fense augment\xE9"
+  description: Plus de bouclier
   icone: {fileID: 0}
+  price: 500
+  weight: 1
   ShieldBonus: 1

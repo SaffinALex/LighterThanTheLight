@@ -61,7 +61,7 @@ public class Node : MonoBehaviour
         if(lockElement == null){
             lockElement = Instantiate(Resources.Load("Prefabs/UI_3D/Lock") as GameObject).GetComponent<Locker>();
             lockElement.transform.parent = transform;
-            lockElement.transform.localPosition = new Vector3(0,4.0f,0);
+            lockElement.transform.localPosition = new Vector3(0,0.4f,0);
         }
 
         //Permet de créer un node element
@@ -185,6 +185,7 @@ public class Node : MonoBehaviour
         if(nodeElement != null) GameObject.Destroy(nodeElement.gameObject); //On supprime le nodeElement précédent
         GameObject nodeElementObject = new GameObject("Node Element");
         nodeElementObject.transform.parent = transform;
+        nodeElementObject.transform.localScale = new Vector3(1,1,1);
 
         float randomElement = Random.Range(0f,1f);
         if(randomElement > probaLevel){
@@ -192,7 +193,10 @@ public class Node : MonoBehaviour
         }else{
             nodeElement = nodeElementObject.AddComponent<NodeLevel>();
         }
+        float scoreParent = parent == null ? (1 + App.GetDifficulty()) * 50 * 5 : parent.nodeElement.GetScoreDifficulty();
+        nodeElement.InitializeNode(scoreParent);
         nodeElement.GetEvent().AddListener(CompleteNode);
+        nodeElement.transform.localPosition = Vector3.zero;
     }
 
     /** Permet de compléter un node, c'est à dire que son nodeElement est terminé **/
@@ -201,7 +205,7 @@ public class Node : MonoBehaviour
     }
 
     void SetOpacity(float opacity){
-        var botRenderer = GetComponent<MeshRenderer>();
+        var botRenderer = GetComponentInChildren<MeshRenderer>();
         for (int i = 0; i < botRenderer.materials.Length; i++){
             var color = botRenderer.materials[i].GetColor("_BaseColor");
             botRenderer.materials[i].SetColor("_BaseColor", new Color(color.r, color.g, color.b, opacity));

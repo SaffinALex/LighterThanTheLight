@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6103312125193389701}
   m_Layer: 0
   m_Name: Speed+1
-  m_TagString: Untagged
+  m_TagString: UpgradeWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa824382c4f3d94ab07f3cc6d0a9648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nom: 
-  description: 
+  nom: Reacteur a photon
+  description: Booooosstttt
   icone: {fileID: 0}
+  price: 1000
+  weight: 2
   speedBonus: 1

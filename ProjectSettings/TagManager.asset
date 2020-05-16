@@ -16,6 +16,10 @@ TagManager:
   - Money
   - Heart
   - Shield
+  - UpgradeDash
+  - UpgradeShip
+  - UpgradeWeapon
+  - Weapon
   layers:
   - Default
   - TransparentFX

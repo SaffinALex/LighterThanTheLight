@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6040405114794667504}
   m_Layer: 0
   m_Name: Life+50
-  m_TagString: Untagged
+  m_TagString: UpgradeWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f75b369cc763547a2df7836486018a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nom: 
-  description: 
+  nom: "coque renforc\xE9"
+  description: "Vie am\xE9lior\xE9"
   icone: {fileID: 0}
+  price: 750
+  weight: 1
   life: 50

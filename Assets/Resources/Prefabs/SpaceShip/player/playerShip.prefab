@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4609433687815977600}
+  - component: {fileID: 9210776662013460694}
   - component: {fileID: 4609433687815977602}
   - component: {fileID: 4609433687815977604}
   - component: {fileID: 2364199843355145164}
@@ -66,6 +67,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9210776662013460694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4609433687815977607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae22d3469a5ff94993b4c70c730966f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4609433687815977604}
+  money: 0
+  score: 0
+  Weapons: []
+  UpgradeDashes: []
+  UpgradeShip: []
+  UpgradeWeapon: []
 --- !u!114 &4609433687815977602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,8 +184,12 @@ PolygonCollider2D:
     - - {x: 0.25124013, y: 0.7511058}
       - {x: -0.24912444, y: 0.7508757}
       - {x: -0.40654188, y: 0.024303466}
+      - {x: -0.798228, y: -0.37122828}
+      - {x: -0.7919048, y: -0.48421913}
       - {x: -0.40983924, y: -0.3641521}
       - {x: 0.39204478, y: -0.36059317}
+      - {x: 0.78103554, y: -0.4842458}
+      - {x: 0.79571754, y: -0.36360705}
       - {x: 0.39230603, y: 0.042098135}
 --- !u!95 &4609433686791282158
 Animator:
