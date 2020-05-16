@@ -16,7 +16,7 @@ public class EnemyList : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        DifficultLevel = App.GetDifficulty();
     }
 
     // Update is called once per frame
@@ -38,12 +38,12 @@ public class EnemyList : MonoBehaviour
 
     public GameObject getEnemy(string s, int difficulty)
     {
+        DifficultLevel = App.GetDifficulty();
         difficulty = difficulty < 0 ? DifficultLevel : difficulty;
         ListEnemy = list[difficulty].listEnemy;
         GameObject enemy = null;
         for (int i = 0; i < ListEnemy.Count; i++) {
             if (ListEnemy[i].GetComponentInChildren<EntitySpaceShipBehavior>().getType().Equals(s)) {
-                ListEnemy[i].GetComponentInChildren<EntitySpaceShipBehavior>().difficult = difficulty;
                 enemy = ListEnemy[i];
             }
         }
