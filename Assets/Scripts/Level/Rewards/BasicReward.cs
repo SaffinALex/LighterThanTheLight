@@ -11,8 +11,8 @@ using UnityEngine;
  */
 public class BasicReward : DropReward {
 
-    static float lifeProbability = 0.1f;
-    static float shieldProbability = 0.05f;
+    static float lifeProbability = 0.02f;
+    static float shieldProbability = 0.01f;
     static float moneyProbability = 0.6f;
     static float nothingProbability = 1f - (lifeProbability + shieldProbability + moneyProbability);
 

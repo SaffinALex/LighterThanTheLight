@@ -64,11 +64,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaClip: 0
-    - _Blend: 2
+    - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.458
-    - _DstBlend: 1
+    - _DstBlend: 10
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
@@ -80,7 +80,7 @@ Material:
     - _Smoothness: 0.14
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _Surface: 1
     - _WorkflowMode: 0
     - _ZWrite: 0

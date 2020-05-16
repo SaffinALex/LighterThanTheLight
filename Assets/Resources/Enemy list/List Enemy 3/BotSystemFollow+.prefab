@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 4812075358051304565}
   - component: {fileID: 4812075358051304561}
   - component: {fileID: 5610268179455761361}
+  - component: {fileID: 6418101663671677565}
   m_Layer: 10
   m_Name: Bot
   m_TagString: Enemy
@@ -203,6 +204,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9257934, y: 0.8021159}
   m_EdgeRadius: 0
+--- !u!114 &6418101663671677565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812075358051304564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0825fd722c66b724da38d3c3a64e7bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5573038927182942405
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +321,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -318,7 +331,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.54
+      scalar: 0.1
       minScalar: 0.3
       maxCurve:
         serializedVersion: 2
@@ -371,7 +384,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.55
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
