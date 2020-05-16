@@ -29098,7 +29098,6 @@ GameObject:
   - component: {fileID: 2920496595465312269}
   - component: {fileID: 2920496595465312268}
   - component: {fileID: 2920496595465312271}
-  - component: {fileID: 5768726833765078494}
   m_Layer: 10
   m_Name: Cockpit
   m_TagString: Cockpit
@@ -29233,18 +29232,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5768726833765078494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2920496595465312257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0825fd722c66b724da38d3c3a64e7bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2920496595994703315
 GameObject:
   m_ObjectHideFlags: 0
@@ -29256,6 +29243,7 @@ GameObject:
   - component: {fileID: 2920496595994703312}
   - component: {fileID: 2920496595994703313}
   - component: {fileID: 2752762057841667245}
+  - component: {fileID: 8970264697699316612}
   m_Layer: 10
   m_Name: BossSystem++
   m_TagString: Enemy
@@ -29315,6 +29303,18 @@ MonoBehaviour:
   - {fileID: 2920496595465312269}
   - {fileID: 2920496596000494138}
   - {fileID: 2920496596126471326}
+--- !u!114 &8970264697699316612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2920496595994703315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0825fd722c66b724da38d3c3a64e7bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2920496596000494142
 GameObject:
   m_ObjectHideFlags: 0

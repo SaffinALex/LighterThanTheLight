@@ -122,7 +122,6 @@ GameObject:
   - component: {fileID: 8607888638640380764}
   - component: {fileID: 8607888638640380760}
   - component: {fileID: 8676498290347050232}
-  - component: {fileID: 2402535487575211029}
   m_Layer: 10
   m_Name: Bot
   m_TagString: Enemy
@@ -219,18 +218,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9257934, y: 0.8021159}
   m_EdgeRadius: 0
---- !u!114 &2402535487575211029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8607888638640380765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0825fd722c66b724da38d3c3a64e7bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8607888639655584751
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +229,7 @@ GameObject:
   - component: {fileID: 8607888639655584749}
   - component: {fileID: 8607888639655584748}
   - component: {fileID: 8635292469576531369}
+  - component: {fileID: 6712038625499756611}
   m_Layer: 10
   m_Name: BotSystemFollow
   m_TagString: Enemy
@@ -296,6 +284,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 8607888638640380764}
+--- !u!114 &6712038625499756611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8607888639655584751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0825fd722c66b724da38d3c3a64e7bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8711608156513439724
 GameObject:
   m_ObjectHideFlags: 0
