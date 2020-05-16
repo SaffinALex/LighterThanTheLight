@@ -172,12 +172,30 @@ MonoBehaviour:
   - {x: 2, y: 0, z: 0}
   - {x: -2, y: 0, z: 0}
   waveEvents:
-  - {fileID: 908749146122416438, guid: db26a9f659d30284b8931ec059ed8432, type: 3}
-  - {fileID: 4865883333038698864, guid: bfd11c69d1cf774498b1fb93106442ce, type: 3}
-  - {fileID: 5946505611432030358, guid: 712b3b100d8e85a4899c4afcbc2dd00a, type: 3}
-  - {fileID: 8021695518439611926, guid: 913c50edaf293e5438151835b5b80a5a, type: 3}
+  - {fileID: 7202825046152637496, guid: 4fd156a2bbc72c9418aa3af5a99c6e9f, type: 3}
+  - {fileID: 3150444642942888993, guid: 439c20c592259c444831e0b8e1f2d6c5, type: 3}
+  - {fileID: 4298945608148728516, guid: d40b09c6a4427c64b871dc1c9dd4b376, type: 3}
+  - {fileID: 2186401748534214373, guid: 9b481d8e04fde0a4cb642430798fb0b7, type: 3}
+  - {fileID: 3132411628677929631, guid: 9c8f9872ebb09b64ebd220f7f4472772, type: 3}
+  - {fileID: 3630066579343521855, guid: 062e562bcb70305448da4bcd9abd1cd3, type: 3}
+  - {fileID: 6995572691972423731, guid: 97416ea4ef21cb84b97cdf70cd6b0ab6, type: 3}
+  - {fileID: 3699865660177683354, guid: 2d9bba53a7f2fb143a47b46e1e6cff92, type: 3}
+  - {fileID: 2652128385892177981, guid: 85681a43360933240abd8b6620a68b09, type: 3}
+  - {fileID: 8995515557580138243, guid: 62e91e64e75877d45ac0dd592638c2ee, type: 3}
+  - {fileID: 7835072389713133267, guid: b194bf66d02374943908d1c10993902c, type: 3}
+  - {fileID: 8715786850599129947, guid: 32a6459d8bc064e4f913db786ea0c2b3, type: 3}
+  - {fileID: 1645306333690450905, guid: 72afedb2b03efa64693106f7478e4e87, type: 3}
+  - {fileID: 971271200824707129, guid: 350a75f29a44c774aa56ad6f3187e3db, type: 3}
+  - {fileID: 6870075229672440824, guid: 2e84e98bb375a1841b3e3817b61adacd, type: 3}
   disasterEvents: []
-  bossEvents: []
+  bossEvents:
+  - {fileID: 33684336025263024, guid: ce7a7ea5ef74e6f48924d1470492ee8d, type: 3}
+  - {fileID: 33684336025263024, guid: 7a1ba65e7bff4ca47b90b7c62b223222, type: 3}
+  - {fileID: 33684336025263024, guid: 18d005feee789c743b3185fd06c865a3, type: 3}
+  - {fileID: 33684336025263024, guid: c9c80b54ff04b3a44a63797e4a2891b5, type: 3}
+  - {fileID: 33684336025263024, guid: 415ce7388c49ad54f8a7bb9098da8779, type: 3}
+  - {fileID: 33684336025263024, guid: d9b6ce42f5d20e8449285a27386acf13, type: 3}
+  - {fileID: 5206760805097962129, guid: 19b0775730560904fab690fc220e3a3e, type: 3}
   enemiesList: {fileID: 8515238202460999836, guid: d4c92d38b09ebfe4c927509ecbccdb0d,
     type: 3}
   playerShipPrefab: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
