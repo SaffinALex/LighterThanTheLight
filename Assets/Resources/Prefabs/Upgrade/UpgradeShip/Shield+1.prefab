@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nom: "D\xE9fense augment\xE9"
   description: Plus de bouclier
-  icone: {fileID: 0}
+  icone: {fileID: 21300000, guid: cd74f9b1d93b60c48a63799c13c8966a, type: 3}
   price: 500
   weight: 1
   ShieldBonus: 1
