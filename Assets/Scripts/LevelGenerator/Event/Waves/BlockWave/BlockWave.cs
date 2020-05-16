@@ -39,7 +39,7 @@ public class BlockWave : MonoBehaviour
             else if (enemiesWave[i].spawnPosition == PositionSpawner.TopLeft) positionEnemy += new Vector2(- EnnemiesBorder.size.x / 2 + 1, EnnemiesBorder.size.y / 2 - 1);
             else if (enemiesWave[i].spawnPosition == PositionSpawner.TopRight) positionEnemy += new Vector2(EnnemiesBorder.size.x / 2- 1, EnnemiesBorder.size.y / 2- 1);
             else if (enemiesWave[i].spawnPosition == PositionSpawner.TopCenter) positionEnemy += new Vector2(0, EnnemiesBorder.size.y / 2 - 1);
-            else if (enemiesWave[i].spawnPosition == PositionSpawner.PlayerX) positionEnemy += new Vector2(GameObject.Find("PlayerShip").transform.position.x, EnnemiesBorder.size.y / 2 - 1);
+            else if (enemiesWave[i].spawnPosition == PositionSpawner.PlayerX) positionEnemy += new Vector2(GameObject.Find("playerShip").transform.position.x, EnnemiesBorder.size.y / 2 - 1);
             else if (enemiesWave[i].spawnPosition == PositionSpawner.TopLeftHalf) positionEnemy += new Vector2(-EnnemiesBorder.size.x / 4, EnnemiesBorder.size.y / 2 - 1);
             else if (enemiesWave[i].spawnPosition == PositionSpawner.TopRightHalf) positionEnemy += new Vector2(EnnemiesBorder.size.x / 4, EnnemiesBorder.size.y / 2 - 1);
             else if (enemiesWave[i].spawnPosition == PositionSpawner.TopLeftQuart) positionEnemy += new Vector2(- EnnemiesBorder.size.x / 8, EnnemiesBorder.size.y / 2 - 1);
