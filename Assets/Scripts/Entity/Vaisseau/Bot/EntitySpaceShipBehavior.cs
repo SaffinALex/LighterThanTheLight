@@ -124,7 +124,7 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
     protected void GoAwayMove(){
         timerGoAway += Time.deltaTime;
         timerGoAway = timerGoAway > timeGoAway ? timeGoAway : timerGoAway;
-        r2d.velocity = Vector3.Lerp(saveVelocity, transform.position.normalized * 5, timerGoAway / timeGoAway);
+        r2d.velocity = Vector3.Lerp(saveVelocity, transform.position.normalized * 5, timerGoAway / timeGoAway) + Vector3.down * scrolling;
         
         float angle = Mathf.Atan2(r2d.velocity.y, r2d.velocity.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Lerp(Quaternion.AngleAxis(angle + 90, Vector3.forward), transform.rotation, Mathf.SmoothStep(0,1, timerGoAway / timeGoAway));

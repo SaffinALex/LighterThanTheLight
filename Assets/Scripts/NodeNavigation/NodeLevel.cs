@@ -39,7 +39,7 @@ public class NodeLevel : NodeElement
     public override void InitializeNode(float score = 0){
         levelGeneratorInfo = gameObject.AddComponent<LevelGeneratorInfo>();
         scoreDifficulty = score + Random.Range(6, 20); //On augmente le niveau
-
+///
         List<string> levelFlow = new List<string>() { "Wave", "Wave", "Wave", "Wave", "Wave" };
         levelGeneratorInfo.events = GeneratorLGI.GenerateLevel(scoreDifficulty, 15, levelFlow);
 
