@@ -158,6 +158,7 @@ public class PlayerShip : Ship
             if(getLife() > initialLife){
                 setLife(initialLife);
             }
+            LevelUIEventManager.GetLevelUI().TriggerPlayerHealthChange((int)getLife(), (int)totalLife, getShieldLife());
             Destroy(col.gameObject);
         }
         if(col.CompareTag("Money") ){ 
