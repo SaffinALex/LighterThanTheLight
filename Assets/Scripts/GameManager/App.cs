@@ -146,7 +146,7 @@ public class App : MonoBehaviour
      */
     static public void StartLevel(){
         treeNode.gameObject.SetActive(false);
-        SceneManager.LoadScene("LevelPrototype");
+        SceneManager.LoadScene("__Level");
     }
 
     /**
