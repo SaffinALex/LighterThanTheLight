@@ -24,12 +24,12 @@ public class CameraLimit : MonoBehaviour
     }
 
     float heightZone(){
-        float heightZone =  Mathf.Abs(PlayerBorder.size.y - CameraSize().y);
+        float heightZone =  Mathf.Abs(PlayerBorder.size.y - CameraSize().y)/2;
         return heightZone;
     }
 
     float widthZone(){
-        float widthZone =  Mathf.Abs(PlayerBorder.size.x - CameraSize().x);
+        float widthZone =  Mathf.Abs(PlayerBorder.size.x - CameraSize().x) /2;
         return widthZone;
     }
 
