@@ -214,9 +214,9 @@ public class Node : MonoBehaviour
             scoreParent = parent.nodeElement.GetScoreDifficulty();
         }
 
+        nodeElement.transform.localPosition = Vector3.zero;
         nodeElement.InitializeNode(scoreParent);
         nodeElement.GetEvent().AddListener(CompleteNode);
-        nodeElement.transform.localPosition = Vector3.zero;
     }
 
     /** Permet de compléter un node, c'est à dire que son nodeElement est terminé **/

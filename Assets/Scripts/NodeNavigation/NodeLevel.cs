@@ -37,7 +37,10 @@ public class NodeLevel : NodeElement
     bool HaveBegin = false;
 
     public override void InitializeNode(float score = 0){
-        levelGeneratorInfo = gameObject.AddComponent<LevelGeneratorInfo>();
+        GameObject objectValue = new GameObject();
+        objectValue.transform.parent = transform;
+        objectValue.transform.localPosition = Vector3.zero;
+        levelGeneratorInfo = objectValue.AddComponent<LevelGeneratorInfo>();
         scoreDifficulty = score + Random.Range(6, 20); //On augmente le niveau
 
         float moyenne = 0f;
@@ -93,24 +96,23 @@ public class NodeLevel : NodeElement
     }
     
     public override void Begin() {
-        if(ui) Destroy(ui.gameObject);
-        this.End();
-        return;
         if(!HaveBegin){
             HaveBegin = true;
 
-            float moyenne = 0f;
-            for (int i = 0; i < App.ALL_EVENTS["Wave"].Count; i++)
-            {
-                Debug.Log(App.ALL_EVENTS["Wave"][i].GetScore());
-                moyenne += App.ALL_EVENTS["Wave"][i].GetScore();
-            }
-            moyenne /= App.ALL_EVENTS["Wave"].Count;
-            Debug.Log("Wanted Score " + moyenne * 3);
-            levelGeneratorInfo.events = GeneratorLGI.GenerateLevel(moyenne * 3, 10, new List<string>() { "Wave", "Wave", "Wave" });
+            // float moyenne = 0f;
+            // for (int i = 0; i < App.ALL_EVENTS["Wave"].Count; i++)
+            // {
+            //     Debug.Log(App.ALL_EVENTS["Wave"][i].GetScore());
+            //     moyenne += App.ALL_EVENTS["Wave"][i].GetScore();
+            // }
+            // moyenne /= App.ALL_EVENTS["Wave"].Count;
+            // Debug.Log("Wanted Score " + moyenne * 3);
+            // levelGeneratorInfo.events = GeneratorLGI.GenerateLevel(moyenne * 3, 10, new List<string>() { "Wave", "Wave", "Wave" });
+            Debug.Log(levelGeneratorInfo);
             App.SetLevelGenerator(levelGeneratorInfo);
 
             App.StartLevel();
+            this.End();
         }
         this.End();
     }

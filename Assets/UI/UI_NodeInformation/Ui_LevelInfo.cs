@@ -31,11 +31,14 @@ public class Ui_LevelInfo : MonoBehaviour
         allDesigns.Add(designVeryRareItem);
     }
     
-    void Start(){
-        ConstraintSource cs = new ConstraintSource();
-        cs.sourceTransform = Camera.main.transform;
-        cs.weight = 1;
-        GetComponent<LookAtConstraint>().AddSource(cs);
+    void Update(){
+        if(GetComponent<LookAtConstraint>().GetSource(0).sourceTransform != null){
+            ConstraintSource cs = new ConstraintSource();
+            cs.sourceTransform = Camera.main.transform;
+            cs.weight = 1;
+            GetComponent<LookAtConstraint>().RemoveSource(0);
+            GetComponent<LookAtConstraint>().AddSource(cs);
+        }
 
     }
 
