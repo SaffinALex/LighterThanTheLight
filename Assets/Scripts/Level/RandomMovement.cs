@@ -31,11 +31,13 @@ public class RandomMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if(timerMovement < timerChangeMovement){
-            timerMovement += Time.deltaTime;
+        if(timerMovement < timerChangeMovement)
+        {
+            timerMovement += Time.unscaledDeltaTime;
             timerMovement = timerMovement >= timerChangeMovement ? timerChangeMovement : timerMovement;
 
             rgbd.velocity = Vector3.Lerp(lastPosition, nextPosition, Mathf.SmoothStep(0.0f, 1.0f, timerMovement / timerChangeMovement));
+
             transform.localRotation = Quaternion.Lerp(lastRotation, nextRotation, Mathf.SmoothStep(0.0f, 1.0f, timerMovement / timerChangeMovement));
 
             if(timerMovement >= timerChangeMovement){
