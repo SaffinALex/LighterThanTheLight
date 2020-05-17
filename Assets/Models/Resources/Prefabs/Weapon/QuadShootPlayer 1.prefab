@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4858229881090144325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.27052668, y: 38.985435, z: 309623100}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,6 +47,7 @@ MonoBehaviour:
   nbrMaxUpgrade: 0
   bullet: {fileID: 741788068531152253, guid: ff4828655a57f9a46aa06c71ca9a2e60, type: 3}
   size: 0
+  icon: {fileID: 21300000, guid: d8038c4c11e31644aa699c396d779a18, type: 3}
   fireRateBase: 0.18
   price: 0
   weight: 0
