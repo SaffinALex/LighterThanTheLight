@@ -8,7 +8,7 @@ public class UpgradeDashRecovery : UpgradeDash
 
     override
     public void StartUpgrade(Dash d){
-        d.setRecoveryDash(recoveryBonus);
+        d.IncreaseRecoveryDash(recoveryBonus);
     }
 //Avant la suppression de l'Upgrade.
 

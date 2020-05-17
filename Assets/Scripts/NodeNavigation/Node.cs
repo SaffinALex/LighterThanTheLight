@@ -30,8 +30,8 @@ public class Node : MonoBehaviour
         public NodeElement nodeElement;
     
     /** VARIABLE ALEATOIRE POUR LA GENERATION DE NODE ELEMENT */
-    static readonly float probaLevel = 0.98f;
-    static readonly float probaShop = 0.02f;
+    static readonly float probaLevel = 0.96f;
+    static readonly float probaShop = 1 - probaLevel;
 
     //Enregistre la position des contraintes sur les enfants
     protected List<GameObject> constraintsCubes = new List<GameObject>();
@@ -188,10 +188,19 @@ public class Node : MonoBehaviour
         nodeElementObject.transform.localScale = new Vector3(1,1,1);
 
         float randomElement = Random.Range(0f,1f);
-        if(randomElement > probaLevel){
+        if(randomElement > probaLevel && parent != null){
             nodeElement = nodeElementObject.AddComponent<NodeShop>();
+            gameObject.transform.Find("Visual").GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/NodeElement/ShopNode");
+            GameObject shopObject = Instantiate(Resources.Load("Prefabs/SpaceShip/Models/Shop") as GameObject);
+            shopObject.transform.parent = CONSTRAINTS_DESIGN.transform;
+
+            Vector3 AngleParent = (transform.position - parent.transform.position).normalized;
+            shopObject.transform.localPosition = (parent.transform.position + transform.position) / 2 + new Vector3(0,-1.8f,0) + (Quaternion.AngleAxis(-90, Vector3.up) * AngleParent * 3f);
+            float angle = Mathf.Atan2(AngleParent.z, AngleParent.x) * Mathf.Rad2Deg;
+            shopObject.transform.rotation = Quaternion.AngleAxis(-angle, Vector3.up);
         }else{
             nodeElement = nodeElementObject.AddComponent<NodeLevel>();
+            gameObject.transform.Find("Visual").GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/NodeElement/LevelNode");
         }
         float scoreParent = parent == null ? (1 + App.GetDifficulty()) * 50 * 5 : parent.nodeElement.GetScoreDifficulty();
         nodeElement.InitializeNode(scoreParent);

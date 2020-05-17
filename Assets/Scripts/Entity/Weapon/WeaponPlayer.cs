@@ -22,7 +22,8 @@ public abstract class WeaponPlayer : Weapon
         setBulletSpeed(bulletSpeedBase);
         setFireRate(fireRateBase);
         for(int i=0; i<upgradeWeapons.Count; i++){
-            upgradeWeapons[i].StartUpgrade(this);
+            if(upgradeWeapons[i] != null)
+                upgradeWeapons[i].StartUpgrade(this);
         }
         canShoot = true;
         timerShoot = 0;

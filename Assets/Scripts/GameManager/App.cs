@@ -43,7 +43,9 @@ public class App : MonoBehaviour
 
     void Start(){
         playerShip = Instantiate(playerShipPrefab);
-        playerShip.enabled = false;
+        DontDestroyOnLoad(playerShip); //Sauvergarde de la pérénité du gameobject tout au long du jeu
+        playerShip.gameObject.SetActive(false);
+
         baseWeapon = baseWeaponPrefab;
 
         playerManager = new PlayerManager(playerShip.GetComponent<PlayerShip>());
@@ -59,6 +61,11 @@ public class App : MonoBehaviour
         addEvents();
 
         SceneManager.LoadScene(1);
+    }
+
+    static public PlayerShip GetPlayerShip(){
+        Debug.Log("VALEUR PLAYER SHIP" + playerShip);
+        return playerShip;
     }
 
     public static bool IsInit(){

@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -783,8 +783,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e0b2580beb791438a22ebef83c092d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyList: {fileID: 8515238202460999836, guid: d4c92d38b09ebfe4c927509ecbccdb0d,
-    type: 3}
 --- !u!4 &2073223941
 Transform:
   m_ObjectHideFlags: 0
@@ -968,6 +966,7 @@ GameObject:
   - component: {fileID: 17232247585614357}
   - component: {fileID: 17232247585614356}
   - component: {fileID: 17232247585614354}
+  - component: {fileID: 17232247585614360}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -975,6 +974,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &17232247585614360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17232247585614359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599ae3ddcf430a447bd2ba4103413c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1096232811833917952
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,7 +1109,7 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

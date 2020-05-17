@@ -10,7 +10,7 @@ public class Ship : MonoBehaviour
     public int nbrMaxWeapons;
     public int nbrMaxUpgradeShip;
     public double initialLife;
-    private double life;
+    protected double life;
     public float speed;
     public int maxShieldLife;
     public List<WeaponPlayer> weapons;

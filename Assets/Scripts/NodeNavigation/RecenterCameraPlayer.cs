@@ -8,7 +8,7 @@ public class RecenterCameraPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.GetComponent<CinemachineVirtualCamera>().Follow = GameObject.Find("PlayerShip").transform;
+        this.GetComponent<CinemachineVirtualCamera>().Follow = GameObject.Find("playerShip").transform;
     }
 
     // Update is called once per frame

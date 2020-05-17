@@ -8,6 +8,6 @@ public class UpgradeDashSpeed : UpgradeDash
 
     override
     public void StartUpgrade(Dash d){
-        d.setSpeed(speedBonus);
+        d.IncreaseSpeed(speedBonus);
     }
 }

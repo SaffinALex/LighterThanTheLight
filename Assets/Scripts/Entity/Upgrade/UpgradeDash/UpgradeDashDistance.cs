@@ -8,6 +8,6 @@ public class UpgradeDashDistance : UpgradeDash
 
     override
     public void StartUpgrade(Dash d){
-        d.setDistance(distanceBonus);
+        d.IncreaseDistance(distanceBonus);
     }
 }

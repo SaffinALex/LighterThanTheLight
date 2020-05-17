@@ -21,7 +21,7 @@ public class PlayerManager {
         score = 0;
 
         this.player = player;
-        this.onde = player.wave.GetComponent<Onde>();
+        this.onde = player.wave;
         this.dash = player.dash;
 
         List<UpgradeShip> bufferShipUpgrades = new List<UpgradeShip>(new UpgradeShip[player.nbrMaxUpgradeShip]);

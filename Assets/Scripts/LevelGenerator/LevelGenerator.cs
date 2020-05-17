@@ -12,10 +12,11 @@ public class LevelGenerator : MonoBehaviour
 
     protected LevelGeneratorInfo levelGeneratorInfo;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        Debug.Log("Début du niveau !");
-        PlayerShip playerShip = Instantiate(App.playerShip);
+        Debug.Log("Début du niveau !" + App.playerShip);
+        GameObject playerShip = Instantiate(App.playerShip.gameObject);
+        playerShip.gameObject.SetActive(true);
         playerShip.transform.position = Vector3.zero;
         playerShip.gameObject.name = "playerShip";
         

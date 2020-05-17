@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class BotBulletPrototype : Bullet
 {
-
-    void Start() {
-    }
+    static protected float scrollingSpeed = 2f;
 
     // Update is called once per frame
     void FixedUpdate() {
@@ -28,7 +26,7 @@ public class BotBulletPrototype : Bullet
                 Destroy(this.gameObject);
             }
         }
-        transform.position += -transform.up.normalized * speed * Time.fixedDeltaTime;
+        transform.position += -transform.up.normalized * speed * Time.fixedDeltaTime + (Vector3.down * scrollingSpeed) * Time.fixedDeltaTime;
     }
 
     void OnBecameInvisible()
