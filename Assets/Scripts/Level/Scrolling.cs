@@ -48,7 +48,7 @@ public class Scrolling : MonoBehaviour
             if(bossActive == null){
                 alertLaunched = false;
                 Debug.Log("Terminer le level");
-                StartCoroutine("FinishLevel");
+                //StartCoroutine("FinishLevel");
             }
         }
  
