@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerBulletPrototype : Bullet {
 
     float maxTimeAlive = 4000f;
+    [SerializeField] protected bool playSoundStart = true;
 
     void Start()
     {
-        App.sfx.PlayEffect("LaserShot", 0.05f);
+        if(playSoundStart) App.sfx.PlayEffect("LaserShot", 0.05f);
     }
 
     // Update is called once per frame
@@ -19,6 +20,7 @@ public class PlayerBulletPrototype : Bullet {
             Collider2D collisionNear = null;
             float nearDistance = -1;
             for(int i = 0; i < hits.Length; i++){
+                if(hits[i].collider.gameObject.layer == LayerMask.NameToLayer("EnnemiesBorder")) Destroy(this.gameObject);
                 if (hits[i].collider.gameObject.CompareTag("Enemy") || hits[i].collider.gameObject.CompareTag("Cockpit")
                 || hits[i].collider.gameObject.CompareTag("RightSide") || hits[i].collider.gameObject.CompareTag("LeftSide"))
                 {
