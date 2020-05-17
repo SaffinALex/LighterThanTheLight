@@ -32,19 +32,19 @@ public class RessourcesLoader
 
         foreach (GameObject go in tempListeWeapons)
             if(!(go.name.Contains("Enemy") || go.name.Contains("enemy")))
-                listeWeapons.Add(GameObject.Instantiate(go));
+                listeWeapons.Add(go);
 
         foreach (GameObject go in tempListeShipUpgrades)
-            listeShipUpgrades.Add(GameObject.Instantiate(go));
+            listeShipUpgrades.Add(go);
 
         foreach (GameObject go in tempListeDashUpgrades)
-            listeDashUpgrades.Add(GameObject.Instantiate(go));
+            listeDashUpgrades.Add(go);
 
         foreach (GameObject go in tempListeOndeUpgrades)
-            listeOndeUpgrades.Add(GameObject.Instantiate(go));
+            listeOndeUpgrades.Add(go);
 
         foreach (GameObject go in tempListeWeaponUpgrades)
-            listeWeaponUpgrades.Add(GameObject.Instantiate(go));
+            listeWeaponUpgrades.Add(go);
 
         listeUpgrades = new List<GameObject>();
         listeUpgrades.AddRange(listeShipUpgrades);

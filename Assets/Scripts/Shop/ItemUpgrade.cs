@@ -10,4 +10,9 @@ public class ItemUpgrade : Item
         available = false;
         return upgrade;
     }
+
+    public ItemUpgrade(Upgrade upgrade){
+        this.upgrade = upgrade;
+        this.price = upgrade.price;
+    }
 }

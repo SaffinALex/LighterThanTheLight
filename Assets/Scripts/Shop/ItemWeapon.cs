@@ -10,4 +10,10 @@ public class ItemWeapon : Item
         available = false;
         return weapon;
     }
+
+    public ItemWeapon(WeaponPlayer weapon)
+    {
+        this.weapon = weapon;
+        this.price = weapon.price;
+    }
 }
