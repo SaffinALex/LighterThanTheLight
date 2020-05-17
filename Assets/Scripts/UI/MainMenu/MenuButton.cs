@@ -24,24 +24,30 @@ public class MenuButton : MonoBehaviour
     }
 
     void Update() {
-        /*if(isHovered){
+        if(isHovered){
             if(m_RectTransform.localScale != (startScale + new Vector3(hoveredSizeOffset, hoveredSizeOffset, hoveredSizeOffset))){
                 Vector3 scale = m_RectTransform.localScale;
                 scale.x = scale.x + (transitionSpeed*Time.deltaTime);
-                if(scale.x > (scale + new Vector2(hoveredSizeOffset, 0)).x)
-                    scale.x = (scale + new Vector2(hoveredSizeOffset, 0)).x;
-                m_RectTransform.anchoredPosition = position;
+                if(scale.x > (startScale + new Vector3(hoveredSizeOffset, hoveredSizeOffset, hoveredSizeOffset)).x)
+                    scale.x = (startScale + new Vector3(hoveredSizeOffset, hoveredSizeOffset, hoveredSizeOffset)).x;
+                scale.y = scale.y + (transitionSpeed * Time.deltaTime);
+                if (scale.y > (startScale + new Vector3(hoveredSizeOffset, hoveredSizeOffset, hoveredSizeOffset)).y)
+                    scale.y = (startScale + new Vector3(hoveredSizeOffset, hoveredSizeOffset, hoveredSizeOffset)).y;
+                m_RectTransform.localScale = scale;
             }
         }else{
-            if(m_RectTransform.anchoredPosition != startPosX){
-                
-                Vector2 position = m_RectTransform.anchoredPosition;
-                position.x = position.x - (transitionSpeed*Time.deltaTime);
-                if(position.x < startPosX.x)
-                    position.x = startPosX.x;
-                m_RectTransform.anchoredPosition = position;
+            if(m_RectTransform.localScale != startScale)
+            {
+                Vector3 scale = m_RectTransform.localScale;
+                scale.x = scale.x - (transitionSpeed*Time.deltaTime);
+                if(scale.x < startScale.x)
+                    scale.x = startScale.x;
+                scale.y = scale.y - (transitionSpeed * Time.deltaTime);
+                if (scale.y < startScale.y)
+                    scale.y = startScale.y;
+                m_RectTransform.localScale = scale;
             }
-        }*/
+        }
            
     }
 

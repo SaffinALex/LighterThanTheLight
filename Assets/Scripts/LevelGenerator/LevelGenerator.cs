@@ -26,7 +26,8 @@ public class LevelGenerator : MonoBehaviour
         levelGeneratorInfo = GameObject.Instantiate(levelGeneratorInfo).GetComponent<LevelGeneratorInfo>();
         levelGeneratorInfo.Difficulty = App.GetDifficulty();
         levelGeneratorInfo.StartLevel();
-        levelGeneratorInfo.GetEventEnd().AddListener(LevelEnd);
+        PanelUIManager.GetPanelUI().GetComponentInChildren<EndGameScript>().GetEventEnd().AddListener(LevelEnd);
+        levelGeneratorInfo.GetEventEnd().AddListener(PanelUIManager.GetPanelUI().ToggleEndGamePanel);
     }
 
     // Update is called once per frame

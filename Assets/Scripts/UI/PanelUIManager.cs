@@ -8,6 +8,7 @@ public class PanelUIManager : MonoBehaviour
     private GameObject currentPanel;
     private GameObject background;
     public GameObject indexPanel;
+    public GameObject scorePanel;
     public GameObject endLevelPanel;
     public GameObject endGamePanel;
     public string startSceneName;
@@ -78,11 +79,13 @@ public class PanelUIManager : MonoBehaviour
     public void ToggleEndGamePanel(){
         if(endGamePanel != null && currentPanel != endGamePanel){
             GoTo(endGamePanel);
+            endLevelPanel.GetComponent<EndGameScript>().initPanel();
             Time.timeScale = 0;
         }
         else if(currentPanel == endGamePanel){
             Time.timeScale = 1;
             GoToStartMenu();
+            endLevelPanel.GetComponent<EndGameScript>().exitPanel();
         }
     }
 
@@ -91,6 +94,18 @@ public class PanelUIManager : MonoBehaviour
             child.gameObject.SetActive(false);
         currentPanel = null;
         Time.timeScale = 1;
+    }
+
+    public void OpenScorePanel()
+    {
+        if (scorePanel != null)
+        {
+            GoTo(scorePanel);
+            scorePanel.GetComponent<ScoresPanel>().UpdateLeaderBoard();
+            Time.timeScale = 0;
+        }
+        else
+            Debug.Log("PanelUIManager : scorePanel is NULL");
     }
 
     public void GoToStartMenu(){
