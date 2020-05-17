@@ -39,9 +39,23 @@ public class NodeLevel : NodeElement
     public override void InitializeNode(float score = 0){
         levelGeneratorInfo = gameObject.AddComponent<LevelGeneratorInfo>();
         scoreDifficulty = score + Random.Range(6, 20); //On augmente le niveau
-///
+
+        float moyenne = 0f;
+        MinMax scoresMax = new MinMax();
+        for (int i = 0; i < App.ALL_EVENTS["Wave"].Count; i++)
+        {
+            // Debug.Log(App.ALL_EVENTS["Wave"][i].GetScore());
+            scoresMax.AddValue(App.ALL_EVENTS["Wave"][i].GetScore());
+            moyenne += App.ALL_EVENTS["Wave"][i].GetScore();
+        }
+        moyenne /= App.ALL_EVENTS["Wave"].Count;
+        Debug.Log("Moyenne : " + moyenne + " / Min : " + scoresMax.Min + " / Max : " + scoresMax.Max);
+
+        Debug.Log("SCORE VOULU " + scoreDifficulty);
+        Debug.Log("Score moyenneur " + scoreDifficulty/5);
+        if(scoreDifficulty / 5 > scoresMax.Max) App.SetDifficulty(App.GetDifficulty() + 1);
         List<string> levelFlow = new List<string>() { "Wave", "Wave", "Wave", "Wave", "Wave" };
-        levelGeneratorInfo.events = GeneratorLGI.GenerateLevel(scoreDifficulty, 15, levelFlow);
+        levelGeneratorInfo.events = GeneratorLGI.GenerateLevel(scoreDifficulty, 20, levelFlow);
 
         List<int> eventAlreadyGet = new List<int>();
         //On lance 3 fois l'aléatoire pour les évènements spéciaux

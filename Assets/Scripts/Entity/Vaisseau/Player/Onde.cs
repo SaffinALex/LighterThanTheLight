@@ -5,50 +5,96 @@ using UnityEngine;
 public class Onde : MonoBehaviour
 {
     // Start is called before the first frame update
+    public float damage;
     public float radius;
-    public int damage;
+    public float timeBeforeExplosion;
+    public float timeReload;
+
+    protected float timerBeforeExplosion;
+    protected float timerReload;
+
     public List<UpgradeOnde> upgradeOndes;
     public int nbrUpgradeMax;
-    private float timer;
-    public float timeBeforeExplosion;
-    private Animator animator;
+
+    protected CircleCollider2D colliderOnde;
+
+    [SerializeField] protected ParticleSystem awakeParticle;
+    [SerializeField] protected ParticleSystem explodeParticle;
+
+
+    public enum StatesOndes { sleep, awake, explode, ended };
+    //Machine à état
+    // sleep -> au repos
+    // awake -> commence le chargement de l'onde
+    // explode -> l'onde explose
+    // ended -> l'onde a terminé son travail
+    // Reviens à la state sleep lorsque le timer de reload est terminé
+    protected StatesOndes stateOnde = StatesOndes.sleep;
 
     void Start()
     {
-        timer = 0;
-        animator = GetComponent<Animator>();
-        GetComponent<CircleCollider2D>().enabled = false;
+        timerReload = timeReload;
+        timerBeforeExplosion = timeBeforeExplosion;
+        colliderOnde = GetComponent<CircleCollider2D>();
+        colliderOnde.enabled = false;
+        colliderOnde.radius = radius;
+        awakeParticle.Stop();
+        explodeParticle.Stop();
+        SetInfoParticle();
     }
+
+    void SetInfoParticle(){
+        var mainAwake = awakeParticle.main;
+        mainAwake.duration = timeBeforeExplosion;
+        mainAwake.loop = false;
+        var shapeAwake = awakeParticle.shape;
+        shapeAwake.radius = radius;
+    }
+
+    public void initialize()
+    {
+        for (int i = 0; i < upgradeOndes.Count; i++)
+        {
+            if (upgradeOndes[i] != null)
+                upgradeOndes[i].StartUpgrade(this);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if(timer < timeBeforeExplosion){
-            transform.position = new Vector3(transform.position.x, transform.position.y+1f*Time.deltaTime, transform.position.z);
+        if(timerReload < timeReload) timerReload += Time.deltaTime;
+        if(timerBeforeExplosion < timeBeforeExplosion) timerBeforeExplosion += Time.deltaTime;
+        if(stateOnde == StatesOndes.explode){
+            stateOnde = StatesOndes.ended;
+            colliderOnde.enabled = false;
+            timerReload = 0f;
+            explodeParticle.Play();
         }
-        else{
-            if(timer >= timeBeforeExplosion + 2){
-                StartCoroutine("WaveExploded");
-                GetComponent<CircleCollider2D>().enabled = true;
-            }
+        if(stateOnde == StatesOndes.awake && timerBeforeExplosion >= timeBeforeExplosion){
+            stateOnde = StatesOndes.explode;
+            colliderOnde.enabled = true;
+            timeReload = 0f;
+        }
+        if(timerReload >= timeReload && stateOnde == StatesOndes.ended){
+            stateOnde = StatesOndes.sleep;
         }
     }
+
+    public void RunOnde(){
+        if(stateOnde == StatesOndes.sleep){
+            stateOnde = StatesOndes.awake;
+            timerBeforeExplosion = 0f;
+            SetInfoParticle();
+            awakeParticle.Play();
+            explodeParticle.Stop();
+            LevelUIEventManager.GetLevelUI().TriggerPlayerBomb();
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D col){
-        if(col.CompareTag("Enemy") && animator.GetBool("isExploded")){
-            col.GetComponent<EntitySpaceShipBehavior>().life-= damage;
+        if(col.CompareTag("Enemy")){
+            col.GetComponent<EntitySpaceShipBehavior>().getDamage(damage);
         }
     }
-    void OnTriggerStay2D(Collider2D col){
-        if(col.CompareTag("Enemy") && animator.GetBool("isExploded")){
-            col.GetComponent<EntitySpaceShipBehavior>().life-= damage;
-        }
-    }
-
-    IEnumerator WaveExploded(){
-        animator.SetBool("isExploded", true);
-        yield return new WaitForSeconds(5f);
-        Destroy(this.gameObject);
-    }
-
-
 }

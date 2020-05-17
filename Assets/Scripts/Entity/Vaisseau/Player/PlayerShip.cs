@@ -33,6 +33,8 @@ public class PlayerShip : Ship
     Vector2 lastVelocity;
     Vector2 lastWantedVelocity;
 
+    private bool animationDeadStart = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,8 +46,6 @@ public class PlayerShip : Ship
         
         dash.initialize();
         wave = Instantiate(wave);
-        wave.transform.parent = transform;
-        wave.transform.position = Vector3.zero;
         for (int i = 0; i < weapons.Count; i++) {
             if(weapons[i] != null){
                 weapons[i] = Instantiate(weapons[i]);
@@ -72,6 +72,19 @@ public class PlayerShip : Ship
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (IsDead()) {
+            if(!animationDeadStart){
+                animationDeadStart = true;
+                //App.EndGame();
+                Destroy(this.gameObject);
+            }
+        }else{
+            ShipBehaviourUpdate();
+        }
+        wave.transform.position = transform.position;
+    }
+    
+    void ShipBehaviourUpdate(){
         if(recoveryTime < initialRecoveryTime){
             recoveryTime += Time.fixedDeltaTime;
             //Si le temps d'invincibilité est fini alors on arrête l'animation
@@ -80,10 +93,6 @@ public class PlayerShip : Ship
             }
         }
 
-        if (life <= 0) {
-            PanelUIManager.GetPanelUI().ToggleEndGamePanel();
-            Destroy(this.gameObject);
-        }
 
         //On update les timer des weapons
         for (int i = 0; i < weapons.Count; i++) {
@@ -102,13 +111,9 @@ public class PlayerShip : Ship
         change.y = Input.GetAxisRaw("Vertical");
 
         //Onde tire
-        /*     if(Input.GetKey("o") && waveNumber > 0){
-                 StartCoroutine("ShootWave");
-                 waveNumber --;
-                 GameObject waveBullet = Instantiate(wave, transform.position, Quaternion.identity);
-                 waveBullet.GetComponent<CircleCollider2D>().radius = waveRadius; 
-                 LevelUIEventManager.GetLevelUI().TriggerPlayerBomb();
-             } */
+        if(Input.GetKey(KeyCode.Z)){
+            wave.RunOnde();
+        }
         //Le Dash se fait seulement sur X.
         if (Input.GetKey(KeyCode.LeftShift)) //Dash
         {
@@ -229,5 +234,9 @@ public class PlayerShip : Ship
 
     public bool IsInvincible(){
         return recoveryTime < initialRecoveryTime || dash.IsDashing();
+    }
+
+    public bool IsDead(){
+        return life <= 0;
     }
 }

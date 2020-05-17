@@ -16,15 +16,15 @@ public class UpgradeOnde : Upgrade
         
     }
 //A l'obtention de l'Upgrade
-    void StartUpgrade(Onde onde){
+    public void StartUpgrade(Onde onde){
 
     }
-//A chaque update mettre à jour les caractéristiques.
-    void UpdateUpgrade(Onde onde){
+    //A chaque update mettre à jour les caractéristiques.
+    public void UpdateUpgrade(Onde onde){
         
     }
-//Avant la suppression de l'Upgrade.
-    void EndUpgrade(Onde onde){
+    //Avant la suppression de l'Upgrade.
+    public void EndUpgrade(Onde onde){
         
         Destroy(this);
     }
