@@ -52,20 +52,7 @@ public class RessourcesLoader
         listeUpgrades.AddRange(listeOndeUpgrades);
         listeUpgrades.AddRange(listeWeaponUpgrades);
 
-        /*foreach (GameObject go in tempListeWeapons)
-            GameObject.Destroy(go);
-
-        foreach (GameObject go in tempListeShipUpgrades)
-            GameObject.Destroy(go);
-
-        foreach (GameObject go in tempListeDashUpgrades)
-            GameObject.Destroy(go);
-
-        foreach (GameObject go in tempListeOndeUpgrades)
-            GameObject.Destroy(go);
-
-        foreach (GameObject go in tempListeWeaponUpgrades)
-            GameObject.Destroy(go);*/
+        Resources.UnloadUnusedAssets();
 
         //printAll();
     }
