@@ -251,18 +251,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 574912439305186582, guid: 3676bed24711a5847b1e8940237f0da4, type: 3}
+  - {fileID: 574912439305186582, guid: e4deca9f5493e284eae0ba73c40e5b35, type: 3}
   overrideDefaultWeapon: 0
   startWeaponFireRate: 0
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
-  life: 30
+  life: 50
   canDieOutside: 1
   speedMove: 2
-  scrolling: 0.1
+  scrolling: 0
   animator: {fileID: 753019626556405679}
   force: {x: 0, y: 0}
-  score: 10
+  score: 0
   positionX: 2
   positionY: 0
   t: {fileID: 0}
@@ -365,18 +365,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 574912439305186582, guid: 3676bed24711a5847b1e8940237f0da4, type: 3}
+  - {fileID: 574912439305186582, guid: e4deca9f5493e284eae0ba73c40e5b35, type: 3}
   overrideDefaultWeapon: 0
   startWeaponFireRate: 0
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
-  life: 30
+  life: 50
   canDieOutside: 1
   speedMove: 2
-  scrolling: 0.1
+  scrolling: 0
   animator: {fileID: 753019626556405679}
   force: {x: 0, y: 0}
-  score: 10
+  score: 0
   positionX: 2
   positionY: 0
   t: {fileID: 0}
@@ -558,20 +558,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 574912439305186582, guid: 3676bed24711a5847b1e8940237f0da4, type: 3}
-  - {fileID: 2864468351171722414, guid: 219fb7a11ba75b54ba886dcf8b5f1da6, type: 3}
+  - {fileID: 574912439305186582, guid: e4deca9f5493e284eae0ba73c40e5b35, type: 3}
+  - {fileID: 2864468351171722414, guid: 2e97a230373140e45b4e05088d5439d2, type: 3}
   - {fileID: 9121906638916084724, guid: 5b8da2c35f02a7a468faf0d8c2e42146, type: 3}
   overrideDefaultWeapon: 0
   startWeaponFireRate: 0
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
-  life: 50
+  life: 80
   canDieOutside: 1
   speedMove: 2
-  scrolling: 0.1
+  scrolling: 0
   animator: {fileID: 753019626556405679}
   force: {x: 0, y: 0}
-  score: 20
+  score: 200
   positionX: 2
   positionY: 0
   t: {fileID: 0}

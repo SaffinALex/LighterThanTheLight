@@ -29145,20 +29145,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 574912439305186582, guid: 3676bed24711a5847b1e8940237f0da4, type: 3}
-  - {fileID: 2864468351171722414, guid: 219fb7a11ba75b54ba886dcf8b5f1da6, type: 3}
-  - {fileID: 9121906638916084724, guid: 5b8da2c35f02a7a468faf0d8c2e42146, type: 3}
+  - {fileID: 574912439305186582, guid: 7fab47c8537b59b41b508b4ed61d26be, type: 3}
+  - {fileID: 2864468351171722414, guid: 51d073626f9772e4b912e6bf95a4b6ef, type: 3}
+  - {fileID: 9121906638916084724, guid: 9bf6da4d59b31e9448862c75133e7a7f, type: 3}
   overrideDefaultWeapon: 0
   startWeaponFireRate: 0
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
-  life: 50
+  life: 140
   canDieOutside: 1
   speedMove: 2
-  scrolling: 0.1
+  scrolling: 0
   animator: {fileID: 2920496595994703313}
   force: {x: 0, y: 0}
-  score: 20
+  score: 300
   positionX: 2
   positionY: 0
   t: {fileID: 0}
@@ -29365,18 +29365,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 574912439305186582, guid: 3676bed24711a5847b1e8940237f0da4, type: 3}
+  - {fileID: 574912439305186582, guid: 7fab47c8537b59b41b508b4ed61d26be, type: 3}
   overrideDefaultWeapon: 0
   startWeaponFireRate: 0
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
-  life: 30
+  life: 80
   canDieOutside: 1
   speedMove: 2
-  scrolling: 0.1
+  scrolling: 0
   animator: {fileID: 2920496595994703313}
   force: {x: 0, y: 0}
-  score: 10
+  score: 0
   positionX: 2
   positionY: 0
   t: {fileID: 0}
@@ -29479,18 +29479,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 574912439305186582, guid: 3676bed24711a5847b1e8940237f0da4, type: 3}
+  - {fileID: 574912439305186582, guid: 7fab47c8537b59b41b508b4ed61d26be, type: 3}
   overrideDefaultWeapon: 0
   startWeaponFireRate: 0
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
-  life: 30
+  life: 80
   canDieOutside: 1
   speedMove: 2
-  scrolling: 0.1
+  scrolling: 0
   animator: {fileID: 2920496595994703313}
   force: {x: 0, y: 0}
-  score: 10
+  score: 0
   positionX: 2
   positionY: 0
   t: {fileID: 0}
