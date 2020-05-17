@@ -8,28 +8,28 @@ using UnityEngine.UI;
 [RequireComponent (typeof(TextMeshProUGUI))]
 public class MenuButton : MonoBehaviour
 {
-    public float hoveredOffset = 2.0f;
+    public float hoveredSizeOffset = 2.0f;
     public float transitionDelay = 0.5f;
 
     private float transitionSpeed;
     public bool isHovered;
-    private Vector2 startPosX;
+    private Vector3 startScale;
     private RectTransform m_RectTransform;
         
     void Start() {
         m_RectTransform = GetComponent<RectTransform>();
         isHovered = false;
-        startPosX = m_RectTransform.anchoredPosition;
-        transitionSpeed = hoveredOffset / transitionDelay;
+        startScale = m_RectTransform.localScale;
+        transitionSpeed = hoveredSizeOffset / transitionDelay;
     }
 
     void Update() {
-        if(isHovered){
-            if(m_RectTransform.anchoredPosition != (startPosX + new Vector2(hoveredOffset,0))){
-                Vector2 position = m_RectTransform.anchoredPosition;
-                position.x = position.x + (transitionSpeed*Time.deltaTime);
-                if(position.x > (startPosX + new Vector2(hoveredOffset,0)).x)
-                    position.x = (startPosX + new Vector2(hoveredOffset,0)).x;
+        /*if(isHovered){
+            if(m_RectTransform.localScale != (startScale + new Vector3(hoveredSizeOffset, hoveredSizeOffset, hoveredSizeOffset))){
+                Vector3 scale = m_RectTransform.localScale;
+                scale.x = scale.x + (transitionSpeed*Time.deltaTime);
+                if(scale.x > (scale + new Vector2(hoveredSizeOffset, 0)).x)
+                    scale.x = (scale + new Vector2(hoveredSizeOffset, 0)).x;
                 m_RectTransform.anchoredPosition = position;
             }
         }else{
@@ -41,7 +41,7 @@ public class MenuButton : MonoBehaviour
                     position.x = startPosX.x;
                 m_RectTransform.anchoredPosition = position;
             }
-        }
+        }*/
            
     }
 

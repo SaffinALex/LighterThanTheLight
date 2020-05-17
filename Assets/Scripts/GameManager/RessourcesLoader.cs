@@ -52,6 +52,13 @@ public class RessourcesLoader
         listeUpgrades.AddRange(listeOndeUpgrades);
         listeUpgrades.AddRange(listeWeaponUpgrades);
 
+        //On casse les références de maniére un peu overkill
+        tempListeWeapons.Clear(); tempListeWeapons = null;
+        tempListeShipUpgrades.Clear(); tempListeShipUpgrades = null;
+        tempListeDashUpgrades.Clear(); tempListeDashUpgrades = null;
+        tempListeOndeUpgrades.Clear(); tempListeOndeUpgrades = null;
+        tempListeWeaponUpgrades.Clear(); tempListeWeaponUpgrades = null;
+
         Resources.UnloadUnusedAssets();
 
         //printAll();
@@ -62,7 +69,7 @@ public class RessourcesLoader
     public ReadOnlyCollection<GameObject> getDashUpgrades() => this.listeDashUpgrades.AsReadOnly();
     public ReadOnlyCollection<GameObject> getOndeUpgrades() => this.listeOndeUpgrades.AsReadOnly();
     public ReadOnlyCollection<GameObject> getWeaponUpgrades() => this.listeWeaponUpgrades.AsReadOnly();
-
+     
     public ReadOnlyCollection<GameObject> getUpgrades() => this.listeUpgrades.AsReadOnly();
 
     private void printAll()
