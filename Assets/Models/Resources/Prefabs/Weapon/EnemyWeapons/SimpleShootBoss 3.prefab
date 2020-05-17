@@ -48,7 +48,7 @@ MonoBehaviour:
   bullet: {fileID: 7871241776792002272, guid: b3ce537aa0da2b64893b6ef22339204a, type: 3}
   fireRate: 0.7
   bulletDamage: 16
-  bulletSpeed: 27
+  bulletSpeed: 23
   timeWaitBegin: 2
   timeReloadWaveShoot: 0
   maxShootToReload: 0
