@@ -125,7 +125,7 @@ public class MusicManager : MonoBehaviour
 
     public void PlayEffect(string effectName, float volumeSound = -1f)
     {
-        volumeSound = volumeSound == -1 ? volume : volumeSound;
+        volumeSound = volumeSound == -1 ? volume : volumeSound * volume;
         EffectElement found = foundEffect(effectName);
         if (found.name != null)
         {
