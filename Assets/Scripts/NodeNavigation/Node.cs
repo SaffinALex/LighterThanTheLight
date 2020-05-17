@@ -202,7 +202,18 @@ public class Node : MonoBehaviour
             nodeElement = nodeElementObject.AddComponent<NodeLevel>();
             gameObject.transform.Find("Visual").GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/NodeElement/LevelNode");
         }
-        float scoreParent = parent == null ? (1 + App.GetDifficulty()) * 50 * 5 : parent.nodeElement.GetScoreDifficulty();
+
+        float scoreParent = 0;
+        if(parent == null){
+            MinMax scoresMax = new MinMax();
+            for (int i = 0; i < App.ALL_EVENTS["Wave"].Count; i++) {
+                scoresMax.AddValue(App.ALL_EVENTS["Wave"][i].GetScore());
+            }
+            scoreParent = scoresMax.Min * 5;
+        }else{
+            scoreParent = parent.nodeElement.GetScoreDifficulty();
+        }
+
         nodeElement.InitializeNode(scoreParent);
         nodeElement.GetEvent().AddListener(CompleteNode);
         nodeElement.transform.localPosition = Vector3.zero;

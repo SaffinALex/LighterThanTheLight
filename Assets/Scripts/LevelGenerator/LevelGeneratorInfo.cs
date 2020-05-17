@@ -27,7 +27,7 @@ public class LevelGeneratorInfo : MonoBehaviour {
     public bool DevMod = false;
 
     void Awake(){
-        Debug.Log("LevelGeneratorInfo ! " + events.Count);
+        // Debug.Log("LevelGeneratorInfo ! " + events.Count);
         levelStart = false;
     }
 

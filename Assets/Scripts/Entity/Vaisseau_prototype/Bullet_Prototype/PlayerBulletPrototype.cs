@@ -20,7 +20,7 @@ public class PlayerBulletPrototype : Bullet {
             Collider2D collisionNear = null;
             float nearDistance = -1;
             for(int i = 0; i < hits.Length; i++){
-                if(hits[i].collider.gameObject.layer == LayerMask.NameToLayer("EnnemiesBorder")) Destroy(this.gameObject);
+                if(hits[i].collider.gameObject.layer == LayerMask.NameToLayer("EnnemiesBorder")) Destroy(gameObject);
                 if (hits[i].collider.gameObject.CompareTag("Enemy") || hits[i].collider.gameObject.CompareTag("Cockpit")
                 || hits[i].collider.gameObject.CompareTag("RightSide") || hits[i].collider.gameObject.CompareTag("LeftSide"))
                 {
@@ -31,18 +31,20 @@ public class PlayerBulletPrototype : Bullet {
                 }
             }
             if(collisionNear != null){
+                App.playerManager.getInventory().setScore(App.playerManager.getInventory().getScore() + 5);
+                EntitySpaceShipBehavior ennemy = collisionNear.gameObject.GetComponent<EntitySpaceShipBehavior>();
                 collisionNear.gameObject.GetComponent<EntitySpaceShipBehavior>().getDamage(damage);
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
         maxTimeAlive -= Time.fixedDeltaTime;
-        if(maxTimeAlive <= 0) Destroy(this.gameObject);
+        if(maxTimeAlive <= 0) Destroy(gameObject);
 
         transform.position += transform.up.normalized * speed * Time.fixedDeltaTime;
     }
 
     void OnBecameInvisible()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }
