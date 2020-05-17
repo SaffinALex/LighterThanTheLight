@@ -57,6 +57,7 @@ public class BlockBoss : MonoBehaviour
 
             GameObject e = Instantiate(App.GetEnemyList().getEnemy(enemiesWave[i].enemyType.ToString("g"), enemiesWave[i].enemyDifficulty), positionEnemy, Quaternion.AngleAxis(enemiesWave[i].angleAppear, Vector3.forward));
             allEnemy.Add(e.GetComponentInChildren<EntitySpaceShipBehavior>());
+            e.GetComponentInChildren<EntitySpaceShipBehavior>().difficult = enemiesWave[i].enemyDifficulty < 0 ? App.GetDifficulty() : enemiesWave[i].enemyDifficulty;
             e.SetActive(false);
         }
     }

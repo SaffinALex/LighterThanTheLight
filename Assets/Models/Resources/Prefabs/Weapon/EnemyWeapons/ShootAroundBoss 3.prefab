@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 722009143908024652}
   - component: {fileID: 2864468351171722414}
   m_Layer: 0
-  m_Name: ShootAroundEnemy
+  m_Name: ShootAroundBoss 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,9 +46,9 @@ MonoBehaviour:
   upgradeWeapons: []
   nbrMaxUpgrade: 0
   bullet: {fileID: 7871241776792002272, guid: b3ce537aa0da2b64893b6ef22339204a, type: 3}
-  fireRate: 0.05
-  bulletDamage: 1
-  bulletSpeed: 5
+  fireRate: 0.03
+  bulletDamage: 10
+  bulletSpeed: 6
   timeWaitBegin: 0
   timeReloadWaveShoot: 2
   maxNumberWaveShoot: 30

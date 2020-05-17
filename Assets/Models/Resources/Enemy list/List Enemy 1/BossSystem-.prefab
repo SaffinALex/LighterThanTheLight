@@ -53341,20 +53341,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 574912439305186582, guid: 3676bed24711a5847b1e8940237f0da4, type: 3}
-  - {fileID: 2864468351171722414, guid: 219fb7a11ba75b54ba886dcf8b5f1da6, type: 3}
+  - {fileID: 574912439305186582, guid: 09fbbca0fe448ee46b1e461f306d388a, type: 3}
+  - {fileID: 2864468351171722414, guid: d32bc64609c47cb4a883322560a3bf9f, type: 3}
   - {fileID: 9121906638916084724, guid: 5b8da2c35f02a7a468faf0d8c2e42146, type: 3}
   overrideDefaultWeapon: 0
   startWeaponFireRate: 0
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
-  life: 50
+  life: 60
   canDieOutside: 1
   speedMove: 2
-  scrolling: 0.1
+  scrolling: 0
   animator: {fileID: 7836514573890917197}
   force: {x: 0, y: 0}
-  score: 20
+  score: 150
   positionX: 2
   positionY: 0
   t: {fileID: 0}
@@ -53481,18 +53481,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 574912439305186582, guid: 3676bed24711a5847b1e8940237f0da4, type: 3}
+  - {fileID: 574912439305186582, guid: 09fbbca0fe448ee46b1e461f306d388a, type: 3}
   overrideDefaultWeapon: 0
   startWeaponFireRate: 0
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
-  life: 30
+  life: 40
   canDieOutside: 1
   speedMove: 2
-  scrolling: 0.1
+  scrolling: 0
   animator: {fileID: 7836514573890917197}
   force: {x: 0, y: 0}
-  score: 10
+  score: 0
   positionX: 2
   positionY: 0
   t: {fileID: 0}
@@ -53665,18 +53665,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 574912439305186582, guid: 3676bed24711a5847b1e8940237f0da4, type: 3}
+  - {fileID: 574912439305186582, guid: 09fbbca0fe448ee46b1e461f306d388a, type: 3}
   overrideDefaultWeapon: 0
   startWeaponFireRate: 0
   startWeaponBulletSpeed: 0
   startWeaponBulletDamage: 0
-  life: 30
+  life: 40
   canDieOutside: 1
   speedMove: 2
-  scrolling: 0.1
+  scrolling: 0
   animator: {fileID: 7836514573890917197}
   force: {x: 0, y: 0}
-  score: 10
+  score: 0
   positionX: 2
   positionY: 0
   t: {fileID: 0}
