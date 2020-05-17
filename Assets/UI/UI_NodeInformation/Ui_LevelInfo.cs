@@ -30,16 +30,22 @@ public class Ui_LevelInfo : MonoBehaviour
         allDesigns.Add(designRareItem);
         allDesigns.Add(designVeryRareItem);
     }
+    void Start(){
+        AddCameraConstraint();
+    }
     
     void Update(){
-        if(GetComponent<LookAtConstraint>().GetSource(0).sourceTransform != null){
-            ConstraintSource cs = new ConstraintSource();
-            cs.sourceTransform = Camera.main.transform;
-            cs.weight = 1;
-            GetComponent<LookAtConstraint>().RemoveSource(0);
-            GetComponent<LookAtConstraint>().AddSource(cs);
+        if(GetComponent<LookAtConstraint>().sourceCount == 0 || GetComponent<LookAtConstraint>().GetSource(0).sourceTransform == null){
+            AddCameraConstraint();
         }
+    }
 
+    void AddCameraConstraint(){
+        ConstraintSource cs = new ConstraintSource();
+        cs.sourceTransform = Camera.main.transform;
+        cs.weight = 1;
+        if (GetComponent<LookAtConstraint>().sourceCount > 0) GetComponent<LookAtConstraint>().RemoveSource(0);
+        GetComponent<LookAtConstraint>().AddSource(cs);
     }
 
     public void SetInfo(List<int> specialsEvents){
