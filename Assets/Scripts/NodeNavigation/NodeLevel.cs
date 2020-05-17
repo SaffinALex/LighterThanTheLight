@@ -45,13 +45,13 @@ public class NodeLevel : NodeElement
 
         float moyenne = 0f;
         MinMax scoresMax = new MinMax();
-        for (int i = 0; i < App.ALL_EVENTS["Wave"].Count; i++)
+        for (int i = 0; i < App.ALL_EVENTS["Boss"].Count; i++)
         {
             // Debug.Log(App.ALL_EVENTS["Wave"][i].GetScore());
-            scoresMax.AddValue(App.ALL_EVENTS["Wave"][i].GetScore());
-            moyenne += App.ALL_EVENTS["Wave"][i].GetScore();
+            scoresMax.AddValue(App.ALL_EVENTS["Boss"][i].GetScore());
+            moyenne += App.ALL_EVENTS["Boss"][i].GetScore();
         }
-        moyenne /= App.ALL_EVENTS["Wave"].Count;
+        moyenne /= App.ALL_EVENTS["Boss"].Count;
         Debug.Log("Moyenne : " + moyenne + " / Min : " + scoresMax.Min + " / Max : " + scoresMax.Max);
 
         Debug.Log("SCORE VOULU " + scoreDifficulty);
