@@ -96,7 +96,6 @@ public class LoadingPanelManager : MonoBehaviour
 
     private void OperationOnCompleted(AsyncOperation obj)
     {
-        Debug.Log("done");
         isLoadingScene = false;
     }
 }

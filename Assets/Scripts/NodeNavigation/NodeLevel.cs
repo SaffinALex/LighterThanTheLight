@@ -57,7 +57,7 @@ public class NodeLevel : NodeElement
         Debug.Log("SCORE VOULU " + scoreDifficulty);
         Debug.Log("Score moyenneur " + scoreDifficulty/5);
         if(scoreDifficulty / 5 > scoresMax.Max) App.SetDifficulty(App.GetDifficulty() + 1);
-        List<string> levelFlow = new List<string>() { "Wave", "Wave", "Wave", "Wave", "Wave" };
+        List<string> levelFlow = new List<string>() { "Wave", "Wave", "Wave", "Wave" };
         levelGeneratorInfo.events = GeneratorLGI.GenerateLevel(scoreDifficulty, 20, levelFlow);
 
         List<int> eventAlreadyGet = new List<int>();

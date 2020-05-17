@@ -8,14 +8,11 @@ public class EndLevelScript : MonoBehaviour
 {
     public GameObject textObject;
     public float TimeBeforeActivating;
-    private float timer;
+    public float timer;
     private int currentTimeShown;
     private string textToShow;
     private bool activated;
-    void Start()
-    {
-       
-    }
+    
     void Update()
     {
         if (timer < TimeBeforeActivating)
@@ -31,15 +28,16 @@ public class EndLevelScript : MonoBehaviour
         }
         else
             if (Input.anyKey && !activated)
-        {
-            GetComponent<Button>().onClick.Invoke();
-            activated = true;
-        }
+            {
+                GetComponent<Button>().onClick.Invoke();
+                activated = true;
+            }
     }
 
     public void initPanel()
     {
         int score = App.playerManager.getInventory().getScore();
+        Debug.Log(score);
         transform.Find("Content").Find("score").GetComponent<TextMeshProUGUI>().text = "Score : " + score.ToString();
         activated = false;
         textToShow = textObject.GetComponent<TextMeshProUGUI>().text;

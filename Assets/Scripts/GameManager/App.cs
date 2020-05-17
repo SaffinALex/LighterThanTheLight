@@ -152,7 +152,9 @@ public class App : MonoBehaviour
     /**
         * joueur mort, appel ui fin partie
         */
-    static public void EndGame(){
+    static public void EndGame()
+    {
+        playerManager.endOfLevelRoutine();
         PanelUIManager.GetPanelUI().ToggleEndGamePanel();
     }
     /**
@@ -160,7 +162,7 @@ public class App : MonoBehaviour
      */
     static public void CloseGame()
     {
-        playerManager.endOfLevelRoutine();
+        treeNode.gameObject.SetActive(true);
     }
 
     /**

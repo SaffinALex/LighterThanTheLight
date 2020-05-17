@@ -27,5 +27,4 @@ public class Shop : MonoBehaviour
         }
         return true;
     }
-
 }

@@ -13,6 +13,15 @@ public class Inventory
     private List<UpgradeShip> UpgradeShip;
     private List<UpgradeWeapon> UpgradeWeapon;
 
+    public Inventory()
+    {
+        Weapons = new List<WeaponPlayer>();
+        UpgradeDashes = new List<UpgradeDash>();
+        UpgradesOnde = new List<UpgradeOnde>();
+        UpgradeShip = new List<UpgradeShip>();
+        UpgradeWeapon = new List<UpgradeWeapon>();
+    }
+
     public List<WeaponPlayer> getWeapons(){
         return this.Weapons;
     }

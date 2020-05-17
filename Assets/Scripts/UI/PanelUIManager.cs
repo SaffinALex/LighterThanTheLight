@@ -66,9 +66,10 @@ public class PanelUIManager : MonoBehaviour
     }
 
     public void ToggleEndLevelPanel(){
-        if(endLevelPanel != null && currentPanel != endLevelPanel){
-            GoTo(endLevelPanel);
+        if(endLevelPanel != null && currentPanel != endLevelPanel)
+        {
             endLevelPanel.GetComponent<EndLevelScript>().initPanel();
+            GoTo(endLevelPanel);
             Time.timeScale = 0;
         }
         else if(currentPanel == endLevelPanel){
@@ -79,9 +80,10 @@ public class PanelUIManager : MonoBehaviour
     }
 
     public void ToggleEndGamePanel(){
-        if(endGamePanel != null && currentPanel != endGamePanel){
-            GoTo(endGamePanel);
+        if(endGamePanel != null && currentPanel != endGamePanel)
+        {
             endGamePanel.GetComponent<EndGameScript>().initPanel();
+            GoTo(endGamePanel);
             Time.timeScale = 0;
         }
         else if(currentPanel == endGamePanel){

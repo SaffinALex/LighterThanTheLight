@@ -16,15 +16,11 @@ public class EndGameScript : MonoBehaviour
     public string no_name_input;
     public string name_input_rdy;
 
+    private bool dataSent = false;
+
     private bool ready;
     void Start()
     {
-        ready = false;
-        /*textToShow = textObject.GetComponent<TextMeshProUGUI>().text;
-        Debug.Log(textObject.GetComponent<TextMeshProUGUI>().text);
-        timer = 0;
-        currentTimeShown = (int)TimeBeforeActivating;
-        textObject.GetComponent<TextMeshProUGUI>().text = currentTimeShown.ToString();*/
     }
     void Update()
     {
@@ -36,14 +32,16 @@ public class EndGameScript : MonoBehaviour
 
     public void initPanel()
     {
-        int score = App.playerManager.getInventory().getScore();
+        int score = App.playerManager.getScore();
         bool topScore = (ScoreManager.GetPositionScore(score) != -1);
 
         scoreText.text = score + " points";
         bestscoreText.gameObject.SetActive(topScore);
         nameInput.text = "AAA";
         ready = true;
-        context.text = name_input_rdy;
+        dataSent = false;
+        Debug.Log(name_input_rdy);
+        transform.Find("Content").Find("Text (TMP) (1)").GetComponent<Text>().text = name_input_rdy.ToString();
     }
 
     public void modifCheck()
@@ -52,17 +50,21 @@ public class EndGameScript : MonoBehaviour
         if (nameInput.text.Length == nameInput.characterLimit)
         {
             ready = true;
-            context.text = name_input_rdy;
+            transform.Find("Content").Find("Text (TMP) (1)").GetComponent<Text>().text = name_input_rdy;
         }
         else
         {
             ready = false;
-            context.text = no_name_input;
+            transform.Find("Content").Find("Text (TMP) (1)").GetComponent<Text>().text = no_name_input;
         }
     }
 
     public void exitPanel()
     {
-        ScoreManager.SaveScore(nameInput.text, App.playerManager.getScore());
+        if (!dataSent)
+        {
+            ScoreManager.SaveScore(nameInput.text, App.playerManager.getScore());
+            dataSent = true;
+        }
     }
 }

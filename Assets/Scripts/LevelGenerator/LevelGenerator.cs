@@ -36,6 +36,7 @@ public class LevelGenerator : MonoBehaviour
             timerTransitionEnd += Time.deltaTime;
             if(timerTransitionEnd > timeTransitionEnd){
                 App.EndLevel();
+                levelEnded = false;
             }
         }   
     }

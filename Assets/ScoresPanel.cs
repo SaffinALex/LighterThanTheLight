@@ -13,8 +13,6 @@ public class ScoresPanel : MonoBehaviour
         List<ScoreManager.ScoreElement> bestScore = ScoreManager.GetBestsScores();
         Transform scoreContainerTransform = gameObject.transform.Find("Content").Find("ScoreContainer");
         int i = 0;
-        if (bestScore.Count == 0)
-            ScoreManager.SaveScore("JOJ", 120);
         foreach (ScoreManager.ScoreElement score in bestScore)
         {
             GameObject obj = scoreContainerTransform.GetChild(i).gameObject;
@@ -27,6 +25,7 @@ public class ScoresPanel : MonoBehaviour
             scorestr += score.score.ToString();
             scorestr += " points)";
             obj.transform.Find("point").GetComponent<TextMeshProUGUI>().text = scorestr;
+            i++;
         }
     }
 }

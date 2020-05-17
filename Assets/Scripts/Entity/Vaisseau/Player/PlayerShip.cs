@@ -75,7 +75,7 @@ public class PlayerShip : Ship
         if (IsDead()) {
             if(!animationDeadStart){
                 animationDeadStart = true;
-                //App.EndGame();
+                App.EndGame();
                 Destroy(this.gameObject);
             }
         }else{
@@ -194,7 +194,6 @@ public class PlayerShip : Ship
     protected void OnTriggerStay2D(Collider2D col)
     {
         if (col.CompareTag("Enemy")) {
-            Debug.Log("touché");
             getDamage(10);
         }
     }
