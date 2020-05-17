@@ -392,6 +392,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events:
+  - {fileID: 4298945608148728516, guid: d40b09c6a4427c64b871dc1c9dd4b376, type: 3}
+  - {fileID: 7835072389713133267, guid: b194bf66d02374943908d1c10993902c, type: 3}
   - {fileID: 33684336025263024, guid: c9c80b54ff04b3a44a63797e4a2891b5, type: 3}
   DevMod: 1
 --- !u!4 &824400021
