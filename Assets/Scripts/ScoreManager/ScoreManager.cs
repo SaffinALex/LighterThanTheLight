@@ -36,6 +36,20 @@ public class ScoreManager
         return bestScores;
     }
 
+    /*
+     * Retourne la position pour un score donné
+     * -1 si le score n'apparait pas dans la liste des meilleurs score
+     * >= 0 l'index du score (0 est l'index du meilleur score)
+     */
+    static public int GetPositionScore(float score){
+        if (bestScores == null) LoadBestScores();
+        int index = 0; //On place l'index du nouveau score au meilleur 
+        for (index = 0; index < bestScores.Count; index++) {
+            if (bestScores[index].score < score) break;
+        }
+        return index;
+    }
+
     /**
      * Permet de sauvegarder un score selon un nom et un score donné
      * L'algorithme se charge de checker si c'est un nouveau meilleur score et l'enregistre
@@ -44,10 +58,7 @@ public class ScoreManager
     static public int SaveScore(String name, float score){
         if (bestScores == null) LoadBestScores();
         //1 - Vérification si le score est un nouveau meilleur score
-        int index = 0; //On place l'index du nouveau score au meilleur 
-        for(index = 0; index < bestScores.Count; index++){
-            if(bestScores[index].score < score) break;
-        }
+        int index = GetPositionScore(score);
         //2 - Si oui alors on l'enregistre et on update les meilleurs 
         if(index < maxScoreStores){
             bestScores.Insert(index, new ScoreElement(name, score));
