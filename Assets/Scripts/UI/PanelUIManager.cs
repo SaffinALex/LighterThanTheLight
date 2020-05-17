@@ -115,11 +115,9 @@ public class PanelUIManager : MonoBehaviour
         if(startSceneName == null)
             Debug.Log("PanelUIManager : Scene name for StartMenu is NULL");
         else{
-            int returnStatus = GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(startSceneName);
+            int returnStatus = App.loadingManager.startSceneLoad(startSceneName);
             if (returnStatus == -1)
                 Debug.Log("PanelUIManager : Scene name give doesn't match to any In-Build Scenes");
-            else if(returnStatus == 0)
-                Time.timeScale = 1;
             else
                 Debug.Log("PanelUIManager : Scene already loading");
         }
@@ -129,11 +127,9 @@ public class PanelUIManager : MonoBehaviour
         if(endLevelSceneName == null)
             Debug.Log("PanelUIManager : Scene name for EndLevelMenu is NULL");
         else{
-            int returnStatus = GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(endLevelSceneName);
+            int returnStatus = App.loadingManager.startSceneLoad(endLevelSceneName);
             if (returnStatus == -1)
                 Debug.Log("PanelUIManager : Scene name give doesn't match to any In-Build Scenes");
-            else if(returnStatus == 0)
-                Time.timeScale = 1;
             else
                 Debug.Log("PanelUIManager : Scene already loading");
         }
@@ -143,11 +139,9 @@ public class PanelUIManager : MonoBehaviour
         if(endGameSceneName == null)
             Debug.Log("PanelUIManager : Scene name for EndGameMenu is NULL");
         else{
-            int returnStatus = GameObject.Find("LoadingPanel").GetComponent<LoadingPanelManager>().startSceneLoad(endGameSceneName);
+            int returnStatus = App.loadingManager.startSceneLoad(endGameSceneName);
             if (returnStatus == -1)
                 Debug.Log("PanelUIManager : Scene name give doesn't match to any In-Build Scenes");
-            else if(returnStatus == 0)
-                Time.timeScale = 1;
             else
                 Debug.Log("PanelUIManager : Scene already loading");
         }

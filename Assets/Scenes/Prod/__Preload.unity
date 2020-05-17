@@ -207,6 +207,8 @@ MonoBehaviour:
   weaponUpgradesPrefabsFolderPath: Prefabs/Upgrade/UpgradeWeapon
   playerShipPrefab: {fileID: 4609433687815977604, guid: 20cdf949a649da44ca265d37803d97bc,
     type: 3}
+  loadingManagerPrefab: {fileID: 6444242637395469169, guid: 3e29cfb670f0f2f44b539260e74e4fb5,
+    type: 3}
 --- !u!114 &211221981
 MonoBehaviour:
   m_ObjectHideFlags: 0

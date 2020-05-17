@@ -33,6 +33,9 @@ public class App : MonoBehaviour
     static public PlayerShip playerShip;
     public PlayerShip playerShipPrefab;
 
+    static public LoadingPanelManager loadingManager;
+    public LoadingPanelManager loadingManagerPrefab;
+
     public static Dictionary<string, List<Event>> ALL_EVENTS = new Dictionary<string, List<Event>>();
 
     public void Awake(){
@@ -45,6 +48,9 @@ public class App : MonoBehaviour
         playerShip = Instantiate(playerShipPrefab);
         DontDestroyOnLoad(playerShip); //Sauvergarde de la pérénité du gameobject tout au long du jeu
         playerShip.gameObject.SetActive(false);
+
+        loadingManager = Instantiate(loadingManagerPrefab);
+        DontDestroyOnLoad(loadingManager);
 
         baseWeapon = baseWeaponPrefab;
 
