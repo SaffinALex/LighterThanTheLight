@@ -92,13 +92,13 @@ public class PlayerManager {
     /**
      * Permet d'accéder au score global du joueur
      */
-    private int getScore() { return score; }
+    public int getScore() { return score; }
 
     /**
      * Permet d'ajouter des points au score global
      * @params {int} score le score qu'on veut rajouter
      */
-    private void addScore(int score){
+    public void addScore(int score){
         score = score < 0 ? 0 : score;
         this.score += score;
     }
@@ -106,13 +106,13 @@ public class PlayerManager {
     /**
      * Permet d'accéder á la somme contenue dans le "porte-monnaie" global du joueur
      */
-    private float getMoney() { return money; }
+    public float getMoney() { return money; }
 
     /**
      * Permet d'ajouter de la monnaie au "porte-monnaie" global
      * @params {float} sum la qt de monnaie qu'on veut rajouter
      */
-    private void addMoney(float sum)
+    public void addMoney(float sum)
     {
         sum = sum < 0 ? 0 : sum;
         this.money += sum;
@@ -132,6 +132,80 @@ public class PlayerManager {
      *          Armes Et Equipements
      * ------------------------------------------
      */
+     //Access nb de slot utilisable (selon les poids des objets équipés)
+    public int getCurrentlyUsableWeaponsSlot(){
+        int currentWeaponsAmount = 0;
+        int currentWeaponsWeightSum = 0;
+        foreach (WeaponPlayer wp in this.player.weapons)
+            if (wp != null)
+            {
+                currentWeaponsAmount++;
+                currentWeaponsWeightSum += wp.weight;
+            }
+
+        return getMaxWeaponsAmount() - (currentWeaponsWeightSum - currentWeaponsAmount);
+    }
+
+    public int getWeaponCurrentlyUsableUpgradeSlot(int weaponIndex)
+    {
+        if (!(0 <= weaponIndex && weaponIndex < this.player.nbrMaxWeapons))  //Si on est pas dans l'intervalle possible des "slots" d'arme
+            return 0;
+
+        int currentUpgradeAmount = 0;
+        int currentUpgradeWeightSum = 0;
+        foreach (UpgradeWeapon up in this.player.weapons[weaponIndex].upgradeWeapons)
+            if (up != null)
+            {
+                currentUpgradeAmount++;
+                currentUpgradeWeightSum += up.weight;
+            }
+
+        return getWeaponMaxUpgradeAmount(weaponIndex) - (currentUpgradeWeightSum - currentUpgradeAmount);
+    }
+
+    public int getShipCurrentlyUsableUpgradeSlot()
+    {
+        int currentUpgradeAmount = 0;
+        int currentUpgradeWeightSum = 0;
+        foreach (UpgradeShip up in this.player.upgradeShip)
+            if (up != null)
+            {
+                currentUpgradeAmount++;
+                currentUpgradeWeightSum += up.weight;
+            }
+
+        return getShipMaxUpgradeAmount() - (currentUpgradeWeightSum - currentUpgradeAmount);
+    }
+
+    public int getDashCurrentlyUsableUpgradeSlot()
+    {
+        int currentUpgradeAmount = 0;
+        int currentUpgradeWeightSum = 0;
+        foreach (UpgradeDash up in this.dash.upgradeDashes)
+            if (up != null)
+            {
+                currentUpgradeAmount++;
+                currentUpgradeWeightSum += up.weight;
+            }
+
+        return getShipMaxUpgradeAmount() - (currentUpgradeWeightSum - currentUpgradeAmount);
+    }
+
+    public int getOndeCurrentlyUsableUpgradeSlot()
+    {
+        int currentUpgradeAmount = 0;
+        int currentUpgradeWeightSum = 0;
+        foreach (UpgradeOnde up in this.onde.upgradeOndes)
+            if (up != null)
+            {
+                currentUpgradeAmount++;
+                currentUpgradeWeightSum += up.weight;
+            }
+
+        return getShipMaxUpgradeAmount() - (currentUpgradeWeightSum - currentUpgradeAmount);
+    }
+
+
     /**
     * Permet d'accéder au nombre maximal d'armes équipables
     */
@@ -237,11 +311,6 @@ public class PlayerManager {
         upgrades[upgrade1Index] = upgrades[upgrade2Index];
         upgrades[upgrade2Index] = buffer;
 
-        foreach(UpgradeWeapon wpUp in wp.upgradeWeapons)
-        {
-            Debug.Log(wpUp);
-        }
-
         return true; //Tout s'est bien passé
     }
 
@@ -257,15 +326,10 @@ public class PlayerManager {
             return false;
 
         //Swap
-        foreach (UpgradeDash wp in dash.upgradeDashes)
-            Debug.Log(wp);
         List<UpgradeDash> upgrades = dash.upgradeDashes;
         UpgradeDash buffer = upgrades[upgrade1Index];
         upgrades[upgrade1Index] = upgrades[upgrade2Index];
         upgrades[upgrade2Index] = buffer;
-
-        foreach (UpgradeDash wp in dash.upgradeDashes)
-            Debug.Log(wp);
 
         return true; //Tout s'est bien passé
     }

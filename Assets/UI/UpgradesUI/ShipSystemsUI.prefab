@@ -115,7 +115,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 195, y: 78}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8383207982790596220
 MonoBehaviour:
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 34, y: 34}
+  m_CellSize: {x: 45, y: 45}
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 1
   m_ConstraintCount: 5
@@ -429,6 +429,7 @@ MonoBehaviour:
     type: 3}
   ondeUpgradeSlotPrefab: {fileID: 482209482789143372, guid: 2337c1ba05debc543b91d0e5e7673a3a,
     type: 3}
+  currentSelectedWeapon: -1
 --- !u!1 &8383207982973295989
 GameObject:
   m_ObjectHideFlags: 0

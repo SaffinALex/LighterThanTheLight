@@ -144,10 +144,31 @@ public class App : MonoBehaviour
     }
 
     /**
-     * Finir un niveau
+        * joueur mort, appel ui fin partie
+        */
+    static public void EndGame(){
+        PanelUIManager.GetPanelUI().ToggleEndGamePanel();
+    }
+    /**
+     * joueur mort, fermeture de la partie
      */
-    static public void EndLevel(){
-        SceneManager.LoadScene("NodeNavigation");
+    static public void CloseGame()
+    {
+        playerManager.endOfLevelRoutine();
+    }
+
+    /**
+    * Niveau terminé, appel ui fin niveau
+    */
+    static public void EndLevel()
+    {
+        PanelUIManager.GetPanelUI().ToggleEndLevelPanel();
+    }
+    /**
+     * Niveau terminé,appel ui fin niveau
+     */
+    static public void CloseLevel()
+    {
         playerManager.endOfLevelRoutine();
         treeNode.gameObject.SetActive(true);
     }

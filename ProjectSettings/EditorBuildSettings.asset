@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Prod/__Level.unity
     guid: 9a38ddc7fa9c145409b29c97547efdc8
   - enabled: 1
+    path: Assets/Scenes/Dev/NodeNavigation/NodeNavigation.unity
+    guid: c8374d97d4a86e84ea44f02addb07af1
+  - enabled: 1
     path: Assets/Scenes/Dev/NodeNavigation/NodeNavigationBis.unity
     guid: 2e5626754f67c654aa1d25da11128808
   - enabled: 1

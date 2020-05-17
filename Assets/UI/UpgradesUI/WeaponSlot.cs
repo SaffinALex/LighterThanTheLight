@@ -7,7 +7,7 @@ public class WeaponSlot : InventorySlot
 {
     protected override void actionOnDrop(PointerEventData eventData)
     {
-        Debug.Log("Weapon Equiped !");
+        
         DraggableObject dragObj = eventData.pointerDrag.GetComponent<DraggableObject>();
 
         if (dragObj is InventoryObject)
@@ -16,7 +16,10 @@ public class WeaponSlot : InventorySlot
             if (sender != null)
             {
                 if (App.playerManager.swapWeapons(this.getItemIndex(), sender.getItemIndex()))
+                {
+                    Debug.Log("Weapon Equiped !");
                     EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
+                }
             }
                 
         }

@@ -45,6 +45,8 @@ public class InventoryPanel : MonoBehaviour
 
         for (int i = 0; i < playerManager.getShipMaxUpgradeAmount(); i++){
             GameObject go = Instantiate(shipUpgradeSlotPrefab);
+            if (i < playerManager.getShipCurrentlyUsableUpgradeSlot() - 1)
+                go.GetComponent<InventorySlot>().SetActive(true);
             go.transform.SetParent(shipUpgradeSlotContainer.transform, false);
             go.GetComponent<InventorySlot>().setItemIndex(i);
             shipUpgradeSlots.Add(go);
@@ -52,6 +54,8 @@ public class InventoryPanel : MonoBehaviour
         for (int i = 0; i < playerManager.getOndeMaxUpgradeAmount(); i++)
         {
             GameObject go = Instantiate(ondeUpgradeSlotPrefab);
+            if (i < playerManager.getOndeCurrentlyUsableUpgradeSlot() - 1)
+                go.GetComponent<InventorySlot>().SetActive(true);
             go.transform.SetParent(ondeUpgradeSlotContainer.transform, false);
             go.GetComponent<InventorySlot>().setItemIndex(i);
             ondeUpgradeSlots.Add(go);
@@ -59,6 +63,8 @@ public class InventoryPanel : MonoBehaviour
         for (int i = 0; i < playerManager.getDashMaxUpgradeAmount(); i++)
         {
             GameObject go = Instantiate(dashUpgradeSlotPrefab);
+            if (i < playerManager.getDashCurrentlyUsableUpgradeSlot() - 1)
+                go.GetComponent<InventorySlot>().SetActive(true);
             go.transform.SetParent(dashUpgradeSlotContainer.transform, false);
             go.GetComponent<InventorySlot>().setItemIndex(i);
             dashUpgradeSlots.Add(go);
@@ -66,22 +72,12 @@ public class InventoryPanel : MonoBehaviour
         for (int i = 0; i < playerManager.getMaxWeaponsAmount(); i++)
         {
             GameObject go = Instantiate(weaponSlotPrefab);
+            Debug.Log(playerManager.getCurrentlyUsableWeaponsSlot() - 1);
+            if (i < playerManager.getCurrentlyUsableWeaponsSlot() - 1)
+                go.GetComponent<InventorySlot>().SetActive(true);
             go.transform.SetParent(weaponSlotContainer.transform, false);
             go.GetComponent<InventorySlot>().setItemIndex(i);
             weaponSlots.Add(go);
-
-            go = Instantiate(weaponSelectorPrefab);
-            go.transform.SetParent(weaponSelectorContainer.transform, false);
-            go.GetComponentInChildren<Text>().text = (i+1).ToString();
-            int index = new int();
-            index = i;
-            go.GetComponent<Button>().onClick.AddListener(delegate {
-                currentSelectedWeapon = index;
-                if (playerManager.getWeapons()[index] != null)
-                {
-                    feedInventoryUI();
-                }
-            });
         }
         feedInventoryUI();
     }
@@ -89,6 +85,29 @@ public class InventoryPanel : MonoBehaviour
     public void feedInventoryUI()
     {
         this.clearInventoryUI();
+
+        for (int j = 0; j < playerManager.getShipMaxUpgradeAmount(); j++)
+        {
+            if (j < playerManager.getShipCurrentlyUsableUpgradeSlot() - 1)
+                shipUpgradeSlots[j].GetComponent<InventorySlot>().SetActive(true);
+        }
+        for (int j = 0; j < playerManager.getOndeMaxUpgradeAmount(); j++)
+        {
+            if (j < playerManager.getOndeCurrentlyUsableUpgradeSlot() - 1)
+                ondeUpgradeSlots[j].GetComponent<InventorySlot>().SetActive(true);
+        }
+        for (int j = 0; j < playerManager.getDashMaxUpgradeAmount(); j++)
+        {
+            if (j < playerManager.getDashCurrentlyUsableUpgradeSlot() - 1)
+                dashUpgradeSlots[j].GetComponent<InventorySlot>().SetActive(true);
+        }
+        for (int j = 0; j < playerManager.getMaxWeaponsAmount(); j++)
+        {
+            if (j < playerManager.getCurrentlyUsableWeaponsSlot() - 1)
+                weaponSlots[j].GetComponent<InventorySlot>().SetActive(true);
+        }
+
+
         int i = 0;
         foreach (UpgradeShip up in playerManager.getShipUpgrades())
         {
@@ -159,12 +178,33 @@ public class InventoryPanel : MonoBehaviour
         i = 0;
         foreach (WeaponPlayer up in playerManager.getWeapons())
         {
+            GameObject go = Instantiate(weaponSelectorPrefab);
+            go.transform.SetParent(weaponSelectorContainer.transform, false);
+            go.GetComponentInChildren<Text>().text = (i + 1).ToString();
+            go.GetComponent<Button>().interactable = false;
+            int index = new int();
+            index = i;
+
+            if (playerManager.getWeapons()[index] != null)
+            {
+                go.GetComponent<Button>().interactable = true;
+            }
+
+            go.GetComponent<Button>().onClick.AddListener(delegate {
+                currentSelectedWeapon = index;
+                if (playerManager.getWeapons()[index] != null)
+                {
+                    feedInventoryUI();
+                }
+            });
+            
             if (up == null)
             {
                 i++;
                 continue;
             }
-            GameObject go = Instantiate(upgradeObjectPrefab);
+
+            go = Instantiate(upgradeObjectPrefab);
             GameObject upGO = new GameObject();
             upGO.name = "UpgradeContainer";
             UnityEditorInternal.ComponentUtility.CopyComponent(up);
@@ -175,6 +215,7 @@ public class InventoryPanel : MonoBehaviour
 
             go.transform.SetParent(weaponSlots[i].transform);
             go.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+
             i++;
         }
 
@@ -194,6 +235,8 @@ public class InventoryPanel : MonoBehaviour
         for (int j = 0; j < playerManager.getWeapons()[index].upgradeWeapons.Count; j++)
         {
             GameObject slot = Instantiate(weaponUpgradeSlotPrefab);
+            if (j < playerManager.getCurrentlyUsableWeaponsSlot() - 1)
+                slot.GetComponent<InventorySlot>().SetActive(true);
             slot.transform.SetParent(weaponUpgradeSlotContainer.transform, false);
             slot.GetComponent<InventorySlot>().setItemIndex(j);
             slot.GetComponent<UpgradeWeaponSlot>().WeaponIndex = index;
@@ -247,5 +290,9 @@ public class InventoryPanel : MonoBehaviour
             foreach (Transform child in go.transform)
                 if (child != null)
                     Destroy(child.gameObject);
+
+        foreach (Transform child in weaponSelectorContainer.transform)
+            if (child != null)
+                Destroy(child.gameObject);
     }
 }

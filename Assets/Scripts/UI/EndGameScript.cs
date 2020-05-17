@@ -8,9 +8,6 @@ using UnityEngine.Events;
 
 public class EndGameScript : MonoBehaviour
 {
-    protected UnityEvent eventEnd = new UnityEvent();
-    public UnityEvent GetEventEnd() { return eventEnd; }
-
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI bestscoreText;
     public TMP_InputField nameInput;
@@ -66,7 +63,6 @@ public class EndGameScript : MonoBehaviour
 
     public void exitPanel()
     {
-        ScoreManager.SaveScore(nameInput.text, App.playerManager.getInventory().getScore());
-        eventEnd.Invoke();
+        ScoreManager.SaveScore(nameInput.text, App.playerManager.getScore());
     }
 }

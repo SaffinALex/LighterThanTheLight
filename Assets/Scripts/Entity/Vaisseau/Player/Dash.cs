@@ -98,5 +98,4 @@ public class Dash : MonoBehaviour
         }
         return nbrUpgradeMax - cpt;
     }
-
 }

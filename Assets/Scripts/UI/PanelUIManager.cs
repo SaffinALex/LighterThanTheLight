@@ -68,24 +68,27 @@ public class PanelUIManager : MonoBehaviour
     public void ToggleEndLevelPanel(){
         if(endLevelPanel != null && currentPanel != endLevelPanel){
             GoTo(endLevelPanel);
+            endLevelPanel.GetComponent<EndLevelScript>().initPanel();
             Time.timeScale = 0;
         }
         else if(currentPanel == endLevelPanel){
             Time.timeScale = 1;
-            GoToStartMenu();
+            App.CloseLevel();
+            GoToEndLevelMenu();
         }
     }
 
     public void ToggleEndGamePanel(){
         if(endGamePanel != null && currentPanel != endGamePanel){
             GoTo(endGamePanel);
-            endLevelPanel.GetComponent<EndGameScript>().initPanel();
+            endGamePanel.GetComponent<EndGameScript>().initPanel();
             Time.timeScale = 0;
         }
         else if(currentPanel == endGamePanel){
             Time.timeScale = 1;
+            endGamePanel.GetComponent<EndGameScript>().exitPanel();
+            App.CloseGame();
             GoToStartMenu();
-            endLevelPanel.GetComponent<EndGameScript>().exitPanel();
         }
     }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
@@ -11,17 +12,23 @@ public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeg
     private CanvasGroup canvasG;
     private Vector2 originalPos;
 
+    private bool iconLoaded;
+
     // Start is called before the first frame update
     void Start()
     {
         rect = GetComponent<RectTransform>();
         canvasG = GetComponent<CanvasGroup>();
+        iconLoaded = false;
+        if (!iconLoaded && upgrade != null && upgrade.GetComponent<Upgrade>() != null)
+            GetComponent<Image>().sprite = upgrade.GetComponent<Upgrade>().icone;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (!iconLoaded && upgrade != null && upgrade.GetComponent<Upgrade>() != null)
+            GetComponent<Image>().sprite = upgrade.GetComponent<Upgrade>().icone;
     }
 
     public void OnPointerDown(PointerEventData eventData)

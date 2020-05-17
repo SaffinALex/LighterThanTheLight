@@ -49,6 +49,6 @@ MonoBehaviour:
   size: 0
   fireRateBase: 0.1
   price: 0
-  weight: 0
+  weight: 2
   bulletSpeedBase: 50
   damage: 2
