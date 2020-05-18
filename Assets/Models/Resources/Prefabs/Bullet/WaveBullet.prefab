@@ -4813,7 +4813,7 @@ MonoBehaviour:
   damage: 2000
   radius: 50
   timeBeforeExplosion: 2
-  timeReload: 0
+  timeReload: 5
   upgradeOndes: []
   nbrUpgradeMax: 3
   awakeParticle: {fileID: 1592833590374244089}

@@ -18,6 +18,9 @@ public class Onde : MonoBehaviour
 
     protected CircleCollider2D colliderOnde;
 
+    protected float timeExplosion = 0.5f;
+    protected float timerExplosion = 0f;
+
     [SerializeField] protected ParticleSystem awakeParticle;
     [SerializeField] protected ParticleSystem explodeParticle;
 
@@ -65,18 +68,20 @@ public class Onde : MonoBehaviour
     {
         if(timerReload < timeReload) timerReload += Time.deltaTime;
         if(timerBeforeExplosion < timeBeforeExplosion) timerBeforeExplosion += Time.deltaTime;
-        if(stateOnde == StatesOndes.explode){
+        if (timerExplosion < timeExplosion) timerExplosion += Time.deltaTime;
+        if(stateOnde == StatesOndes.explode && timerExplosion >= timeExplosion){
             stateOnde = StatesOndes.ended;
             colliderOnde.enabled = false;
-            timerReload = 0f;
-            explodeParticle.Play();
         }
         if(stateOnde == StatesOndes.awake && timerBeforeExplosion >= timeBeforeExplosion){
             stateOnde = StatesOndes.explode;
             colliderOnde.enabled = true;
-            timeReload = 0f;
+            explodeParticle.Play();
+            timerReload = 0f;
+            timerExplosion = 0f;
         }
         if(timerReload >= timeReload && stateOnde == StatesOndes.ended){
+            Debug.Log("GO SLEEP" + timerReload + " / " + timeReload + " / " + stateOnde);
             stateOnde = StatesOndes.sleep;
         }
     }
@@ -85,7 +90,6 @@ public class Onde : MonoBehaviour
         if(stateOnde == StatesOndes.sleep){
             stateOnde = StatesOndes.awake;
             timerBeforeExplosion = 0f;
-            SetInfoParticle();
             awakeParticle.Play();
             explodeParticle.Stop();
             LevelUIEventManager.GetLevelUI().TriggerPlayerBomb();

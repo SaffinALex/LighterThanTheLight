@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7142712540262666427}
   - component: {fileID: 7142156562356540274}
   - component: {fileID: 2172448440103325039}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Life
   m_TagString: Heart
   m_Icon: {fileID: 0}
@@ -160,6 +160,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: life
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 956331a4885d3d941b02f8526f42ab8c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 956331a4885d3d941b02f8526f42ab8c, type: 3}

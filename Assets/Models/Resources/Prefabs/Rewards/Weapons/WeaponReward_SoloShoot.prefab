@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2275261240412198479}
   - component: {fileID: 2550158105417552426}
   - component: {fileID: 8309795186236387035}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: WeaponReward_SoloShoot
   m_TagString: Weapon
   m_Icon: {fileID: 0}

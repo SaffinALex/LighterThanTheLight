@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5774826496240579823}
   - component: {fileID: 5774826496240579822}
   - component: {fileID: 5774826496240579821}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Money
   m_TagString: Money
   m_Icon: {fileID: 0}
@@ -145,6 +145,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: money
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 626b78b6728f2ca4fa345ab6531a6c96,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 626b78b6728f2ca4fa345ab6531a6c96, type: 3}
