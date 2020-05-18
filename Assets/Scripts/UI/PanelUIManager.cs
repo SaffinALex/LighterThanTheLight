@@ -9,6 +9,7 @@ public class PanelUIManager : MonoBehaviour
     private GameObject background;
     public GameObject indexPanel;
     public GameObject scorePanel;
+    public GameObject optionsPanel;
     public GameObject endLevelPanel;
     public GameObject endGamePanel;
     public string startSceneName;
@@ -56,7 +57,7 @@ public class PanelUIManager : MonoBehaviour
 
         target.SetActive(true);
         currentPanel = target;
-    }   
+    }
 
     public void OpenIndexMenu(){
         if(indexPanel != null){
