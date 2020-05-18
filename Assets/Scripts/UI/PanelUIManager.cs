@@ -29,6 +29,7 @@ public class PanelUIManager : MonoBehaviour
         foreach (Transform child in transform)
             child.gameObject.SetActive(false);
         currentPanel = null;
+        DontDestroyOnLoad(gameObject);
     }
     private void Update() {
         if(pauseKeyBeingPressed){
@@ -74,6 +75,7 @@ public class PanelUIManager : MonoBehaviour
         else if(currentPanel == endLevelPanel){
             Time.timeScale = 1;
             App.CloseLevel();
+            CloseIndexMenu();
             GoToEndLevelMenu();
         }
     }

@@ -165,11 +165,12 @@ public class PlayerShip : Ship
         {
             getDamage(10);
         }
-        if (col.CompareTag("UpgradeDash")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeDash>()); }
-        if (col.CompareTag("UpgradeWeapon")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeWeapon>()); }
-        if (col.CompareTag("UpgradeShip")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeShip>()); }
+        if (col.CompareTag("UpgradeDash")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeDash>());Destroy(col.gameObject); }
+        if (col.CompareTag("UpgradeWeapon")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeWeapon>());Destroy(col.gameObject); }
+        if (col.CompareTag("UpgradeShip")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeShip>());Destroy(col.gameObject); }
         if (col.CompareTag("Weapon"))
         {
+            Debug.Log(col.gameObject.GetComponent<WeaponPlayer>());
             App.playerManager.getInventory().addWeaponInventory(col.gameObject.GetComponent<WeaponPlayer>());
             Destroy(col.gameObject);
         }

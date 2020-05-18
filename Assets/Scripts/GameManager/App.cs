@@ -176,6 +176,6 @@ public class App : MonoBehaviour
     static public void CloseLevel()
     {
         playerManager.endOfLevelRoutine();
-        //treeNode.gameObject.SetActive(true);
+        treeNode.gameObject.SetActive(true);
     }
 }
