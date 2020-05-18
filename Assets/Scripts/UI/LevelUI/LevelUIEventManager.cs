@@ -17,19 +17,21 @@ public class LevelUIEventManager : MonoBehaviour
         dashCdBar = transform.Find("DashCooldownBar").GetComponent<CooldownBarControl>();
         bombCdBar = transform.Find("BombCooldownBar").GetComponent<CooldownBarControl>();
         bossWarn = GetComponentInChildren<BossWarning>();
-        if (GameObject.Find("playerShip") != null)
-        {
-            dashCdBar.setMaxCd(GameObject.Find("playerShip").GetComponent<Dash>().getRecoveryDash());
-            dashCdBar.setMaxNbCharges(1);
-            dashCdBar.FillCharges();
-
-            bombCdBar.setMaxCd(GameObject.Find("playerShip").GetComponent<PlayerShip>().waveRecovery);
-            bombCdBar.setMaxNbCharges(1);
-            bombCdBar.FillCharges();
-        }
     }
 
-    void Start() {
+    //Dash nb charge max, temps cd
+    public void InitDashCdBar(int nbMaxCharges, float tempsCd)
+    {
+        dashCdBar.setMaxCd(tempsCd);
+        dashCdBar.setMaxNbCharges(nbMaxCharges);
+        dashCdBar.FillCharges();
+    }
+
+    public void InitOndeCdBar(int nbMaxCharges, float tempsCd)
+    {
+        bombCdBar.setMaxCd(tempsCd);
+        bombCdBar.setMaxNbCharges(nbMaxCharges);
+        bombCdBar.FillCharges();
     }
 
     public void TriggerPlayerHealthChange(int health, int maxHealth, int nbShields){

@@ -281,6 +281,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 760524557357352483, guid: 9e14e1aefac77864aad6a2b023009db7,
+        type: 3}
+      propertyPath: hoveredSizeOffset
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 846017654220159131, guid: 9e14e1aefac77864aad6a2b023009db7,
         type: 3}
       propertyPath: scorePanel
@@ -826,6 +831,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5459147228239708450, guid: 9e14e1aefac77864aad6a2b023009db7,
+        type: 3}
+      propertyPath: hoveredSizeOffset
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5683067984542638876, guid: 9e14e1aefac77864aad6a2b023009db7,
         type: 3}
       propertyPath: m_text
@@ -995,6 +1005,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: modifCheck
+      objectReference: {fileID: 0}
+    - target: {fileID: 7393858108425195231, guid: 9e14e1aefac77864aad6a2b023009db7,
+        type: 3}
+      propertyPath: hoveredSizeOffset
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7798642755889845034, guid: 9e14e1aefac77864aad6a2b023009db7,
         type: 3}
