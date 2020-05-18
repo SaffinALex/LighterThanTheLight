@@ -11,7 +11,7 @@ public class TreeNode : MonoBehaviour
     void Start()
     {
         //Singleton
-        if(!treeNode){
+        if(!treeNode || treeNode == null){
             treeNode = gameObject;
             DontDestroyOnLoad(gameObject);
             App.SetTreeNode(this);

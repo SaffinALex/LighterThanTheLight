@@ -70,6 +70,10 @@ public class NodeLevel : NodeElement
                 //Cas par cas
                 if (chanceRandom == 0) {
                     Debug.Log("BOSS !");
+                    List<Event> bossEvent = GeneratorLGI.GenerateLevel((scoreDifficulty / 5) * 2.5f, 50, new List<string>() { "Boss" });
+                    if (bossEvent.Count > 0) {
+                        levelGeneratorInfo.events[levelGeneratorInfo.events.Count - 1] = bossEvent[0];
+                    }
                 }
                 else if (chanceRandom == 1) {
                     Debug.Log("BOSS RARE !");
