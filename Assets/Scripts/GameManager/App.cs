@@ -141,6 +141,11 @@ public class App : MonoBehaviour
         treeNode = tree;
     }
 
+    static public TreeNode GetTreeNode()
+    {
+        return treeNode;
+    }
+
     /**
      * Commence un niveau
      */
@@ -162,7 +167,7 @@ public class App : MonoBehaviour
      */
     static public void CloseGame()
     {
-        Destroy(treeNode);
+        Destroy(treeNode.gameObject);
         treeNode = null;
     }
 

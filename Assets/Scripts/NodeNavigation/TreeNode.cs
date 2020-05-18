@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 public class TreeNode : MonoBehaviour
 {
     [SerializeField] protected LevelGeneratorInfo levelGeneratorInfo;
-    static GameObject treeNode;
+    //static GameObject treeNode;
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(App.GetTreeNode());
         //Singleton
-        if(!treeNode || treeNode == null){
-            treeNode = gameObject;
+        if(!App.GetTreeNode() || App.GetTreeNode() == null){
             DontDestroyOnLoad(gameObject);
             App.SetTreeNode(this);
         }else{
