@@ -161,6 +161,7 @@ public class PlayerShip : Ship
     }
     protected void OnTriggerEnter2D(Collider2D col)
     {
+        Debug.Log(col.gameObject.tag);
         if (col.CompareTag("Enemy"))
         {
             getDamage(10);
@@ -188,8 +189,10 @@ public class PlayerShip : Ship
         }
         if (col.CompareTag("Shield"))
         {
-            setShieldLife(shieldLife + 1);
             Destroy(col.gameObject);
+            setShieldLife(shieldLife + 1);
+            Debug.Log(shieldLife);
+            UpdateUI();
         }
     }
     protected void OnTriggerStay2D(Collider2D col)

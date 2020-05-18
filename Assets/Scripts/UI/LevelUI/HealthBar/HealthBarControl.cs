@@ -60,7 +60,7 @@ public class HealthBarControl : MonoBehaviour
     public void setShields(int nbShields){
         if(nbShields == 0){
             gameObject.transform.Find("HealthText").gameObject.SetActive(true);
-            gameObject.transform.Find("ShieldBar").gameObject.SetActive(false);
+            gameObject.transform.Find("ShieldBar").GetComponentInChildren<CanvasGroup>().alpha = 0;
         } else {
             if (gameObject.transform.Find("HealthText").gameObject.activeSelf){
                 gameObject.transform.Find("HealthText").gameObject.SetActive(false);
@@ -70,6 +70,7 @@ public class HealthBarControl : MonoBehaviour
             }
 
             gameObject.transform.GetComponentInChildren<ShieldBarControl>().setNbShield(nbShields);
+            gameObject.transform.Find("ShieldBar").GetComponentInChildren<CanvasGroup>().alpha = 1;
         }
     }
 }
