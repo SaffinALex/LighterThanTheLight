@@ -76,8 +76,8 @@ public class PanelUIManager : MonoBehaviour
         else if(currentPanel == endLevelPanel){
             Time.timeScale = 1;
             App.CloseLevel();
-            CloseIndexMenu();
             GoToEndLevelMenu();
+            CloseIndexMenu();
         }
     }
 
@@ -93,6 +93,7 @@ public class PanelUIManager : MonoBehaviour
             endGamePanel.GetComponent<EndGameScript>().exitPanel();
             App.CloseGame();
             GoToStartMenu();
+            CloseIndexMenu();
         }
     }
 

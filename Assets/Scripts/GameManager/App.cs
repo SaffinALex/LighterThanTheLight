@@ -162,7 +162,8 @@ public class App : MonoBehaviour
      */
     static public void CloseGame()
     {
-        treeNode.gameObject.SetActive(true);
+        Destroy(treeNode);
+        treeNode = null;
     }
 
     /**
