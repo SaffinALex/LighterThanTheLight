@@ -7,11 +7,11 @@ public class Inventory
     private Ship player;
     private int money;
     private int score;
-    private List<WeaponPlayer> Weapons;
-    private List<UpgradeDash> UpgradeDashes;
-    private List<UpgradeOnde> UpgradesOnde;
-    private List<UpgradeShip> UpgradeShip;
-    private List<UpgradeWeapon> UpgradeWeapon;
+    private List<WeaponPlayer> Weapons = new List<WeaponPlayer>();
+    private List<UpgradeDash> UpgradeDashes = new List<UpgradeDash>();
+    private List<UpgradeOnde> UpgradesOnde = new List<UpgradeOnde>();
+    private List<UpgradeShip> UpgradeShip = new List<UpgradeShip>();
+    private List<UpgradeWeapon> UpgradeWeapon = new List<UpgradeWeapon>();
 
     public Inventory()
     {
