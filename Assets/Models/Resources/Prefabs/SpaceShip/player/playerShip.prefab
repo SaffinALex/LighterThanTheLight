@@ -67,6 +67,7 @@ MonoBehaviour:
   initialRecoveryDash: 2
   initialDistance: 10
   initialSpeed: 20
+  initialRecharge: 3
   upgradeDashes:
   - {fileID: 5941315056976107944, guid: 2ac3fdb84552a624480aefa5b1283306, type: 3}
   nbrUpgradeMax: 2

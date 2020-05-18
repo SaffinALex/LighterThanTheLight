@@ -8,6 +8,9 @@ public class Dash : MonoBehaviour
     public float initialRecoveryDash;
     public float initialDistance;
     public float initialSpeed;
+    public int initialRecharge;
+
+    private int currentRecharge;
     
     private float timerRecoveryDash;
     private float timeDashing;
@@ -23,6 +26,7 @@ public class Dash : MonoBehaviour
 
     void Start()
     {
+        currentRecharge = initialRecharge;
         timerRecoveryDash = initialRecoveryDash;
         timerDashing = timeDashing;
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -40,8 +44,14 @@ public class Dash : MonoBehaviour
 
     void FixedUpdate(){
         timeDashing = initialDistance / initialSpeed;
-        if(timerRecoveryDash < initialRecoveryDash)
+        if(timerRecoveryDash < initialRecoveryDash){
             timerRecoveryDash += Time.fixedDeltaTime;
+            if(timerRecoveryDash >= initialRecoveryDash && currentRecharge < initialRecharge){
+                currentRecharge++;
+                if(currentRecharge > initialRecharge) currentRecharge = initialRecharge;
+                timerRecoveryDash = 0;
+            }
+        }
         if(timerDashing < timeDashing){
             timerDashing += Time.fixedDeltaTime;
             myRigidBody.velocity = Vector3.Lerp(Vector3.right * initialSpeed * directionDash, Vector3.right * directionDash * playerShip.speed, timerDashing / timeDashing);
@@ -51,8 +61,9 @@ public class Dash : MonoBehaviour
 
     public void runDash(float axisX){
         Debug.Log(timerRecoveryDash + " " + initialRecoveryDash);
-        if(CanDash()){
-            timerRecoveryDash = 0;
+        if(CanDash() && timerDashing >= timeDashing){
+            currentRecharge--;
+            if(timerRecoveryDash >= initialRecoveryDash) timerRecoveryDash = 0;
             directionDash = axisX > 0 ? 1 : -1;
             timerDashing = 0f;
             LevelUIEventManager.GetLevelUI().TriggerPlayerDash();
@@ -60,7 +71,7 @@ public class Dash : MonoBehaviour
     }
 
     public bool CanDash(){
-        return timerRecoveryDash >= initialRecoveryDash;
+        return currentRecharge > 0;
     }
 
     public bool IsDashing(){

@@ -10,6 +10,9 @@ public class Onde : MonoBehaviour
     public float timeBeforeExplosion;
     public float timeReload;
 
+    public int initialRecharge;
+    private int currentRecharge;
+
     protected float timerBeforeExplosion;
     protected float timerReload;
 
@@ -36,6 +39,7 @@ public class Onde : MonoBehaviour
 
     void Start()
     {
+        currentRecharge = initialRecharge;
         timerReload = timeReload;
         timerBeforeExplosion = timeBeforeExplosion;
         colliderOnde = GetComponent<CircleCollider2D>();
@@ -66,7 +70,14 @@ public class Onde : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timerReload < timeReload) timerReload += Time.deltaTime;
+        if(timerReload < timeReload){
+            timerReload += Time.deltaTime;
+            if(timerReload >= timeReload && currentRecharge < initialRecharge){
+                currentRecharge++;
+                if (currentRecharge > initialRecharge) currentRecharge = initialRecharge;
+                timerReload = 0f;
+            }
+        }
         if(timerBeforeExplosion < timeBeforeExplosion) timerBeforeExplosion += Time.deltaTime;
         if (timerExplosion < timeExplosion) timerExplosion += Time.deltaTime;
         if(stateOnde == StatesOndes.explode && timerExplosion >= timeExplosion){
@@ -77,10 +88,9 @@ public class Onde : MonoBehaviour
             stateOnde = StatesOndes.explode;
             colliderOnde.enabled = true;
             explodeParticle.Play();
-            timerReload = 0f;
             timerExplosion = 0f;
         }
-        if(timerReload >= timeReload && stateOnde == StatesOndes.ended){
+        if(currentRecharge > 0 && stateOnde == StatesOndes.ended){
             Debug.Log("GO SLEEP" + timerReload + " / " + timeReload + " / " + stateOnde);
             stateOnde = StatesOndes.sleep;
         }
@@ -88,6 +98,8 @@ public class Onde : MonoBehaviour
 
     public void RunOnde(){
         if(stateOnde == StatesOndes.sleep){
+            currentRecharge--;
+            if (timerReload >= timeReload) timerReload = 0;
             stateOnde = StatesOndes.awake;
             timerBeforeExplosion = 0f;
             awakeParticle.Play();

@@ -31,4 +31,8 @@ public class Shop
     public void AddUpgradeItem(ItemUpgrade upgradeItem) {
         itemsUpgrades.Add(upgradeItem);
     }
+
+    public void CloseShop(){
+        
+    }
 }
