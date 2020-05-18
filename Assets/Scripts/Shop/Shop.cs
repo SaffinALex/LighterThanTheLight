@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 
 public class Shop
@@ -9,6 +10,11 @@ public class Shop
 
     protected bool open = false;
     protected bool available = false;
+    //Evénement permettant de signaler la fin du travail d'un nodeElement
+    protected UnityEvent eventCloseShop = new UnityEvent(); //Permet de signaler que le shop est fermé
+
+    //Permet d'obtenir l'évènement du shop qui se ferme
+    public UnityEvent GetEventCloseShop(){ return eventCloseShop; } 
     
     /**
      * Permet de savoir si tous les items du shop ont été achetés
@@ -33,6 +39,6 @@ public class Shop
     }
 
     public void CloseShop(){
-        
+        eventCloseShop.Invoke();
     }
 }

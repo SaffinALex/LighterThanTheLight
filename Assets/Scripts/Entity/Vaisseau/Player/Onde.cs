@@ -48,6 +48,7 @@ public class Onde : MonoBehaviour
         awakeParticle.Stop();
         explodeParticle.Stop();
         SetInfoParticle();
+        LevelUIEventManager.GetLevelUI().InitOndeCdBar(initialRecharge, timeReload);
     }
 
     void SetInfoParticle(){

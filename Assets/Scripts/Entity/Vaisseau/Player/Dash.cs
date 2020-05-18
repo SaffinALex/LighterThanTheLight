@@ -31,6 +31,7 @@ public class Dash : MonoBehaviour
         timerDashing = timeDashing;
         myRigidBody = GetComponent<Rigidbody2D>();
         playerShip = GetComponent<PlayerShip>();
+        LevelUIEventManager.GetLevelUI().InitDashCdBar(initialRecharge, initialRecoveryDash);
     }
 
     public void initialize()

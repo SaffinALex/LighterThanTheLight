@@ -9,7 +9,10 @@ public class NodeShop : NodeElement
     private Shop shop;
     protected readonly int MaxArticles;
 
+    protected bool accessNode;
+
     public override void InitializeNode(float score = 0) {
+        accessNode = true;
         scoreDifficulty = score;
         ReadOnlyCollection<GameObject> allUpgrades = App.ressourcesLoader.getUpgrades();
         ReadOnlyCollection<GameObject> allWeapons = App.ressourcesLoader.getWeapons();
@@ -23,10 +26,19 @@ public class NodeShop : NodeElement
                 shop.AddUpgradeItem(new ItemUpgrade( allUpgrades[Random.Range(0, allUpgrades.Count)].GetComponent<Upgrade>() ));
             }
         }
+
+        shop.GetEventCloseShop().AddListener(shopClose);
+    }
+
+    protected void shopClose(){
+        accessNode = false;
+        this.End();
     }
 
     public override void Begin(){
-        this.End();
+        if(accessNode){
+            //Faire appel à l'interface UI du shop
+        }
         return;
     }
 }
