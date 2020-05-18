@@ -62,7 +62,7 @@ public class PlayerShip : Ship
                 if (shieldLife > maxShieldLife) shieldLife = maxShieldLife;
             }
         }
-
+        UpdateUI();
     }
 
     void UpdateUI() {
