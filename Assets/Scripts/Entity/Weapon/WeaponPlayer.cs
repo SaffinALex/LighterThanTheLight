@@ -7,6 +7,7 @@ public abstract class WeaponPlayer : Weapon
     public static readonly float minFireRate = 0.001f;
     
     public int size;
+    public Sprite icon;
     protected bool canShoot;
     public float fireRateBase;
     protected float fireRate;

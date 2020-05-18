@@ -47,6 +47,7 @@ MonoBehaviour:
   nbrMaxUpgrade: 0
   bullet: {fileID: 741788068531152253, guid: 99620480d37ffb64784e0658dc6d03cb, type: 3}
   size: 0
+  icon: {fileID: 21300000, guid: 6572f0618da9f1342a1bff5dbe816512, type: 3}
   fireRateBase: 0.001
   price: 0
   weight: 0
