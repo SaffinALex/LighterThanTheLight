@@ -6,14 +6,15 @@ public class ItemWeapon : Item
 {
     protected WeaponPlayer weapon;
 
-    public WeaponPlayer ObtainItem(){
-        available = false;
-        return weapon;
-    }
-
     public ItemWeapon(WeaponPlayer weapon)
     {
         this.weapon = weapon;
         this.price = weapon.price;
+    }
+
+    public new WeaponPlayer ObtainItem()
+    {
+        base.ObtainItem();
+        return weapon;
     }
 }

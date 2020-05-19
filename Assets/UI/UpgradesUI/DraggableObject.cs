@@ -15,7 +15,7 @@ public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeg
     private bool iconLoaded;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         rect = GetComponent<RectTransform>();
         canvasG = GetComponent<CanvasGroup>();

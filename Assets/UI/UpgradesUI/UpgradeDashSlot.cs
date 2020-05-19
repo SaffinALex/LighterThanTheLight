@@ -19,6 +19,15 @@ public class UpgradeDashSlot : InventorySlot
                     EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
             }
         }
+        else if (dragObj is ShopObject)
+        {
+            if (App.playerManager.BuyDashUpgrade(((dragObj as ShopObject).shopSlot.getItem() as ItemUpgrade), this.getItemIndex()))
+            {
+                Debug.Log("Dash Upgrade bought !");
+                EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
+                EquipmentManager.GetEquipmentUI().reloadShopPanel();
+            }
+        }
     }
 
     protected override bool isValidDrop(PointerEventData eventData)

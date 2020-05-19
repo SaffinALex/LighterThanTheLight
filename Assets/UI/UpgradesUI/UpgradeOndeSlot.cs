@@ -17,6 +17,15 @@ public class UpgradeOndeSlot : InventorySlot
                 if(App.playerManager.swapOndeUpgrades(this.getItemIndex(), sender.getItemIndex()))
                     EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
         }
+        else if (dragObj is ShopObject)
+        {
+            if (App.playerManager.BuyOndeUpgrade(((dragObj as ShopObject).shopSlot.getItem() as ItemUpgrade), this.getItemIndex()))
+            {
+                Debug.Log("Onde Upgrade bought !");
+                EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
+                EquipmentManager.GetEquipmentUI().reloadShopPanel();
+            }
+        }
     }
 
     protected override bool isValidDrop(PointerEventData eventData)

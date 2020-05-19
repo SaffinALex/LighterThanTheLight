@@ -18,4 +18,13 @@ public class Item
     public bool IsAvailable(){
         return available;
     }
+
+    protected void ObtainItem() {
+        available = false;
+    }
+
+    public void RevertBuying()
+    {
+        available = true;
+    }
 }

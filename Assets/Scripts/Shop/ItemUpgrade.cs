@@ -6,13 +6,14 @@ public class ItemUpgrade : Item
 {
     protected Upgrade upgrade;
 
-    public Upgrade ObtainItem() {
-        available = false;
-        return upgrade;
-    }
-
     public ItemUpgrade(Upgrade upgrade){
         this.upgrade = upgrade;
         this.price = upgrade.price;
+    }
+
+    public new Upgrade ObtainItem()
+    {
+        base.ObtainItem();
+        return upgrade;
     }
 }

@@ -17,6 +17,15 @@ public class UpgradeShipSlot : InventorySlot
                 if(App.playerManager.swapShipUpgrades(this.getItemIndex(), sender.getItemIndex()))
                     EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
         }
+        else if (dragObj is ShopObject)
+        {
+            if (App.playerManager.BuyShipUpgrade(((dragObj as ShopObject).shopSlot.getItem() as ItemUpgrade), this.getItemIndex()))
+            {
+                Debug.Log("Ship Upgrade bought !");
+                EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
+                EquipmentManager.GetEquipmentUI().reloadShopPanel();
+            }
+        }
     }
 
     protected override bool isValidDrop(PointerEventData eventData)

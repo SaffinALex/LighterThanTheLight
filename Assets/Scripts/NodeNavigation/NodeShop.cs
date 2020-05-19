@@ -12,6 +12,7 @@ public class NodeShop : NodeElement
     protected bool accessNode;
 
     public override void InitializeNode(float score = 0) {
+        Debug.Log(MaxArticles);
         accessNode = true;
         scoreDifficulty = score;
         shop = new Shop();
@@ -38,7 +39,7 @@ public class NodeShop : NodeElement
 
     public override void Begin(){
         if(accessNode){
-            //Faire appel à l'interface UI du shop
+            EquipmentManager.GetEquipmentUI().openShop(shop);
         }
         return;
     }

@@ -21,7 +21,14 @@ public class WeaponSlot : InventorySlot
                     EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
                 }
             }
-                
+        }else if (dragObj is ShopObject)
+        {
+            if (App.playerManager.BuyWeapon(((dragObj as ShopObject).shopSlot.getItem() as ItemWeapon),this.getItemIndex()))
+            {
+                Debug.Log("Weapon bought !");
+                EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
+                EquipmentManager.GetEquipmentUI().reloadShopPanel();
+            }
         }
     }
 

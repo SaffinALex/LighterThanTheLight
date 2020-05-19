@@ -1,18 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ShopSlot : MonoBehaviour
+public class ShopSlot : InventorySlot
 {
-    // Start is called before the first frame update
-    void Start()
+    private ShopPanel shopPanel;
+    protected override void actionOnDrop(PointerEventData eventData)
     {
-        
+        //Action impossible
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override bool isValidDrop(PointerEventData eventData)
     {
-        
+        return false;
+    }
+
+    public Item getItem()
+    {
+        return shopPanel.getItem(getItemIndex());
+    }
+
+    public void setShopPanel(ShopPanel shopPanel)
+    {
+        this.shopPanel = shopPanel;
     }
 }

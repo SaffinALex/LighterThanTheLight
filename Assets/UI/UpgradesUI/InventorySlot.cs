@@ -8,7 +8,7 @@ public abstract class InventorySlot : MonoBehaviour, IDropHandler
 {
     private bool active = false;
     private Color baseColor = new Color(255, 255, 255, 255);
-    public Color inactiveColor = new Color(255, 255, 255, 100);
+    public Color inactiveColor;
     private int itemIndex = -1;
     public void OnDrop(PointerEventData eventData) {
         if (isActive() && eventData.pointerDrag != null && eventData.pointerDrag.GetComponent<DraggableObject>() != null) {

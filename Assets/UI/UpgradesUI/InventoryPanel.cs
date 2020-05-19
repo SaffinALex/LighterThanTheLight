@@ -25,17 +25,17 @@ public class InventoryPanel : MonoBehaviour
     public GameObject dashUpgradeSlotPrefab;
     public GameObject ondeUpgradeSlotPrefab;
 
-    private List<GameObject> weaponSlots;
-    private List<GameObject> weaponUpgradeSlots;
-    private List<GameObject> shipUpgradeSlots;
-    private List<GameObject> dashUpgradeSlots;
-    private List<GameObject> ondeUpgradeSlots;
+    private List<GameObject> weaponSlots = new List<GameObject>();
+    private List<GameObject> weaponUpgradeSlots = new List<GameObject>();
+    private List<GameObject> shipUpgradeSlots = new List<GameObject>();
+    private List<GameObject> dashUpgradeSlots = new List<GameObject>();
+    private List<GameObject> ondeUpgradeSlots = new List<GameObject>();
 
     public int currentSelectedWeapon = -1;
 
-    // Start is called before the first frame update
-    void Start()
+    public void initPanel()
     {
+        clearAllInventoryUI();
         playerManager = App.playerManager;
         weaponSlots = new List<GameObject>();
         weaponUpgradeSlots = new List<GameObject>();
@@ -43,7 +43,8 @@ public class InventoryPanel : MonoBehaviour
         dashUpgradeSlots = new List<GameObject>();
         ondeUpgradeSlots = new List<GameObject>();
 
-        for (int i = 0; i < playerManager.getShipMaxUpgradeAmount(); i++){
+        for (int i = 0; i < playerManager.getShipMaxUpgradeAmount(); i++)
+        {
             GameObject go = Instantiate(shipUpgradeSlotPrefab);
             if (i < playerManager.getShipCurrentlyUsableUpgradeSlot() - 1)
                 go.GetComponent<InventorySlot>().SetActive(true);
@@ -117,8 +118,7 @@ public class InventoryPanel : MonoBehaviour
                 continue;
             }
             GameObject go = Instantiate(upgradeObjectPrefab);
-            GameObject upGO = Instantiate(go);
-            upGO.name = "UpgradeContainer";
+            GameObject upGO = Instantiate(up.gameObject);
             upGO.transform.SetParent(go.transform);
             go.GetComponent<DraggableObject>().canvas = gameObject.transform.parent.GetComponent<Canvas>();
             go.GetComponent<DraggableObject>().upgrade = upGO;
@@ -137,8 +137,7 @@ public class InventoryPanel : MonoBehaviour
                 continue;
             }
             GameObject go = Instantiate(upgradeObjectPrefab);
-            GameObject upGO = Instantiate(go);
-            upGO.name = "UpgradeContainer";
+            GameObject upGO = Instantiate(up.gameObject);
             upGO.transform.SetParent(go.transform);
             go.GetComponent<DraggableObject>().canvas = gameObject.transform.parent.GetComponent<Canvas>();
             go.GetComponent<DraggableObject>().upgrade = upGO;
@@ -157,12 +156,10 @@ public class InventoryPanel : MonoBehaviour
                 continue;
             }
             GameObject go = Instantiate(upgradeObjectPrefab);
-            GameObject upGO = Instantiate(go);
-            upGO.name = "UpgradeContainer";
+            GameObject upGO = Instantiate(up.gameObject);
             upGO.transform.SetParent(go.transform);
             go.GetComponent<DraggableObject>().canvas = gameObject.transform.parent.GetComponent<Canvas>();
             go.GetComponent<DraggableObject>().upgrade = upGO;
-            
 
             go.transform.SetParent(dashUpgradeSlots[i].transform);
             go.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
@@ -199,8 +196,7 @@ public class InventoryPanel : MonoBehaviour
             }
 
             go = Instantiate(upgradeObjectPrefab);
-            GameObject upGO = Instantiate(go);
-            upGO.name = "UpgradeContainer";
+            GameObject upGO = Instantiate(up.gameObject);
             upGO.transform.SetParent(go.transform);
             go.GetComponent<DraggableObject>().canvas = gameObject.transform.parent.GetComponent<Canvas>();
             go.GetComponent<DraggableObject>().upgrade = upGO;
@@ -240,8 +236,7 @@ public class InventoryPanel : MonoBehaviour
             }
 
             GameObject go = Instantiate(upgradeObjectPrefab);
-            GameObject upGO = Instantiate(go);
-            upGO.name = "UpgradeContainer";
+            GameObject upGO = Instantiate(up.gameObject);
             upGO.transform.SetParent(go.transform);
             go.GetComponent<DraggableObject>().canvas = gameObject.transform.parent.GetComponent<Canvas>();
             go.GetComponent<DraggableObject>().upgrade = upGO;
@@ -281,6 +276,65 @@ public class InventoryPanel : MonoBehaviour
                 if (child != null)
                     Destroy(child.gameObject);
 
+        foreach (Transform child in weaponSelectorContainer.transform)
+            if (child != null)
+                Destroy(child.gameObject);
+    }
+
+    public void clearAllInventoryUI()
+    {
+        foreach (GameObject go in weaponSlots)
+            if (go != null)
+            {
+                foreach (Transform child in go.transform)
+                {
+                    if (child != null)
+                        Destroy(child.gameObject);
+                }
+                Destroy(go);
+            }
+        foreach (GameObject go in weaponUpgradeSlots)
+        {
+            if (go != null)
+            {
+                foreach (Transform child in go.transform)
+                {
+                    if (child != null)
+                        Destroy(child.gameObject);
+                }
+                Destroy(go);
+            }
+        }
+        foreach (GameObject go in shipUpgradeSlots)
+            if (go != null)
+            {
+                foreach (Transform child in go.transform)
+                {
+                    if (child != null)
+                        Destroy(child.gameObject);
+                }
+                Destroy(go);
+            }
+        foreach (GameObject go in dashUpgradeSlots)
+            if (go != null)
+            {
+                foreach (Transform child in go.transform)
+                {
+                    if (child != null)
+                        Destroy(child.gameObject);
+                }
+                Destroy(go);
+            }
+        foreach (GameObject go in ondeUpgradeSlots)
+            if (go != null)
+            {
+                foreach (Transform child in go.transform)
+                {
+                    if (child != null)
+                        Destroy(child.gameObject);
+                }
+                Destroy(go);
+            }
         foreach (Transform child in weaponSelectorContainer.transform)
             if (child != null)
                 Destroy(child.gameObject);

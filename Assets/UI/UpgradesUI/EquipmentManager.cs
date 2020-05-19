@@ -7,22 +7,27 @@ public class EquipmentManager : MonoBehaviour
 {
     [SerializeField] private InventoryPanel inventoryPanel;
     [SerializeField] private ShopPanel shopPanel;
+    public Shop currentShop;
 
     private static EquipmentManager instance = null;
 
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
+        inventoryPanel.gameObject.SetActive(false);
+        shopPanel.gameObject.SetActive(false);
         instance = this;
-    }
-
-    void Update()
-    {
     }
 
     public void reloadInventoryPanel()
     {
         inventoryPanel.feedInventoryUI();
+    }
+
+    public void reloadShopPanel()
+    {
+        shopPanel.feedShopPanel();
     }
 
     public static EquipmentManager GetEquipmentUI()
@@ -35,4 +40,26 @@ public class EquipmentManager : MonoBehaviour
         else
             return instance;
     }
+
+    public int getCurrentSelectedWeaponIndex()
+    {
+        return inventoryPanel.currentSelectedWeapon;
+    }
+
+    public void openShop(Shop shop)
+    {
+        inventoryPanel.gameObject.SetActive(true);
+        shopPanel.gameObject.SetActive(true);
+        currentShop = shop;
+        inventoryPanel.initPanel();
+        shopPanel.initShopPanel(currentShop);
+    }
+
+    public void closeShop()
+    {
+        inventoryPanel.gameObject.SetActive(true);
+        shopPanel.gameObject.SetActive(true);
+
+        currentShop.CloseShop();
+    } 
 }

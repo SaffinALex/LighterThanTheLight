@@ -467,53 +467,107 @@ public class PlayerManager {
      * @params {Item} item l'item qu'on veut acheter
      * @returns {bool} Renvois vrai si l'item peut être acheté
      */
-    /*public bool CanBuyItem(Item item)
+    public bool CanBuyItem(Item item)
     {
         return item.IsAvailable() && item.GetPrice() <= money;
-    }*/
+    }
 
     /**
      * Fonction permettant d'update l'argent du joueur selon l'item 
      * @params {Item} item
      */
-    /*public void BuyItem(Item item)
+    public void BuyItem(Item item)
     {
         money -= item.GetPrice();
-    }*/
+    }
 
     /**
      * Permet d'acheter une arme
      * @params {ItemWeapon} item
      * @returns {bool} retourne true si l'arme a été acheté, false si echec
      */
-    /*public bool BuyWeapon(ItemWeapon item)
+    public bool BuyWeapon(ItemWeapon item, int weaponIndex)
     {
         //1 - Check si on peut acheter l'item
         if (!CanBuyItem(item)) return false;
-        //2 - Check si la place est disponible dans l'inventaire
-        if (weapons.Count + 1 <= weaponInventoryMax) return false;
-        //3 - On achète l'item
-        BuyItem(item);
-        WeaponPlayer weaponPlayer = item.ObtainItem(); //On rend l'item invalide
-        weapons.Add(weaponPlayer); //On ajoute l'item à la liste
-
+        //2 - Check si on réussit á équiper
+        if (!this.setWeapon(weaponIndex, item.ObtainItem()))
+        {
+            item.RevertBuying();
+            return false;
+        }
+        //3 - Tout s'est bien passé on débourse
+        this.BuyItem(item);
         return true;
-    }*/
+    }
 
     /**
      * Permet d'acheter une Upgrade
      * @params {ItemUpgrade} item
      * @returns {bool} retourne true si l'upgrade a été acheté, false si echec
      */
-    /*public bool BuyUpgrade(ItemUpgrade item)
+
+    public bool BuyShipUpgrade(ItemUpgrade item, int upgradeIndex)
     {
         //1 - Check si on peut acheter l'item
         if (!CanBuyItem(item)) return false;
-        //3 - On achète l'item
-        BuyItem(item);
-        Upgrade weaponPlayer = item.ObtainItem(); //On rend l'item invalide
-        upgrades.Add(weaponPlayer); //On ajoute l'item à la liste
-
+        //2 - Check si bon type et si on réussi a equiper
+        Upgrade up = item.ObtainItem();
+        if ((!(up is UpgradeShip)) && (!this.setShipUpgrade(upgradeIndex, (up as UpgradeShip))))
+        {
+            item.RevertBuying();
+            return false;
+        }
+        //3 - Tout s'est bien passé on débourse
+        this.BuyItem(item);
         return true;
-    }*/
+    }
+
+    public bool BuyDashUpgrade(ItemUpgrade item, int upgradeIndex)
+    {
+        //1 - Check si on peut acheter l'item
+        if (!CanBuyItem(item)) return false;
+        //2 - Check si bon type et si on réussi a equiper
+        Upgrade up = item.ObtainItem();
+        if ((!(up is UpgradeDash)) && (!this.setDashUpgrade(upgradeIndex, (up as UpgradeDash))))
+        {
+            item.RevertBuying();
+            return false;
+        }
+        //3 - Tout s'est bien passé on débourse
+        this.BuyItem(item);
+        return true;
+    }
+
+    public bool BuyOndeUpgrade(ItemUpgrade item, int upgradeIndex)
+    {
+        //1 - Check si on peut acheter l'item
+        if (!CanBuyItem(item)) return false;
+        //2 - Check si bon type et si on réussi a equiper
+        Upgrade up = item.ObtainItem();
+        if ((!(up is UpgradeOnde)) && (!this.setOndeUpgrade(upgradeIndex, (up as UpgradeOnde))))
+        {
+            item.RevertBuying();
+            return false;
+        }
+        //3 - Tout s'est bien passé on débourse
+        this.BuyItem(item);
+        return true;
+    }
+
+    public bool BuyWeaponUpgrade(ItemUpgrade item, int weaponIndex, int upgradeIndex)
+    {
+        //1 - Check si on peut acheter l'item
+        if (!CanBuyItem(item)) return false;
+        //2 - Check si bon type et si on réussi a equiper
+        Upgrade up = item.ObtainItem();
+        if ((!(up is UpgradeWeapon)) && (!this.setWeaponUpgrade(weaponIndex, upgradeIndex, (up as UpgradeWeapon))))
+        {
+            item.RevertBuying();
+            return false;
+        }
+        //3 - Tout s'est bien passé on débourse
+        this.BuyItem(item);
+        return true;
+    }
 }

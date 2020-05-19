@@ -20,6 +20,15 @@ public class UpgradeWeaponSlot : InventorySlot
                 if (App.playerManager.swapWeaponUpgrades(weaponIndex, this.getItemIndex(), sender.getItemIndex()))
                     EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
         }
+        else if (dragObj is ShopObject)
+        {
+            if (App.playerManager.BuyWeaponUpgrade(((dragObj as ShopObject).shopSlot.getItem() as ItemUpgrade),EquipmentManager.GetEquipmentUI().getCurrentSelectedWeaponIndex(), this.getItemIndex()))
+            {
+                Debug.Log("Weapon Upgrade bought !");
+                EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
+                EquipmentManager.GetEquipmentUI().reloadShopPanel();
+            }
+        }
     }
 
     protected override bool isValidDrop(PointerEventData eventData)

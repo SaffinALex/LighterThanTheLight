@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
 using UnityEngine.UI;
-using UnityEngine.UI;
 using TMPro;
 
 public class ScoresPanel : MonoBehaviour
