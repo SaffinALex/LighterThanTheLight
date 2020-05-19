@@ -57,8 +57,8 @@ public class EquipmentManager : MonoBehaviour
 
     public void closeShop()
     {
-        inventoryPanel.gameObject.SetActive(true);
-        shopPanel.gameObject.SetActive(true);
+        inventoryPanel.gameObject.SetActive(false);
+        shopPanel.gameObject.SetActive(false);
 
         currentShop.CloseShop();
     } 

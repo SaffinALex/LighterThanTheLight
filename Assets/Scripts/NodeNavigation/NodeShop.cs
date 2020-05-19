@@ -12,7 +12,6 @@ public class NodeShop : NodeElement
     protected bool accessNode;
 
     public override void InitializeNode(float score = 0) {
-        Debug.Log(MaxArticles);
         accessNode = true;
         scoreDifficulty = score;
         shop = new Shop();
@@ -24,11 +23,6 @@ public class NodeShop : NodeElement
             bool isAWeapon = Random.Range(0,3) == 0; //1 / 3 chance
             if(isAWeapon){
                 GameObject go = Instantiate(allWeapons[Random.Range(0, allWeapons.Count)]);
-                foreach (var component in go.GetComponents<Component>())
-                {
-                    Debug.Log(component);
-                }
-                //Debug.Log(go.GetComponent<WeaponPlayer>());
                 shop.AddWeaponItem(new ItemWeapon(go.GetComponent<WeaponPlayer>() ));
             }else{
                 shop.AddUpgradeItem(new ItemUpgrade( allUpgrades[Random.Range(0, allUpgrades.Count)].GetComponent<Upgrade>() ));

@@ -12,10 +12,8 @@ public class ShopPanel : MonoBehaviour
 
     public void initShopPanel(Shop shop)
     {
-        Debug.Log(shopSlotsPrefab);
         clearAllInShopPanel();
 
-        Debug.Log(shopSlotsPrefab);
         this.shop = shop;
         shopSlots = new List<GameObject>();
 
@@ -39,7 +37,10 @@ public class ShopPanel : MonoBehaviour
         for (int i = 0; i < items.Count; i++)
         {
             if (!items[i].IsAvailable())
+            {
                 shopSlots[i].GetComponent<InventorySlot>().SetActive(false);
+                continue;
+            }
 
             GameObject go = Instantiate(shopObjectPrefab);
             GameObject upGO;
@@ -56,8 +57,9 @@ public class ShopPanel : MonoBehaviour
             upGO.transform.SetParent(go.transform);
             go.GetComponent<DraggableObject>().canvas = gameObject.transform.parent.GetComponent<Canvas>();
             go.GetComponent<DraggableObject>().upgrade = upGO;
+            go.GetComponent<ShopObject>().shopSlot = shopSlots[i].GetComponent<ShopSlot>();
 
-            go.transform.SetParent(shopSlots[i].transform);
+    go.transform.SetParent(shopSlots[i].transform);
             go.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         }
     }

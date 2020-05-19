@@ -17,7 +17,7 @@ public class PlayerManager {
     {
         inventory = new Inventory();
 
-        money = 0;
+        money = 500000;
         score = 0;
 
         this.player = player;
@@ -513,7 +513,7 @@ public class PlayerManager {
         if (!CanBuyItem(item)) return false;
         //2 - Check si bon type et si on réussi a equiper
         Upgrade up = item.ObtainItem();
-        if ((!(up is UpgradeShip)) && (!this.setShipUpgrade(upgradeIndex, (up as UpgradeShip))))
+        if ((!(up is UpgradeShip)) || (!this.setShipUpgrade(upgradeIndex, (up as UpgradeShip))))
         {
             item.RevertBuying();
             return false;
@@ -529,7 +529,7 @@ public class PlayerManager {
         if (!CanBuyItem(item)) return false;
         //2 - Check si bon type et si on réussi a equiper
         Upgrade up = item.ObtainItem();
-        if ((!(up is UpgradeDash)) && (!this.setDashUpgrade(upgradeIndex, (up as UpgradeDash))))
+        if ((!(up is UpgradeDash)) || (!this.setDashUpgrade(upgradeIndex, (up as UpgradeDash))))
         {
             item.RevertBuying();
             return false;
@@ -545,7 +545,7 @@ public class PlayerManager {
         if (!CanBuyItem(item)) return false;
         //2 - Check si bon type et si on réussi a equiper
         Upgrade up = item.ObtainItem();
-        if ((!(up is UpgradeOnde)) && (!this.setOndeUpgrade(upgradeIndex, (up as UpgradeOnde))))
+        if ((!(up is UpgradeOnde)) || (!this.setOndeUpgrade(upgradeIndex, (up as UpgradeOnde))))
         {
             item.RevertBuying();
             return false;
@@ -561,7 +561,7 @@ public class PlayerManager {
         if (!CanBuyItem(item)) return false;
         //2 - Check si bon type et si on réussi a equiper
         Upgrade up = item.ObtainItem();
-        if ((!(up is UpgradeWeapon)) && (!this.setWeaponUpgrade(weaponIndex, upgradeIndex, (up as UpgradeWeapon))))
+        if ((!(up is UpgradeWeapon)) || (!this.setWeaponUpgrade(weaponIndex, upgradeIndex, (up as UpgradeWeapon))))
         {
             item.RevertBuying();
             return false;

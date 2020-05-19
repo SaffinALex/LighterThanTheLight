@@ -10,24 +10,21 @@ public class UpgradeWeaponSlot : InventorySlot
     public int WeaponIndex { get => weaponIndex; set => weaponIndex = value; }
     protected override void actionOnDrop(PointerEventData eventData)
     {
-        Debug.Log("Weapon Upgrade Equiped !");
         DraggableObject dragObj = eventData.pointerDrag.GetComponent<DraggableObject>();
-
-        if (dragObj is InventoryObject)
+        if (dragObj is ShopObject)
+        {
+            if (App.playerManager.BuyWeaponUpgrade(((dragObj as ShopObject).shopSlot.getItem() as ItemUpgrade), EquipmentManager.GetEquipmentUI().getCurrentSelectedWeaponIndex(), this.getItemIndex()))
+            {;
+                EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
+                EquipmentManager.GetEquipmentUI().reloadShopPanel();
+            }
+        }
+        else if (dragObj is InventoryObject)
         {
             InventorySlot sender = dragObj.getInventorySlotParent();
             if (sender != null)
                 if (App.playerManager.swapWeaponUpgrades(weaponIndex, this.getItemIndex(), sender.getItemIndex()))
                     EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
-        }
-        else if (dragObj is ShopObject)
-        {
-            if (App.playerManager.BuyWeaponUpgrade(((dragObj as ShopObject).shopSlot.getItem() as ItemUpgrade),EquipmentManager.GetEquipmentUI().getCurrentSelectedWeaponIndex(), this.getItemIndex()))
-            {
-                Debug.Log("Weapon Upgrade bought !");
-                EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
-                EquipmentManager.GetEquipmentUI().reloadShopPanel();
-            }
         }
     }
 

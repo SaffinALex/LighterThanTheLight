@@ -8,8 +8,6 @@ public class ItemWeapon : Item
 
     public ItemWeapon(WeaponPlayer weapon)
     {
-
-        Debug.Log(weapon);
         this.weapon = weapon;
         this.price = weapon.price;
     }

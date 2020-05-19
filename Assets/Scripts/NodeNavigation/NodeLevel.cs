@@ -118,7 +118,6 @@ public class NodeLevel : NodeElement
             // moyenne /= App.ALL_EVENTS["Wave"].Count;
             // Debug.Log("Wanted Score " + moyenne * 3);
             // levelGeneratorInfo.events = GeneratorLGI.GenerateLevel(moyenne * 3, 10, new List<string>() { "Wave", "Wave", "Wave" });
-            Debug.Log(levelGeneratorInfo);
             App.SetLevelGenerator(levelGeneratorInfo);
 
             //App.StartLevel();

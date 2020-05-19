@@ -7,28 +7,21 @@ public class WeaponSlot : InventorySlot
 {
     protected override void actionOnDrop(PointerEventData eventData)
     {
-        
         DraggableObject dragObj = eventData.pointerDrag.GetComponent<DraggableObject>();
-
-        if (dragObj is InventoryObject)
+        if (dragObj is ShopObject)
         {
-            InventorySlot sender = dragObj.getInventorySlotParent();
-            if (sender != null)
+            if (App.playerManager.BuyWeapon(((dragObj as ShopObject).shopSlot.getItem() as ItemWeapon), this.getItemIndex()))
             {
-                if (App.playerManager.swapWeapons(this.getItemIndex(), sender.getItemIndex()))
-                {
-                    Debug.Log("Weapon Equiped !");
-                    EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
-                }
-            }
-        }else if (dragObj is ShopObject)
-        {
-            if (App.playerManager.BuyWeapon(((dragObj as ShopObject).shopSlot.getItem() as ItemWeapon),this.getItemIndex()))
-            {
-                Debug.Log("Weapon bought !");
                 EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
                 EquipmentManager.GetEquipmentUI().reloadShopPanel();
             }
+        }
+        else if (dragObj is InventoryObject)
+        {
+            InventorySlot sender = dragObj.getInventorySlotParent();
+            if (sender != null)
+                if (App.playerManager.swapWeapons(this.getItemIndex(), sender.getItemIndex()))
+                    EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
         }
     }
 

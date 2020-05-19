@@ -20,8 +20,11 @@ public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeg
         rect = GetComponent<RectTransform>();
         canvasG = GetComponent<CanvasGroup>();
         iconLoaded = false;
-        if (!iconLoaded && upgrade != null && upgrade.GetComponent<Upgrade>() != null)
-            GetComponent<Image>().sprite = upgrade.GetComponent<Upgrade>().icone;
+        if (!iconLoaded && upgrade != null)
+            if(upgrade.GetComponent<Upgrade>() != null)
+                GetComponent<Image>().sprite = upgrade.GetComponent<Upgrade>().icone;
+            if (upgrade.GetComponent<WeaponPlayer>() != null)
+                GetComponent<Image>().sprite = upgrade.GetComponent<WeaponPlayer>().icon;
     }
 
     // Update is called once per frame
@@ -38,7 +41,7 @@ public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeg
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
+        //Debug.Log("OnEndDrag");
 
         canvasG.alpha = 1f;
         canvasG.blocksRaycasts = true;
@@ -48,7 +51,7 @@ public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeg
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("OnBeginDrag");
+        //Debug.Log("OnBeginDrag");
         canvasG.alpha = 0.5f;
         canvasG.blocksRaycasts = false;
         originalPos = rect.anchoredPosition;
