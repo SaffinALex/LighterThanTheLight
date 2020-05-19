@@ -9,6 +9,7 @@ public class PanelUIManager : MonoBehaviour
     private GameObject background;
     public GameObject indexPanel;
     public GameObject scorePanel;
+    public RessourcesPanel ressourcePanel;
     public GameObject optionsPanel;
     public GameObject endLevelPanel;
     public GameObject endGamePanel;

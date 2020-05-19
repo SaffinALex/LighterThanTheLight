@@ -164,6 +164,7 @@ public class App : MonoBehaviour
     static public void StartLevel(){
         treeNode.gameObject.SetActive(false);
         SceneManager.LoadScene("__Level");
+        PanelUIManager.GetPanelUI().ressourcePanel.gameObject.SetActive(true);
     }
 
     /**
@@ -197,5 +198,6 @@ public class App : MonoBehaviour
     {
         playerManager.endOfLevelRoutine();
         treeNode.gameObject.SetActive(true);
+        PanelUIManager.GetPanelUI().ressourcePanel.gameObject.SetActive(true);
     }
 }

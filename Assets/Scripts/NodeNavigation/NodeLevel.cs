@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 public class NodeLevel : NodeElement
 {
     //Boss events
-    static float bossProbability = 0.15f / 3f;
+    static float bossProbability = 0.16f / 3f;
     static float hardBossProbability = 0.0025f / 3f;
 
     //Special events
-    static float specialEventProbability = 0.1f / 3f;
+    static float specialEventProbability = 0f / 3f;
 
     //Rare Item events
-    static float RareItemProbability = 0.1f / 3f;
-    static float SuperRareItemProbability = 0.005f / 3f;
+    static float RareItemProbability = 0.12f / 3f;
+    static float SuperRareItemProbability = 0f / 3f;
 
     static float nothingProbability = 1f - (bossProbability + hardBossProbability + specialEventProbability + RareItemProbability + SuperRareItemProbability);
 
@@ -120,7 +120,7 @@ public class NodeLevel : NodeElement
             // levelGeneratorInfo.events = GeneratorLGI.GenerateLevel(moyenne * 3, 10, new List<string>() { "Wave", "Wave", "Wave" });
             App.SetLevelGenerator(levelGeneratorInfo);
 
-            //App.StartLevel();
+            App.StartLevel();
             this.End();
         }
         this.End();

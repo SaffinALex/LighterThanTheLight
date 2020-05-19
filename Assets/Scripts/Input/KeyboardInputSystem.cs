@@ -11,9 +11,9 @@ public class KeyboardInputSystem : InputSystem
   public KeyCode right;
 
   [Header("Interaction Inputs")]
-  public KeyCode button1;
-  public KeyCode button2;
-  public KeyCode menu;
+  public KeyCode dash;
+  public KeyCode onde;
+  public KeyCode pause;
 
   new protected void Start() {
     base.Start();
@@ -30,9 +30,9 @@ public class KeyboardInputSystem : InputSystem
     SetInputValue("left", correctInput(left) ? getInput(left) : GetInput("horizontal") < 0 ? - GetInput("horizontal") : 0);
     SetInputValue("right", correctInput(right) ? getInput(right) : GetInput("horizontal") > 0 ? GetInput("horizontal") : 0);
 
-    SetInputValue("button1", correctInput(button1) ? getInput(button1) : GetInput("Fire1"));
-    SetInputValue("button2", correctInput(button2) ? getInput(button2) : GetInput("Jump"));
-    SetInputValue("menu", correctInput(menu) ? getInput(menu) : GetInput("Cancel"));
+    SetInputValue("dash", correctInput(dash) ? getInput(dash) : GetInput("Fire1"));
+    SetInputValue("onde", correctInput(onde) ? getInput(onde) : GetInput("Jump"));
+    SetInputValue("pause", correctInput(pause) ? getInput(pause) : GetInput("Cancel"));
 
     /*
     foreach(KeyCode kcode in System.Enum.GetValues(typeof(KeyCode))){

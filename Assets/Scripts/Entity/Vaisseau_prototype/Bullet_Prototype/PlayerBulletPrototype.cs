@@ -32,6 +32,7 @@ public class PlayerBulletPrototype : Bullet {
             }
             if(collisionNear != null){
                 App.playerManager.getInventory().setScore(App.playerManager.getInventory().getScore() + 5);
+                PanelUIManager.GetPanelUI().ressourcePanel.SetScore(App.playerManager.getInventory().getScore() + App.playerManager.getScore());
                 EntitySpaceShipBehavior ennemy = collisionNear.gameObject.GetComponent<EntitySpaceShipBehavior>();
                 collisionNear.gameObject.GetComponent<EntitySpaceShipBehavior>().getDamage(damage);
                 Destroy(gameObject);

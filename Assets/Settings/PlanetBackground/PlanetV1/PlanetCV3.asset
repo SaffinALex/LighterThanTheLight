@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36e2f87895ea1fb469243490e55bd1df, type: 3}
-  m_Name: PlanetCV2
+  m_Name: PlanetCV3
   m_EditorClassIdentifier: 
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0.42352942, b: 0, a: 1}
-    key1: {r: 1, g: 0.42352942, b: 0, a: 1}
+    key0: {r: 0.53333336, g: 0.039215688, b: 0.19215688, a: 1}
+    key1: {r: 0.48235297, g: 0.039215688, b: 0.18039216, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -41,4 +41,4 @@ MonoBehaviour:
     m_Mode: 1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  planetMaterial: {fileID: 2100000, guid: d39a31793276dea4683bebeb24ad4f84, type: 2}
+  planetMaterial: {fileID: 2100000, guid: ef3fe9fefd660c947a37be4ea9b85e16, type: 2}

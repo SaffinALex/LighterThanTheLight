@@ -17,7 +17,7 @@ public class PlayerManager {
     {
         inventory = new Inventory();
 
-        money = 500000;
+        money = 0;
         score = 0;
 
         this.player = player;

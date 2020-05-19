@@ -187,6 +187,7 @@ public class PlayerShip : Ship
             App.playerManager.getInventory().setMoney(App.playerManager.getInventory().getMoney() + 5);
             Destroy(col.gameObject);
             App.sfx.PlayEffect("Coin", 0.3f, 0.25f);
+            PanelUIManager.GetPanelUI().ressourcePanel.SetMoney(App.playerManager.getMoney() + App.playerManager.getInventory().getMoney());
         }
         if (col.CompareTag("Shield"))
         {
