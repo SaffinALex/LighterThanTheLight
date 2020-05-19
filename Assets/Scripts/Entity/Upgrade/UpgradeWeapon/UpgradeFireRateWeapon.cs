@@ -19,7 +19,7 @@ public class UpgradeFireRateWeapon : UpgradeWeapon
     //A l'obtention de l'Upgrade
     override
     public void StartUpgrade(WeaponPlayer weapon){
-        weapon.setFireRate(weapon.getFireRate()/fireRateBonus + weapon.getFireRate()%fireRateBonus);
+        weapon.setFireRate(weapon.getFireRate()/fireRateBonus);
     }
     override
     public void StartUpgrade(Weapon weapon){
