@@ -121,7 +121,7 @@ public class NodeLevel : NodeElement
             Debug.Log(levelGeneratorInfo);
             App.SetLevelGenerator(levelGeneratorInfo);
 
-            App.StartLevel();
+            //App.StartLevel();
             this.End();
         }
         this.End();

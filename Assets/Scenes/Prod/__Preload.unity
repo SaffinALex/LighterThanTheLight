@@ -120,6 +120,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &190989706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8383207984463262222, guid: 6f6ad184390a13646b47d458a6c3ee5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1568254690}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9ef314519812648a8d6e3055a29b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &211221978
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +656,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796982079293482162, guid: 9e14e1aefac77864aad6a2b023009db7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3796982079293482163, guid: 9e14e1aefac77864aad6a2b023009db7,
         type: 3}
@@ -1376,6 +1393,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8383207983645744481, guid: 6f6ad184390a13646b47d458a6c3ee5d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8383207983645744482, guid: 6f6ad184390a13646b47d458a6c3ee5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1481,6 +1503,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8383207983645744483, guid: 6f6ad184390a13646b47d458a6c3ee5d,
+        type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383207983645744483, guid: 6f6ad184390a13646b47d458a6c3ee5d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383207983645744485, guid: 6f6ad184390a13646b47d458a6c3ee5d,
+        type: 3}
+      propertyPath: shopPanel
+      value: 
+      objectReference: {fileID: 190989706}
     - target: {fileID: 8383207983645744494, guid: 6f6ad184390a13646b47d458a6c3ee5d,
         type: 3}
       propertyPath: m_Name

@@ -12,7 +12,10 @@ public class ShopPanel : MonoBehaviour
 
     public void initShopPanel(Shop shop)
     {
+        Debug.Log(shopSlotsPrefab);
         clearAllInShopPanel();
+
+        Debug.Log(shopSlotsPrefab);
         this.shop = shop;
         shopSlots = new List<GameObject>();
 

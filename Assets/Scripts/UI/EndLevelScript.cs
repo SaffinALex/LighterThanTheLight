@@ -37,7 +37,6 @@ public class EndLevelScript : MonoBehaviour
     public void initPanel()
     {
         int score = App.playerManager.getInventory().getScore();
-        Debug.Log(score);
         transform.Find("Content").Find("score").GetComponent<TextMeshProUGUI>().text = "Score : " + score.ToString();
         activated = false;
         textToShow = textObject.GetComponent<TextMeshProUGUI>().text;

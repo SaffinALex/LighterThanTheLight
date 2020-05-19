@@ -38,7 +38,7 @@ public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeg
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnEndDrag");
+        Debug.Log("OnEndDrag");
 
         canvasG.alpha = 1f;
         canvasG.blocksRaycasts = true;
@@ -48,7 +48,7 @@ public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeg
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnBeginDrag");
+        Debug.Log("OnBeginDrag");
         canvasG.alpha = 0.5f;
         canvasG.blocksRaycasts = false;
         originalPos = rect.anchoredPosition;

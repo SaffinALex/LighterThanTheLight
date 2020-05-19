@@ -73,7 +73,6 @@ public class InventoryPanel : MonoBehaviour
         for (int i = 0; i < playerManager.getMaxWeaponsAmount(); i++)
         {
             GameObject go = Instantiate(weaponSlotPrefab);
-            Debug.Log(playerManager.getCurrentlyUsableWeaponsSlot() - 1);
             if (i < playerManager.getCurrentlyUsableWeaponsSlot() - 1)
                 go.GetComponent<InventorySlot>().SetActive(true);
             go.transform.SetParent(weaponSlotContainer.transform, false);

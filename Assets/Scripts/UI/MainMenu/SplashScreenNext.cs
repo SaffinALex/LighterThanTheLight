@@ -27,7 +27,7 @@ public class SplashScreenNext : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) && !startMenu){
+        if (Input.anyKey && !startMenu){
             startMenu = true;
             animator.SetBool("End", true);
             infiniteRotateCam = true;

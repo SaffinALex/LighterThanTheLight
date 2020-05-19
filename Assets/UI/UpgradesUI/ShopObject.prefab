@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   upgrade: {fileID: 0}
+  shopSlot: {fileID: 0}
 --- !u!225 &3538355449619414449
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -117,7 +118,7 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 1
+  m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
