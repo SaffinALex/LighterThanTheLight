@@ -117,10 +117,8 @@ public class InventoryPanel : MonoBehaviour
                 continue;
             }
             GameObject go = Instantiate(upgradeObjectPrefab);
-            GameObject upGO = new GameObject();
+            GameObject upGO = Instantiate(go);
             upGO.name = "UpgradeContainer";
-            UnityEditorInternal.ComponentUtility.CopyComponent(up);
-            UnityEditorInternal.ComponentUtility.PasteComponentAsNew(upGO);
             upGO.transform.SetParent(go.transform);
             go.GetComponent<DraggableObject>().canvas = gameObject.transform.parent.GetComponent<Canvas>();
             go.GetComponent<DraggableObject>().upgrade = upGO;
@@ -139,10 +137,8 @@ public class InventoryPanel : MonoBehaviour
                 continue;
             }
             GameObject go = Instantiate(upgradeObjectPrefab);
-            GameObject upGO = new GameObject();
+            GameObject upGO = Instantiate(go);
             upGO.name = "UpgradeContainer";
-            UnityEditorInternal.ComponentUtility.CopyComponent(up);
-            UnityEditorInternal.ComponentUtility.PasteComponentAsNew(upGO);
             upGO.transform.SetParent(go.transform);
             go.GetComponent<DraggableObject>().canvas = gameObject.transform.parent.GetComponent<Canvas>();
             go.GetComponent<DraggableObject>().upgrade = upGO;
@@ -161,10 +157,8 @@ public class InventoryPanel : MonoBehaviour
                 continue;
             }
             GameObject go = Instantiate(upgradeObjectPrefab);
-            GameObject upGO = new GameObject();
+            GameObject upGO = Instantiate(go);
             upGO.name = "UpgradeContainer";
-            UnityEditorInternal.ComponentUtility.CopyComponent(up);
-            UnityEditorInternal.ComponentUtility.PasteComponentAsNew(upGO);
             upGO.transform.SetParent(go.transform);
             go.GetComponent<DraggableObject>().canvas = gameObject.transform.parent.GetComponent<Canvas>();
             go.GetComponent<DraggableObject>().upgrade = upGO;
@@ -205,10 +199,8 @@ public class InventoryPanel : MonoBehaviour
             }
 
             go = Instantiate(upgradeObjectPrefab);
-            GameObject upGO = new GameObject();
+            GameObject upGO = Instantiate(go);
             upGO.name = "UpgradeContainer";
-            UnityEditorInternal.ComponentUtility.CopyComponent(up);
-            UnityEditorInternal.ComponentUtility.PasteComponentAsNew(upGO);
             upGO.transform.SetParent(go.transform);
             go.GetComponent<DraggableObject>().canvas = gameObject.transform.parent.GetComponent<Canvas>();
             go.GetComponent<DraggableObject>().upgrade = upGO;
@@ -248,10 +240,8 @@ public class InventoryPanel : MonoBehaviour
             }
 
             GameObject go = Instantiate(upgradeObjectPrefab);
-            GameObject upGO = new GameObject();
+            GameObject upGO = Instantiate(go);
             upGO.name = "UpgradeContainer";
-            UnityEditorInternal.ComponentUtility.CopyComponent(up);
-            UnityEditorInternal.ComponentUtility.PasteComponentAsNew(upGO);
             upGO.transform.SetParent(go.transform);
             go.GetComponent<DraggableObject>().canvas = gameObject.transform.parent.GetComponent<Canvas>();
             go.GetComponent<DraggableObject>().upgrade = upGO;

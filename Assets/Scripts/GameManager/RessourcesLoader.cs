@@ -14,14 +14,16 @@ public class RessourcesLoader
     private List<GameObject> listeDashUpgrades;
     private List<GameObject> listeOndeUpgrades;
     private List<GameObject> listeWeaponUpgrades;
+    private List<GameObject> listeWeaponRewards;
 
-    public RessourcesLoader(string wepRep, string shipUpRep, string dashUpRep, string ondeUpRep, string wepUpRep)
+    public RessourcesLoader(string wepRep, string shipUpRep, string dashUpRep, string ondeUpRep, string wepUpRep, string wepRewardRep)
     {
         listeWeapons = new List<GameObject>();
         listeShipUpgrades = new List<GameObject>();
         listeDashUpgrades = new List<GameObject>();
         listeOndeUpgrades = new List<GameObject>();
         listeWeaponUpgrades = new List<GameObject>();
+        listeWeaponRewards = new List<GameObject>();
 
         List<GameObject> tempListeWeapons = new List<GameObject>(Resources.LoadAll(wepRep, typeof(GameObject)).Cast<GameObject>().ToArray());
 
@@ -29,6 +31,7 @@ public class RessourcesLoader
         List<GameObject> tempListeDashUpgrades = new List<GameObject>(Resources.LoadAll(dashUpRep, typeof(GameObject)).Cast<GameObject>().ToArray());
         List<GameObject> tempListeOndeUpgrades = new List<GameObject>(Resources.LoadAll(ondeUpRep, typeof(GameObject)).Cast<GameObject>().ToArray());
         List<GameObject> tempListeWeaponUpgrades = new List<GameObject>(Resources.LoadAll(wepUpRep, typeof(GameObject)).Cast<GameObject>().ToArray());
+        List<GameObject> tempListeWeaponRewards = new List<GameObject>(Resources.LoadAll(wepRewardRep, typeof(GameObject)).Cast<GameObject>().ToArray());
 
         foreach (GameObject go in tempListeWeapons)
             if(!(go.name.Contains("Enemy") || go.name.Contains("enemy")))
@@ -46,6 +49,9 @@ public class RessourcesLoader
         foreach (GameObject go in tempListeWeaponUpgrades)
             listeWeaponUpgrades.Add(go);
 
+        foreach (GameObject go in tempListeWeaponRewards)
+            listeWeaponRewards.Add(go);
+
         listeUpgrades = new List<GameObject>();
         listeUpgrades.AddRange(listeShipUpgrades);
         listeUpgrades.AddRange(listeDashUpgrades);
@@ -58,6 +64,7 @@ public class RessourcesLoader
         tempListeDashUpgrades.Clear(); tempListeDashUpgrades = null;
         tempListeOndeUpgrades.Clear(); tempListeOndeUpgrades = null;
         tempListeWeaponUpgrades.Clear(); tempListeWeaponUpgrades = null;
+        tempListeWeaponRewards.Clear(); tempListeWeaponRewards = null;
 
         Resources.UnloadUnusedAssets();
 
@@ -69,6 +76,7 @@ public class RessourcesLoader
     public ReadOnlyCollection<GameObject> getDashUpgrades() => this.listeDashUpgrades.AsReadOnly();
     public ReadOnlyCollection<GameObject> getOndeUpgrades() => this.listeOndeUpgrades.AsReadOnly();
     public ReadOnlyCollection<GameObject> getWeaponUpgrades() => this.listeWeaponUpgrades.AsReadOnly();
+    public ReadOnlyCollection<GameObject> getWeaponRewards() => this.listeWeaponRewards.AsReadOnly();
      
     public ReadOnlyCollection<GameObject> getUpgrades() => this.listeUpgrades.AsReadOnly();
 

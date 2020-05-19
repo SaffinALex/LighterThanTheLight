@@ -41,24 +41,24 @@ public class NodeLevel : NodeElement
         objectValue.transform.parent = transform;
         objectValue.transform.localPosition = Vector3.zero;
         levelGeneratorInfo = objectValue.AddComponent<LevelGeneratorInfo>();
-        scoreDifficulty = score + Random.Range(6, 20); //On augmente le niveau
+        scoreDifficulty = score + Random.Range(10, 30); //On augmente le niveau
 
         float moyenne = 0f;
         MinMax scoresMax = new MinMax();
-        for (int i = 0; i < App.ALL_EVENTS["Boss"].Count; i++)
+        for (int i = 0; i < App.ALL_EVENTS["Wave"].Count; i++)
         {
             // Debug.Log(App.ALL_EVENTS["Wave"][i].GetScore());
-            scoresMax.AddValue(App.ALL_EVENTS["Boss"][i].GetScore());
-            moyenne += App.ALL_EVENTS["Boss"][i].GetScore();
+            scoresMax.AddValue(App.ALL_EVENTS["Wave"][i].GetScore());
+            moyenne += App.ALL_EVENTS["Wave"][i].GetScore();
         }
-        moyenne /= App.ALL_EVENTS["Boss"].Count;
-        Debug.Log("Moyenne : " + moyenne + " / Min : " + scoresMax.Min + " / Max : " + scoresMax.Max);
+        moyenne /= App.ALL_EVENTS["Wave"].Count;
+        // Debug.Log("Moyenne : " + moyenne + " / Min : " + scoresMax.Min + " / Max : " + scoresMax.Max);
 
-        Debug.Log("SCORE VOULU " + scoreDifficulty);
-        Debug.Log("Score moyenneur " + scoreDifficulty/5);
-        if(scoreDifficulty / 5 > scoresMax.Max) App.SetDifficulty(App.GetDifficulty() + 1);
-        List<string> levelFlow = new List<string>() { "Wave", "Wave", "Wave", "Wave" };
-        levelGeneratorInfo.events = GeneratorLGI.GenerateLevel(scoreDifficulty, 20, levelFlow);
+        // Debug.Log("SCORE VOULU " + scoreDifficulty);
+        // Debug.Log("Score moyenneur " + scoreDifficulty/5);
+        if(scoreDifficulty / Node.CONSTANT_WAVE_GEN > scoresMax.Max) App.SetDifficulty(App.GetDifficulty() + 1);
+        List<string> levelFlow = new List<string>() { "Wave", "Wave", "Wave" };
+        levelGeneratorInfo.events = GeneratorLGI.GenerateLevel(scoreDifficulty, scoresMax.Min, levelFlow);
 
         List<int> eventAlreadyGet = new List<int>();
         //On lance 3 fois l'aléatoire pour les évènements spéciaux
@@ -70,8 +70,9 @@ public class NodeLevel : NodeElement
                 //Cas par cas
                 if (chanceRandom == 0) {
                     Debug.Log("BOSS !");
-                    List<Event> bossEvent = GeneratorLGI.GenerateLevel((scoreDifficulty / 5) * 2.5f, 50, new List<string>() { "Boss" });
+                    List<Event> bossEvent = GeneratorLGI.GenerateLevel((scoreDifficulty / 3) * 2.5f, 50, new List<string>() { "Boss" });
                     if (bossEvent.Count > 0) {
+                        Debug.Log(levelGeneratorInfo.events.Count - 1);
                         levelGeneratorInfo.events[levelGeneratorInfo.events.Count - 1] = bossEvent[0];
                     }
                 }
@@ -83,6 +84,11 @@ public class NodeLevel : NodeElement
                 }
                 else if (chanceRandom == 3) {
                     Debug.Log("RARE ITEM !");
+                    List<Event> rewardEvent = GeneratorLGI.GenerateLevel(scoreDifficulty, 300, new List<string>() { "Reward" });
+                    if (rewardEvent.Count > 0)
+                    {
+                        levelGeneratorInfo.events.Insert(Random.Range(1, levelGeneratorInfo.events.Count - 1), rewardEvent[0]);
+                    }
                 }
                 else if (chanceRandom == 4) {
                     Debug.Log("ULTRA RARE ITEM !");

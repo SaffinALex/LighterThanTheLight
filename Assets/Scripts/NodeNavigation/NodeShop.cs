@@ -14,9 +14,10 @@ public class NodeShop : NodeElement
     public override void InitializeNode(float score = 0) {
         accessNode = true;
         scoreDifficulty = score;
+        shop = new Shop();
         ReadOnlyCollection<GameObject> allUpgrades = App.ressourcesLoader.getUpgrades();
         ReadOnlyCollection<GameObject> allWeapons = App.ressourcesLoader.getWeapons();
-        Debug.Log("Nombres d'upgrades totales " + allUpgrades.Count);
+        // Debug.Log("Nombres d'upgrades totales " + allUpgrades.Count);
 
         for(int i = 0; i < MaxArticles; i++){
             bool isAWeapon = Random.Range(0,3) == 0; //1 / 3 chance

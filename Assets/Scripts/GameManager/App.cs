@@ -17,6 +17,9 @@ public class App : MonoBehaviour
     [SerializeField] protected List<Event> waveEvents;
     [SerializeField] protected List<Event> disasterEvents;
     [SerializeField] protected List<Event> bossEvents;
+    [SerializeField] protected List<Event> specialBossEvent;
+    [SerializeField] protected List<Event> rewardsEvent;
+    [SerializeField] protected List<Event> specialRewardsEvent;
     [SerializeField] protected EnemyList enemiesList;
     static protected TreeNode treeNode;
     public WeaponPlayer baseWeaponPrefab;
@@ -25,6 +28,7 @@ public class App : MonoBehaviour
     public static RessourcesLoader ressourcesLoader;
 
     public string weaponsPrefabsFolderPath;
+    public string weaponsPrefabsRewardsFolderPath;
     public string shipUpgradesPrefabsFolderPath;
     public string dashUpgradesPrefabsFolderPath;
     public string ondeUpgradesPrefabsFolderPath;
@@ -55,7 +59,12 @@ public class App : MonoBehaviour
         baseWeapon = baseWeaponPrefab;
 
         playerManager = new PlayerManager(playerShip.GetComponent<PlayerShip>());
-        ressourcesLoader = new RessourcesLoader(weaponsPrefabsFolderPath, shipUpgradesPrefabsFolderPath, dashUpgradesPrefabsFolderPath, ondeUpgradesPrefabsFolderPath, weaponUpgradesPrefabsFolderPath);
+        ressourcesLoader = new RessourcesLoader(weaponsPrefabsFolderPath,
+                                                shipUpgradesPrefabsFolderPath,
+                                                dashUpgradesPrefabsFolderPath,
+                                                ondeUpgradesPrefabsFolderPath, 
+                                                weaponUpgradesPrefabsFolderPath,
+                                                weaponsPrefabsRewardsFolderPath);
 
         InputManager.Subscribe(GetComponent<KeyboardInputSystem>());
 
@@ -124,6 +133,9 @@ public class App : MonoBehaviour
         ALL_EVENTS.Add("Wave", waveEvents);
         ALL_EVENTS.Add("Disaster", disasterEvents);
         ALL_EVENTS.Add("Boss", bossEvents);
+        ALL_EVENTS.Add("SpecialBoss", specialBossEvent);
+        ALL_EVENTS.Add("Reward", rewardsEvent);
+        ALL_EVENTS.Add("SpecialReward", specialRewardsEvent);
 
         /*
         var enumerator = ALL_EVENTS.GetEnumerator();

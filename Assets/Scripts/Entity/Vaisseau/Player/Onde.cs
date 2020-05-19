@@ -89,6 +89,7 @@ public class Onde : MonoBehaviour
             stateOnde = StatesOndes.explode;
             colliderOnde.enabled = true;
             explodeParticle.Play();
+            App.sfx.PlayEffect("ShootOnde", 0.5f);
             timerExplosion = 0f;
         }
         if(currentRecharge > 0 && stateOnde == StatesOndes.ended){
@@ -106,6 +107,7 @@ public class Onde : MonoBehaviour
             awakeParticle.Play();
             explodeParticle.Stop();
             LevelUIEventManager.GetLevelUI().TriggerPlayerBomb();
+            App.sfx.PlayEffect("ReloadOnde", 0.5f);
         }
     }
 

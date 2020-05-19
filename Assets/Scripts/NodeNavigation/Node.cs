@@ -13,6 +13,7 @@ public class Node : MonoBehaviour
         //GameObject permettant de regrouper tout le visuel
         public static GameObject CONSTRAINTS_DESIGN; //Permet d'avoir un objet regroupant toutes les designs contraintes (les cubes qui relient les nodes)
         public static GameObject NODES_CHILDS; //Permet d'avoir un objet regroupant toutes les designs contraintes (les cubes qui relient les nodes)
+        public static int CONSTANT_WAVE_GEN = 3;
 
 
     /** VARIABLE INFORMATION **/
@@ -209,7 +210,7 @@ public class Node : MonoBehaviour
             for (int i = 0; i < App.ALL_EVENTS["Wave"].Count; i++) {
                 scoresMax.AddValue(App.ALL_EVENTS["Wave"][i].GetScore());
             }
-            scoreParent = scoresMax.Min * 5;
+            scoreParent = scoresMax.Min * CONSTANT_WAVE_GEN;
         }else{
             scoreParent = parent.nodeElement.GetScoreDifficulty();
         }

@@ -12,7 +12,7 @@ using UnityEngine;
 public class BasicReward : DropReward {
 
     static float lifeProbability = 0.02f;
-    static float shieldProbability = 0.89f;
+    static float shieldProbability = 0.015f;
     static float moneyProbability = 0.9f;
     static float nothingProbability = 1f - (lifeProbability + shieldProbability + moneyProbability);
 
@@ -33,7 +33,6 @@ public class BasicReward : DropReward {
     }
 
     protected override void DropAReward(){
-        Debug.Log(modelMoney);
         int rewardIndex = GenerateRandomIndex();
         if (rewardIndex == 0) Instantiate(modelLife, transform.position, Quaternion.identity);
         else if (rewardIndex == 1) Instantiate(modelShield, transform.position, Quaternion.identity);

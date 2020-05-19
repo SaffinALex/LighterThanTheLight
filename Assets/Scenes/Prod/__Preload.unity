@@ -196,11 +196,20 @@ MonoBehaviour:
   - {fileID: 33684336025263024, guid: 415ce7388c49ad54f8a7bb9098da8779, type: 3}
   - {fileID: 33684336025263024, guid: d9b6ce42f5d20e8449285a27386acf13, type: 3}
   - {fileID: 5206760805097962129, guid: 19b0775730560904fab690fc220e3a3e, type: 3}
+  specialBossEvent: []
+  rewardsEvent:
+  - {fileID: 3520204250701161156, guid: d933c9717105d304997adc608436b437, type: 3}
+  - {fileID: 3520204250701161156, guid: 5e684b1fbeca4dd4991fdd26656e1410, type: 3}
+  - {fileID: 3520204250701161156, guid: f8037ea771cc3a449b8a562c528d9662, type: 3}
+  - {fileID: 3520204250701161156, guid: 046db0275266843418992e9505ebcd2f, type: 3}
+  - {fileID: 3520204250701161156, guid: 1a6a0b660e6e8154da0a3d52ec0030fd, type: 3}
+  specialRewardsEvent: []
   enemiesList: {fileID: 8515238202460999836, guid: d4c92d38b09ebfe4c927509ecbccdb0d,
     type: 3}
   baseWeaponPrefab: {fileID: -1994659459883942212, guid: 5b55086237e3bc941ac7f878d5eb5ed1,
     type: 3}
   weaponsPrefabsFolderPath: Prefabs/Weapon
+  weaponsPrefabsRewardsFolderPath: Prefabs/Rewards/Weapons
   shipUpgradesPrefabsFolderPath: Prefabs/Upgrade/UpgradeShip
   dashUpgradesPrefabsFolderPath: Prefabs/Upgrade/UpgradeDash
   ondeUpgradesPrefabsFolderPath: Prefabs/Upgrade/UpgradeOnde
@@ -1149,7 +1158,7 @@ MonoBehaviour:
   startOnPlay: 1
   maxDistance: 50
   minDistance: 20
-  volume: 0
+  volume: 0.279
   allMusics:
   - name: SplashScreen
     clip: {fileID: 8300000, guid: 5da83a97dd9a4c0438b3578b01b0eae9, type: 3}
@@ -1165,6 +1174,27 @@ MonoBehaviour:
     variants:
     - {fileID: 8300000, guid: b3b9dde9737399543b50ebf6faa3aa4d, type: 3}
     - {fileID: 8300000, guid: 0aac05da0a21c42419a52385722769e3, type: 3}
+  - name: ReloadOnde
+    variants:
+    - {fileID: 8300000, guid: 68fe107518ab28b43ab85ab0e7654798, type: 3}
+  - name: ShootOnde
+    variants:
+    - {fileID: 8300000, guid: ee6ce03f34041e94b9a5b4d30de23033, type: 3}
+  - name: Dash
+    variants:
+    - {fileID: 8300000, guid: af6bf04180956fb468dd17e4d9a01ea1, type: 3}
+  - name: Explosion
+    variants:
+    - {fileID: 8300000, guid: 9dd86f8e72c81604e962b4c4e6d2388f, type: 3}
+  - name: ItemReward
+    variants:
+    - {fileID: 8300000, guid: f997b6b5c9cf1bc4a8235feaf29ab616, type: 3}
+  - name: BonusReward
+    variants:
+    - {fileID: 8300000, guid: c8a566cfb19817f4db0da43ec43a4685, type: 3}
+  - name: Coin
+    variants:
+    - {fileID: 8300000, guid: 0251964d9ab748e4c844f29a6fac8220, type: 3}
 --- !u!4 &1198778464
 Transform:
   m_ObjectHideFlags: 0

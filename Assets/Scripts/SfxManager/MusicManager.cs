@@ -123,7 +123,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    public void PlayEffect(string effectName, float volumeSound = -1f)
+    public void PlayEffect(string effectName, float volumeSound = -1f, float variantionPitch = 0.15f)
     {
         volumeSound = volumeSound == -1 ? volume : volumeSound * volume;
         EffectElement found = foundEffect(effectName);
@@ -137,6 +137,7 @@ public class MusicManager : MonoBehaviour
             newAudio.volume = volumeSound;
             newAudio.Play();
             newAudio.loop = false;
+            newAudio.pitch = Random.Range(1f - variantionPitch, 1 + variantionPitch);
             allSourcesSoundsEffects.Add(newAudio);
 
         }

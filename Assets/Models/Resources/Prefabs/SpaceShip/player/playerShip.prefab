@@ -6,7 +6,7 @@ CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3723695709282302130}
+  m_GameObject: {fileID: 731436965175469160}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -47,7 +47,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4974064950899303704}
+  - {fileID: 731436965175469820}
   - {fileID: 626428187358677867}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -64,10 +64,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2bd96402578314dafacfc4b5a70b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialRecoveryDash: 2
-  initialDistance: 10
+  initialRecoveryDash: 10
+  initialDistance: 8
   initialSpeed: 20
-  initialRecharge: 3
+  initialRecharge: 1
   upgradeDashes:
   - {fileID: 5941315056976107944, guid: 2ac3fdb84552a624480aefa5b1283306, type: 3}
   nbrUpgradeMax: 2
@@ -89,7 +89,7 @@ MonoBehaviour:
   speed: 8
   maxShieldLife: 8
   weapons:
-  - {fileID: 2083393953272898251, guid: e5735a699bc087a4fafbd8c2b2395644, type: 3}
+  - {fileID: -1994659459883942212, guid: 5b55086237e3bc941ac7f878d5eb5ed1, type: 3}
   upgradeShip: []
   wave: {fileID: 7237810773343739808, guid: 1f35fce770403cd489dbd332e41f783d, type: 3}
   dash: {fileID: 4609433687815977602}
@@ -145,7 +145,7 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4974064950899303705}
+  m_GameObject: {fileID: 731436965175469475}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d2cdff0db601aa9478a349ce3e67491a, type: 2}
@@ -364,19 +364,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2729776a4c2de3f43a77388d7f14267b, type: 3}
---- !u!1 &4974064950899303705 stripped
+--- !u!1 &731436965175469475 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5702115351539302823, guid: 2729776a4c2de3f43a77388d7f14267b,
     type: 3}
   m_PrefabInstance: {fileID: 731436965175469246}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4974064950899303704 stripped
+--- !u!4 &731436965175469820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5702115351539302822, guid: 2729776a4c2de3f43a77388d7f14267b,
     type: 3}
   m_PrefabInstance: {fileID: 731436965175469246}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3723695709282302130 stripped
+--- !u!1 &731436965175469160 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4146600913453538316, guid: 2729776a4c2de3f43a77388d7f14267b,
     type: 3}

@@ -40,6 +40,7 @@ public class EnemyList : MonoBehaviour
     {
         DifficultLevel = App.GetDifficulty();
         difficulty = difficulty < 0 ? DifficultLevel : difficulty;
+        if(difficulty >= list.Count) difficulty = list.Count -1;
         ListEnemy = list[difficulty].listEnemy;
         GameObject enemy = null;
         for (int i = 0; i < ListEnemy.Count; i++) {

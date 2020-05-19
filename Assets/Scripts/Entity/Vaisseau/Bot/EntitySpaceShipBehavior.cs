@@ -106,6 +106,7 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(false);
         currTimerTouch = 0;
         life -= damage;
+        if(life <= 0) App.sfx.PlayEffect("Explosion", 0.2f, 0.3f);
     }
 
     public void GoAway(){

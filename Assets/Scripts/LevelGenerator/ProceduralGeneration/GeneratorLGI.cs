@@ -26,7 +26,7 @@ public class GeneratorLGI {
                 if (!ViolateContrainst(wantedScore, approximation, levelFlow, f, domainElement, domains, assignation)) domains[f].Add(domainElement);
             }
             if(domains[f].Count <= 0){
-                Debug.Log("Impossible de générer un niveau");
+                Debug.Log("Impossible de généré un nieau (Approximation : " + approximation + " & Base : " + wantedScore + ")");
                 return levelEvent;
             }
             domains[f] = shuffle(domains[f]);
@@ -44,7 +44,7 @@ public class GeneratorLGI {
                 total += tmp;
                 levelEvent.Add(App.ALL_EVENTS[levelFlow[i]][assignation[i]]);
             }
-            Debug.Log("Niveau généré ayant un score de " + total + " (Approximation : " + approximation + " )");
+            Debug.Log("Niveau généré ayant un score de " + total + " (Approximation : " + approximation + " & Base : " + wantedScore + ")");
         }else{
             Debug.Log("NOPE " + maxRecursion);
         }
@@ -133,7 +133,7 @@ public class GeneratorLGI {
         float minScore = -1, maxScore = -1;
         CalculateExtremumScores(levelFlow, domains, assignation, ref maxScore, ref minScore, variablePos);
 
-        // Debug.Log(variablePos + " = " + score + " | " + minScore + " : " + maxScore + " | " + minWantedScore + " : " + maxWantedScore);
+        // Debug.Log(variablePos + " = " + score + " | " + minScore + " : " + maxScore + " | " + minWantedScore + " : " + maxWantedScore + " --> " + !( score + minScore > maxWantedScore || score + maxScore < minWantedScore ));
 
         //Si on obtient le pire score possible et qu'il est au dessus du maximum alors valeure impossible
         if (score + minScore > maxWantedScore) return true;
@@ -157,14 +157,17 @@ public class GeneratorLGI {
     static void CalculateExtremumScores(in List<string> levelFlow, in List<List<int>> domains, List<int> assignation, ref float maxScore, ref float minScore, in int index){
         minScore = 0; maxScore = 0;
         for(int i = 0; i < levelFlow.Count; i++){
+            // Debug.Log(i);
             if(i != index){
                 //Le cas où on a déjà assigné la variable
                 if(i < assignation.Count){
+                    // Debug.Log(i + " : Déjà assigné");
                     minScore += GetScoreEvent(levelFlow[i], assignation[i]);
                     maxScore += GetScoreEvent(levelFlow[i], assignation[i]);
                 }
                 //Le cas où le domaine de la variable existe déjà
                 else if(i < domains.Count && domains[i].Count > 0){
+                    // Debug.Log(i + " : Domain existe déjà");
                     MinMax extrems = new MinMax();
                     for (int j = 0; j < domains[i].Count; j++)
                     {
@@ -175,6 +178,7 @@ public class GeneratorLGI {
                 }
                 //Le cas où il n'y pas le domaine
                 else{
+                    // Debug.Log(i + " : Domain n'existe pas");
                     MinMax extrems = CalculateExtremumType(levelFlow[i]);
                     minScore += extrems.Min;
                     maxScore += extrems.Max;

@@ -161,19 +161,18 @@ public class PlayerShip : Ship
     }
     protected void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(col.gameObject.tag);
         if (col.CompareTag("Enemy"))
         {
             getDamage(10);
         }
-        if (col.CompareTag("UpgradeDash")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeDash>());Destroy(col.gameObject); }
-        if (col.CompareTag("UpgradeWeapon")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeWeapon>());Destroy(col.gameObject); }
-        if (col.CompareTag("UpgradeShip")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeShip>());Destroy(col.gameObject); }
+        if (col.CompareTag("UpgradeDash")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeDash>());Destroy(col.gameObject);App.sfx.PlayEffect("ItemReward", 0.8f); }
+        if (col.CompareTag("UpgradeWeapon")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeWeapon>());Destroy(col.gameObject);App.sfx.PlayEffect("ItemReward", 0.8f); }
+        if (col.CompareTag("UpgradeShip")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeShip>());Destroy(col.gameObject);App.sfx.PlayEffect("ItemReward", 0.8f); }
         if (col.CompareTag("Weapon"))
         {
             Debug.Log(col.gameObject.GetComponent<WeaponPlayer>());
             App.playerManager.getInventory().addWeaponInventory(col.gameObject.GetComponent<WeaponPlayer>());
-            Destroy(col.gameObject);
+            Destroy(col.gameObject);App.sfx.PlayEffect("ItemReward", 0.8f);
         }
         if (col.CompareTag("Heart"))
         {
@@ -181,11 +180,13 @@ public class PlayerShip : Ship
             life = life > initialLife ? initialLife : life;
             UpdateUI();
             Destroy(col.gameObject);
+            App.sfx.PlayEffect("BonusReward", 0.6f);
         }
         if (col.CompareTag("Money"))
         {
             App.playerManager.getInventory().setMoney(App.playerManager.getInventory().getMoney() + 5);
             Destroy(col.gameObject);
+            App.sfx.PlayEffect("Coin", 0.3f, 0.25f);
         }
         if (col.CompareTag("Shield"))
         {
@@ -193,6 +194,7 @@ public class PlayerShip : Ship
             setShieldLife(shieldLife + 1);
             Debug.Log(shieldLife);
             UpdateUI();
+            App.sfx.PlayEffect("BonusReward", 0.6f);
         }
     }
     protected void OnTriggerStay2D(Collider2D col)

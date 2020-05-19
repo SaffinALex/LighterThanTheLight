@@ -68,6 +68,7 @@ public class Dash : MonoBehaviour
             directionDash = axisX > 0 ? 1 : -1;
             timerDashing = 0f;
             LevelUIEventManager.GetLevelUI().TriggerPlayerDash();
+            App.sfx.PlayEffect("Dash", 0.5f);
         }
     }
 

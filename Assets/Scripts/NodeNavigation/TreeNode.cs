@@ -10,7 +10,7 @@ public class TreeNode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(App.GetTreeNode());
+        // Debug.Log(App.GetTreeNode());
         //Singleton
         if(!App.GetTreeNode() || App.GetTreeNode() == null){
             DontDestroyOnLoad(gameObject);
