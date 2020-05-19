@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpgradeOnde : Upgrade
+public abstract class UpgradeOnde : Upgrade
 {
     // Start is called before the first frame update
     void Start()
@@ -15,10 +15,8 @@ public class UpgradeOnde : Upgrade
     {
         
     }
-//A l'obtention de l'Upgrade
-    public void StartUpgrade(Onde onde){
-
-    }
+    //A l'obtention de l'Upgrade
+    public abstract void StartUpgrade(Onde onde);
     //A chaque update mettre à jour les caractéristiques.
     public void UpdateUpgrade(Onde onde){
         
