@@ -9,7 +9,7 @@ public class PlayerBulletPrototype : Bullet {
 
     void Start()
     {
-        if(playSoundStart) App.sfx.PlayEffect("LaserShot", 0.05f);
+        if(playSoundStart) App.sfx.PlayEffect("LaserShot", 0.25f);
     }
 
     // Update is called once per frame
