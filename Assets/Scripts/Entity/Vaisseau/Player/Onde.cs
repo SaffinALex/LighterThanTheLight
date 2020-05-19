@@ -116,4 +116,24 @@ public class Onde : MonoBehaviour
             col.GetComponent<EntitySpaceShipBehavior>().getDamage(damage);
         }
     }
+
+    public void IncreaseDamage(float d)
+    {
+        damage += d;
+    }
+
+    public void IncreaseNbRecharge(int r)
+    {
+        initialRecharge += r;
+    }
+
+    public void DecreaseTimeReload(float t)
+    {
+        timeReload += t;
+    }
+
+    public void IncreaseRadius(float r)
+    {
+        radius += r;
+    }
 }
