@@ -51,7 +51,7 @@ MonoBehaviour:
   icone: {fileID: 21300000, guid: 605e2e46827d5b242b526956db4ff1ae, type: 3}
   price: 1000
   weight: 1
-  fireRateBonus: 1.1
+  fireRateBonus: 1.05
 --- !u!212 &8215356010519047776
 SpriteRenderer:
   m_ObjectHideFlags: 0
