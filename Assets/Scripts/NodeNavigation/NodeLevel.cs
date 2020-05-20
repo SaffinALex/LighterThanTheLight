@@ -120,7 +120,7 @@ public class NodeLevel : NodeElement
             // levelGeneratorInfo.events = GeneratorLGI.GenerateLevel(moyenne * 3, 10, new List<string>() { "Wave", "Wave", "Wave" });
             App.SetLevelGenerator(levelGeneratorInfo);
 
-            // App.StartLevel();
+            App.StartLevel();
             this.End();
         }
         this.End();

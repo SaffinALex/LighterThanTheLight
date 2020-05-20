@@ -111,11 +111,11 @@ public class PlayerShip : Ship
         change.y = Input.GetAxisRaw("Vertical");
 
         //Onde tire
-        if(Input.GetKey(KeyCode.Z)){
+        if(Input.GetKey(KeyCode.E)){
             wave.RunOnde();
         }
         //Le Dash se fait seulement sur X.
-        if (Input.GetKey(KeyCode.LeftShift)) //Dash
+        if (Input.GetKey(KeyCode.R)) //Dash
         {
             Debug.Log("Dash");
             dash.runDash(change.x);
@@ -128,7 +128,7 @@ public class PlayerShip : Ship
 
             timerChangeVelocity += Time.deltaTime;
             Vector2 wantedVelocity = new Vector2(change.x, change.y).normalized * speed;
-            if(Input.GetKey(KeyCode.LeftControl)){ //Slow down
+            if(Input.GetKey(KeyCode.Z)){ //Slow down
                 wantedVelocity /= 2f;
                 visualSlowDown.SetActive(true);
             }else{
