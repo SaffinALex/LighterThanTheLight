@@ -20,11 +20,12 @@ public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeg
         rect = GetComponent<RectTransform>();
         canvasG = GetComponent<CanvasGroup>();
         iconLoaded = false;
-        if (!iconLoaded && upgrade != null)
+        if (!iconLoaded && upgrade != null){
             if(upgrade.GetComponent<Upgrade>() != null)
                 GetComponent<Image>().sprite = upgrade.GetComponent<Upgrade>().icone;
             if (upgrade.GetComponent<WeaponPlayer>() != null)
                 GetComponent<Image>().sprite = upgrade.GetComponent<WeaponPlayer>().icon;
+        }
     }
 
     // Update is called once per frame

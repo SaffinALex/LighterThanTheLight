@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2171400585292256738}
   m_Layer: 16
   m_Name: Speed+1
-  m_TagString: UpgradeWeapon
+  m_TagString: UpgradeDash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

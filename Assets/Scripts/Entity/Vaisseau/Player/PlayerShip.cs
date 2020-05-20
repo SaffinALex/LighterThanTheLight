@@ -172,9 +172,31 @@ public class PlayerShip : Ship
         {
             getDamage(10);
         }
-        if (col.CompareTag("UpgradeDash")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeDash>());Destroy(col.gameObject);App.sfx.PlayEffect("ItemReward", 0.8f); }
-        if (col.CompareTag("UpgradeWeapon")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeWeapon>());Destroy(col.gameObject);App.sfx.PlayEffect("ItemReward", 0.8f); }
-        if (col.CompareTag("UpgradeShip")) { App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeShip>());Destroy(col.gameObject);App.sfx.PlayEffect("ItemReward", 0.8f); }
+        if (col.CompareTag("UpgradeOnde"))
+        {
+            Debug.Log("UpgradeOnde " + col.gameObject.GetComponent<UpgradeOnde>());
+            App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeOnde>());
+            Destroy(col.gameObject);
+            App.sfx.PlayEffect("ItemReward", 0.8f);
+        }
+        if (col.CompareTag("UpgradeDash")) {
+            Debug.Log("UpgradeDash " + col.gameObject.GetComponent<UpgradeDash>());
+            App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeDash>());
+            Destroy(col.gameObject);
+            App.sfx.PlayEffect("ItemReward", 0.8f);
+        }
+        if (col.CompareTag("UpgradeWeapon")) {
+            Debug.Log("UpgradeWeapon " + col.gameObject.GetComponent<UpgradeWeapon>());
+            App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeWeapon>());
+            Destroy(col.gameObject);
+            App.sfx.PlayEffect("ItemReward", 0.8f);
+        }
+        if (col.CompareTag("UpgradeShip")) {
+            Debug.Log("UpgradeShip " + col.gameObject.GetComponent<UpgradeShip>());
+            App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeShip>());
+            Destroy(col.gameObject);
+            App.sfx.PlayEffect("ItemReward", 0.8f);
+        }
         if (col.CompareTag("Weapon"))
         {
             Debug.Log(col.gameObject.GetComponent<WeaponPlayer>());

@@ -202,8 +202,8 @@ public class App : MonoBehaviour
         playerManager.endOfLevelRoutine();
         treeNode.gameObject.SetActive(true);
 
-        if (playerManager.getInventory().isNotEmpty())
-            EquipmentManager.GetEquipmentUI().openLoot();
+        // if (playerManager.getInventory().isNotEmpty())
+        //     EquipmentManager.GetEquipmentUI().openLoot();
     }
 
    static public void testLoot()
@@ -229,7 +229,7 @@ public class App : MonoBehaviour
         }
         //
 
-        if (playerManager.getInventory().isNotEmpty())
-            EquipmentManager.GetEquipmentUI().openLoot();
+        // if (playerManager.getInventory().isNotEmpty())
+        //     EquipmentManager.GetEquipmentUI().openLoot();
     }
 }

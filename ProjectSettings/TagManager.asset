@@ -21,6 +21,7 @@ TagManager:
   - UpgradeWeapon
   - Weapon
   - Boss
+  - UpgradeOnde
   layers:
   - Default
   - TransparentFX
