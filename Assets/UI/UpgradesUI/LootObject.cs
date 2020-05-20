@@ -5,4 +5,5 @@ using UnityEngine.EventSystems;
 
 public class LootObject : DraggableObject
 {
+    public LootSlot slot;
 }

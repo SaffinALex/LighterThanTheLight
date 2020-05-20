@@ -479,6 +479,7 @@ public class PlayerManager {
     public void BuyItem(Item item)
     {
         money -= item.GetPrice();
+        PanelUIManager.GetPanelUI().ressourcePanel.SetMoney(money);
     }
 
     /**

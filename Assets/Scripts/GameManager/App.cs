@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -59,7 +60,8 @@ public class App : MonoBehaviour
         baseWeapon = baseWeaponPrefab;
 
         playerManager = new PlayerManager(playerShip.GetComponent<PlayerShip>());
-        ressourcesLoader = new RessourcesLoader(weaponsPrefabsFolderPath,
+        ressourcesLoader = new RessourcesLoader(this.transform,
+                                                weaponsPrefabsFolderPath,
                                                 shipUpgradesPrefabsFolderPath,
                                                 dashUpgradesPrefabsFolderPath,
                                                 ondeUpgradesPrefabsFolderPath, 
@@ -74,7 +76,6 @@ public class App : MonoBehaviour
         sfx.PlaySound("TestSound", 3);
 
         addEvents();
-
         SceneManager.LoadScene(1);
     }
 
@@ -164,7 +165,6 @@ public class App : MonoBehaviour
     static public void StartLevel(){
         treeNode.gameObject.SetActive(false);
         SceneManager.LoadScene("__Level");
-        PanelUIManager.GetPanelUI().ressourcePanel.gameObject.SetActive(true);
     }
 
     /**
@@ -181,7 +181,9 @@ public class App : MonoBehaviour
     static public void CloseGame()
     {
         Destroy(treeNode.gameObject);
+        PanelUIManager.GetPanelUI().inGame = false;
         treeNode = null;
+        PanelUIManager.GetPanelUI().ressourcePanel.gameObject.SetActive(false);
     }
 
     /**
@@ -198,6 +200,35 @@ public class App : MonoBehaviour
     {
         playerManager.endOfLevelRoutine();
         treeNode.gameObject.SetActive(true);
-        PanelUIManager.GetPanelUI().ressourcePanel.gameObject.SetActive(true);
+
+        if (playerManager.getInventory().isNotEmpty())
+            EquipmentManager.GetEquipmentUI().openLoot();
     }
+
+   /* static public void testLoot()
+    {
+        ReadOnlyCollection<GameObject> allUpgrades = App.ressourcesLoader.getUpgrades();
+        ReadOnlyCollection<GameObject> allWeapons = App.ressourcesLoader.getWeapons();
+
+        for (int i = 0; i < 4; i++)
+        {
+            bool isAWeapon = Random.Range(0, 3) == 0; //1 / 3 chance
+            if (isAWeapon)
+            {
+                Debug.Log(allWeapons[Random.Range(0, allWeapons.Count)]);
+                GameObject go = Instantiate(allWeapons[Random.Range(0, allWeapons.Count)]);
+                playerManager.getInventory().addWeaponInventory(go.GetComponent<WeaponPlayer>());
+            }
+            else
+            {
+                Debug.Log(allUpgrades[Random.Range(0, allUpgrades.Count)]);
+                GameObject go = Instantiate(allUpgrades[Random.Range(0, allWeapons.Count)]);
+                playerManager.getInventory().addUpgradeInventory(go.GetComponent<Upgrade>());
+            }
+        }
+        //
+
+        if (playerManager.getInventory().isNotEmpty())
+            EquipmentManager.GetEquipmentUI().openLoot();
+    }*/
 }

@@ -16,7 +16,7 @@ public class RessourcesLoader
     private List<GameObject> listeWeaponUpgrades;
     private List<GameObject> listeWeaponRewards;
 
-    public RessourcesLoader(string wepRep, string shipUpRep, string dashUpRep, string ondeUpRep, string wepUpRep, string wepRewardRep)
+    public RessourcesLoader(Transform parent, string wepRep, string shipUpRep, string dashUpRep, string ondeUpRep, string wepUpRep, string wepRewardRep)
     {
         listeWeapons = new List<GameObject>();
         listeShipUpgrades = new List<GameObject>();
@@ -33,24 +33,61 @@ public class RessourcesLoader
         List<GameObject> tempListeWeaponUpgrades = new List<GameObject>(Resources.LoadAll(wepUpRep, typeof(GameObject)).Cast<GameObject>().ToArray());
         List<GameObject> tempListeWeaponRewards = new List<GameObject>(Resources.LoadAll(wepRewardRep, typeof(GameObject)).Cast<GameObject>().ToArray());
 
+        Vector3 pos = new Vector3(10000, 10000, 10000);
         foreach (GameObject go in tempListeWeapons)
             if(!(go.name.Contains("Enemy") || go.name.Contains("enemy")))
-                listeWeapons.Add(go);
+            {
+                GameObject o = GameObject.Instantiate(go);
+                o.transform.SetParent(parent);
+                o.transform.position = pos;
+                GameObject.DontDestroyOnLoad(o);
+                listeWeapons.Add(o);
+            }
 
         foreach (GameObject go in tempListeShipUpgrades)
-            listeShipUpgrades.Add(go);
+        {
+            GameObject o = GameObject.Instantiate(go);
+            o.transform.SetParent(parent);
+            o.transform.position = pos;
+            GameObject.DontDestroyOnLoad(o);
+            listeShipUpgrades.Add(o);
+        }
 
         foreach (GameObject go in tempListeDashUpgrades)
-            listeDashUpgrades.Add(go);
+        {
+            GameObject o = GameObject.Instantiate(go);
+            o.transform.SetParent(parent);
+            o.transform.position = pos;
+            GameObject.DontDestroyOnLoad(o);
+            listeDashUpgrades.Add(o);
+        }
 
         foreach (GameObject go in tempListeOndeUpgrades)
-            listeOndeUpgrades.Add(go);
+        {
+            GameObject o = GameObject.Instantiate(go);
+            o.transform.SetParent(parent);
+            o.transform.position = pos;
+            GameObject.DontDestroyOnLoad(o);
+            listeOndeUpgrades.Add(o);
+        }
 
         foreach (GameObject go in tempListeWeaponUpgrades)
-            listeWeaponUpgrades.Add(go);
+        {
+            GameObject o = GameObject.Instantiate(go);
+            o.transform.SetParent(parent);
+            o.transform.position = pos;
+            GameObject.DontDestroyOnLoad(o);
+            listeWeaponUpgrades.Add(o);
+        }
 
         foreach (GameObject go in tempListeWeaponRewards)
-            listeWeaponRewards.Add(go);
+        {
+            GameObject o = GameObject.Instantiate(go);
+            o.transform.SetParent(parent);
+            o.transform.position = pos;
+            GameObject.DontDestroyOnLoad(o);
+            listeWeapons.Add(o);
+        }
 
         listeUpgrades = new List<GameObject>();
         listeUpgrades.AddRange(listeShipUpgrades);
@@ -59,15 +96,6 @@ public class RessourcesLoader
         listeUpgrades.AddRange(listeWeaponUpgrades);
 
         //On casse les références de maniére un peu overkill
-        tempListeWeapons.Clear(); tempListeWeapons = null;
-        tempListeShipUpgrades.Clear(); tempListeShipUpgrades = null;
-        tempListeDashUpgrades.Clear(); tempListeDashUpgrades = null;
-        tempListeOndeUpgrades.Clear(); tempListeOndeUpgrades = null;
-        tempListeWeaponUpgrades.Clear(); tempListeWeaponUpgrades = null;
-        tempListeWeaponRewards.Clear(); tempListeWeaponRewards = null;
-
-        Resources.UnloadUnusedAssets();
-
         //printAll();
     }
 

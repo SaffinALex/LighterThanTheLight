@@ -31,7 +31,7 @@ public class Node : MonoBehaviour
         public NodeElement nodeElement;
     
     /** VARIABLE ALEATOIRE POUR LA GENERATION DE NODE ELEMENT */
-    static readonly float probaLevel = 0.92f;
+    static readonly float probaLevel = 0.95f;
     static readonly float probaShop = 1 - probaLevel;
 
     //Enregistre la position des contraintes sur les enfants

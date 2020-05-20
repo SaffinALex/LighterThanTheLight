@@ -15,6 +15,13 @@ public class MainMenuButtonFunctions : MonoBehaviour
     public void PlayGame(){
         if (App.loadingManager.startSceneLoad(playSceneName) == -1)
             Debug.Log("MainMenuButtonFunctions : Play Scene name given doesn't match to any In-Build Scenes");
+        else
+        {
+            PanelUIManager.GetPanelUI().ressourcePanel.gameObject.SetActive(true);
+            PanelUIManager.GetPanelUI().ressourcePanel.SetMoney(App.playerManager.getMoney());
+            PanelUIManager.GetPanelUI().ressourcePanel.SetScore(App.playerManager.getScore());
+            panelUI.inGame = true;
+        }
     }
 
     public void ShowScores(){

@@ -16,6 +16,16 @@ public class WeaponSlot : InventorySlot
                 EquipmentManager.GetEquipmentUI().reloadShopPanel();
             }
         }
+        else if (dragObj is LootObject)
+        {
+            WeaponPlayer wp = Instantiate((dragObj as LootObject).GetUpgrade().GetComponent<WeaponPlayer>().gameObject).GetComponent<WeaponPlayer>();
+            if (App.playerManager.setWeapon(this.getItemIndex(), wp))
+            {
+                App.playerManager.getInventory().removeWeaponInventory((dragObj as LootObject).GetUpgrade().GetComponent<WeaponPlayer>());
+                EquipmentManager.GetEquipmentUI().reloadLootPanel();
+                EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
+            }
+        }
         else if (dragObj is InventoryObject)
         {
             InventorySlot sender = dragObj.getInventorySlotParent();

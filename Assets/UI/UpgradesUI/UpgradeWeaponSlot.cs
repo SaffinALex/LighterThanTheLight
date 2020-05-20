@@ -14,9 +14,19 @@ public class UpgradeWeaponSlot : InventorySlot
         if (dragObj is ShopObject)
         {
             if (App.playerManager.BuyWeaponUpgrade(((dragObj as ShopObject).shopSlot.getItem() as ItemUpgrade), EquipmentManager.GetEquipmentUI().getCurrentSelectedWeaponIndex(), this.getItemIndex()))
-            {;
+            {
                 EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
                 EquipmentManager.GetEquipmentUI().reloadShopPanel();
+            }
+        }
+        else if (dragObj is LootObject)
+        {
+            UpgradeWeapon up = Instantiate((dragObj as LootObject).GetUpgrade().GetComponent<UpgradeWeapon>().gameObject).GetComponent<UpgradeWeapon>();
+            if (App.playerManager.setWeaponUpgrade(EquipmentManager.GetEquipmentUI().getCurrentSelectedWeaponIndex(),this.getItemIndex(), up))
+            {
+                App.playerManager.getInventory().removeUpgradeInventory((dragObj as LootObject).GetUpgrade().GetComponent<UpgradeWeapon>());
+                EquipmentManager.GetEquipmentUI().reloadLootPanel();
+                EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
             }
         }
         else if (dragObj is InventoryObject)

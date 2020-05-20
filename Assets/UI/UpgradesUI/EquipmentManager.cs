@@ -7,6 +7,7 @@ public class EquipmentManager : MonoBehaviour
 {
     [SerializeField] private InventoryPanel inventoryPanel;
     [SerializeField] private ShopPanel shopPanel;
+    [SerializeField] private LootPanel lootPanel;
     public Shop currentShop;
 
     private static EquipmentManager instance = null;
@@ -30,6 +31,11 @@ public class EquipmentManager : MonoBehaviour
         shopPanel.feedShopPanel();
     }
 
+    public void reloadLootPanel()
+    {
+        lootPanel.initLootPanel();
+    }
+
     public static EquipmentManager GetEquipmentUI()
     {
         if (instance == null)
@@ -48,6 +54,7 @@ public class EquipmentManager : MonoBehaviour
 
     public void openShop(Shop shop)
     {
+        Time.timeScale = 0;
         inventoryPanel.gameObject.SetActive(true);
         shopPanel.gameObject.SetActive(true);
         currentShop = shop;
@@ -57,9 +64,28 @@ public class EquipmentManager : MonoBehaviour
 
     public void closeShop()
     {
+        Time.timeScale = 1;
         inventoryPanel.gameObject.SetActive(false);
         shopPanel.gameObject.SetActive(false);
 
         currentShop.CloseShop();
-    } 
+    }
+
+    public void openLoot()
+    {
+        Time.timeScale = 0;
+        inventoryPanel.gameObject.SetActive(true);
+        lootPanel.gameObject.SetActive(true);
+        inventoryPanel.initPanel();
+        lootPanel.initLootPanel();
+    }
+
+    public void closeLoot()
+    {
+        Time.timeScale = 1;
+        inventoryPanel.gameObject.SetActive(false);
+        lootPanel.gameObject.SetActive(false);
+
+        App.playerManager.getInventory().flushItemInventory();
+    }
 }

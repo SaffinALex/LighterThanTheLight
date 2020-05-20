@@ -13,6 +13,7 @@ public class RessourcesPanel : MonoBehaviour
     [SerializeField] float money = 0f;
     [SerializeField] float score = 0f;
 
+
     public void SetMoney(float money){
         this.money = money;
         textMoney.text = this.money.ToString();

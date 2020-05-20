@@ -22,6 +22,16 @@ public class UpgradeOndeSlot : InventorySlot
                 Debug.Log("Onde Nt bought !");
             }
         }
+        else if (dragObj is LootObject)
+        {
+            UpgradeOnde up = Instantiate((dragObj as LootObject).GetUpgrade().GetComponent<UpgradeOnde>().gameObject).GetComponent<UpgradeOnde>();
+            if (App.playerManager.setOndeUpgrade(this.getItemIndex(), up))
+            {
+                App.playerManager.getInventory().removeUpgradeInventory((dragObj as LootObject).GetUpgrade().GetComponent<UpgradeOnde>());
+                EquipmentManager.GetEquipmentUI().reloadLootPanel();
+                EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
+            }
+        }
         else if (dragObj is InventoryObject)
         {
             InventorySlot sender = dragObj.getInventorySlotParent();

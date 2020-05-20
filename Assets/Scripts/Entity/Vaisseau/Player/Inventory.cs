@@ -38,6 +38,17 @@ public class Inventory
     public List<UpgradeWeapon> getUpgradeWeapon(WeaponPlayer p){
         return this.UpgradeWeapon;
     }
+    public void addUpgradeInventory(Upgrade d)
+    {
+        if (d is UpgradeDash)
+            addUpgradeInventory(d as UpgradeDash);
+        else if (d is UpgradeOnde)
+            addUpgradeInventory(d as UpgradeOnde);
+        else if (d is UpgradeShip)
+            addUpgradeInventory(d as UpgradeShip);
+        else if (d is UpgradeWeapon)
+            addUpgradeInventory(d as UpgradeWeapon);
+    }
     public void addUpgradeInventory(UpgradeDash d){
         UpgradeDashes.Add(d);
     }
@@ -53,6 +64,27 @@ public class Inventory
     }
     public void addWeaponInventory(WeaponPlayer d){
         Weapons.Add(d);
+    }
+
+    public void removeUpgradeInventory(UpgradeDash d)
+    {
+        UpgradeDashes.Remove(d);
+    }
+    public void removeUpgradeInventory(UpgradeWeapon d)
+    {
+        UpgradeWeapon.Remove(d);
+    }
+    public void removeUpgradeInventory(UpgradeShip d)
+    {
+        UpgradeShip.Remove(d);
+    }
+    public void removeUpgradeInventory(UpgradeOnde d)
+    {
+        UpgradesOnde.Remove(d);
+    }
+    public void removeWeaponInventory(WeaponPlayer d)
+    {
+        Weapons.Remove(d);
     }
 
     public int getMoney(){
@@ -79,6 +111,11 @@ public class Inventory
         upgrades.AddRange(UpgradesOnde);
 
         return upgrades;
+    }
+
+    public bool isNotEmpty()
+    {
+        return (getWeapons().Count + getUpgrades().Count) != 0;
     }
 
     public void flushItemInventory()

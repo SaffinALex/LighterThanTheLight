@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeWeapons:
-  - {fileID: 3893153559910100151, guid: 0a8d62831103eb44080daf31b7a481fe, type: 3}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

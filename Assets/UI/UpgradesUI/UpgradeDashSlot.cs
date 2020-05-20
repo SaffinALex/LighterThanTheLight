@@ -16,6 +16,16 @@ public class UpgradeDashSlot : InventorySlot
                 EquipmentManager.GetEquipmentUI().reloadShopPanel();
             }
         }
+        else if (dragObj is LootObject)
+        {
+            UpgradeDash up = Instantiate((dragObj as LootObject).GetUpgrade().GetComponent<UpgradeDash>().gameObject).GetComponent<UpgradeDash>();
+            if (App.playerManager.setDashUpgrade(this.getItemIndex(), up))
+            {
+                App.playerManager.getInventory().removeUpgradeInventory((dragObj as LootObject).GetUpgrade().GetComponent<UpgradeDash>());
+                EquipmentManager.GetEquipmentUI().reloadLootPanel();
+                EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
+            }
+        }
         else if (dragObj is InventoryObject)
         {
             InventorySlot sender = dragObj.getInventorySlotParent();

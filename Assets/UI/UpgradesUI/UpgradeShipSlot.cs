@@ -16,6 +16,16 @@ public class UpgradeShipSlot : InventorySlot
                 EquipmentManager.GetEquipmentUI().reloadShopPanel();
             }
         }
+        else if (dragObj is LootObject)
+        {
+            UpgradeShip up = Instantiate((dragObj as LootObject).GetUpgrade().GetComponent<UpgradeShip>().gameObject).GetComponent<UpgradeShip>();
+            if (App.playerManager.setShipUpgrade(this.getItemIndex(), up))
+            {
+                App.playerManager.getInventory().removeUpgradeInventory((dragObj as LootObject).GetUpgrade().GetComponent<UpgradeShip>());
+                EquipmentManager.GetEquipmentUI().reloadLootPanel();
+                EquipmentManager.GetEquipmentUI().reloadInventoryPanel();
+            }
+        }
         else if (dragObj is InventoryObject)
         {
             InventorySlot sender = dragObj.getInventorySlotParent();
