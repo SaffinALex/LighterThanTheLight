@@ -37,6 +37,8 @@ public class PlayerShip : Ship
 
     public void InitConstraints(){
         wave = Instantiate(wave);
+        wave.transform.parent = transform;
+        wave.gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -48,6 +50,7 @@ public class PlayerShip : Ship
 
         visualSlowDown.SetActive(false);
         wave = Instantiate(wave);
+        wave.gameObject.SetActive(true);
         
         dash.initialize();
         for (int i = 0; i < weapons.Count; i++) {
