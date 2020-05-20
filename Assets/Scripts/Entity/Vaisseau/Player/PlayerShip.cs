@@ -35,6 +35,10 @@ public class PlayerShip : Ship
 
     private bool animationDeadStart = false;
 
+    public void InitConstraints(){
+        wave = Instantiate(wave);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,9 +47,9 @@ public class PlayerShip : Ship
         recoveryTime = initialRecoveryTime;
 
         visualSlowDown.SetActive(false);
+        wave = Instantiate(wave);
         
         dash.initialize();
-        wave = Instantiate(wave);
         for (int i = 0; i < weapons.Count; i++) {
             if(weapons[i] != null){
                 weapons[i] = Instantiate(weapons[i]);

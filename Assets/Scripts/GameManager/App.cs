@@ -50,6 +50,7 @@ public class App : MonoBehaviour
 
     void Start(){
         playerShip = Instantiate(playerShipPrefab);
+        playerShip.InitConstraints();
         DontDestroyOnLoad(playerShip); //Sauvegarde de la pérénité du gameobject tout au long du jeu
         playerShip.gameObject.SetActive(false);
 
