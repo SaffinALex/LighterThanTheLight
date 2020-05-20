@@ -205,7 +205,7 @@ public class App : MonoBehaviour
             EquipmentManager.GetEquipmentUI().openLoot();
     }
 
-   /* static public void testLoot()
+   static public void testLoot()
     {
         ReadOnlyCollection<GameObject> allUpgrades = App.ressourcesLoader.getUpgrades();
         ReadOnlyCollection<GameObject> allWeapons = App.ressourcesLoader.getWeapons();
@@ -230,5 +230,5 @@ public class App : MonoBehaviour
 
         if (playerManager.getInventory().isNotEmpty())
             EquipmentManager.GetEquipmentUI().openLoot();
-    }*/
+    }
 }

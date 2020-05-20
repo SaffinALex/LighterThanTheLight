@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Canvas canvas;
     public GameObject upgrade;
@@ -86,6 +86,23 @@ public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeg
     public InventorySlot getInventorySlotParent()
     {
         return GetComponentInParent<InventorySlot>();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        EquipmentManager.GetEquipmentUI().overText.transform.SetParent(this.transform);
+        EquipmentManager.GetEquipmentUI().overText.setPos(new Vector2(0, 0));
+        WeaponPlayer wp = upgrade.GetComponent<WeaponPlayer>();
+        Upgrade up = upgrade.GetComponent<Upgrade>();
+        if (wp != null)
+            EquipmentManager.GetEquipmentUI().overText.show(wp.name,"",wp.price);
+        else if (up != null)
+            EquipmentManager.GetEquipmentUI().overText.show(up.nom, up.description, up.price);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        EquipmentManager.GetEquipmentUI().overText.hide();
     }
 }
 

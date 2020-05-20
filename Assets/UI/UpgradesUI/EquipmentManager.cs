@@ -8,6 +8,7 @@ public class EquipmentManager : MonoBehaviour
     [SerializeField] private InventoryPanel inventoryPanel;
     [SerializeField] private ShopPanel shopPanel;
     [SerializeField] private LootPanel lootPanel;
+    public OverText overText;
     public Shop currentShop;
 
     private static EquipmentManager instance = null;
