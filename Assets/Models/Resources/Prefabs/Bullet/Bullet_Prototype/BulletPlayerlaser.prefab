@@ -4763,8 +4763,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 741788068531152253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c8455d125df2714b8a78f22bc2a7708, type: 3}
+  m_Script: {fileID: 11500000, guid: 94897342d2254834b80291cfcb1a1c74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
-  speed: 1
+  damage: 0
+  speed: 0
+  playSoundStart: 0

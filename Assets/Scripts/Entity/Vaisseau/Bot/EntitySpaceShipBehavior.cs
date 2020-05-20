@@ -67,7 +67,8 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
         {
             // Destroy(this.gameObject);
             isDead = false;
-
+            App.sfx.PlayEffect("Explosion", 0.2f, 0.3f);
+            App.playerManager.getInventory().setScore(App.playerManager.getInventory().getScore() + 5);
             Destroy(transform.parent.gameObject);
         }
     }
@@ -106,7 +107,6 @@ public abstract class EntitySpaceShipBehavior : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(false);
         currTimerTouch = 0;
         life -= damage;
-        if(life <= 0) App.sfx.PlayEffect("Explosion", 0.2f, 0.3f);
     }
 
     public void GoAway(){
