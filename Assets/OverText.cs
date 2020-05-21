@@ -12,7 +12,6 @@ public class OverText : MonoBehaviour
     void Awake()
     {
         this.gameObject.SetActive(false);
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public void show(string name, string desc, int price)

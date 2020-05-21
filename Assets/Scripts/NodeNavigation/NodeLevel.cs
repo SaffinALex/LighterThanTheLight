@@ -13,7 +13,7 @@ public class NodeLevel : NodeElement
     static float specialEventProbability = 0f / 3f;
 
     //Rare Item events
-    static float RareItemProbability = 0.12f / 3f;
+    static float RareItemProbability = 0.59f / 3f;
     static float SuperRareItemProbability = 0f / 3f;
 
     static float nothingProbability = 1f - (bossProbability + hardBossProbability + specialEventProbability + RareItemProbability + SuperRareItemProbability);

@@ -11,6 +11,7 @@ public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeg
     private RectTransform rect;
     private CanvasGroup canvasG;
     private Vector2 originalPos;
+    private GameObject overTextObj;
 
     private bool iconLoaded;
 
@@ -91,19 +92,22 @@ public abstract class DraggableObject : MonoBehaviour, IPointerDownHandler, IBeg
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        EquipmentManager.GetEquipmentUI().overText.transform.SetParent(this.transform);
-        EquipmentManager.GetEquipmentUI().overText.setPos(new Vector2(0, 0));
+        overTextObj = EquipmentManager.GetEquipmentUI().GetOverText();
+        OverText overText = overTextObj.GetComponent<OverText>();
+        overTextObj.transform.SetParent(this.transform);
+        overText.setPos(new Vector2(0, 0));
         WeaponPlayer wp = upgrade.GetComponent<WeaponPlayer>();
         Upgrade up = upgrade.GetComponent<Upgrade>();
         if (wp != null)
-            EquipmentManager.GetEquipmentUI().overText.show(wp.name,"",wp.price);
+            overText.show(wp.name,"",wp.price);
         else if (up != null)
-            EquipmentManager.GetEquipmentUI().overText.show(up.nom, up.description, up.price);
+            overText.show(up.nom, up.description, up.price);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        EquipmentManager.GetEquipmentUI().overText.hide();
+        Destroy(overTextObj);
+        overTextObj = null;
     }
 }
 

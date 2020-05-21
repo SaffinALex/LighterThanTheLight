@@ -61,6 +61,7 @@ public class App : MonoBehaviour
         baseWeapon = baseWeaponPrefab;
 
         playerManager = new PlayerManager(playerShip.GetComponent<PlayerShip>());
+        playerManager.getInventory().setParent(this.transform);
         ressourcesLoader = new RessourcesLoader(this.transform,
                                                 weaponsPrefabsFolderPath,
                                                 shipUpgradesPrefabsFolderPath,
@@ -202,8 +203,8 @@ public class App : MonoBehaviour
         playerManager.endOfLevelRoutine();
         treeNode.gameObject.SetActive(true);
 
-        // if (playerManager.getInventory().isNotEmpty())
-        //     EquipmentManager.GetEquipmentUI().openLoot();
+        if (playerManager.getInventory().isNotEmpty())
+           EquipmentManager.GetEquipmentUI().openLoot();
     }
 
    static public void testLoot()

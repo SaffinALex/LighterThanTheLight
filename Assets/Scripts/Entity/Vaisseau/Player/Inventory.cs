@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Inventory
 {
+    private Transform parent;
     private Ship player;
     private int money;
     private int score;
@@ -50,19 +51,32 @@ public class Inventory
             addUpgradeInventory(d as UpgradeWeapon);
     }
     public void addUpgradeInventory(UpgradeDash d){
+        d.gameObject.transform.SetParent(parent);
+        d.gameObject.transform.position = new Vector3(-10000, -10000 - 10000); //menfou
         UpgradeDashes.Add(d);
     }
-    public void addUpgradeInventory(UpgradeWeapon d){
+    public void addUpgradeInventory(UpgradeWeapon d)
+    {
+        d.gameObject.transform.SetParent(parent);
+        d.gameObject.transform.position = new Vector3(-10000, -10000 - 10000); //menfou
         UpgradeWeapon.Add(d);
     }
-    public void addUpgradeInventory(UpgradeShip d){
+    public void addUpgradeInventory(UpgradeShip d)
+    {
+        d.gameObject.transform.SetParent(parent);
+        d.gameObject.transform.position = new Vector3(-10000, -10000 - 10000); //menfou
         UpgradeShip.Add(d);
     }
     public void addUpgradeInventory(UpgradeOnde d)
     {
+        d.gameObject.transform.SetParent(parent);
+        d.gameObject.transform.position = new Vector3(-10000, -10000 - 10000); //menfou
         UpgradesOnde.Add(d);
     }
-    public void addWeaponInventory(WeaponPlayer d){
+    public void addWeaponInventory(WeaponPlayer d)
+    {
+        d.gameObject.transform.SetParent(parent);
+        d.gameObject.transform.position = new Vector3(-10000, -10000 - 10000); //menfou
         Weapons.Add(d);
     }
 
@@ -125,5 +139,10 @@ public class Inventory
         UpgradeShip.Clear();
         UpgradeWeapon.Clear();
         UpgradesOnde.Clear();
+    }
+
+    public void setParent(Transform obj)
+    {
+        this.parent = obj;
     }
 }

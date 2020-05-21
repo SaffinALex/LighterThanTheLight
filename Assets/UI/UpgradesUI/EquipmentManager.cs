@@ -89,4 +89,9 @@ public class EquipmentManager : MonoBehaviour
 
         App.playerManager.getInventory().flushItemInventory();
     }
+
+    public GameObject GetOverText()
+    {
+        return Instantiate(overText.gameObject);
+    }
 }

@@ -385,7 +385,8 @@ public class PlayerManager {
         if (!(0 <= weaponIndex && weaponIndex < this.player.nbrMaxWeapons))
             return false;
 
-        this.player.weapons[weaponIndex] = weapon;
+        this.player.weapons[weaponIndex] = GameObject.Instantiate(weapon).GetComponent<WeaponPlayer>();
+        GameObject.DontDestroyOnLoad(this.player.upgradeShip[weaponIndex].gameObject);
 
         this.extendListSize(weaponIndex);
         return true; //Tout s'est bien passé
@@ -407,7 +408,8 @@ public class PlayerManager {
         if (!(0 <= upgradeIndex && upgradeIndex < wp.nbrMaxUpgrade))
             return false;
 
-        wp.upgradeWeapons[upgradeIndex] = upgrade;
+        wp.upgradeWeapons[upgradeIndex] = GameObject.Instantiate(upgrade).GetComponent<UpgradeWeapon>();
+        GameObject.DontDestroyOnLoad(this.player.upgradeShip[upgradeIndex].gameObject);
         return true; //Tout s'est bien passé
     }
 
@@ -422,7 +424,8 @@ public class PlayerManager {
         if (!(0 <= upgradeIndex && upgradeIndex < this.dash.nbrUpgradeMax))
             return false;
 
-        this.dash.upgradeDashes[upgradeIndex] = upgrade;
+        this.dash.upgradeDashes[upgradeIndex] = GameObject.Instantiate(upgrade).GetComponent<UpgradeDash>();
+        GameObject.DontDestroyOnLoad(this.player.upgradeShip[upgradeIndex].gameObject);
         return true; //Tout s'est bien passé
     }
 
@@ -437,7 +440,8 @@ public class PlayerManager {
         if (!(0 <= upgradeIndex && upgradeIndex < this.onde.nbrUpgradeMax))
             return false;
 
-        this.onde.upgradeOndes[upgradeIndex] = upgrade;
+        this.onde.upgradeOndes[upgradeIndex] = GameObject.Instantiate(upgrade).GetComponent<UpgradeOnde>();
+        GameObject.DontDestroyOnLoad(this.player.upgradeShip[upgradeIndex].gameObject);
         return true; //Tout s'est bien passé
     }
 
@@ -452,7 +456,8 @@ public class PlayerManager {
         if (!(0 <= upgradeIndex && upgradeIndex < this.player.nbrMaxUpgradeShip))
             return false;
 
-        this.player.upgradeShip[upgradeIndex] = upgrade;
+        this.player.upgradeShip[upgradeIndex] = GameObject.Instantiate(upgrade).GetComponent<UpgradeShip>();
+        GameObject.DontDestroyOnLoad(this.player.upgradeShip[upgradeIndex].gameObject);
         return true; //Tout s'est bien passé
     }
 

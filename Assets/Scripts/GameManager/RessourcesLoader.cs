@@ -40,7 +40,6 @@ public class RessourcesLoader
                 GameObject o = GameObject.Instantiate(go);
                 o.transform.SetParent(parent);
                 o.transform.position = pos;
-                GameObject.DontDestroyOnLoad(o);
                 listeWeapons.Add(o);
             }
 
@@ -49,7 +48,6 @@ public class RessourcesLoader
             GameObject o = GameObject.Instantiate(go);
             o.transform.SetParent(parent);
             o.transform.position = pos;
-            GameObject.DontDestroyOnLoad(o);
             listeShipUpgrades.Add(o);
         }
 
@@ -58,7 +56,6 @@ public class RessourcesLoader
             GameObject o = GameObject.Instantiate(go);
             o.transform.SetParent(parent);
             o.transform.position = pos;
-            GameObject.DontDestroyOnLoad(o);
             listeDashUpgrades.Add(o);
         }
 
@@ -67,7 +64,6 @@ public class RessourcesLoader
             GameObject o = GameObject.Instantiate(go);
             o.transform.SetParent(parent);
             o.transform.position = pos;
-            GameObject.DontDestroyOnLoad(o);
             listeOndeUpgrades.Add(o);
         }
 
@@ -76,7 +72,6 @@ public class RessourcesLoader
             GameObject o = GameObject.Instantiate(go);
             o.transform.SetParent(parent);
             o.transform.position = pos;
-            GameObject.DontDestroyOnLoad(o);
             listeWeaponUpgrades.Add(o);
         }
 
@@ -85,7 +80,6 @@ public class RessourcesLoader
             GameObject o = GameObject.Instantiate(go);
             o.transform.SetParent(parent);
             o.transform.position = pos;
-            GameObject.DontDestroyOnLoad(o);
             listeWeapons.Add(o);
         }
 
@@ -108,7 +102,7 @@ public class RessourcesLoader
      
     public ReadOnlyCollection<GameObject> getUpgrades() => this.listeUpgrades.AsReadOnly();
 
-    private void printAll()
+    /*private void printAll()
     {
         Debug.Log("Weapons (" + listeWeapons .Count+ ")");
         foreach (GameObject go in listeWeapons)
@@ -129,5 +123,5 @@ public class RessourcesLoader
         Debug.Log("WeaponUpgrades" + listeWeaponUpgrades.Count + ")");
         foreach (GameObject go in listeWeaponUpgrades)
             Debug.Log(go);
-    }
+    }*/
 }

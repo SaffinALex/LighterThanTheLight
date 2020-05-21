@@ -194,7 +194,7 @@ public class PlayerShip : Ship
         if (col.CompareTag("UpgradeShip")) {
             Debug.Log("UpgradeShip " + col.gameObject.GetComponent<UpgradeShip>());
             App.playerManager.getInventory().addUpgradeInventory(col.gameObject.GetComponent<UpgradeShip>());
-            Destroy(col.gameObject);
+            //Destroy(col.gameObject);
             App.sfx.PlayEffect("ItemReward", 0.8f);
         }
         if (col.CompareTag("Weapon"))

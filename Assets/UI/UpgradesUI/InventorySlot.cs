@@ -11,7 +11,6 @@ public abstract class InventorySlot : MonoBehaviour, IDropHandler
     public Color inactiveColor;
     private int itemIndex = -1;
     public void OnDrop(PointerEventData eventData) {
-        Debug.Log(isActive());
         if (isActive() && eventData.pointerDrag != null && eventData.pointerDrag.GetComponent<DraggableObject>() != null) {
             if (isValidDrop(eventData))
             {
