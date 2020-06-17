@@ -7,7 +7,10 @@ public class ItemUpgrade : Item
     protected Upgrade upgrade;
 
     public ItemUpgrade(Upgrade upgrade){
-        this.upgrade = upgrade;
+        GameObject go = GameObject.Instantiate(upgrade.gameObject);
+        GameObject.DontDestroyOnLoad(go);
+        go.transform.position = new Vector3(10000, 10000, 10000);
+        this.upgrade = go.GetComponent<Upgrade>();
         this.price = upgrade.price;
     }
 

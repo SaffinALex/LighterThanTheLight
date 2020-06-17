@@ -8,7 +8,10 @@ public class ItemWeapon : Item
 
     public ItemWeapon(WeaponPlayer weapon)
     {
-        this.weapon = weapon;
+        GameObject go = GameObject.Instantiate(weapon.gameObject);
+        GameObject.DontDestroyOnLoad(go);
+        go.transform.position = new Vector3(10000, 10000, 10000);
+        this.weapon = go.GetComponent<WeaponPlayer>();
         this.price = weapon.price;
     }
 
